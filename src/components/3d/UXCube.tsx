@@ -1,10 +1,14 @@
 
 import React, { useRef, useState } from 'react';
 import { useFrame } from '@react-three/fiber';
-import { Color, Mesh, MeshStandardMaterial } from 'three';
+import { Color, Mesh, MeshStandardMaterial, Vector3 } from 'three';
 import { animated, useSpring } from '@react-spring/three';
 
-const UXCube = (props: any) => {
+interface UXCubeProps {
+  position?: [number, number, number];
+}
+
+const UXCube = ({ position = [0, 0, 0] }: UXCubeProps) => {
   const meshRef = useRef<Mesh>(null);
   const [hovered, setHovered] = useState(false);
   
@@ -15,7 +19,7 @@ const UXCube = (props: any) => {
   });
   
   // Subtle continuous rotation
-  useFrame((state, delta) => {
+  useFrame((_, delta) => {
     if (meshRef.current) {
       meshRef.current.rotation.y += delta * 0.1;
       
@@ -30,7 +34,7 @@ const UXCube = (props: any) => {
 
   return (
     <animated.mesh
-      {...props}
+      position={position}
       ref={meshRef}
       scale={scale}
       onPointerOver={() => setHovered(true)}

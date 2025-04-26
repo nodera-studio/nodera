@@ -1,10 +1,14 @@
 
 import React, { useRef, useState } from 'react';
 import { useFrame } from '@react-three/fiber';
-import { Color, Mesh, MeshStandardMaterial } from 'three';
+import { Color, Mesh, MeshStandardMaterial, Vector3 } from 'three';
 import { animated, useSpring } from '@react-spring/three';
 
-const PerformanceSphere = (props: any) => {
+interface PerformanceSphereProps {
+  position?: [number, number, number];
+}
+
+const PerformanceSphere = ({ position = [0, 0, 0] }: PerformanceSphereProps) => {
   const meshRef = useRef<Mesh>(null);
   const [hovered, setHovered] = useState(false);
   
@@ -14,7 +18,7 @@ const PerformanceSphere = (props: any) => {
     config: { tension: 300, friction: 15 }
   });
   
-  useFrame((state, delta) => {
+  useFrame((_, delta) => {
     if (meshRef.current) {
       meshRef.current.rotation.y += delta * 0.15;
       
@@ -28,7 +32,7 @@ const PerformanceSphere = (props: any) => {
 
   return (
     <animated.mesh
-      {...props}
+      position={position}
       ref={meshRef}
       scale={scale}
       onPointerOver={() => setHovered(true)}

@@ -1,12 +1,12 @@
 
-import React, { useState } from 'react';
+import React, { useState, Suspense } from 'react';
 import { Canvas } from '@react-three/fiber';
 import UXCube from './UXCube';
 import PerformanceSphere from './PerformanceSphere';
 import styles from './WhatWeDoScene.module.css';
 
 const WhatWeDoScene = () => {
-  const [dpr, setDpr] = useState(1.5);
+  const [dpr] = useState(1.5);
   
   return (
     <div className={styles.sceneContainer}>
