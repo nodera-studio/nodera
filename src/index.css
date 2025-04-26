@@ -1,4 +1,3 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&family=Baloo+Da+2:wght@500;600&display=swap');
 
 @tailwind base;
@@ -84,6 +83,17 @@
     --sidebar-border: 240 3.7% 15.9%;
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
 }
 
 @layer base {
@@ -94,10 +104,33 @@
   body {
     @apply bg-background text-foreground;
   }
+  
+  a, button {
+    @apply transition-all duration-300;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, 
+    *::before, 
+    *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+    }
+  }
 }
 
 @layer components {
   .gradient-text {
     @apply bg-gradient-text bg-clip-text text-transparent;
+  }
+}
+
+@media (min-width: 768px) {
+  html, 
+  body, 
+  a, 
+  button {
+    cursor: none !important;
   }
 }
