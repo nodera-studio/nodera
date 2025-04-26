@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { motion } from 'framer-motion';
 import Header from '../components/Header';
@@ -28,9 +27,9 @@ const Index = () => {
       <main>
         <Hero />
         <Showcases />
+        <CallToAction />
         <WhatWeDo />
         <TheProcess />
-        <CallToAction />
       </main>
     </motion.div>
   );
