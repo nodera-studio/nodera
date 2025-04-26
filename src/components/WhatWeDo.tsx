@@ -43,7 +43,7 @@ const WhatWeDo = () => {
           What We Do
         </motion.h2>
         
-        {/* 2D UI Elements Section - Replaces 3D WhatWeDoScene */}
+        {/* 2D UI Elements Section */}
         <div className="flex justify-center items-center gap-6 md:gap-16 mb-12 py-8">
           {/* UX Element - Abstract interface layers */}
           <motion.div 
