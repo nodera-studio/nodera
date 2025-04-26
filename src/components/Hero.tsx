@@ -6,8 +6,8 @@ const Hero = () => {
   return (
     <div className={styles.hero}>
       <img 
-        src="/lovable-uploads/878e6fc6-886c-4171-b667-4e5c5ea3f8cb.png" 
-        alt="" 
+        src="/lovable-uploads/logo.png" 
+        alt="Blurred logo background" 
         className={styles.heroBackground} 
       />
       <div className={styles.heroContent}>
