@@ -1,40 +1,36 @@
 
 import React, { useRef, useState } from 'react';
-import { motion } from 'framer-motion-3d';
 import { useFrame } from '@react-three/fiber';
-import { MeshStandardMaterial } from 'three';
+import { Color } from 'three';
+import { animated, useSpring } from '@react-spring/three';
 
 const PerformanceSphere = (props: any) => {
   const meshRef = useRef<THREE.Mesh>(null);
   const [hovered, setHovered] = useState(false);
   
+  // Animation with react-spring
+  const { scale } = useSpring({
+    scale: hovered ? 1.05 : 1,
+    config: { tension: 300, friction: 15 }
+  });
+  
   useFrame((state, delta) => {
     if (meshRef.current) {
       meshRef.current.rotation.y += delta * 0.15;
       
-      if (meshRef.current.material instanceof MeshStandardMaterial) {
-        const material = meshRef.current.material;
-        material.color.lerp(
-          hovered ? { r: 0.2, g: 0.6, b: 1.0 } : { r: 0.0, g: 0.47, b: 1.0 },
-          0.1
-        );
+      if (meshRef.current.material) {
+        const material = meshRef.current.material as THREE.MeshStandardMaterial;
+        const targetColor = hovered ? new Color(0.2, 0.6, 1.0) : new Color(0.0, 0.47, 1.0);
+        material.color.lerp(targetColor, 0.1);
       }
     }
   });
 
   return (
-    <motion.mesh
+    <animated.mesh
       {...props}
       ref={meshRef}
-      whileHover={{ 
-        scale: 1.05,
-        rotateZ: Math.PI/16 
-      }}
-      transition={{
-        type: 'spring',
-        stiffness: 300,
-        damping: 15
-      }}
+      scale={scale}
       onPointerOver={() => setHovered(true)}
       onPointerOut={() => setHovered(false)}
     >
@@ -44,7 +40,7 @@ const PerformanceSphere = (props: any) => {
         roughness={0.2} 
         metalness={0.8}
       />
-    </motion.mesh>
+    </animated.mesh>
   );
 };
 

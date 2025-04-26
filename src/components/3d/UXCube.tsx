@@ -1,12 +1,18 @@
 
 import React, { useRef, useState } from 'react';
-import { motion } from 'framer-motion-3d';
 import { useFrame } from '@react-three/fiber';
-import { MeshStandardMaterial } from 'three';
+import { Color } from 'three';
+import { animated, useSpring } from '@react-spring/three';
 
 const UXCube = (props: any) => {
   const meshRef = useRef<THREE.Mesh>(null);
   const [hovered, setHovered] = useState(false);
+  
+  // Animation with react-spring
+  const { scale } = useSpring({
+    scale: hovered ? 1.05 : 1,
+    config: { tension: 300, friction: 15 }
+  });
   
   // Subtle continuous rotation
   useFrame((state, delta) => {
@@ -14,29 +20,19 @@ const UXCube = (props: any) => {
       meshRef.current.rotation.y += delta * 0.1;
       
       // Smooth color transition on hover
-      if (meshRef.current.material instanceof MeshStandardMaterial) {
-        const material = meshRef.current.material;
-        material.color.lerp(
-          hovered ? { r: 0.82, g: 0.64, b: 1.0 } : { r: 0.63, g: 0.53, b: 1.0 },
-          0.1
-        );
+      if (meshRef.current.material) {
+        const material = meshRef.current.material as THREE.MeshStandardMaterial;
+        const targetColor = hovered ? new Color('#E6CFFF') : new Color('#A08AFF');
+        material.color.lerp(targetColor, 0.1);
       }
     }
   });
 
   return (
-    <motion.mesh
+    <animated.mesh
       {...props}
       ref={meshRef}
-      whileHover={{ 
-        scale: 1.05,
-        rotateY: Math.PI/16 
-      }}
-      transition={{
-        type: 'spring',
-        stiffness: 300,
-        damping: 15
-      }}
+      scale={scale}
       onPointerOver={() => setHovered(true)}
       onPointerOut={() => setHovered(false)}
     >
@@ -46,7 +42,7 @@ const UXCube = (props: any) => {
         roughness={0.6} 
         metalness={0.1}
       />
-    </motion.mesh>
+    </animated.mesh>
   );
 };
 

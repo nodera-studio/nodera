@@ -1,14 +1,10 @@
 
-import React from 'react';
-import dynamic from 'next/dynamic';
+import React, { Suspense } from 'react';
 import styles from './WhatWeDo.module.css';
 import { motion } from 'framer-motion';
 
-// Dynamically import the 3D scene to avoid SSR issues
-const WhatWeDoScene = dynamic(() => import('./3d/WhatWeDoScene'), {
-  ssr: false,
-  loading: () => <div className={styles.sceneLoading}>Loading 3D Experience...</div>
-});
+// Lazy load the 3D scene to improve initial loading performance
+const WhatWeDoScene = React.lazy(() => import('./3d/WhatWeDoScene'));
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 20 },
@@ -28,7 +24,9 @@ const WhatWeDo = () => {
         What We Do
       </motion.h2>
       
-      <WhatWeDoScene />
+      <Suspense fallback={<div className={styles.sceneLoading}>Loading 3D Experience...</div>}>
+        <WhatWeDoScene />
+      </Suspense>
       
       <div className={styles.featureBlocks}>
         <motion.div 
