@@ -5,9 +5,6 @@ import UXCube from './UXCube';
 import PerformanceSphere from './PerformanceSphere';
 import styles from './WhatWeDoScene.module.css';
 
-// Add additional dependency
-<lov-add-dependency>@react-spring/three@9.7.3</lov-add-dependency>
-
 const WhatWeDoScene = () => {
   const [dpr, setDpr] = useState(1.5);
   

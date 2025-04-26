@@ -1,11 +1,11 @@
 
 import React, { useRef, useState } from 'react';
 import { useFrame } from '@react-three/fiber';
-import { Color } from 'three';
+import { Color, Mesh, MeshStandardMaterial } from 'three';
 import { animated, useSpring } from '@react-spring/three';
 
 const UXCube = (props: any) => {
-  const meshRef = useRef<THREE.Mesh>(null);
+  const meshRef = useRef<Mesh>(null);
   const [hovered, setHovered] = useState(false);
   
   // Animation with react-spring
@@ -21,7 +21,7 @@ const UXCube = (props: any) => {
       
       // Smooth color transition on hover
       if (meshRef.current.material) {
-        const material = meshRef.current.material as THREE.MeshStandardMaterial;
+        const material = meshRef.current.material as MeshStandardMaterial;
         const targetColor = hovered ? new Color('#E6CFFF') : new Color('#A08AFF');
         material.color.lerp(targetColor, 0.1);
       }

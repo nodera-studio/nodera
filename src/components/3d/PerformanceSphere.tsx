@@ -1,11 +1,11 @@
 
 import React, { useRef, useState } from 'react';
 import { useFrame } from '@react-three/fiber';
-import { Color } from 'three';
+import { Color, Mesh, MeshStandardMaterial } from 'three';
 import { animated, useSpring } from '@react-spring/three';
 
 const PerformanceSphere = (props: any) => {
-  const meshRef = useRef<THREE.Mesh>(null);
+  const meshRef = useRef<Mesh>(null);
   const [hovered, setHovered] = useState(false);
   
   // Animation with react-spring
@@ -19,7 +19,7 @@ const PerformanceSphere = (props: any) => {
       meshRef.current.rotation.y += delta * 0.15;
       
       if (meshRef.current.material) {
-        const material = meshRef.current.material as THREE.MeshStandardMaterial;
+        const material = meshRef.current.material as MeshStandardMaterial;
         const targetColor = hovered ? new Color(0.2, 0.6, 1.0) : new Color(0.0, 0.47, 1.0);
         material.color.lerp(targetColor, 0.1);
       }
