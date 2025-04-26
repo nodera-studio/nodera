@@ -6,6 +6,7 @@ import Hero from '../components/Hero';
 import Showcases from '../components/Showcases';
 import CallToAction from '../components/CallToAction';
 import WhatWeDo from '../components/WhatWeDo';
+import TheProcess from '../components/TheProcess';
 import CustomCursor from '../components/CustomCursor';
 
 // Check if code is running in browser (client-side)
@@ -28,6 +29,7 @@ const Index = () => {
         <Hero />
         <Showcases />
         <WhatWeDo />
+        <TheProcess />
         <CallToAction />
       </main>
     </motion.div>
