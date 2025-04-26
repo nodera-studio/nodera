@@ -2,7 +2,7 @@
 
 This project is a **website** for *Nodera Web Studio*, designed to showcase their work and services.
 It's built with modern tools like **React** and **Vite**, styled using **Tailwind CSS**, and uses the **shadcn-ui** library for its user interface components.
-The site includes engaging **animations** (*Framer Motion*) and **3D graphics** (*React Three Fiber*) to create a dynamic user experience.
+The site includes engaging **animations** (*Framer Motion*) to create a dynamic user experience.
 
 
 **Source Repository:** [None](None)
@@ -19,8 +19,6 @@ flowchart TD
 "]
     A4["Animation (Framer Motion)
 "]
-    A5["3D Graphics (React Three Fiber)
-"]
     A6["`cn` Utility Function
 "]
     A7["Vite Build Tool & Dev Server
@@ -28,7 +26,6 @@ flowchart TD
     A0 -- "Renders Page" --> A3
     A3 -- "Uses UI Components" --> A1
     A3 -- "Implements Animations" --> A4
-    A3 -- "Includes 3D Scene" --> A5
     A1 -- "Styled Using" --> A2
     A1 -- "Uses for Class Merging" --> A6
     A7 -- "Builds & Serves" --> A0
@@ -49,9 +46,7 @@ flowchart TD
 ](05__cn__utility_function_.md)
 6. [Animation (Framer Motion)
 ](06_animation__framer_motion__.md)
-7. [3D Graphics (React Three Fiber)
-](07_3d_graphics__react_three_fiber__.md)
-8. [Vite Build Tool & Dev Server
+7. [Vite Build Tool & Dev Server
 ](08_vite_build_tool___dev_server_.md)
 
 
