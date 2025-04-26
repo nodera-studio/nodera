@@ -1,0 +1,49 @@
+
+.cta {
+  background-color: #FFF;
+  padding: 80px 40px;
+  text-align: center;
+}
+
+.ctaText {
+  font-family: 'Baloo Da 2', sans-serif;
+  font-weight: 500;
+  font-size: 50px;
+  line-height: 80px;
+  margin-bottom: 40px;
+}
+
+.ctaButton {
+  font-family: 'Baloo Da 2', sans-serif;
+  font-weight: 600;
+  font-size: 18px;
+  background-color: #000;
+  color: #FFF;
+  padding: 10px 20px;
+  border-radius: 10px;
+  text-decoration: none;
+  display: inline-block;
+  transition: background-color 0.2s ease;
+}
+
+.ctaButton:hover {
+  background-color: #333;
+}
+
+@media (max-width: 991px) {
+  .ctaText {
+    font-size: 40px;
+    line-height: 60px;
+  }
+}
+
+@media (max-width: 640px) {
+  .ctaText {
+    font-size: 30px;
+    line-height: 45px;
+  }
+  
+  .ctaButton {
+    padding: 5px 10px;
+  }
+}
