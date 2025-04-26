@@ -1,8 +1,8 @@
 
 import React, { useRef, useState } from 'react';
 import { useFrame } from '@react-three/fiber';
-import { Color, Mesh, MeshStandardMaterial, Vector3 } from 'three';
-import { animated, useSpring } from '@react-spring/three';
+import { Color, Mesh, MeshStandardMaterial } from 'three';
+import { useSpring, animated } from '@react-spring/three';
 
 interface UXCubeProps {
   position?: [number, number, number];
@@ -13,7 +13,7 @@ const UXCube = ({ position = [0, 0, 0] }: UXCubeProps) => {
   const [hovered, setHovered] = useState(false);
   
   // Animation with react-spring
-  const { scale } = useSpring({
+  const springs = useSpring({
     scale: hovered ? 1.05 : 1,
     config: { tension: 300, friction: 15 }
   });
@@ -36,7 +36,7 @@ const UXCube = ({ position = [0, 0, 0] }: UXCubeProps) => {
     <animated.mesh
       position={position}
       ref={meshRef}
-      scale={scale}
+      scale={springs.scale}
       onPointerOver={() => setHovered(true)}
       onPointerOut={() => setHovered(false)}
     >
