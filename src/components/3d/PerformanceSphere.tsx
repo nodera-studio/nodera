@@ -2,7 +2,7 @@
 import React, { useRef } from 'react';
 import { useFrame } from '@react-three/fiber';
 import { Vector3, Mesh } from 'three';
-import { motion } from 'framer-motion-3d';
+import { motion } from 'framer-motion';
 
 interface PerformanceSphereProps {
   position?: [number, number, number];
