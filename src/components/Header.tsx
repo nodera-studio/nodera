@@ -7,7 +7,7 @@ const Header = () => {
     <header className={styles.header}>
       <div className={styles.logo}>
         <img 
-          src="/lovable-uploads/c03e6854-a218-4ae5-9090-b7137dff47a2.png" 
+          src="/lovable-uploads/logo.png" 
           alt="Nodera Logo" 
           className={styles.logoImg} 
         />

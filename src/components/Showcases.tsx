@@ -12,7 +12,7 @@ const Showcases = () => {
       
       <div className={styles.showcaseCard}>
         <div className={styles.showcaseContent}>
-          <h3 className={styles.showcaseTitle}>Nous CMS</h3>
+          <h3 className={styles.showcaseTitle}></h3>
           <p className={styles.showcaseDescription}>
             The behind-the-scenes system that powers museum mobile guides, intuitive for staff, informative for visitors.
           </p>
@@ -23,8 +23,8 @@ const Showcases = () => {
         </div>
         <div className={styles.showcaseImage}>
           <img 
-            src="/lovable-uploads/8379e5c3-25c3-48da-9e3b-916491ac1570.png" 
-            alt="Nous CMS" 
+            src="/lovable-uploads/nous-cms.png" 
+            alt="" 
             className={styles.showcaseImg} 
           />
         </div>
@@ -33,7 +33,7 @@ const Showcases = () => {
       <div className={styles.showcaseCard}>
         <div className={styles.showcaseImage}>
           <img 
-            src="/lovable-uploads/38a39c7f-cf6a-45fb-927c-be92ae2b7adc.png" 
+            src="/lovable-uploads/8379e5c3-25c3-48da-9e3b-916491ac1570.png"
             alt="Furnihaus" 
             className={styles.showcaseImg} 
           />
