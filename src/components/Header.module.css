@@ -10,6 +10,7 @@
   z-index: 100;
   overflow: hidden;
   transition: background 0.3s, box-shadow 0.3s;
+  border-bottom: 1px solid #F1F1F1;
 }
 
 .isSticky {
