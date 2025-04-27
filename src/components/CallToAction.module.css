@@ -111,12 +111,12 @@
 }
 
 .cta-button-blue:hover {
-  background-color: #005FCC !important;
+  background-color: #0070E0 !important;
 }
 
 .cta-content-wrapper {
-  position: relative; /* Establishes stacking context */
-  z-index: 10;      /* Ensures content is above the background art (z-index: 0) */
+  /* position: relative; - No longer needed, handled by new parent */
+  /* z-index: 10;      - No longer needed, handled by new parent */
   max-width: 56rem; /* Equivalent to max-w-3xl */
   margin-left: auto;
   margin-right: auto;

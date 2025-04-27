@@ -54,8 +54,8 @@ const Index = () => {
             <TheProcess />
           </section>
         </Suspense>
-        <div className="w-full h-0.5 bg-[#F1F1F1] my-12" />
-        <section className="relative z-20 -mt-16 md:-mt-24 mask-fade-in-top">
+        <div className="w-full h-0.5 bg-[#F1F1F1] mt-12" />
+        <section className="relative z-20">
           <CallToAction />
         </section>
       </main>
