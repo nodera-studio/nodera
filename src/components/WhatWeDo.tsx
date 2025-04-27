@@ -46,43 +46,60 @@ const WhatWeDo = () => {
             whileHover={{ scale: 1.05, y: -5 }}
             transition={{ duration: 0.3 }}
           >
-            <div className="absolute inset-0 rounded-3xl bg-[#F9F9F9] opacity-80 shadow-xl" />
+            <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-[#007AFF] to-[#D1A2FF] opacity-80 shadow-xl" />
             <div className={styles.devContainer}>
               <motion.div className={styles.browserWindow}>
                 <div className={styles.browserHeader}>
                   <div className={styles.browserDots}>
-                    <div className={styles.dot} />
-                    <div className={styles.dot} />
-                    <div className={styles.dot} />
+                    <div className={styles.dot} style={{ backgroundColor: '#FF6159' }} />
+                    <div className={styles.dot} style={{ backgroundColor: '#FFBD2E' }} />
+                    <div className={styles.dot} style={{ backgroundColor: '#27C93F' }} />
                   </div>
                 </div>
                 <div className={styles.browserContent}>
                   <div className={styles.contentPlaceholder}>
                     <motion.div 
                       className={cn(styles.contentLine, styles.contentShort, 'text-white')}
-                      animate={lineAnimation}
+                      animate={{
+                        opacity: [0.5, 1, 0.5],
+                        backgroundColor: ['#6E59A5', '#9b87f5', '#6E59A5'],
+                        transition: {
+                          repeat: Infinity,
+                          repeatType: "mirror" as const,
+                          duration: 2,
+                          ease: "easeInOut"
+                        }
+                      }}
                     />
                     <motion.div 
                       className={cn(styles.contentLine, 'text-white')}
-                      animate={lineAnimation}
+                      animate={{
+                        opacity: [0.5, 1, 0.5],
+                        backgroundColor: ['#7E69AB', '#D6BCFA', '#7E69AB'],
+                        transition: {
+                          repeat: Infinity,
+                          repeatType: "mirror" as const,
+                          duration: 2,
+                          ease: "easeInOut"
+                        }
+                      }}
                     />
                     <div className={styles.contentBoxes}>
-                      <motion.div 
-                        className={cn(styles.contentBox, 'text-white')}
-                        animate={lineAnimation}
-                      />
-                      <motion.div 
-                        className={cn(styles.contentBox, 'text-white')}
-                        animate={lineAnimation}
-                      />
-                      <motion.div 
-                        className={cn(styles.contentBox, 'text-white')}
-                        animate={lineAnimation}
-                      />
-                      <motion.div 
-                        className={cn(styles.contentBox, 'text-white')}
-                        animate={lineAnimation}
-                      />
+                      {[1, 2, 3, 4].map((_, index) => (
+                        <motion.div 
+                          key={index}
+                          className={cn(styles.contentBox, 'text-white')}
+                          animate={{
+                            backgroundColor: ['#9b87f5', '#D1A2FF', '#9b87f5'],
+                            transition: {
+                              repeat: Infinity,
+                              repeatType: "mirror" as const,
+                              duration: 2,
+                              ease: "easeInOut"
+                            }
+                          }}
+                        />
+                      ))}
                     </div>
                   </div>
                 </div>
