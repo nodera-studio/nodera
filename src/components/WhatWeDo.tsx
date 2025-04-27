@@ -120,7 +120,7 @@ const WhatWeDo = () => {
                           const barWidth = metricValue.parentElement?.offsetWidth || 0;
                           
                           // Calculate where the edge of the gradient is
-                          const gradientEdge = barWidth * scaleX;
+                          const gradientEdge = barWidth * (scaleX as number);
                           const valueStart = barWidth - rightPosition - valueWidth;
                           
                           // If the gradient has reached the value, make text white, otherwise black
