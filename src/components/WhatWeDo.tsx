@@ -1,8 +1,7 @@
 
 import React from 'react';
-import Lottie from 'lottie-react';
-import designAnimation from '../animations/design-flow.json';
-import devAnimation from '../animations/dev-performance.json';
+import { motion } from 'framer-motion';
+import styles from './WhatWeDo.module.css';
 
 const WhatWeDo = () => {
   return (
@@ -14,36 +13,51 @@ const WhatWeDo = () => {
         
         <div className="flex flex-wrap justify-center items-center gap-6 md:gap-16 mb-12 py-8">
           {/* Design/UX Animation */}
-          <div className="relative w-40 h-40 sm:w-64 sm:h-64 md:w-80 md:h-80 group">
-            <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-[#F2E6FF] to-[#E5DEFF] opacity-80 shadow-xl"></div>
-            <div className="absolute inset-0 flex items-center justify-center overflow-visible">
-              <Lottie
-                animationData={designAnimation}
-                loop={true}
-                className="w-full h-full scale-125"
-                rendererSettings={{
-                  preserveAspectRatio: 'xMidYMid slice'
-                }}
+          <motion.div
+            className="relative w-40 h-40 sm:w-64 sm:h-64 md:w-80 md:h-80 group"
+            whileHover={{ scale: 1.05 }}
+            transition={{ duration: 0.3 }}
+          >
+            <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-[#F2E6FF] to-[#E5DEFF] opacity-80 shadow-xl" />
+            <div className={styles.designContainer}>
+              <motion.div 
+                className={`${styles.designPanel} ${styles.designPanel1}`}
+                whileHover={{ rotate: -5 }}
+              />
+              <motion.div 
+                className={`${styles.designPanel} ${styles.designPanel2}`}
+                whileHover={{ rotate: 5 }}
+              />
+              <motion.div 
+                className={`${styles.designPanel} ${styles.designPanel3}`}
+                whileHover={{ scale: 1.1 }}
               />
             </div>
-            <div className="absolute bottom-6 right-6 w-4 h-4 rounded-full bg-[#D1A2FF] opacity-90 animate-pulse"></div>
-          </div>
+            <div className={`${styles.indicator} ${styles.designIndicator} animate-pulse`} />
+          </motion.div>
 
           {/* Development/Performance Animation */}
-          <div className="relative w-40 h-40 sm:w-64 sm:h-64 md:w-80 md:h-80 group">
-            <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-[#E8F4FF] to-[#D3E4FD] opacity-80 shadow-xl"></div>
-            <div className="absolute inset-0 flex items-center justify-center overflow-visible">
-              <Lottie
-                animationData={devAnimation}
-                loop={true}
-                className="w-full h-full scale-125"
-                rendererSettings={{
-                  preserveAspectRatio: 'xMidYMid slice'
-                }}
-              />
+          <motion.div
+            className="relative w-40 h-40 sm:w-64 sm:h-64 md:w-80 md:h-80 group"
+            whileHover={{ scale: 1.05 }}
+            transition={{ duration: 0.3 }}
+          >
+            <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-[#E8F4FF] to-[#D3E4FD] opacity-80 shadow-xl" />
+            <div className={styles.devContainer}>
+              {[1, 2, 3, 4, 5].map((i) => (
+                <motion.div
+                  key={i}
+                  className={`${styles.devBar} ${styles[`devBar${i}`]}`}
+                  whileHover={{ 
+                    scaleX: 1.1,
+                    backgroundColor: '#007AFF',
+                    transition: { delay: i * 0.1 }
+                  }}
+                />
+              ))}
             </div>
-            <div className="absolute bottom-6 right-6 w-4 h-4 rounded-full bg-[#007AFF] opacity-90 animate-pulse"></div>
-          </div>
+            <div className={`${styles.indicator} ${styles.devIndicator} animate-pulse`} />
+          </motion.div>
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12">

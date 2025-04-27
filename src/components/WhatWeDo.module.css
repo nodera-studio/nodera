@@ -1,0 +1,77 @@
+
+.designContainer,
+.devContainer {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.designPanel {
+  position: absolute;
+  border-radius: 12px;
+  background: white;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+.designPanel1 {
+  width: 60%;
+  height: 60%;
+  border: 2px solid #F2E6FF;
+  background: linear-gradient(135deg, #F2E6FF 0%, #E5DEFF 100%);
+  z-index: 1;
+}
+
+.designPanel2 {
+  width: 50%;
+  height: 50%;
+  border: 2px solid #D1A2FF;
+  background: white;
+  z-index: 2;
+  transform: translate(20%, -10%);
+}
+
+.designPanel3 {
+  width: 40%;
+  height: 40%;
+  background: linear-gradient(135deg, #D1A2FF 0%, #9b87f5 100%);
+  z-index: 3;
+  transform: translate(-25%, 25%);
+}
+
+.devContainer {
+  overflow: hidden;
+}
+
+.devBar {
+  position: absolute;
+  height: 4px;
+  border-radius: 2px;
+  background: #E8F4FF;
+  transform-origin: left;
+}
+
+.devBar1 { width: 80%; top: 20%; }
+.devBar2 { width: 60%; top: 35%; }
+.devBar3 { width: 90%; top: 50%; }
+.devBar4 { width: 40%; top: 65%; }
+.devBar5 { width: 70%; top: 80%; }
+
+.indicator {
+  position: absolute;
+  bottom: 6px;
+  right: 6px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+}
+
+.designIndicator {
+  background: #D1A2FF;
+}
+
+.devIndicator {
+  background: #007AFF;
+}
