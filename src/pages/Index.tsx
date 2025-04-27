@@ -12,15 +12,14 @@ import { useIsMobile } from '../hooks/use-mobile';
 const CustomCursor = lazy(() => import('../components/CustomCursor'));
 const TheProcess = lazy(() => import('../components/TheProcess'));
 
-// Animation variants for scroll-triggered animations
+// Simplified animation variants - less movement for better performance
 const sectionVariants = {
-  hidden: { opacity: 0, y: 50 },
+  hidden: { opacity: 0 },
   visible: { 
-    opacity: 1, 
-    y: 0,
+    opacity: 1,
     transition: { 
       duration: 0.8, 
-      ease: [0.23, 1, 0.32, 1],
+      ease: "easeOut",
     }
   }
 };
@@ -43,16 +42,18 @@ const Index = () => {
       
       <Header />
       
-      <main>
+      <main className="relative">
         <motion.div
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.1 }}
           variants={sectionVariants}
+          className="relative z-10"
         >
           <Hero />
         </motion.div>
         
+        {/* Additional sections with less motion effects */}
         <motion.div
           initial="hidden"
           whileInView="visible"
