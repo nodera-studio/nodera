@@ -1,3 +1,4 @@
+
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react-swc";
 import path from "path";
@@ -18,5 +19,14 @@ export default defineConfig(({ mode }) => ({
     alias: {
       "@": path.resolve(__dirname, "./src"),
     },
+  },
+  optimizeDeps: {
+    esbuildOptions: {
+      target: 'es2020', // Ensure modern JavaScript features are supported
+    },
+  },
+  build: {
+    target: 'es2020', // Consistent target with optimizeDeps
+    sourcemap: true, // Enable sourcemaps for better debugging
   },
 }));
