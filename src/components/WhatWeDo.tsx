@@ -106,9 +106,34 @@ const WhatWeDo = () => {
                       initial={{ scaleX: 0.4 }}
                       animate={metricsAnimation}
                       style={{ originX: 0 }}
+                      onUpdate={(latest) => {
+                        // This function runs on every animation frame
+                        // Get all metric value elements
+                        const metricValues = document.querySelectorAll(`.${styles.metricValue}`);
+                        if (metricValues && metricValues[index]) {
+                          const metricValue = metricValues[index] as HTMLElement;
+                          const scaleX = latest.scaleX || 0.4;
+                          
+                          // Calculate the right position (12px from right edge)
+                          const rightPosition = 12;
+                          const valueWidth = metricValue.offsetWidth;
+                          const barWidth = metricValue.parentElement?.offsetWidth || 0;
+                          
+                          // Calculate where the edge of the gradient is
+                          const gradientEdge = barWidth * scaleX;
+                          const valueStart = barWidth - rightPosition - valueWidth;
+                          
+                          // If the gradient has reached the value, make text white, otherwise black
+                          if (gradientEdge > valueStart) {
+                            metricValue.style.color = 'white';
+                          } else {
+                            metricValue.style.color = 'black';
+                          }
+                        }
+                      }}
                     />
                     <span className={cn(styles.metricLabel, 'text-white')}>{metric}</span>
-                    <span className={cn(styles.metricValue, 'text-white')}>
+                    <span className={styles.metricValue}>
                       {['98', '96', '100', '94'][index]}
                     </span>
                   </div>

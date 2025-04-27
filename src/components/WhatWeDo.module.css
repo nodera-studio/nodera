@@ -1,3 +1,4 @@
+
 .devContainer {
   position: relative;
   width: 100%;
@@ -119,7 +120,7 @@
   top: 50%;
   transform: translateY(-50%);
   font-size: 12px;
-  color: black;
-  mix-blend-mode: difference;
+  font-weight: 600;
   z-index: 2;
+  transition: color 0.1s linear;
 }
