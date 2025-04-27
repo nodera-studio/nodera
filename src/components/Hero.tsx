@@ -4,9 +4,10 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import styles from './Hero.module.css';
 
 const Hero = () => {
-  const { scrollYProgress } = useScroll({
-  });
+  // Simplified useScroll without invalid 'smooth' option
+  const { scrollYProgress } = useScroll();
   
+  // Use useTransform with minimal calculations
   const backgroundY = useTransform(scrollYProgress, [0, 1], ['0%', '20%']);
   const opacity = useTransform(scrollYProgress, [0, 0.3], [1, 0]);
   
@@ -47,6 +48,7 @@ const Hero = () => {
   const title = "Nodera";
   const subtitle = "Web Studio";
   
+  // Use useMemo to optimize letter splitting
   const titleLetters = useMemo(() => (
     title.split("").map((letter, index) => (
       <motion.span key={index} variants={letterVariants}>
@@ -65,7 +67,6 @@ const Hero = () => {
           y: backgroundY, 
           opacity,
           willChange: 'transform, opacity',
-          transition: 'transform 0.15s cubic-bezier(0.17, 0.67, 0.83, 0.67)' // Add smooth CSS transition
         }}
         loading="eager"
       />

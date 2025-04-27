@@ -1,4 +1,3 @@
-
 import React, { useEffect, lazy, Suspense } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import Header from '../components/Header';
@@ -30,31 +29,20 @@ const Index = () => {
   const { scrollYProgress } = useScroll();
   
   // Transform scroll progress into background color values
-  // Memoize transform calculations for better performance
   const backgroundColor = useTransform(
     scrollYProgress,
     [0, 0.2, 0.4, 0.6, 0.8],
     ["rgba(255, 255, 255, 1)", "rgba(252, 252, 252, 1)", "rgba(255, 255, 255, 1)", "rgba(250, 250, 250, 1)", "rgba(255, 255, 255, 1)"]
   );
 
-  // Fix for potential iOS overflow issues
+  // Fix for potential iOS overflow issues - MODIFIED TO AVOID SCROLL LOCK
   useEffect(() => {
-    document.documentElement.style.overflow = 'hidden auto';
-    document.body.style.overflow = 'hidden auto';
-    document.documentElement.style.width = '100%';
-    document.body.style.width = '100%';
-    document.documentElement.style.position = 'relative';
-    document.body.style.position = 'relative';
+    // Don't forcibly set overflow to 'hidden auto' as this can cause scroll lock
+    // Only set overflowX to hidden to prevent horizontal scrolling
     document.documentElement.style.overflowX = 'hidden';
     document.body.style.overflowX = 'hidden';
     
     return () => {
-      document.documentElement.style.overflow = '';
-      document.body.style.overflow = '';
-      document.documentElement.style.width = '';
-      document.body.style.width = '';
-      document.documentElement.style.position = '';
-      document.body.style.position = '';
       document.documentElement.style.overflowX = '';
       document.body.style.overflowX = '';
     };
