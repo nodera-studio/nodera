@@ -113,7 +113,7 @@ const WhatWeDo = () => {
             whileHover={{ scale: 1.05, y: -5 }}
             transition={{ duration: 0.3 }}
           >
-            <div className="absolute inset-0 rounded-3xl bg-[#F9F9F9] opacity-80 shadow-xl" />
+            <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-[#007AFF] to-[#D1A2FF] opacity-80 shadow-xl" />
             <div className={styles.devContainer}>
               <div className={styles.metricsContainer}>
                 {['Speed Index', 'Performance', 'Accessibility', 'Best Practices'].map((metric, index) => (
