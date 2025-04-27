@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
 import { cn } from '../lib/utils';
@@ -14,7 +13,7 @@ const WhatWeDo = () => {
         opacity: [0.9, 1, 0.9],
         transition: { 
           repeat: Infinity, 
-          repeatType: 'reverse', 
+          repeatType: "reverse" as const,
           duration: 2,
           repeatDelay: 3
         }
@@ -84,7 +83,7 @@ const WhatWeDo = () => {
                     scale: [1, 1.05, 1],
                     transition: { 
                       repeat: Infinity, 
-                      repeatType: 'reverse', 
+                      repeatType: "reverse" as const,
                       duration: 2,
                       repeatDelay: 3
                     }
