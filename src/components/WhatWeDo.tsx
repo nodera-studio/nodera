@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
 import { cn } from '../lib/utils';
@@ -8,18 +7,6 @@ const WhatWeDo = () => {
   const shouldReduceMotion = useReducedMotion();
 
   // Animation configurations
-  const cardAnimation = shouldReduceMotion 
-    ? {} 
-    : {
-        y: [-2, 2, -2],
-        transition: { 
-          repeat: Infinity, 
-          repeatType: "mirror" as const,
-          duration: 4,
-          ease: "easeInOut"
-        }
-      };
-
   const lineAnimation = shouldReduceMotion
     ? {}
     : {
@@ -32,6 +19,18 @@ const WhatWeDo = () => {
         }
       };
 
+  const metricsAnimation = shouldReduceMotion
+    ? {}
+    : {
+        scaleX: [0.4, 1],
+        transition: {
+          repeat: Infinity,
+          repeatType: "reverse" as const,
+          duration: 4,
+          ease: "easeInOut"
+        }
+      };
+
   return (
     <section className="bg-white py-10 px-4 sm:px-10 md:py-20 text-center border-b border-[#F1F1F1]">
       <div className="max-w-7xl mx-auto">
@@ -40,33 +39,6 @@ const WhatWeDo = () => {
         </h2>
         
         <div className="flex flex-wrap justify-center items-center gap-6 md:gap-16 mb-12 py-8">
-          {/* Built-in Optimizations */}
-          <motion.div
-            className="relative w-40 h-40 sm:w-64 sm:h-64 md:w-80 md:h-80 group"
-            whileHover={{ scale: 1.05, y: -5 }}
-            transition={{ duration: 0.3 }}
-          >
-            <div className="absolute inset-0 rounded-3xl bg-[#F9F9F9] opacity-80 shadow-xl" />
-            <div className={styles.designContainer}>
-              {['Top', 'Middle', 'Bottom'].map((position) => (
-                <motion.div
-                  key={position}
-                  className={cn(
-                    styles.optimizationCard,
-                    styles[`card${position}`]
-                  )}
-                  animate={cardAnimation}
-                >
-                  <span className={styles.pixelText}>
-                    {position === 'Top' ? 'ORIGINAL' : 
-                     position === 'Middle' ? '1440PX' : '375PX'}
-                  </span>
-                  <div className={styles.dotPattern} />
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
-
           {/* Dynamic HTML Streaming */}
           <motion.div
             className="relative w-40 h-40 sm:w-64 sm:h-64 md:w-80 md:h-80 group"
@@ -116,6 +88,33 @@ const WhatWeDo = () => {
               </motion.div>
             </div>
           </motion.div>
+
+          {/* Performance Metrics */}
+          <motion.div
+            className="relative w-40 h-40 sm:w-64 sm:h-64 md:w-80 md:h-80 group"
+            whileHover={{ scale: 1.05, y: -5 }}
+            transition={{ duration: 0.3 }}
+          >
+            <div className="absolute inset-0 rounded-3xl bg-[#F9F9F9] opacity-80 shadow-xl" />
+            <div className={styles.devContainer}>
+              <div className={styles.metricsContainer}>
+                {['Speed Index', 'Performance', 'Accessibility', 'Best Practices'].map((metric, index) => (
+                  <div key={metric} className={styles.metricBar}>
+                    <motion.div 
+                      className={styles.metricFill}
+                      initial={{ scaleX: 0.4 }}
+                      animate={metricsAnimation}
+                      style={{ originX: 0 }}
+                    />
+                    <span className={styles.metricLabel}>{metric}</span>
+                    <span className={styles.metricValue}>
+                      {['98', '96', '100', '94'][index]}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </motion.div>
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12">
@@ -139,4 +138,3 @@ const WhatWeDo = () => {
 };
 
 export default WhatWeDo;
-
