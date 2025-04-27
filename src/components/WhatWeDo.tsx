@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
 import { cn } from '../lib/utils';
@@ -113,7 +112,7 @@ const WhatWeDo = () => {
             whileHover={{ scale: 1.05, y: -5 }}
             transition={{ duration: 0.3 }}
           >
-            <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-[#007AFF] to-[#D1A2FF] opacity-80 shadow-xl" />
+            <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-[#D1A2FF] to-[#007AFF] opacity-80 shadow-xl" />
             <div className={styles.devContainer}>
               <div className={styles.metricsContainer}>
                 {['Speed Index', 'Performance', 'Accessibility', 'Best Practices'].map((metric, index) => (
