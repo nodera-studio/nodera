@@ -37,29 +37,30 @@ const Showcases = () => {
           </h2>
           <a 
             href="#" 
-            className="text-xl sm:text-2xl font-comfortaa font-bold bg-gradient-to-r from-purple-400 to-blue-500 bg-clip-text text-transparent hover:translate-x-1 transition-transform"
+            className="text-xl sm:text-2xl font-comfortaa font-bold bg-gradient-to-r from-purple-400 to-blue-500 bg-clip-text text-transparent hover:translate-x-1 transition-transform touch-target"
           >
             View All →
           </a>
         </div>
         
-        <div className="bg-[#F9F9F9] rounded-3xl p-6 md:p-10 mb-12 md:mb-16 lg:mb-20 overflow-hidden showcase-card card-hover">
+        {/* Showcase cards with improved mobile UX */}
+        <div className="bg-[#F9F9F9] rounded-3xl p-6 md:p-10 mb-8 md:mb-12 overflow-hidden showcase-card card-hover">
           <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 items-center">
-            <div className="lg:w-1/2 space-y-4 md:space-y-6 order-2 lg:order-1">
-              <h3 className="text-3xl md:text-4xl lg:text-5xl font-baloo font-semibold">Museum CMS Platform</h3>
-              <p className="text-lg md:text-xl font-baloo font-medium text-zinc-700">
+            <div className="lg:w-1/2 space-y-5 md:space-y-6 order-2 lg:order-1">
+              <h3 className="text-2xl md:text-3xl lg:text-4xl font-baloo font-semibold">Museum CMS Platform</h3>
+              <p className="text-base md:text-lg font-baloo font-medium text-zinc-700 leading-relaxed line-clamp-3 md:line-clamp-none">
                 The behind-the-scenes system that powers museum mobile guides, intuitive for staff, informative for visitors.
               </p>
               <div className="flex flex-wrap gap-4 pt-4">
                 <a 
                   href="#" 
-                  className="px-6 py-3 bg-black text-white rounded-full font-baloo font-semibold text-lg hover:scale-105 transition-transform"
+                  className="px-6 py-3 bg-black text-white rounded-full font-baloo font-semibold text-lg hover:scale-105 transition-transform min-h-[48px] min-w-[120px] flex items-center justify-center"
                 >
                   The Full Story
                 </a>
                 <a 
                   href="#" 
-                  className="px-6 py-3 bg-white border border-black text-black rounded-full font-baloo font-semibold text-lg hover:scale-105 transition-transform"
+                  className="px-6 py-3 bg-white border border-black text-black rounded-full font-baloo font-semibold text-lg hover:scale-105 transition-transform min-h-[48px] min-w-[120px] flex items-center justify-center"
                 >
                   More Creations
                 </a>
@@ -70,6 +71,7 @@ const Showcases = () => {
                 src="/lovable-uploads/nous-cms.png" 
                 alt="Museum CMS Platform" 
                 className="showcase-image rounded-xl w-full h-auto object-cover"
+                loading="lazy"
               />
             </div>
           </div>
@@ -82,23 +84,24 @@ const Showcases = () => {
                 src="/lovable-uploads/8379e5c3-25c3-48da-9e3b-916491ac1570.png" 
                 alt="Furnihaus Collection" 
                 className="showcase-image rounded-xl w-full h-auto object-cover"
+                loading="lazy"
               />
             </div>
-            <div className="lg:w-1/2 space-y-4 md:space-y-6">
-              <h3 className="text-3xl md:text-4xl lg:text-5xl font-baloo font-semibold">Furnihaus Collection</h3>
-              <p className="text-lg md:text-xl font-baloo font-medium text-zinc-700">
+            <div className="lg:w-1/2 space-y-5 md:space-y-6">
+              <h3 className="text-2xl md:text-3xl lg:text-4xl font-baloo font-semibold">Furnihaus Collection</h3>
+              <p className="text-base md:text-lg font-baloo font-medium text-zinc-700 leading-relaxed line-clamp-3 md:line-clamp-none">
                 Where craftsmanship meets digital presence. Elegantly showcasing custom furniture and connecting artisans with clients.
               </p>
               <div className="flex flex-wrap gap-4 pt-4">
                 <a 
                   href="#" 
-                  className="px-6 py-3 bg-black text-white rounded-full font-baloo font-semibold text-lg hover:scale-105 transition-transform"
+                  className="px-6 py-3 bg-black text-white rounded-full font-baloo font-semibold text-lg hover:scale-105 transition-transform min-h-[48px] min-w-[120px] flex items-center justify-center"
                 >
                   The Full Story
                 </a>
                 <a 
                   href="#" 
-                  className="px-6 py-3 bg-white border border-black text-black rounded-full font-baloo font-semibold text-lg hover:scale-105 transition-transform"
+                  className="px-6 py-3 bg-white border border-black text-black rounded-full font-baloo font-semibold text-lg hover:scale-105 transition-transform min-h-[48px] min-w-[120px] flex items-center justify-center"
                 >
                   More Creations
                 </a>

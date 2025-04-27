@@ -116,6 +116,16 @@
     @apply transition-all duration-300;
   }
 
+  /* Improve mobile readability with minimum font sizes */
+  p, li, a, button, span {
+    @apply text-base; /* Ensures minimum 16px for body text */
+  }
+
+  /* Improve line height for better readability */
+  p, li {
+    @apply leading-relaxed; /* ~1.5x line height */
+  }
+
   @media (prefers-reduced-motion: reduce) {
     *, 
     *::before, 
@@ -140,6 +150,7 @@
     text-shadow: 0px -4px 4px rgba(0, 0, 0, 0.3);
   }
   
+  /* Gradient word effect for section titles */
   .gradient-word {
     background-image: linear-gradient(90deg, #D1A2FF 0%, #007AFF 100%);
     background-size: 200% auto;
@@ -148,19 +159,23 @@
     background-clip: text;
   }
   
+  /* Animation for the gradient word */
   .gradient-word.is-visible {
     animation: shimmer 2.5s linear infinite 0.5s;
   }
   
+  /* Card hover animation - improved for mobile */
   .card-hover {
     @apply transition-transform duration-300 ease-out;
     will-change: transform;
   }
   
+  /* Reduced scale factor for mobile */
   .card-hover:hover {
     @apply transform scale-105 z-10;
   }
   
+  /* Section title animations */
   .section-title {
     opacity: 0;
     transform: translateY(20px);
@@ -170,6 +185,7 @@
     animation: fadeInUp 0.8s cubic-bezier(0.25, 0.1, 0.25, 1.0) forwards;
   }
   
+  /* Image hover animation */
   .showcase-image {
     @apply transition-transform duration-300 ease-out;
     will-change: transform;
@@ -177,6 +193,11 @@
   
   .showcase-card:hover .showcase-image {
     @apply transform scale-105 -translate-y-1;
+  }
+
+  /* Mobile-friendly touch targets - ensure minimum size */
+  .touch-target {
+    @apply min-h-12 min-w-12; /* Minimum 48px x 48px */
   }
 }
 
