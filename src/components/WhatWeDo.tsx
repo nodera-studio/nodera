@@ -14,29 +14,35 @@ const WhatWeDo = () => {
         
         <div className="flex flex-wrap justify-center items-center gap-6 md:gap-16 mb-12 py-8">
           {/* Design/UX Animation */}
-          <div className="relative w-40 h-40 sm:w-56 sm:h-56 md:w-72 md:h-72 group">
-            <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-[#F2E6FF] to-[#E5DEFF] opacity-80 shadow-md"></div>
-            <div className="absolute inset-0 flex items-center justify-center">
+          <div className="relative w-40 h-40 sm:w-64 sm:h-64 md:w-80 md:h-80 group">
+            <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-[#F2E6FF] to-[#E5DEFF] opacity-80 shadow-xl"></div>
+            <div className="absolute inset-0 flex items-center justify-center overflow-visible">
               <Lottie
                 animationData={designAnimation}
                 loop={true}
-                className="w-36 h-36 sm:w-48 sm:h-48 md:w-64 md:h-64"
+                className="w-full h-full scale-125"
+                rendererSettings={{
+                  preserveAspectRatio: 'xMidYMid slice'
+                }}
               />
             </div>
-            <div className="absolute bottom-6 right-6 w-3 h-3 rounded-full bg-[#D1A2FF] opacity-70"></div>
+            <div className="absolute bottom-6 right-6 w-4 h-4 rounded-full bg-[#D1A2FF] opacity-90 animate-pulse"></div>
           </div>
 
           {/* Development/Performance Animation */}
-          <div className="relative w-40 h-40 sm:w-56 sm:h-56 md:w-72 md:h-72 group">
-            <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-[#E8F4FF] to-[#D3E4FD] opacity-80 shadow-md"></div>
-            <div className="absolute inset-0 flex items-center justify-center">
+          <div className="relative w-40 h-40 sm:w-64 sm:h-64 md:w-80 md:h-80 group">
+            <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-[#E8F4FF] to-[#D3E4FD] opacity-80 shadow-xl"></div>
+            <div className="absolute inset-0 flex items-center justify-center overflow-visible">
               <Lottie
                 animationData={devAnimation}
                 loop={true}
-                className="w-36 h-36 sm:w-48 sm:h-48 md:w-64 md:h-64"
+                className="w-full h-full scale-125"
+                rendererSettings={{
+                  preserveAspectRatio: 'xMidYMid slice'
+                }}
               />
             </div>
-            <div className="absolute bottom-6 right-6 w-3 h-3 rounded-full bg-[#007AFF] opacity-70"></div>
+            <div className="absolute bottom-6 right-6 w-4 h-4 rounded-full bg-[#007AFF] opacity-90 animate-pulse"></div>
           </div>
         </div>
         
