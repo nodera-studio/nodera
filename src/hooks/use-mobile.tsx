@@ -9,19 +9,34 @@ export const BREAKPOINTS = {
   MONITOR: 1441 // Large monitors and above
 }
 
+// Optimize performance by creating a single shared media query list for each breakpoint
+let mqlCache: Record<string, MediaQueryList> = {}
+
+const getMql = (breakpoint: number): MediaQueryList => {
+  const key = `max-${breakpoint}`;
+  if (!mqlCache[key]) {
+    mqlCache[key] = window.matchMedia(`(max-width: ${breakpoint}px)`);
+  }
+  return mqlCache[key];
+}
+
 export function useIsMobile() {
   const [isMobile, setIsMobile] = React.useState<boolean | undefined>(undefined)
 
   React.useEffect(() => {
-    const mql = window.matchMedia(`(max-width: ${BREAKPOINTS.MOBILE}px)`)
-    const onChange = () => {
-      setIsMobile(window.innerWidth < BREAKPOINTS.MOBILE)
-    }
-    mql.addEventListener("change", onChange)
-    setIsMobile(window.innerWidth < BREAKPOINTS.MOBILE)
-    return () => mql.removeEventListener("change", onChange)
+    const mql = getMql(BREAKPOINTS.MOBILE);
+    
+    // Set initial state immediately based on current match
+    setIsMobile(mql.matches);
+    
+    // More efficient MediaQueryList event listener
+    const onChange = () => setIsMobile(mql.matches);
+    mql.addEventListener("change", onChange);
+    
+    return () => mql.removeEventListener("change", onChange);
   }, [])
 
+  // Return boolean (never undefined) to prevent unnecessary re-renders
   return !!isMobile
 }
 
@@ -47,11 +62,23 @@ export function useBreakpoint() {
     // Initial check
     updateBreakpoint()
     
-    // Add resize listener
-    window.addEventListener('resize', updateBreakpoint)
+    // More efficient resize handling with throttling to reduce callbacks
+    let timeout: number | null = null;
+    const handleResize = () => {
+      if (timeout) return;
+      timeout = window.setTimeout(() => {
+        timeout = null;
+        updateBreakpoint();
+      }, 100); // 100ms throttle
+    };
+    
+    window.addEventListener('resize', handleResize, { passive: true });
     
     // Cleanup
-    return () => window.removeEventListener('resize', updateBreakpoint)
+    return () => {
+      window.removeEventListener('resize', handleResize);
+      if (timeout) clearTimeout(timeout);
+    }
   }, [])
 
   return breakpoint

@@ -161,6 +161,13 @@
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
+/* Mobile CTA button in menu */
+.mobileCta {
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+}
+
 /* Monitor screens */
 @media (min-width: 1441px) {
   .header {
@@ -218,9 +225,9 @@
     display: flex;
   }
   
-  .ctaButton {
-    font-size: 14px;
-    padding: 6px 14px;
+  /* Hide the desktop CTA button on mobile */
+  .cta {
+    display: none;
   }
 }
 

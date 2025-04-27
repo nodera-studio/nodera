@@ -2,19 +2,22 @@
 import React, { useEffect, useState } from 'react';
 import styles from './Header.module.css';
 import { motion, AnimatePresence } from 'framer-motion';
-import { useIsMobile } from '../hooks/use-mobile';
+import { useIsMobile, useBreakpoint } from '../hooks/use-mobile';
 
 const Header = () => {
   const [isSticky, setIsSticky] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const isMobile = useIsMobile();
+  const breakpoint = useBreakpoint();
+  const isMobileOrSmaller = isMobile || breakpoint === 'small_landscape';
 
   useEffect(() => {
     const handleScroll = () => {
       setIsSticky(window.scrollY > 0);
     };
     
-    window.addEventListener('scroll', handleScroll);
+    // Use passive event listener for better performance
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -31,10 +34,11 @@ const Header = () => {
           src="/lovable-uploads/logo.png" 
           alt="Nodera Logo" 
           className={styles.logoImg} 
+          loading="eager" // Priority loading for logo
         />
       </div>
       
-      {!isMobile ? (
+      {!isMobileOrSmaller ? (
         <nav className={styles.nav}>
           <a href="#" className={styles.navLink}>Home</a>
           <a href="#services" className={styles.navLink}>Services</a>
@@ -101,11 +105,19 @@ const Header = () => {
                   Contact
                 </a>
               </nav>
+              
+              {/* Add "Say Hi" button to mobile menu */}
+              <div className={styles.mobileCta}>
+                <a href="#contact" className={styles.ctaButton} onClick={() => setMobileMenuOpen(false)}>
+                  Say Hi
+                </a>
+              </div>
             </div>
           </motion.div>
         )}
       </AnimatePresence>
       
+      {/* Only show CTA button on non-mobile screens */}
       <div className={styles.cta}>
         <a href="#contact" className={styles.ctaButton}>Say Hi</a>
       </div>

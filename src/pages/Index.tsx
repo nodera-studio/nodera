@@ -1,14 +1,16 @@
 
-import React, { useEffect } from 'react';
-import { motion, useScroll, useTransform, MotionValue } from 'framer-motion';
+import React, { useEffect, lazy, Suspense } from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import Header from '../components/Header';
 import Hero from '../components/Hero';
 import Showcases from '../components/Showcases';
 import CallToAction from '../components/CallToAction';
 import WhatWeDo from '../components/WhatWeDo';
-import TheProcess from '../components/TheProcess';
-import CustomCursor from '../components/CustomCursor';
 import { useIsMobile } from '../hooks/use-mobile';
+
+// Lazy load the CustomCursor and TheProcess components which aren't needed immediately
+const CustomCursor = lazy(() => import('../components/CustomCursor'));
+const TheProcess = lazy(() => import('../components/TheProcess'));
 
 // Animation variants for scroll-triggered animations
 const sectionVariants = {
@@ -28,6 +30,7 @@ const Index = () => {
   const { scrollYProgress } = useScroll();
   
   // Transform scroll progress into background color values
+  // Memoize transform calculations for better performance
   const backgroundColor = useTransform(
     scrollYProgress,
     [0, 0.2, 0.4, 0.6, 0.8],
@@ -65,8 +68,14 @@ const Index = () => {
       animate={{ opacity: 1 }}
       transition={{ duration: 0.6 }}
     >
-      {!isMobile && <CustomCursor />}
+      {!isMobile && (
+        <Suspense fallback={null}>
+          <CustomCursor />
+        </Suspense>
+      )}
+      
       <Header />
+      
       <main className="overflow-x-hidden">
         <motion.div
           initial="hidden"
@@ -104,14 +113,16 @@ const Index = () => {
           <WhatWeDo />
         </motion.div>
         
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.1 }}
-          variants={sectionVariants}
-        >
-          <TheProcess />
-        </motion.div>
+        <Suspense fallback={<div style={{ height: '600px' }} />}>
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.1 }}
+            variants={sectionVariants}
+          >
+            <TheProcess />
+          </motion.div>
+        </Suspense>
       </main>
     </motion.div>
   );

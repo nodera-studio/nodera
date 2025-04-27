@@ -190,6 +190,8 @@
 .dots {
   display: flex;
   gap: 0.5rem;
+  align-items: center;
+  padding: 0.25rem 0;
 }
 
 .dots span {
@@ -225,6 +227,7 @@
   line-height: 1.5 !important;
   background-color: #fff;
   height: 100%;
+  min-height: 200px;
 }
 
 .lineNumbers {
@@ -235,12 +238,13 @@
   user-select: none;
   display: flex;
   flex-direction: column;
+  padding-top: 0.25rem;
 }
 
 .codeText {
   flex-grow: 1;
   color: #333;
-  overflow-x: auto;
+  overflow-y: auto;
   font-family: monospace !important;
   resize: none !important;
   background: transparent !important;
@@ -249,6 +253,7 @@
   margin: 0 !important;
   width: 100% !important;
   height: 100% !important;
+  min-height: 200px;
   white-space: pre !important;
   font-size: 0.875rem !important;
   line-height: 1.5 !important;
