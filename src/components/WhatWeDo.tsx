@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
 import { cn } from '../lib/utils';
@@ -58,28 +59,28 @@ const WhatWeDo = () => {
                 <div className={styles.browserContent}>
                   <div className={styles.contentPlaceholder}>
                     <motion.div 
-                      className={cn(styles.contentLine, styles.contentShort)}
+                      className={cn(styles.contentLine, styles.contentShort, 'text-white')}
                       animate={lineAnimation}
                     />
                     <motion.div 
-                      className={styles.contentLine}
+                      className={cn(styles.contentLine, 'text-white')}
                       animate={lineAnimation}
                     />
                     <div className={styles.contentBoxes}>
                       <motion.div 
-                        className={styles.contentBox}
+                        className={cn(styles.contentBox, 'text-white')}
                         animate={lineAnimation}
                       />
                       <motion.div 
-                        className={styles.contentBox}
+                        className={cn(styles.contentBox, 'text-white')}
                         animate={lineAnimation}
                       />
                       <motion.div 
-                        className={styles.contentBox}
+                        className={cn(styles.contentBox, 'text-white')}
                         animate={lineAnimation}
                       />
                       <motion.div 
-                        className={styles.contentBox}
+                        className={cn(styles.contentBox, 'text-white')}
                         animate={lineAnimation}
                       />
                     </div>
@@ -106,8 +107,8 @@ const WhatWeDo = () => {
                       animate={metricsAnimation}
                       style={{ originX: 0 }}
                     />
-                    <span className={styles.metricLabel}>{metric}</span>
-                    <span className={styles.metricValue}>
+                    <span className={cn(styles.metricLabel, 'text-white')}>{metric}</span>
+                    <span className={cn(styles.metricValue, 'text-white')}>
                       {['98', '96', '100', '94'][index]}
                     </span>
                   </div>
