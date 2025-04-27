@@ -1,5 +1,7 @@
 import React from 'react';
-import { Layers, Grid } from 'lucide-react';
+import Lottie from 'lottie-react';
+import designAnimation from '../animations/design-flow.json';
+import devAnimation from '../animations/dev-performance.json';
 
 const WhatWeDo = () => {
   return (
@@ -10,39 +12,29 @@ const WhatWeDo = () => {
         </h2>
         
         <div className="flex flex-wrap justify-center items-center gap-6 md:gap-16 mb-12 py-8">
-          {/* Design/UX Icon - Cleaner, more minimal approach */}
+          {/* Design/UX Animation */}
           <div className="relative w-36 h-36 sm:w-48 sm:h-48 md:w-64 md:h-64 group">
-            {/* Main container with softer gradient */}
             <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-[#F2E6FF] to-[#E5DEFF] opacity-80"></div>
-            
-            {/* Minimalist UI Elements */}
             <div className="absolute inset-0 flex items-center justify-center">
-              <Layers 
-                className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 text-[#9b87f5] opacity-80 
-                         group-hover:opacity-100 transition-opacity duration-200"
-                strokeWidth={1.5}
+              <Lottie
+                animationData={designAnimation}
+                loop={true}
+                className="w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48"
               />
             </div>
-            
-            {/* Subtle accent circle */}
             <div className="absolute bottom-6 right-6 w-3 h-3 rounded-full bg-[#D1A2FF] opacity-40"></div>
           </div>
 
-          {/* Development/Performance Icon - Cleaner, more minimal approach */}
+          {/* Development/Performance Animation */}
           <div className="relative w-36 h-36 sm:w-48 sm:h-48 md:w-64 md:h-64 group">
-            {/* Main container with softer gradient */}
             <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-[#E8F4FF] to-[#D3E4FD] opacity-80"></div>
-            
-            {/* Minimalist Development Icon */}
             <div className="absolute inset-0 flex items-center justify-center">
-              <Grid 
-                className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 text-[#33C3F0] opacity-80 
-                         group-hover:opacity-100 transition-opacity duration-200"
-                strokeWidth={1.5}
+              <Lottie
+                animationData={devAnimation}
+                loop={true}
+                className="w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48"
               />
             </div>
-            
-            {/* Subtle accent circle */}
             <div className="absolute bottom-6 right-6 w-3 h-3 rounded-full bg-[#007AFF] opacity-40"></div>
           </div>
         </div>
