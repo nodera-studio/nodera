@@ -1,3 +1,4 @@
+
 import React, { useMemo } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import styles from './Hero.module.css';
@@ -63,9 +64,10 @@ const Hero = () => {
         style={{ 
           y: backgroundY, 
           opacity,
-          willChange: 'transform, opacity' // Hint to browser for hardware acceleration
+          willChange: 'transform, opacity',
+          transition: 'transform 0.15s cubic-bezier(0.17, 0.67, 0.83, 0.67)' // Add smooth CSS transition
         }}
-        loading="eager" // Ensure priority loading
+        loading="eager"
       />
       <motion.div 
         className={styles.heroContent}

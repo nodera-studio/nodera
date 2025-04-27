@@ -23,6 +23,7 @@
   opacity: 0.6;
   pointer-events: none;
   will-change: transform, opacity;
+  transition: transform 0.15s cubic-bezier(0.17, 0.67, 0.83, 0.67);
 }
 
 .heroContent {
