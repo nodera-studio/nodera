@@ -1,3 +1,4 @@
+
 /* Keep only the browser window styles and add new performance metrics styles */
 .devContainer {
   position: relative;
@@ -120,6 +121,12 @@
   top: 50%;
   transform: translateY(-50%);
   font-size: 12px;
-  color: white;
+  color: black;
+  transition: color 0.3s ease;
   z-index: 2;
 }
+
+.metricBar:hover .metricValue {
+  color: white;
+}
+
