@@ -1,3 +1,4 @@
+
 .hero {
   position: relative;
   text-align: center;
@@ -6,6 +7,9 @@
   min-height: 500px;
   overflow: hidden;
   border-bottom: 1px solid #F1F1F1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .heroBackground {
@@ -19,14 +23,12 @@
   transform: translate(-50%, -50%) scale(1.8);
   opacity: 0.6;
   pointer-events: none;
+  will-change: transform, opacity;
 }
 
 .heroContent {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color: #FFF;
+  position: relative;
+  color: #000;
   width: 100%;
   z-index: 1;
 }
@@ -36,7 +38,14 @@
   font-weight: 700;
   font-size: 150px;
   margin: 0;
-  text-shadow: 0 -2px 4px rgba(0, 0, 0, 0.2);
+  text-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+  display: inline-block;
+  background: linear-gradient(90deg, #000000 0%, #222222 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: -0.02em;
+  line-height: 0.9;
 }
 
 .heroSubtitle {
@@ -44,7 +53,12 @@
   font-weight: 700;
   font-size: 48px;
   margin: 0;
-  text-shadow: 0 -1px 3px rgba(0, 0, 0, 0.2);
+  text-shadow: 0 -1px 3px rgba(0, 0, 0, 0.1);
+  background: linear-gradient(90deg, #333333 0%, #666666 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: 0.02em;
 }
 
 @media (max-width: 991px) {
