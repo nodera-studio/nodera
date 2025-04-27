@@ -1,3 +1,4 @@
+
 import React from 'react';
 import Lottie from 'lottie-react';
 import designAnimation from '../animations/design-flow.json';
@@ -13,29 +14,29 @@ const WhatWeDo = () => {
         
         <div className="flex flex-wrap justify-center items-center gap-6 md:gap-16 mb-12 py-8">
           {/* Design/UX Animation */}
-          <div className="relative w-36 h-36 sm:w-48 sm:h-48 md:w-64 md:h-64 group">
-            <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-[#F2E6FF] to-[#E5DEFF] opacity-80"></div>
+          <div className="relative w-40 h-40 sm:w-56 sm:h-56 md:w-72 md:h-72 group">
+            <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-[#F2E6FF] to-[#E5DEFF] opacity-80 shadow-md"></div>
             <div className="absolute inset-0 flex items-center justify-center">
               <Lottie
                 animationData={designAnimation}
                 loop={true}
-                className="w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48"
+                className="w-36 h-36 sm:w-48 sm:h-48 md:w-64 md:h-64"
               />
             </div>
-            <div className="absolute bottom-6 right-6 w-3 h-3 rounded-full bg-[#D1A2FF] opacity-40"></div>
+            <div className="absolute bottom-6 right-6 w-3 h-3 rounded-full bg-[#D1A2FF] opacity-70"></div>
           </div>
 
           {/* Development/Performance Animation */}
-          <div className="relative w-36 h-36 sm:w-48 sm:h-48 md:w-64 md:h-64 group">
-            <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-[#E8F4FF] to-[#D3E4FD] opacity-80"></div>
+          <div className="relative w-40 h-40 sm:w-56 sm:h-56 md:w-72 md:h-72 group">
+            <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-[#E8F4FF] to-[#D3E4FD] opacity-80 shadow-md"></div>
             <div className="absolute inset-0 flex items-center justify-center">
               <Lottie
                 animationData={devAnimation}
                 loop={true}
-                className="w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48"
+                className="w-36 h-36 sm:w-48 sm:h-48 md:w-64 md:h-64"
               />
             </div>
-            <div className="absolute bottom-6 right-6 w-3 h-3 rounded-full bg-[#007AFF] opacity-40"></div>
+            <div className="absolute bottom-6 right-6 w-3 h-3 rounded-full bg-[#007AFF] opacity-70"></div>
           </div>
         </div>
         
