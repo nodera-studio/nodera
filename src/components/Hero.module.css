@@ -1,3 +1,4 @@
+
 .hero {
   position: relative;
   text-align: center;
@@ -12,7 +13,7 @@
 }
 
 .heroBackground {
-  position: absolute;
+  position: fixed; /* Changed from absolute to fixed for smoother parallax */
   top: 50%;
   left: 50%;
   width: auto;
@@ -22,8 +23,8 @@
   transform: translate(-50%, -50%) scale(1.8);
   opacity: 0.6;
   pointer-events: none;
-  will-change: transform, opacity;
-  transition: transform 0.15s cubic-bezier(0.17, 0.67, 0.83, 0.67), opacity 0.3s ease-out;
+  z-index: -1; /* Ensure it stays behind content */
+  will-change: transform; /* Hint to browser about properties that will change */
 }
 
 .heroContent {
@@ -46,7 +47,7 @@
   background-clip: text;
   letter-spacing: -0.02em;
   line-height: 0.9;
-  will-change: transform, opacity;
+  will-change: transform, opacity; /* Hint to browser */
 }
 
 .heroSubtitle {
@@ -60,7 +61,7 @@
   -webkit-text-fill-color: transparent;
   background-clip: text;
   letter-spacing: 0.02em;
-  will-change: transform, opacity;
+  will-change: transform, opacity; /* Hint to browser */
 }
 
 /* Monitor and larger screens */

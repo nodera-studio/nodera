@@ -1,15 +1,10 @@
 
 import React, { useMemo } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion } from 'framer-motion';
 import styles from './Hero.module.css';
 
 const Hero = () => {
-  // Simplified useScroll without invalid 'smooth' option
-  const { scrollYProgress } = useScroll();
-  
-  // Use useTransform with minimal calculations
-  const backgroundY = useTransform(scrollYProgress, [0, 1], ['0%', '20%']);
-  const opacity = useTransform(scrollYProgress, [0, 0.3], [1, 0]);
+  // No more useScroll for performance reasons
   
   const textVariants = {
     hidden: { opacity: 0, y: 20 },
@@ -59,15 +54,11 @@ const Hero = () => {
 
   return (
     <div className={styles.hero}>
-      <motion.img 
+      {/* Background image with CSS transitions instead of JS animations */}
+      <img 
         src="/lovable-uploads/logo.png" 
         alt="Blurred logo background" 
         className={styles.heroBackground}
-        style={{ 
-          y: backgroundY, 
-          opacity,
-          willChange: 'transform, opacity',
-        }}
         loading="eager"
       />
       <motion.div 

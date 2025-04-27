@@ -1,5 +1,6 @@
-import React, { useEffect, lazy, Suspense } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+
+import React, { lazy, Suspense } from 'react';
+import { motion } from 'framer-motion';
 import Header from '../components/Header';
 import Hero from '../components/Hero';
 import Showcases from '../components/Showcases';
@@ -26,32 +27,10 @@ const sectionVariants = {
 
 const Index = () => {
   const isMobile = useIsMobile();
-  const { scrollYProgress } = useScroll();
   
-  // Transform scroll progress into background color values
-  const backgroundColor = useTransform(
-    scrollYProgress,
-    [0, 0.2, 0.4, 0.6, 0.8],
-    ["rgba(255, 255, 255, 1)", "rgba(252, 252, 252, 1)", "rgba(255, 255, 255, 1)", "rgba(250, 250, 250, 1)", "rgba(255, 255, 255, 1)"]
-  );
-
-  // Fix for potential iOS overflow issues - MODIFIED TO AVOID SCROLL LOCK
-  useEffect(() => {
-    // Don't forcibly set overflow to 'hidden auto' as this can cause scroll lock
-    // Only set overflowX to hidden to prevent horizontal scrolling
-    document.documentElement.style.overflowX = 'hidden';
-    document.body.style.overflowX = 'hidden';
-    
-    return () => {
-      document.documentElement.style.overflowX = '';
-      document.body.style.overflowX = '';
-    };
-  }, []);
-
   return (
     <motion.div 
       className="min-h-screen flex flex-col"
-      style={{ backgroundColor }}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.6 }}
@@ -64,7 +43,7 @@ const Index = () => {
       
       <Header />
       
-      <main className="overflow-x-hidden">
+      <main>
         <motion.div
           initial="hidden"
           whileInView="visible"
