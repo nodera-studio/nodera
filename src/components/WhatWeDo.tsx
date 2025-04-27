@@ -18,22 +18,25 @@ const WhatWeDo = () => {
             whileHover={{ scale: 1.05 }}
             transition={{ duration: 0.3 }}
           >
-            <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-[#F2E6FF] to-[#E5DEFF] opacity-80 shadow-xl" />
+            <div className="absolute inset-0 rounded-3xl bg-[#F9F9F9] opacity-80 shadow-xl" />
             <div className={styles.designContainer}>
               <motion.div 
                 className={`${styles.designPanel} ${styles.designPanel1}`}
                 whileHover={{ rotate: -5 }}
+                transition={{ duration: 0.2 }}
               />
               <motion.div 
                 className={`${styles.designPanel} ${styles.designPanel2}`}
                 whileHover={{ rotate: 5 }}
+                transition={{ duration: 0.2 }}
               />
               <motion.div 
                 className={`${styles.designPanel} ${styles.designPanel3}`}
                 whileHover={{ scale: 1.1 }}
+                transition={{ duration: 0.2 }}
               />
+              <div className={`${styles.indicator} ${styles.designIndicator} animate-pulse`} />
             </div>
-            <div className={`${styles.indicator} ${styles.designIndicator} animate-pulse`} />
           </motion.div>
 
           {/* Development/Performance Animation */}
@@ -42,7 +45,7 @@ const WhatWeDo = () => {
             whileHover={{ scale: 1.05 }}
             transition={{ duration: 0.3 }}
           >
-            <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-[#E8F4FF] to-[#D3E4FD] opacity-80 shadow-xl" />
+            <div className="absolute inset-0 rounded-3xl bg-[#F9F9F9] opacity-80 shadow-xl" />
             <div className={styles.devContainer}>
               {[1, 2, 3, 4, 5].map((i) => (
                 <motion.div
@@ -50,13 +53,13 @@ const WhatWeDo = () => {
                   className={`${styles.devBar} ${styles[`devBar${i}`]}`}
                   whileHover={{ 
                     scaleX: 1.1,
-                    backgroundColor: '#007AFF',
+                    backgroundColor: '#D1A2FF',
                     transition: { delay: i * 0.1 }
                   }}
                 />
               ))}
+              <div className={`${styles.indicator} ${styles.devIndicator} animate-pulse`} />
             </div>
-            <div className={`${styles.indicator} ${styles.devIndicator} animate-pulse`} />
           </motion.div>
         </div>
         

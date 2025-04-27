@@ -7,28 +7,28 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
 }
 
+/* Design Element Styles */
 .designPanel {
   position: absolute;
   border-radius: 12px;
-  background: white;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 }
 
 .designPanel1 {
   width: 60%;
   height: 60%;
-  border: 2px solid #F2E6FF;
-  background: linear-gradient(135deg, #F2E6FF 0%, #E5DEFF 100%);
+  background: #007AFF;
   z-index: 1;
 }
 
 .designPanel2 {
   width: 50%;
   height: 50%;
-  border: 2px solid #D1A2FF;
   background: white;
+  border: 2px solid #007AFF;
   z-index: 2;
   transform: translate(20%, -10%);
 }
@@ -36,20 +36,21 @@
 .designPanel3 {
   width: 40%;
   height: 40%;
-  background: linear-gradient(135deg, #D1A2FF 0%, #9b87f5 100%);
+  background: linear-gradient(135deg, #D1A2FF 0%, #007AFF 100%);
   z-index: 3;
   transform: translate(-25%, 25%);
 }
 
+/* Development Element Styles */
 .devContainer {
-  overflow: hidden;
+  position: relative;
 }
 
 .devBar {
   position: absolute;
   height: 4px;
   border-radius: 2px;
-  background: #E8F4FF;
+  background: #007AFF;
   transform-origin: left;
 }
 
