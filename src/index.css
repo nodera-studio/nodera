@@ -1,4 +1,3 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&family=Baloo+Da+2:wght@500;600&display=swap');
 
 @tailwind base;
@@ -134,10 +133,9 @@
   
   .inner-shadow-text {
     background-color: white;
-    color: transparent;
+    color: white;
     -webkit-background-clip: text;
     background-clip: text;
-    text-shadow: 0px -4px 4px rgba(0, 0, 0, 0.3);
   }
   
   .gradient-word {
@@ -177,6 +175,29 @@
   
   .showcase-card:hover .showcase-image {
     @apply transform scale-105 -translate-y-1;
+  }
+  
+  .gradient-lights {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.5;
+    animation: floatAround 15s ease-in-out infinite;
+  }
+  
+  @keyframes floatAround {
+    0%, 100% {
+      transform: translate(0, 0);
+    }
+    25% {
+      transform: translate(5%, 5%);
+    }
+    50% {
+      transform: translate(-5%, 2%);
+    }
+    75% {
+      transform: translate(2%, -5%);
+    }
   }
 }
 
