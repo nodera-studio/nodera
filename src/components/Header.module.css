@@ -1,3 +1,4 @@
+
 .header {
   display: flex;
   align-items: center;
@@ -90,20 +91,152 @@
   box-shadow: 0 2px 6px rgba(0, 122, 255, 0.2);
 }
 
-@media (max-width: 991px) {
-  /* Medium screens inherit from large */
+/* Mobile menu styling */
+.mobileMenuButton {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 20px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 110;
+  position: relative;
 }
 
-@media (max-width: 640px) {
+.menuBar {
+  width: 30px;
+  height: 2px;
+  background-color: #000;
+  transition: all 0.3s ease;
+}
+
+.menuBar.open:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 6px);
+}
+
+.menuBar.open:nth-child(2) {
+  opacity: 0;
+}
+
+.menuBar.open:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -6px);
+}
+
+.mobileMenu {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  max-width: 300px;
+  background-color: #F4F4F4;
+  z-index: 105;
+  box-shadow: -5px 0 30px rgba(0, 0, 0, 0.1);
+  overflow-y: auto;
+}
+
+.mobileMenuContent {
+  padding: 100px 40px 40px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.mobileNav {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.mobileNavLink {
+  font-family: 'Baloo Da 2', sans-serif;
+  font-size: 24px;
+  font-weight: 600;
+  color: #000;
+  text-decoration: none;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+/* Monitor screens */
+@media (min-width: 1441px) {
   .header {
-    padding: 10px 20px;
+    padding: 24px 60px;
+  }
+  
+  .nav {
+    gap: 30px;
+  }
+}
+
+/* Laptop screens */
+@media (max-width: 1440px) {
+  /* Maintain current styles */
+}
+
+/* Tablet screens */
+@media (max-width: 991px) {
+  .header {
+    padding: 16px 30px;
+  }
+  
+  .logoImg {
+    width: 60px;
+    height: 60px;
+  }
+  
+  .navLink {
+    font-size: 15px;
+    padding: 6px 12px;
+  }
+  
+  .ctaButton {
+    font-size: 14px;
+    padding: 8px 16px;
+  }
+}
+
+/* Small landscape / Foldable phones */
+@media (max-width: 767px) {
+  .header {
+    padding: 12px 20px;
+  }
+  
+  .logoImg {
+    width: 50px;
+    height: 50px;
   }
   
   .nav {
     display: none;
   }
   
+  .mobileMenuButton {
+    display: flex;
+  }
+  
   .ctaButton {
-    padding: 5px 10px;
+    font-size: 14px;
+    padding: 6px 14px;
+  }
+}
+
+/* Mobile phones */
+@media (max-width: 640px) {
+  .header {
+    padding: 10px 15px;
+  }
+  
+  .logoImg {
+    width: 45px;
+    height: 45px;
+  }
+  
+  .ctaButton {
+    font-size: 12px;
+    padding: 5px 12px;
   }
 }

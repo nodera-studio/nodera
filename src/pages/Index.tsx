@@ -8,9 +8,7 @@ import CallToAction from '../components/CallToAction';
 import WhatWeDo from '../components/WhatWeDo';
 import TheProcess from '../components/TheProcess';
 import CustomCursor from '../components/CustomCursor';
-
-// Check if code is running in browser (client-side)
-const isBrowser = typeof window !== 'undefined';
+import { useIsMobile } from '../hooks/use-mobile';
 
 // Animation variants for scroll-triggered animations
 const sectionVariants = {
@@ -26,8 +24,7 @@ const sectionVariants = {
 };
 
 const Index = () => {
-  // Skip CustomCursor for mobile devices
-  const isMobile = isBrowser && window.innerWidth <= 768;
+  const isMobile = useIsMobile();
   const { scrollYProgress } = useScroll();
   
   // Transform scroll progress into background color values
@@ -36,6 +33,29 @@ const Index = () => {
     [0, 0.2, 0.4, 0.6, 0.8],
     ["rgba(255, 255, 255, 1)", "rgba(252, 252, 252, 1)", "rgba(255, 255, 255, 1)", "rgba(250, 250, 250, 1)", "rgba(255, 255, 255, 1)"]
   );
+
+  // Fix for potential iOS overflow issues
+  useEffect(() => {
+    document.documentElement.style.overflow = 'hidden auto';
+    document.body.style.overflow = 'hidden auto';
+    document.documentElement.style.width = '100%';
+    document.body.style.width = '100%';
+    document.documentElement.style.position = 'relative';
+    document.body.style.position = 'relative';
+    document.documentElement.style.overflowX = 'hidden';
+    document.body.style.overflowX = 'hidden';
+    
+    return () => {
+      document.documentElement.style.overflow = '';
+      document.body.style.overflow = '';
+      document.documentElement.style.width = '';
+      document.body.style.width = '';
+      document.documentElement.style.position = '';
+      document.body.style.position = '';
+      document.documentElement.style.overflowX = '';
+      document.body.style.overflowX = '';
+    };
+  }, []);
 
   return (
     <motion.div 
@@ -47,7 +67,7 @@ const Index = () => {
     >
       {!isMobile && <CustomCursor />}
       <Header />
-      <main>
+      <main className="overflow-x-hidden">
         <motion.div
           initial="hidden"
           whileInView="visible"

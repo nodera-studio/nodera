@@ -36,7 +36,7 @@
 .heroTitle {
   font-family: 'Comfortaa', sans-serif;
   font-weight: 700;
-  font-size: 150px;
+  font-size: clamp(60px, 10vw, 150px);
   margin: 0;
   text-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
   display: inline-block;
@@ -51,7 +51,7 @@
 .heroSubtitle {
   font-family: 'Comfortaa', sans-serif;
   font-weight: 700;
-  font-size: 48px;
+  font-size: clamp(24px, 5vw, 48px);
   margin: 0;
   text-shadow: 0 -1px 3px rgba(0, 0, 0, 0.1);
   background: linear-gradient(90deg, #333333 0%, #666666 100%);
@@ -61,22 +61,60 @@
   letter-spacing: 0.02em;
 }
 
-@media (max-width: 991px) {
-  .heroTitle {
-    font-size: 100px;
+/* Monitor and larger screens */
+@media (min-width: 1441px) {
+  .hero {
+    height: 85vh;
   }
   
-  .heroSubtitle {
-    font-size: 36px;
+  .heroContent {
+    max-width: 1400px;
+    margin: 0 auto;
   }
 }
 
-@media (max-width: 640px) {
-  .heroTitle {
-    font-size: 80px;
+/* Laptop screens */
+@media (max-width: 1440px) {
+  .hero {
+    height: 75vh;
+  }
+}
+
+/* Tablet screens */
+@media (max-width: 991px) {
+  .hero {
+    height: 70vh;
+    min-height: 450px;
   }
   
-  .heroSubtitle {
-    font-size: 24px;
+  .heroBackground {
+    height: 70%;
+  }
+}
+
+/* Small landscape / Foldable phones */
+@media (max-width: 767px) and (orientation: landscape) {
+  .hero {
+    height: auto;
+    min-height: 100vh;
+    padding: 80px 20px;
+  }
+  
+  .heroBackground {
+    height: 60%;
+    opacity: 0.4;
+  }
+}
+
+/* Mobile phones */
+@media (max-width: 640px) {
+  .hero {
+    height: 60vh;
+    min-height: 400px;
+  }
+  
+  .heroBackground {
+    height: 60%;
+    opacity: 0.4;
   }
 }
