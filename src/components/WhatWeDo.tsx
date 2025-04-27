@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
 import { cn } from '../lib/utils';
@@ -7,23 +8,29 @@ const WhatWeDo = () => {
   const shouldReduceMotion = useReducedMotion();
 
   // Animation configurations
-  const periodicAnimation = shouldReduceMotion 
+  const cardAnimation = shouldReduceMotion 
     ? {} 
     : {
-        opacity: [0.9, 1, 0.9],
+        y: [-2, 2, -2],
         transition: { 
           repeat: Infinity, 
-          repeatType: "reverse" as const,
-          duration: 2,
-          repeatDelay: 3
+          repeatType: "mirror" as const,
+          duration: 4,
+          ease: "easeInOut"
         }
       };
 
-  const hoverAnimation = shouldReduceMotion
-    ? { scale: 1.01 }
-    : { scale: 1.05, y: -5 };
-
-  const hoverTransition = { duration: 0.3 };
+  const lineAnimation = shouldReduceMotion
+    ? {}
+    : {
+        opacity: [0.5, 1, 0.5],
+        transition: {
+          repeat: Infinity,
+          repeatType: "mirror" as const,
+          duration: 2,
+          ease: "easeInOut"
+        }
+      };
 
   return (
     <section className="bg-white py-10 px-4 sm:px-10 md:py-20 text-center border-b border-[#F1F1F1]">
@@ -33,86 +40,80 @@ const WhatWeDo = () => {
         </h2>
         
         <div className="flex flex-wrap justify-center items-center gap-6 md:gap-16 mb-12 py-8">
-          {/* Built-in Optimizations (Design) */}
+          {/* Built-in Optimizations */}
           <motion.div
             className="relative w-40 h-40 sm:w-64 sm:h-64 md:w-80 md:h-80 group"
-            whileHover={hoverAnimation}
-            transition={hoverTransition}
+            whileHover={{ scale: 1.05, y: -5 }}
+            transition={{ duration: 0.3 }}
           >
             <div className="absolute inset-0 rounded-3xl bg-[#F9F9F9] opacity-80 shadow-xl" />
             <div className={styles.designContainer}>
-              <motion.div className={styles.networkContainer}>
-                <motion.div 
-                  className={cn(styles.optimizationRect, styles.rectTop)} 
-                  animate={periodicAnimation}
-                />
-                <motion.div 
-                  className={cn(styles.optimizationRect, styles.rectMiddle)}
-                  whileHover={{ rotate: 2 }}
-                  transition={{ duration: 0.2 }}
-                />
-                <motion.div 
-                  className={cn(styles.optimizationRect, styles.rectBottom)}
-                  whileHover={{ rotate: -2 }}
-                  transition={{ duration: 0.2 }}
-                />
-              </motion.div>
-              <div className={`${styles.indicator} ${styles.designIndicator} animate-pulse`} />
+              {['Top', 'Middle', 'Bottom'].map((position) => (
+                <motion.div
+                  key={position}
+                  className={cn(
+                    styles.optimizationCard,
+                    styles[`card${position}`]
+                  )}
+                  animate={cardAnimation}
+                >
+                  <span className={styles.pixelText}>
+                    {position === 'Top' ? 'ORIGINAL' : 
+                     position === 'Middle' ? '1440PX' : '375PX'}
+                  </span>
+                  <div className={styles.dotPattern} />
+                </motion.div>
+              ))}
             </div>
           </motion.div>
 
-          {/* React Server Components (Development) */}
+          {/* Dynamic HTML Streaming */}
           <motion.div
             className="relative w-40 h-40 sm:w-64 sm:h-64 md:w-80 md:h-80 group"
-            whileHover={hoverAnimation}
-            transition={hoverTransition}
+            whileHover={{ scale: 1.05, y: -5 }}
+            transition={{ duration: 0.3 }}
           >
             <div className="absolute inset-0 rounded-3xl bg-[#F9F9F9] opacity-80 shadow-xl" />
             <div className={styles.devContainer}>
-              <motion.div className={styles.networkContainer}>
-                {/* Connectors (drawn first to be behind nodes) */}
-                <div className={`${styles.connector} ${styles.connector1}`} />
-                <div className={`${styles.connector} ${styles.connector2}`} />
-                <div className={`${styles.connector} ${styles.connector3}`} />
-                <div className={`${styles.connector} ${styles.connector4}`} />
-                
-                {/* Nodes (drawn after connectors to be on top) */}
-                <motion.div 
-                  className={`${styles.node} ${styles.mainNode}`} 
-                  animate={shouldReduceMotion ? {} : {
-                    scale: [1, 1.05, 1],
-                    transition: { 
-                      repeat: Infinity, 
-                      repeatType: "reverse" as const,
-                      duration: 2,
-                      repeatDelay: 3
-                    }
-                  }}
-                  whileHover={{ scale: 1.1 }}
-                  transition={{ duration: 0.2 }}
-                />
-                <motion.div 
-                  className={`${styles.node} ${styles.node1}`} 
-                  whileHover={{ scale: 1.15 }}
-                  transition={{ duration: 0.15 }}
-                />
-                <motion.div 
-                  className={`${styles.node} ${styles.node2}`}
-                  whileHover={{ scale: 1.15 }}
-                  transition={{ duration: 0.15 }} 
-                />
-                <motion.div 
-                  className={`${styles.node} ${styles.node3}`}
-                  whileHover={{ scale: 1.15 }}
-                  transition={{ duration: 0.15 }} 
-                />
-                <motion.div 
-                  className={`${styles.node} ${styles.node4}`}
-                  whileHover={{ scale: 1.15 }}
-                  transition={{ duration: 0.15 }} 
-                />
+              <motion.div className={styles.browserWindow}>
+                <div className={styles.browserHeader}>
+                  <div className={styles.browserDots}>
+                    <div className={styles.dot} />
+                    <div className={styles.dot} />
+                    <div className={styles.dot} />
+                  </div>
+                </div>
+                <div className={styles.browserContent}>
+                  <div className={styles.contentPlaceholder}>
+                    <motion.div 
+                      className={cn(styles.contentLine, styles.contentShort)}
+                      animate={lineAnimation}
+                    />
+                    <motion.div 
+                      className={styles.contentLine}
+                      animate={lineAnimation}
+                    />
+                    <div className={styles.contentBoxes}>
+                      <motion.div 
+                        className={styles.contentBox}
+                        animate={lineAnimation}
+                      />
+                      <motion.div 
+                        className={styles.contentBox}
+                        animate={lineAnimation}
+                      />
+                      <motion.div 
+                        className={styles.contentBox}
+                        animate={lineAnimation}
+                      />
+                      <motion.div 
+                        className={styles.contentBox}
+                        animate={lineAnimation}
+                      />
+                    </div>
+                  </div>
+                </div>
               </motion.div>
-              <div className={`${styles.indicator} ${styles.devIndicator} animate-pulse`} />
             </div>
           </motion.div>
         </div>
@@ -138,3 +139,4 @@ const WhatWeDo = () => {
 };
 
 export default WhatWeDo;
+
