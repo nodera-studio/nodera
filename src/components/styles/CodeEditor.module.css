@@ -1,0 +1,94 @@
+
+.codeEditor {
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.codeHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  background-color: #f8f9fa;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.dots {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  padding: 0.25rem 0;
+}
+
+.dots span {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.codeTabs {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.tabsList {
+  justify-content: center;
+  background-color: transparent !important;
+  margin-bottom: 0.5rem;
+}
+
+.activeTab {
+  background-color: rgba(99, 102, 241, 0.1) !important;
+  color: #6366F1 !important;
+}
+
+.codeContent {
+  flex-grow: 1;
+  display: flex;
+  padding: 1rem 0;
+  font-family: monospace !important;
+  font-size: 0.875rem !important;
+  line-height: 1.5 !important;
+  background-color: #fff;
+  height: 100%;
+  min-height: 200px;
+  width: 100%;
+}
+
+.lineNumbers {
+  width: 2rem;
+  text-align: right;
+  padding-right: 0.5rem;
+  color: rgba(0, 0, 0, 0.3);
+  user-select: none;
+  display: flex;
+  flex-direction: column;
+  padding-top: 0.25rem;
+}
+
+.codeText {
+  flex-grow: 1;
+  color: #333;
+  overflow-y: auto;
+  font-family: monospace !important;
+  resize: none !important;
+  background: transparent !important;
+  border: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  min-height: 200px;
+  white-space: pre !important;
+  font-size: 0.875rem !important;
+  line-height: 1.5 !important;
+  color: #333 !important;
+  outline: none !important;
+}

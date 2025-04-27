@@ -1,0 +1,65 @@
+
+.processSection {
+  background-color: #fff;
+  padding: 5rem 1rem;
+  color: #333;
+  overflow: hidden;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.sectionTitle {
+  font-family: 'Comfortaa', sans-serif;
+  font-weight: 700;
+  font-size: 4rem;
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.gradientText {
+  background: linear-gradient(90deg, #6366F1 0%, #4F46E5 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+}
+
+.processCards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+@media (max-width: 1024px) {
+  .sectionTitle {
+    font-size: 3.5rem;
+  }
+  
+  .processCards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .sectionTitle {
+    font-size: 3rem;
+  }
+  
+  .processCards {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .processSection {
+    padding: 3rem 1rem;
+  }
+  
+  .sectionTitle {
+    font-size: 2.5rem;
+    margin-bottom: 2.5rem;
+  }
+}
