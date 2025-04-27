@@ -1,0 +1,50 @@
+/* src/components/styles/Showcases.module.css */
+
+.cardTitle {
+  font-family: 'Baloo Da 2', sans-serif;
+  font-weight: 500;
+  font-size: 1.5rem; /* Base: text-2xl */
+  margin-bottom: 1.25rem; /* mb-5 */
+  color: inherit; /* Inherit default text color */
+}
+
+.cardDescription {
+  font-family: 'Baloo Da 2', sans-serif;
+  font-weight: 500;
+  font-size: 1.125rem; /* Base: text-lg */
+  line-height: 1.6; /* Keep a reasonable line height */
+  color: #555;
+}
+
+/* Responsive styles */
+/* sm: 640px */
+@media (min-width: 640px) {
+  .cardTitle {
+    font-size: 1.875rem; /* sm:text-3xl */
+  }
+  .cardDescription {
+    font-size: 1.25rem; /* sm:text-xl */
+  }
+}
+
+/* md: 768px */
+@media (min-width: 768px) {
+  .cardTitle {
+    font-size: 2.25rem; /* md:text-4xl */
+  }
+  .cardDescription {
+    font-size: 1.5rem; /* md:text-2xl */
+  }
+}
+
+.showcaseCard {
+  background-color: #F9F9F9;
+  border-radius: 1.5rem;
+  padding: 1.5rem;
+  overflow: hidden;
+  transition: transform 0.3s ease-out;
+}
+
+.showcaseCard:hover {
+  transform: scale(1.02) translateY(-5px);
+} 

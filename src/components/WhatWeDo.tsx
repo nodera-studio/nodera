@@ -1,4 +1,3 @@
-
 import React, { useEffect, useRef } from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
 import { cn } from '../lib/utils';
@@ -56,20 +55,18 @@ const WhatWeDo = () => {
   }, []);
 
   return (
-    <section className="bg-white py-10 px-4 sm:px-10 md:py-20 text-center border-b border-[#F1F1F1]">
+    <section className="bg-white py-10 px-4 sm:px-10 md:py-20 text-center">
       <div className="max-w-7xl mx-auto">
         <h2 ref={sectionTitleRef} className="font-comfortaa font-bold text-5xl md:text-7xl text-black mb-10 section-title">
           What We <span className="gradient-word">Do</span>
         </h2>
         
-        <div className="flex flex-wrap justify-center items-center gap-6 md:gap-16 mb-12 py-8">
+        <div className="flex flex-wrap justify-center items-center gap-8">
           {/* Dynamic HTML Streaming */}
           <motion.div
-            className="relative w-40 h-40 sm:w-64 sm:h-64 md:w-80 md:h-80 group card-hover"
-            whileHover={{ scale: 1.05, y: -5 }}
-            transition={{ duration: 0.3 }}
+            className={cn("relative w-40 h-40 sm:w-64 sm:h-64 md:w-80 md:h-80 group", styles.cardHoverAnimate)}
           >
-            <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-[#007AFF] to-[#D1A2FF] opacity-80 shadow-xl" />
+            <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-[#007AFF] to-[#D1A2FF] opacity-80" />
             <div className={styles.devContainer}>
               <motion.div className={styles.browserWindow}>
                 <div className={styles.browserHeader}>
@@ -132,11 +129,9 @@ const WhatWeDo = () => {
 
           {/* Performance Metrics */}
           <motion.div
-            className="relative w-40 h-40 sm:w-64 sm:h-64 md:w-80 md:h-80 group card-hover"
-            whileHover={{ scale: 1.05, y: -5 }}
-            transition={{ duration: 0.3 }}
+            className={cn("relative w-40 h-40 sm:w-64 sm:h-64 md:w-80 md:h-80 group", styles.cardHoverAnimate)}
           >
-            <div className="absolute inset-0 rounded-3xl bg-gradient-to-tl from-[#007AFF] to-[#D1A2FF] opacity-80 shadow-xl" />
+            <div className="absolute inset-0 rounded-2xl bg-gradient-to-tl from-[#007AFF] to-[#D1A2FF] opacity-80" />
             <div className={styles.devContainer}>
               <div className={styles.metricsContainer}>
                 {['Speed Index', 'Performance', 'Accessibility', 'Best Practices'].map((metric, index) => (
@@ -183,15 +178,15 @@ const WhatWeDo = () => {
           </motion.div>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12">
-          <div className="bg-[#F9F9F9] p-8 rounded-2xl text-center shadow-sm card-hover">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
+          <div className={styles.whatWeDoCard}>
             <h3 className="font-baloo font-medium text-2xl sm:text-3xl md:text-4xl mb-5">The Art of User Experience</h3>
             <p className="font-baloo font-medium text-lg sm:text-xl md:text-2xl text-[#555]">
               Powerful code that anticipates challenges. Scalable architecture paired with intuitive interfaces transforms visions into digital reality, no compromise needed.
             </p>
           </div>
           
-          <div className="bg-[#F9F9F9] p-8 rounded-2xl text-center shadow-sm card-hover">
+          <div className={styles.whatWeDoCard}>
             <h3 className="font-baloo font-medium text-2xl sm:text-3xl md:text-4xl mb-5">Engineered for Performance</h3>
             <p className="font-baloo font-medium text-lg sm:text-xl md:text-2xl text-[#555]">
               Digital experiences that perform as beautifully as they look. Every element serves a purpose while engaging visitors and elevating brands. Simple outside, sophisticated inside.

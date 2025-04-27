@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { Button } from "@/components/ui/button";
 import { useIsMobile } from '../hooks/use-mobile';
+import styles from './CallToAction.module.css';
 
 const CallToAction = () => {
   const isMobile = useIsMobile();
@@ -33,36 +34,60 @@ const CallToAction = () => {
   }, []);
 
   return (
-    <div className="bg-white py-16 md:py-24 lg:py-32 px-6 text-center border-b border-[#F1F1F1] relative overflow-hidden">
-      <div className="max-w-3xl mx-auto relative z-10">
-        <div 
+    <div className={`${styles['cta-section']} bg-white text-center relative overflow-hidden flex items-center justify-center h-[400px]`}>
+      <div className={styles['cta-content-wrapper']}>
+        <div
           ref={sectionHeadingRef}
-          className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-baloo font-medium leading-tight mb-8 md:mb-12 space-y-4 section-title"
+          className={styles['cta-tagline-text'] + " text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-baloo font-medium mb-8 md:mb-12 section-title"}
         >
-          {lines.map((line, index) => (
-            <div key={index} className="overflow-hidden">
-              <span className="inline-block">
-                {line}
-              </span>
-            </div>
-          ))}
+          <span className="inline-block w-full">
+            You've got a vision. We've got the code.
+          </span>
+          <div className="inline-block w-full mt-2">
+            Let's build something remarkable.
+          </div>
         </div>
         
-        <Button 
+        <div className={styles['cta-bg-art']} aria-hidden="true">
+          <svg className={styles['cta-bg-art-svg']} viewBox="0 0 800 600" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+            <defs>
+              <linearGradient id="gridGradient" x1="0" y1="0" x2="800" y2="0" gradientUnits="userSpaceOnUse">
+                <stop stopColor="#e6eaf3" stopOpacity="0.5" />
+                <stop offset="1" stopColor="#e6eaf3" stopOpacity="0.05" />
+              </linearGradient>
+              <mask id="fadeMask">
+                <linearGradient id="fadeGradient" x1="0" y1="0" x2="800" y2="0" gradientUnits="userSpaceOnUse">
+                  <stop stopColor="#fff" stopOpacity="1" />
+                  <stop offset="1" stopColor="#fff" stopOpacity="0" />
+                </linearGradient>
+                <rect x="0" y="0" width="800" height="600" fill="url(#fadeGradient)" />
+              </mask>
+            </defs>
+            {/* Faint grid without mask - temporarily removed for debugging */}
+            {/* <g mask=\"url(#fadeMask)\"> */}
+            <g>
+              {Array.from({ length: 13 }).map((_, i) => (
+                <line key={i} x1={i * 64} y1="0" x2={i * 64} y2="600" stroke="url(#gridGradient)" strokeWidth="1.2" />
+              ))}
+              {Array.from({ length: 10 }).map((_, i) => (
+                <line key={i} x1="0" y1={i * 60} x2="800" y2={i * 60} stroke="url(#gridGradient)" strokeWidth="1.2" />
+              ))}
+              {/* Arc */}
+              <path d="M0,600 Q400,200 800,600" stroke="url(#gridGradient)" strokeWidth="2.5" fill="none" />
+            </g>
+            {/* </g> */}
+          </svg>
+        </div>
+        
+        <Button
           asChild
-          size="lg" 
-          className="bg-black hover:bg-zinc-800 text-white rounded-xl font-baloo font-semibold text-base sm:text-lg px-6 sm:px-8 py-5 sm:py-6 relative z-10 hover:scale-105 transition-transform"
+          size="lg"
+          className={styles['cta-button-blue'] + " relative z-10 hover:scale-105 transition-transform"}
         >
           <a href="#contact">
             Get in Touch
           </a>
         </Button>
-      </div>
-
-      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 select-none pointer-events-none">
-        <div className="text-[20vw] font-comfortaa font-bold text-white whitespace-nowrap">
-          Nodera
-        </div>
       </div>
     </div>
   );

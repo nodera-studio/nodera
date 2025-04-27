@@ -108,9 +108,18 @@
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-baloo font-medium;
   }
   
+  h1, h2 {
+    @apply font-comfortaa font-bold;
+  }
+
+  /* Add explicit base styles for h3, h4, p */
+  h3, h4, p {
+     @apply font-baloo font-medium;
+  }
+
   a, button {
     @apply transition-all duration-300;
   }
@@ -207,5 +216,12 @@
   a, 
   button {
     cursor: none !important;
+  }
+}
+
+@layer utilities {
+  .mask-fade-in-top {
+    mask-image: linear-gradient(to bottom, transparent 0%, black 10%); /* Adjust 10% as needed for smoothness */
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 10%);
   }
 }

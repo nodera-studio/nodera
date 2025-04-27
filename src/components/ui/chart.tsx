@@ -167,6 +167,17 @@ const ChartTooltipContent = React.forwardRef<
       labelKey,
     ])
 
+    const indicatorColors = React.useMemo(() => {
+      return payload?.reduce((acc, item) => {
+        const key = item.dataKey as keyof typeof config
+        const itemConfig = getPayloadConfigFromPayload(config, item, key)
+        return {
+          ...acc,
+          [key]: itemConfig?.color || item.color,
+        }
+      }, {})
+    }, [config, payload])
+
     if (!active || !payload?.length) {
       return null
     }
@@ -177,7 +188,7 @@ const ChartTooltipContent = React.forwardRef<
       <div
         ref={ref}
         className={cn(
-          "grid min-w-[8rem] items-start gap-1.5 rounded-lg border border-border/50 bg-background px-2.5 py-1.5 text-xs shadow-xl",
+          "grid min-w-[8rem] items-start gap-1.5 rounded-lg border border-border/50 bg-background px-2.5 py-1.5 text-xs",
           className
         )}
       >

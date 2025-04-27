@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Github, Linkedin, Twitter } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
@@ -60,7 +59,7 @@ const Footer = () => {
           {/* Navigation sections */}
           {Object.entries(navigationLinks).map(([title, links]) => (
             <div key={title} className="col-span-1">
-              <h3 className="text-sm font-semibold text-[#1d1d1f] mb-4">{title}</h3>
+              <h3 className="text-sm font-baloo font-medium text-[#1d1d1f] mb-4">{title}</h3>
               <ul className="space-y-3">
                 {links.map((link) => (
                   <li key={link.label}>
@@ -102,7 +101,7 @@ const Footer = () => {
       {/* Copyright section */}
       <div className="container mx-auto px-6 py-6">
         <div className="flex flex-col md:flex-row items-center justify-between text-xs">
-          <p>© {currentYear} Nodera Studio. All rights reserved.</p>
+          <p className="text-xs text-[#515154] font-baloo font-medium">© {currentYear} Nodera Studio. All rights reserved.</p>
           <div className="mt-4 md:mt-0 space-x-6">
             <a href="#privacy" className="hover:text-[#1d1d1f] transition-colors">
               Privacy Policy

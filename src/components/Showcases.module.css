@@ -84,12 +84,10 @@
 .showcaseButtonPrimary:hover {
   background-color: #333;
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .showcaseButtonPrimary:active {
   transform: translateY(0);
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
 
 .showcaseButtonSecondary {
@@ -109,12 +107,10 @@
 .showcaseButtonSecondary:hover {
   background-color: #f5f5f5;
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
 
 .showcaseButtonSecondary:active {
   transform: translateY(0);
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
 }
 
 .showcaseImage {
@@ -171,4 +167,20 @@
     padding: 5px 10px;
     font-size: 16px;
   }
+}
+
+.card:hover {
+  transform: translateY(-4px);
+}
+
+.card:active {
+  transform: translateY(0);
+}
+
+.cardLink:hover {
+  transform: translateY(-4px);
+}
+
+.cardLink:active {
+  transform: translateY(0);
 }

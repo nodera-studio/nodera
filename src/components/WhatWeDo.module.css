@@ -1,4 +1,3 @@
-
 .devContainer {
   position: relative;
   width: 100%;
@@ -17,7 +16,6 @@
   background: white;
   border: 1px solid #EAEAEA;
   border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
   overflow: hidden;
 }
 
@@ -80,11 +78,10 @@
 .metricsContainer {
   width: 280px;
   height: 180px;
-  background: white;
-  border: 1px solid #EAEAEA;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-  padding: 16px;
+  background-color: #f8f9fa;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  border: 1px solid rgba(0, 0, 0, 0.05);
   display: flex;
   flex-direction: column;
   gap: 12px;
@@ -123,4 +120,23 @@
   font-weight: 600;
   z-index: 2;
   transition: color 0.1s linear;
+}
+
+.whatWeDoCard {
+  background-color: #F9F9F9;
+  border-radius: 1rem;
+  padding: 2rem;
+  text-align: center;
+  transition: transform 0.3s ease-out;
+}
+
+.whatWeDoCard:hover {
+  transform: scale(1.02) translateY(-5px);
+}
+
+.cardHoverAnimate {
+  transition: transform 0.3s ease-out;
+}
+.cardHoverAnimate:hover {
+  transform: scale(1.02) translateY(-5px);
 }
