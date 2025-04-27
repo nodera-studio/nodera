@@ -56,17 +56,16 @@ const WhatWeDo = () => {
   }, []);
 
   return (
-    <section className="bg-white py-16 md:py-24 px-6 sm:px-10 text-center border-b border-[#F1F1F1]">
+    <section className="bg-white py-10 px-4 sm:px-10 md:py-20 text-center border-b border-[#F1F1F1]">
       <div className="max-w-7xl mx-auto">
-        <h2 ref={sectionTitleRef} className="font-comfortaa font-bold text-4xl md:text-6xl text-black mb-12 section-title">
+        <h2 ref={sectionTitleRef} className="font-comfortaa font-bold text-5xl md:text-7xl text-black mb-10 section-title">
           What We <span className="gradient-word">Do</span>
         </h2>
         
-        {/* Visual elements with better mobile sizing */}
-        <div className="flex flex-wrap justify-center items-center gap-8 md:gap-16 mb-14 py-4">
+        <div className="flex flex-wrap justify-center items-center gap-6 md:gap-16 mb-12 py-8">
           {/* Dynamic HTML Streaming */}
           <motion.div
-            className="relative w-full max-w-[280px] h-[280px] sm:w-64 sm:h-64 md:w-80 md:h-80 group card-hover"
+            className="relative w-40 h-40 sm:w-64 sm:h-64 md:w-80 md:h-80 group card-hover"
             whileHover={{ scale: 1.05, y: -5 }}
             transition={{ duration: 0.3 }}
           >
@@ -131,13 +130,13 @@ const WhatWeDo = () => {
             </div>
           </motion.div>
 
-          {/* Performance Metrics - Changed to bottom-left to top-right gradient as requested */}
+          {/* Performance Metrics */}
           <motion.div
-            className="relative w-full max-w-[280px] h-[280px] sm:w-64 sm:h-64 md:w-80 md:h-80 group card-hover"
+            className="relative w-40 h-40 sm:w-64 sm:h-64 md:w-80 md:h-80 group card-hover"
             whileHover={{ scale: 1.05, y: -5 }}
             transition={{ duration: 0.3 }}
           >
-            <div className="absolute inset-0 rounded-3xl bg-gradient-to-tr from-[#D1A2FF] to-[#007AFF] opacity-80 shadow-xl" />
+            <div className="absolute inset-0 rounded-3xl bg-gradient-to-tl from-[#007AFF] to-[#D1A2FF] opacity-80 shadow-xl" />
             <div className={styles.devContainer}>
               <div className={styles.metricsContainer}>
                 {['Speed Index', 'Performance', 'Accessibility', 'Best Practices'].map((metric, index) => (
@@ -184,26 +183,19 @@ const WhatWeDo = () => {
           </motion.div>
         </div>
         
-        {/* Content cards with improved readability and chunking */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
-          <div className="bg-[#F9F9F9] p-6 md:p-8 rounded-2xl text-left shadow-sm card-hover">
-            <h3 className="font-baloo font-medium text-2xl mb-4">The Art of User Experience</h3>
-            <ul className="font-baloo font-medium text-base text-[#555] space-y-3 list-disc pl-5">
-              <li>Powerful code that anticipates challenges</li>
-              <li>Scalable architecture for future growth</li>
-              <li>Intuitive interfaces for seamless user journeys</li>
-              <li>Vision transformed into digital reality</li>
-            </ul>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12">
+          <div className="bg-[#F9F9F9] p-8 rounded-2xl text-center shadow-sm card-hover">
+            <h3 className="font-baloo font-medium text-2xl sm:text-3xl md:text-4xl mb-5">The Art of User Experience</h3>
+            <p className="font-baloo font-medium text-lg sm:text-xl md:text-2xl text-[#555]">
+              Powerful code that anticipates challenges. Scalable architecture paired with intuitive interfaces transforms visions into digital reality, no compromise needed.
+            </p>
           </div>
           
-          <div className="bg-[#F9F9F9] p-6 md:p-8 rounded-2xl text-left shadow-sm card-hover">
-            <h3 className="font-baloo font-medium text-2xl mb-4">Engineered for Performance</h3>
-            <ul className="font-baloo font-medium text-base text-[#555] space-y-3 list-disc pl-5">
-              <li>Experiences that perform as beautifully as they look</li>
-              <li>Every element serves a clear purpose</li>
-              <li>Engaging visitors while elevating brands</li>
-              <li>Simple outside, sophisticated inside</li>
-            </ul>
+          <div className="bg-[#F9F9F9] p-8 rounded-2xl text-center shadow-sm card-hover">
+            <h3 className="font-baloo font-medium text-2xl sm:text-3xl md:text-4xl mb-5">Engineered for Performance</h3>
+            <p className="font-baloo font-medium text-lg sm:text-xl md:text-2xl text-[#555]">
+              Digital experiences that perform as beautifully as they look. Every element serves a purpose while engaging visitors and elevating brands. Simple outside, sophisticated inside.
+            </p>
           </div>
         </div>
       </div>
