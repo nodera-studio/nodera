@@ -5,6 +5,7 @@ import Hero from '../components/Hero';
 import Showcases from '../components/Showcases';
 import CallToAction from '../components/CallToAction';
 import WhatWeDo from '../components/WhatWeDo';
+import Footer from '../components/Footer';
 import { useIsMobile } from '../hooks/use-mobile';
 
 const CustomCursor = lazy(() => import('../components/CustomCursor'));
@@ -23,7 +24,7 @@ const Index = () => {
       
       <Header />
       
-      <main className="relative">
+      <main className="relative flex-grow">
         <section>
           <Hero />
         </section>
@@ -46,6 +47,8 @@ const Index = () => {
           </section>
         </Suspense>
       </main>
+
+      <Footer />
     </div>
   );
 };
