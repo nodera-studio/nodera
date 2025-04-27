@@ -1,4 +1,5 @@
-import React, { useRef } from 'react';
+
+import React, { useRef, useState } from 'react';
 import { motion, useInView, useReducedMotion } from 'framer-motion';
 import styles from './styles/TheProcess.module.css';
 import cardStyles from './styles/ProcessCard.module.css';
