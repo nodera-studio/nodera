@@ -1,3 +1,4 @@
+
 @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&family=Baloo+Da+2:wght@500;600&display=swap');
 
 @tailwind base;
@@ -94,6 +95,12 @@
       transform: translateY(0);
     }
   }
+  
+  @keyframes shimmer {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
 }
 
 @layer base {
@@ -123,6 +130,53 @@
 @layer components {
   .gradient-text {
     @apply bg-gradient-text bg-clip-text text-transparent;
+  }
+  
+  .inner-shadow-text {
+    background-color: white;
+    color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+    text-shadow: 0px -4px 4px rgba(0, 0, 0, 0.3);
+  }
+  
+  .gradient-word {
+    background-image: linear-gradient(90deg, #D1A2FF 0%, #007AFF 100%);
+    background-size: 200% auto;
+    color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+  }
+  
+  .gradient-word.is-visible {
+    animation: shimmer 2.5s linear infinite 0.5s;
+  }
+  
+  .card-hover {
+    @apply transition-transform duration-300 ease-out;
+    will-change: transform;
+  }
+  
+  .card-hover:hover {
+    @apply transform scale-105 z-10;
+  }
+  
+  .section-title {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  
+  .section-title.is-visible {
+    animation: fadeInUp 0.8s cubic-bezier(0.25, 0.1, 0.25, 1.0) forwards;
+  }
+  
+  .showcase-image {
+    @apply transition-transform duration-300 ease-out;
+    will-change: transform;
+  }
+  
+  .showcase-card:hover .showcase-image {
+    @apply transform scale-105 -translate-y-1;
   }
 }
 

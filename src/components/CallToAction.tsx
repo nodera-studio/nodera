@@ -1,10 +1,11 @@
 
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Button } from "@/components/ui/button";
 import { useIsMobile } from '../hooks/use-mobile';
 
 const CallToAction = () => {
   const isMobile = useIsMobile();
+  const sectionHeadingRef = useRef<HTMLDivElement>(null);
 
   const lines = [
     "You've got a vision.",
@@ -12,10 +13,34 @@ const CallToAction = () => {
     "Let's build something remarkable."
   ];
 
+  useEffect(() => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.3 });
+    
+    if (sectionHeadingRef.current) {
+      observer.observe(sectionHeadingRef.current);
+    }
+    
+    return () => {
+      if (sectionHeadingRef.current) {
+        observer.unobserve(sectionHeadingRef.current);
+      }
+    };
+  }, []);
+
   return (
     <div className="bg-white py-16 md:py-24 lg:py-32 px-6 text-center border-b border-[#F1F1F1] relative overflow-hidden">
       <div className="max-w-3xl mx-auto relative z-10">
-        <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-baloo font-medium leading-tight mb-8 md:mb-12 space-y-2">
+        <div 
+          ref={sectionHeadingRef}
+          className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-baloo font-medium leading-tight mb-8 md:mb-12 space-y-2 section-title"
+        >
           {lines.map((line, index) => (
             <div key={index} className="overflow-hidden">
               <span className="inline-block">
@@ -39,7 +64,7 @@ const CallToAction = () => {
       </div>
 
       <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 select-none pointer-events-none">
-        <div className="text-[20vw] font-comfortaa font-bold text-[#22222208] whitespace-nowrap">
+        <div className="text-[20vw] font-comfortaa font-bold inner-shadow-text whitespace-nowrap">
           Nodera
         </div>
       </div>

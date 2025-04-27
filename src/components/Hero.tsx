@@ -18,8 +18,12 @@ const Hero = () => {
       </div>
       
       <div className={styles.heroContent}>
-        <h1 className={styles.heroTitle}>{title}</h1>
-        <h2 className={styles.heroSubtitle}>{subtitle}</h2>
+        <h1 className="font-comfortaa font-bold text-[clamp(60px,10vw,150px)] inner-shadow-text m-0 leading-[0.9] tracking-tight">
+          {title}
+        </h1>
+        <h2 className="font-comfortaa font-bold text-[clamp(24px,5vw,48px)] m-0 bg-gradient-to-r from-[#333333] to-[#666666] bg-clip-text text-transparent tracking-wide">
+          {subtitle}
+        </h2>
       </div>
     </div>
   );
