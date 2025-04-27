@@ -7,7 +7,6 @@ import CallToAction from '../components/CallToAction';
 import WhatWeDo from '../components/WhatWeDo';
 import { useIsMobile } from '../hooks/use-mobile';
 
-// Lazy load the CustomCursor and TheProcess components which aren't needed immediately
 const CustomCursor = lazy(() => import('../components/CustomCursor'));
 const TheProcess = lazy(() => import('../components/TheProcess'));
 

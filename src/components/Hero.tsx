@@ -8,7 +8,6 @@ const Hero = () => {
   
   return (
     <div className={styles.hero}>
-      {/* Static background image with no animations */}
       <div className={styles.heroBackgroundContainer}>
         <img 
           src="/lovable-uploads/logo.png" 

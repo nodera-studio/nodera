@@ -1,6 +1,5 @@
 
 import React, { useEffect, useState } from 'react';
-import { motion } from 'framer-motion';
 
 const CustomCursor: React.FC = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
@@ -10,7 +9,6 @@ const CustomCursor: React.FC = () => {
     const handleMouseMove = (e: MouseEvent) => {
       setMousePosition({ x: e.clientX, y: e.clientY });
       
-      // Check if cursor is over an interactive element
       const element = document.elementFromPoint(e.clientX, e.clientY);
       if (element) {
         const isInteractive = 
@@ -26,8 +24,6 @@ const CustomCursor: React.FC = () => {
     };
 
     window.addEventListener('mousemove', handleMouseMove);
-    
-    // Add cursor: none to body
     document.body.style.cursor = 'none';
 
     return () => {
@@ -36,39 +32,22 @@ const CustomCursor: React.FC = () => {
     };
   }, []);
 
-  const cursorVariants = {
-    default: {
-      x: mousePosition.x - 15,
-      y: mousePosition.y - 15,
-      scale: 1
-    },
-    hover: {
-      x: mousePosition.x - 15,
-      y: mousePosition.y - 15,
-      scale: 1.2
-    }
+  const cursorStyle = {
+    position: 'fixed' as const,
+    top: 0,
+    left: 0,
+    width: '30px',
+    height: '30px',
+    borderRadius: '50%',
+    background: 'linear-gradient(135deg, #D1A2FF, #007AFF)',
+    pointerEvents: 'none' as const,
+    zIndex: 9999,
+    mixBlendMode: 'exclusion' as const,
+    transform: `translate(${mousePosition.x - 15}px, ${mousePosition.y - 15}px) scale(${isHovering ? 1.2 : 1})`,
+    transition: 'transform 0.2s ease-out'
   };
 
-  return (
-    <motion.div
-      className="custom-cursor"
-      variants={cursorVariants}
-      animate={isHovering ? 'hover' : 'default'}
-      transition={{ type: 'spring', stiffness: 500, damping: 28 }}
-      style={{
-        position: 'fixed',
-        top: 0,
-        left: 0,
-        width: '30px',
-        height: '30px',
-        borderRadius: '50%',
-        background: 'linear-gradient(135deg, #D1A2FF, #007AFF)',
-        pointerEvents: 'none',
-        zIndex: 9999,
-        mixBlendMode: 'exclusion',
-      }}
-    />
-  );
+  return <div style={cursorStyle} />;
 };
 
 export default CustomCursor;
