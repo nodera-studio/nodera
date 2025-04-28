@@ -19,6 +19,15 @@ const TheProcess = () => {
     css: `.container {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  min-height: 100vh;\n  background: linear-gradient(\n    to right,\n    #f5f5f5,\n    #ffffff\n  );\n}`
   });
 
+  // Ensure code content is visible when switching tabs
+  useEffect(() => {
+    const activeContent = codeContent[activeTab as keyof typeof codeContent];
+    if (activeContent) {
+      // Force a re-render when tab changes to ensure content is displayed
+      setCodeContent(prev => ({ ...prev }));
+    }
+  }, [activeTab]);
+
   const handleCodeChange = (language: string, value: string) => {
     setCodeContent(prev => ({
       ...prev,
@@ -104,21 +113,23 @@ const TheProcess = () => {
                     <motion.div 
                       className={cardStyles.logoCarousel}
                       animate={shouldReduceMotion ? {} : { 
-                        x: [0, -480]
+                        x: [0, -720]
                       }}
                       transition={{ 
                         repeat: Infinity,
                         repeatType: "loop",
-                        duration: 20,
+                        duration: 25,
                         ease: "linear"
                       }}
                     >
-                      {/* Double the logo rows to create seamless infinite loop */}
+                      {/* Triple the logo rows to create seamless infinite loop */}
                       <div className={cardStyles.logoRow}>
+                        {logoRow1}
                         {logoRow1}
                         {logoRow1}
                       </div>
                       <div className={cardStyles.logoRow}>
+                        {logoRow2}
                         {logoRow2}
                         {logoRow2}
                       </div>
