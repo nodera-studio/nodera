@@ -42,31 +42,9 @@
   z-index: 1;
 }
 
-.heroTitle {
-  font-family: 'Comfortaa', sans-serif;
-  font-weight: 700;
-  font-size: clamp(60px, 10vw, 150px);
-  margin: 0;
-  display: inline-block;
-  background: linear-gradient(90deg, #000000 0%, #222222 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  letter-spacing: -0.02em;
-  line-height: 0.9;
-}
-
-.heroSubtitle {
-  font-family: 'Comfortaa', sans-serif;
-  font-weight: 700;
-  font-size: clamp(24px, 5vw, 48px);
-  margin: 0;
-  background: linear-gradient(90deg, #333333 0%, #666666 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  letter-spacing: 0.02em;
-}
+/* Remove .heroTitle and .heroSubtitle font rules */
+/* .heroTitle { ... } */
+/* .heroSubtitle { ... } */
 
 /* Monitor and larger screens */
 @media (min-width: 1441px) {
@@ -78,12 +56,22 @@
     max-width: 1400px;
     margin: 0 auto;
   }
+  
+  .heroBackground {
+    height: 90%;
+    transform: translate(-50%, -50%) scale(1.8);
+  }
 }
 
 /* Laptop screens */
 @media (max-width: 1440px) {
   .hero {
     height: 75vh;
+  }
+  
+  .heroBackground {
+    height: 85%;
+    transform: translate(-50%, -50%) scale(1.7);
   }
 }
 

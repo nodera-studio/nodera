@@ -1,8 +1,8 @@
-
 import React, { useEffect, useState } from 'react';
 import styles from './Header.module.css';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useIsMobile, useBreakpoint } from '../hooks/use-mobile';
+import { Button } from "@/components/ui/button";
 
 const Header = () => {
   const [isSticky, setIsSticky] = useState(false);
@@ -108,9 +108,15 @@ const Header = () => {
               
               {/* Add "Say Hi" button to mobile menu */}
               <div className={styles.mobileCta}>
-                <a href="#contact" className={styles.ctaButton} onClick={() => setMobileMenuOpen(false)}>
-                  Say Hi
-                </a>
+                <Button
+                  variant="accent"
+                  size="default" 
+                  asChild
+                >
+                  <a href="#contact" onClick={() => setMobileMenuOpen(false)}>
+                    Say Hi
+                  </a>
+                </Button>
               </div>
             </div>
           </motion.div>
@@ -119,7 +125,13 @@ const Header = () => {
       
       {/* Only show CTA button on non-mobile screens */}
       <div className={styles.cta}>
-        <a href="#contact" className={styles.ctaButton}>Say Hi</a>
+        <Button
+          variant="accent"
+          size="default"
+          asChild
+        >
+          <a href="#contact">Say Hi</a>
+        </Button>
       </div>
     </header>
   );

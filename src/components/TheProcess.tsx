@@ -14,36 +14,9 @@ const TheProcess = () => {
   const shouldReduceMotion = useReducedMotion();
   const [activeTab, setActiveTab] = useState('html');
   const [codeContent, setCodeContent] = useState({
-    html: `<html>
-  <head>
-    <meta charset="UTF-8">
-    <title>My Project</title>
-  </head>
-  <body>
-    <h1>Hello World</h1>
-  </body>
-</html>`,
-    nextjs: `// pages/index.js
-import React from 'react';
-
-export default function Home() {
-  return (
-    <div>
-      <h1 className="font-comfortaa font-bold">Welcome to Next.js!</h1>
-    </div>
-  )
-}`,
-    css: `.container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  background: linear-gradient(
-    to right,
-    #f5f5f5,
-    #ffffff
-  );
-}`
+    html: `<html>\n  <head>\n    <meta charset="UTF-8">\n    <title>My Project</title>\n  </head>\n  <body>\n    <h1>Hello World</h1>\n  </body>\n</html>`,
+    nextjs: `// pages/index.js\nimport React from 'react';\n\nexport default function Home() {\n  return (\n    <div>\n      <h1 className="font-comfortaa font-bold">Welcome to Next.js!</h1>\n    </div>\n  )\n}`,
+    css: `.container {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  min-height: 100vh;\n  background: linear-gradient(\n    to right,\n    #f5f5f5,\n    #ffffff\n  );\n}`
   });
 
   const handleCodeChange = (language: string, value: string) => {
@@ -77,7 +50,7 @@ export default function Home() {
     <section ref={ref} className={styles.processSection}>
       <div className={styles.container}>
         <motion.h2 
-          className="font-comfortaa font-bold text-5xl md:text-7xl text-black mb-10 section-title"
+          className="text-black mb-10 section-title"
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
           variants={itemVariants}
@@ -93,7 +66,6 @@ export default function Home() {
         >
           <div 
             className={`${cardStyles.processCard} transition-transform duration-200 hover:scale-101`}
-            onMouseEnter={e => e.currentTarget.scrollIntoView({ behavior: 'smooth', block: 'start' })}
           >
             <div className="bg-white rounded-t-[1rem]">
               <div className={cardStyles.cardImageContainer}>
@@ -177,7 +149,7 @@ export default function Home() {
             </div>
             
             <div className={`${cardStyles.cardContent} bg-[#F9F9F9] rounded-b-[1rem]`}>
-              <div className={cardStyles.cardStep}>01</div>
+              <div className={`${cardStyles.cardStep} gradient-text font-semibold`}>01</div>
               <h3 className={cardStyles.cardTitle}>Discovery & Strategy</h3>
               <p className={cardStyles.cardDescription}>
                 We dive deep into your business reality before writing a single line of code. Your goals become our roadmap, creating strategic foundations that support every pixel and function.
@@ -187,7 +159,6 @@ export default function Home() {
           
           <div 
             className={`${cardStyles.processCard} transition-transform duration-200 hover:scale-101`}
-            onMouseEnter={e => e.currentTarget.scrollIntoView({ behavior: 'smooth', block: 'start' })}
           >
             <div className="bg-white rounded-t-[1rem]">
               <div className={cardStyles.cardImageContainer}>
@@ -256,7 +227,7 @@ export default function Home() {
             </div>
             
             <div className={`${cardStyles.cardContent} bg-[#F9F9F9] rounded-b-[1rem]`}>
-              <div className={cardStyles.cardStep}>02</div>
+              <div className={`${cardStyles.cardStep} gradient-text font-semibold`}>02</div>
               <h3 className={cardStyles.cardTitle}>Design & Develop</h3>
               <p className={cardStyles.cardDescription}>
                 Vision becomes reality. Our collaborative approach eliminates the handoff gap, delivering experiences where beauty and functionality are inseparable from the start.
@@ -266,7 +237,6 @@ export default function Home() {
           
           <div 
             className={`${cardStyles.processCard} transition-transform duration-200 hover:scale-101`}
-            onMouseEnter={e => e.currentTarget.scrollIntoView({ behavior: 'smooth', block: 'start' })}
           >
             <div className="bg-white rounded-t-[1rem]">
               <div className={cardStyles.cardImageContainer}>
@@ -304,7 +274,7 @@ export default function Home() {
             </div>
             
             <div className={`${cardStyles.cardContent} bg-[#F9F9F9] rounded-b-[1rem]`}>
-              <div className={cardStyles.cardStep}>03</div>
+              <div className={`${cardStyles.cardStep} gradient-text font-semibold`}>03</div>
               <h3 className={cardStyles.cardTitle}>Maintain & Improve</h3>
               <p className={cardStyles.cardDescription}>
                 Launch day isn't goodbye. It's just the beginning. Your digital product evolves as markets shift and users engage. Continuous refinement keeps you ahead, turning good into exceptional over time.

@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from 'react';
 
 const CustomCursor: React.FC = () => {
@@ -39,10 +38,9 @@ const CustomCursor: React.FC = () => {
     width: '30px',
     height: '30px',
     borderRadius: '50%',
-    background: 'linear-gradient(135deg, #D1A2FF, #007AFF)',
+    background: 'linear-gradient(to bottom, #D1A2FF, #007AFF)',
     pointerEvents: 'none' as const,
     zIndex: 9999,
-    mixBlendMode: 'exclusion' as const,
     transform: `translate(${mousePosition.x - 15}px, ${mousePosition.y - 15}px) scale(${isHovering ? 1.2 : 1})`,
     transition: 'transform 0.2s ease-out'
   };

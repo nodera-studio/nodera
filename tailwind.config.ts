@@ -64,10 +64,6 @@ export default {
 					ring: 'hsl(var(--sidebar-ring))'
 				}
 			},
-			fontFamily: {
-				'comfortaa': ['Comfortaa', 'sans-serif'],
-				'baloo': ['Baloo Da 2', 'sans-serif'],
-			},
 			backgroundImage: {
 				'gradient-text': 'linear-gradient(90deg, #D1A2FF 0%, #007AFF 100%)',
 			},

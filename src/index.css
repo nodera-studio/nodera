@@ -108,16 +108,33 @@
   }
 
   body {
-    @apply bg-background text-foreground font-baloo font-medium;
+    @apply bg-background text-foreground;
   }
   
-  h1, h2 {
-    @apply font-comfortaa font-bold;
+  h1 {
+    font-family: 'Comfortaa', sans-serif;
+    font-weight: 700;
+    font-size: 150px;
+    line-height: 0.9;
   }
 
-  /* Add explicit base styles for h3, h4, p */
-  h3, h4, p {
-     @apply font-baloo font-medium;
+  h2 {
+    font-family: 'Comfortaa', sans-serif;
+    font-weight: 700;
+    font-size: 70px;
+  }
+  
+  h3, h4 {
+    font-family: 'Baloo Da 2', sans-serif;
+    font-weight: 500;
+    font-size: 39px;
+  }
+  
+  p {
+    font-family: 'Baloo Da 2', sans-serif;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 1.6;
   }
 
   a, button {
@@ -208,6 +225,45 @@
       transform: translate(2%, -5%);
     }
   }
+
+  .hero-subtitle {
+    font-family: 'Comfortaa', sans-serif;
+    font-weight: 700;
+    font-size: 54px;
+    background: linear-gradient(90deg, #333333 0%, #666666 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: 0.02em;
+  }
+
+  .view-all-link {
+    font-family: 'Comfortaa', sans-serif;
+    font-weight: 700;
+    font-size: 30px;
+    background: linear-gradient(90deg, #D1A2FF 0%, #007AFF 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-decoration: none;
+    @apply hover:translate-x-1 transition-transform;
+  }
+
+  .text-shadow-subtle {
+    text-shadow: 0 -2px 3px rgba(0, 0, 0, 0.15);
+  }
+  
+  .global-divider {
+    width: 100%;
+    height: 2px;
+    background-color: #F1F1F1;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    margin-left: 0;
+    margin-right: 0;
+    position: relative;
+    z-index: 50;
+  }
 }
 
 @media (min-width: 768px) {
@@ -221,7 +277,7 @@
 
 @layer utilities {
   .mask-fade-in-top {
-    mask-image: linear-gradient(to bottom, transparent 0%, black 10%); /* Adjust 10% as needed for smoothness */
+    mask-image: linear-gradient(to bottom, transparent 0%, black 10%);
     -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 10%);
   }
 }

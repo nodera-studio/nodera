@@ -57,7 +57,7 @@ const WhatWeDo = () => {
   return (
     <section className="bg-white py-10 px-4 sm:px-10 md:py-20 text-center">
       <div className="max-w-7xl mx-auto">
-        <h2 ref={sectionTitleRef} className="font-comfortaa font-bold text-5xl md:text-7xl text-black mb-10 section-title">
+        <h2 ref={sectionTitleRef} className="text-black mb-10 section-title">
           What We <span className="gradient-word">Do</span>
         </h2>
         
@@ -180,15 +180,15 @@ const WhatWeDo = () => {
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
           <div className={styles.whatWeDoCard}>
-            <h3 className="font-baloo font-medium text-2xl sm:text-3xl md:text-4xl mb-5">The Art of User Experience</h3>
-            <p className="font-baloo font-medium text-lg sm:text-xl md:text-2xl text-[#555]">
+            <h3 className="mb-5">The Art of User Experience</h3>
+            <p className="text-[#555]">
               Powerful code that anticipates challenges. Scalable architecture paired with intuitive interfaces transforms visions into digital reality, no compromise needed.
             </p>
           </div>
           
           <div className={styles.whatWeDoCard}>
-            <h3 className="font-baloo font-medium text-2xl sm:text-3xl md:text-4xl mb-5">Engineered for Performance</h3>
-            <p className="font-baloo font-medium text-lg sm:text-xl md:text-2xl text-[#555]">
+            <h3 className="mb-5">Engineered for Performance</h3>
+            <p className="text-[#555]">
               Digital experiences that perform as beautifully as they look. Every element serves a purpose while engaging visitors and elevating brands. Simple outside, sophisticated inside.
             </p>
           </div>

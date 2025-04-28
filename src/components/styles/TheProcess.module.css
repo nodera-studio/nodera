@@ -1,20 +1,16 @@
-
+/* Styles specific to TheProcess component container */
 .processSection {
   background-color: #fff;
-  padding: 5rem 1rem;
-  color: #333;
-  overflow: hidden;
+  padding: 4rem 2rem;
 }
 
 .container {
-  max-width: 1200px;
-  margin: 0 auto;
+  max-width: 80rem; /* Equivalent to max-w-7xl */
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .sectionTitle {
-  font-family: 'Comfortaa', sans-serif;
-  font-weight: 700;
-  font-size: 4rem;
   text-align: center;
   margin-bottom: 4rem;
 }
@@ -29,27 +25,13 @@
 
 .processCards {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(1, minmax(0, 1fr));
   gap: 2rem;
 }
 
-@media (max-width: 1024px) {
-  .sectionTitle {
-    font-size: 3.5rem;
-  }
-  
+@media (min-width: 768px) {
   .processCards {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 768px) {
-  .sectionTitle {
-    font-size: 3rem;
-  }
-  
-  .processCards {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
 
@@ -59,7 +41,11 @@
   }
   
   .sectionTitle {
-    font-size: 2.5rem;
     margin-bottom: 2.5rem;
   }
+}
+
+.activeTab {
+  background-color: #e0e0e0 !important; /* Example active tab style */
+  color: #333 !important;
 }

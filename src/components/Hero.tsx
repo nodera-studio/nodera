@@ -44,12 +44,21 @@ const Hero: React.FC = () => {
       
       <div className="relative z-10 flex flex-col items-center justify-center h-full">
         <div className={styles.heroContent}>
-          <h1 className="font-comfortaa font-bold text-[clamp(60px,10vw,150px)] text-white m-0 leading-[0.9] tracking-tight [text-shadow:0px_1px_2px_rgba(0,0,0,0.3)]">
+          <h1 className="text-white m-0 [text-shadow:0px_1px_2px_rgba(0,0,0,0.3)]">
             {title}
           </h1>
-          <h2 className="font-comfortaa font-bold text-[clamp(24px,5vw,48px)] m-0 text-white tracking-wide [text-shadow:0px_1px_2px_rgba(0,0,0,0.3)]">
+          <span 
+            className="hero-subtitle m-0 text-white [text-shadow:0px_1px_2px_rgba(0,0,0,0.3)]" 
+            style={{ 
+              color: 'white', 
+              WebkitBackgroundClip: 'unset', 
+              WebkitTextFillColor: 'white',
+              backgroundClip: 'unset',
+              background: 'transparent'
+            }}
+          >
             {subtitle}
-          </h2>
+          </span>
         </div>
       </div>
     </div>
