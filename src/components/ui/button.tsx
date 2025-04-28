@@ -1,7 +1,7 @@
+
 import * as React from "react"
 import { Slot } from "@radix-ui/react-slot"
 import { type VariantProps } from "class-variance-authority"
-
 import styles from "../styles/Button.module.css"
 
 export interface ButtonProps
@@ -38,7 +38,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     ...props 
   }, ref) => {
     const Comp = asChild ? Slot : "button"
-
+    
     // Combine the CSS classes
     const buttonClasses = buttonVariants({ variant, size, className });
     
