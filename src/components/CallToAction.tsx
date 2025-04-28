@@ -1,11 +1,9 @@
 
-import React, { useRef } from 'react';
+import React from 'react';
 import { Button } from "@/components/ui/button";
 import styles from './CallToAction.module.css';
 
 const CallToAction = () => {
-  const sectionHeadingRef = useRef<HTMLDivElement>(null);
-
   return (
     <div className={`${styles['cta-section']} bg-transparent text-center relative overflow-hidden h-[500px] pt-24`}>
       <div className={styles['background-image']} aria-hidden="true" />
@@ -13,7 +11,6 @@ const CallToAction = () => {
       <div className="flex items-center justify-center w-full h-full relative z-10">
         <div className={styles['cta-content-wrapper']}>
           <div
-            ref={sectionHeadingRef}
             className={`${styles['cta-tagline-text']} text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-baloo font-medium mb-8 md:mb-12 text-white`}
           >
             <span className="inline-block w-full">

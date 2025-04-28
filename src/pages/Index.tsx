@@ -1,5 +1,5 @@
 
-import React, { lazy, Suspense, useState, useEffect } from 'react';
+import React, { lazy, Suspense } from 'react';
 import Header from '../components/Header';
 import Hero from '../components/Hero';
 import Showcases from '../components/Showcases';
@@ -13,19 +13,6 @@ const TheProcess = lazy(() => import('../components/TheProcess'));
 
 const Index = () => {
   const isMobile = useIsMobile();
-  const [scrollY, setScrollY] = useState(0);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrollY(window.scrollY);
-    };
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
   
   return (
     <div className="min-h-screen flex flex-col">
@@ -39,7 +26,7 @@ const Index = () => {
       
       <main className="relative flex-grow">
         <section>
-          <Hero scrollY={scrollY} />
+          <Hero />
         </section>
         <div className="w-full h-0.5 bg-[#F1F1F1] my-12" />
         <section className="relative z-10 -mt-24 md:-mt-32 mask-fade-in-top">
