@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
@@ -134,8 +135,9 @@ const Work = () => {
       </main>
 
       <Footer />
-
-      <style jsx>{`
+      
+      <style>
+        {`
         .hide-scrollbar {
           -ms-overflow-style: none;
           scrollbar-width: none;
@@ -143,7 +145,8 @@ const Work = () => {
         .hide-scrollbar::-webkit-scrollbar {
           display: none;
         }
-      `}</style>
+        `}
+      </style>
     </div>
   );
 };
