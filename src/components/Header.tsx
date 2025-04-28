@@ -5,23 +5,57 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useIsMobile, useBreakpoint } from '../hooks/use-mobile';
 import { Button } from "@/components/ui/button";
 import { Link, useLocation } from 'react-router-dom';
+import { ChevronRight } from 'lucide-react';
 
+// Animation variants for the mobile menu
 const menuVariants = {
-  hidden: { opacity: 0, height: 0 },
+  hidden: { 
+    opacity: 0, 
+    y: -20,
+    height: 0
+  },
   visible: { 
     opacity: 1, 
+    y: 0,
     height: "100vh",
     transition: { 
-      duration: 0.5,
+      duration: 0.3,
       ease: [0.22, 1, 0.36, 1],
+      when: "beforeChildren",
+      staggerChildren: 0.05
     }
   },
   exit: { 
     opacity: 0, 
+    y: -20,
     height: 0,
     transition: { 
-      duration: 0.5,
+      duration: 0.3,
       ease: [0.22, 1, 0.36, 1],
+      when: "afterChildren",
+      staggerChildren: 0.05,
+      staggerDirection: -1
+    }
+  }
+};
+
+// Animation variants for the menu items
+const itemVariants = {
+  hidden: { opacity: 0, y: -10 },
+  visible: { 
+    opacity: 1, 
+    y: 0,
+    transition: {
+      duration: 0.2,
+      ease: [0.22, 1, 0.36, 1]
+    }
+  },
+  exit: {
+    opacity: 0,
+    y: -10,
+    transition: {
+      duration: 0.2,
+      ease: [0.22, 1, 0.36, 1]
     }
   }
 };
@@ -122,6 +156,7 @@ const Header = () => {
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           aria-label="Menu"
           whileTap={{ scale: 0.95 }}
+          initial="closed"
         >
           <motion.div 
             className={`${styles.menuBar} ${mobileMenuOpen ? styles.open : ''}`}
@@ -130,10 +165,6 @@ const Header = () => {
           <motion.div 
             className={`${styles.menuBar} ${mobileMenuOpen ? styles.open : ''}`}
             transition={{ duration: 0.2, delay: 0.05 }}
-          ></motion.div>
-          <motion.div 
-            className={`${styles.menuBar} ${mobileMenuOpen ? styles.open : ''}`}
-            transition={{ duration: 0.2, delay: 0.1 }}
           ></motion.div>
         </motion.button>
       )}
@@ -152,16 +183,15 @@ const Header = () => {
                 {menuItems.map((item, index) => (
                   <motion.div
                     key={item.path}
-                    initial={{ opacity: 0, x: -10 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.2 + index * 0.1 }}
+                    variants={itemVariants}
                   >
                     <Link 
                       to={item.path}
                       className={`${styles.mobileNavLink} ${isActive(item.path) ? styles.active : ''}`}
                       onClick={() => setMobileMenuOpen(false)}
                     >
-                      {item.title}
+                      <span>{item.title}</span>
+                      <ChevronRight className={styles.navChevron} />
                     </Link>
                   </motion.div>
                 ))}
@@ -169,15 +199,13 @@ const Header = () => {
               
               <motion.div 
                 className={styles.mobileCta}
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.5 }}
+                variants={itemVariants}
               >
                 <Button
                   variant="accent"
                   size="default" 
                   asChild
-                  className="shadow-lg"
+                  className={styles.mobileCtaButton}
                 >
                   <Link to="/contact" onClick={() => setMobileMenuOpen(false)}>
                     Say Hi
