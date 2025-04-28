@@ -1,24 +1,25 @@
+
 import React from 'react';
 import { Github, Linkedin, Twitter } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
-import { cn } from "@/lib/utils";
+import { Link } from 'react-router-dom';
 
 const currentYear = new Date().getFullYear();
 
 const navigationLinks = {
   Company: [
-    { label: "About", href: "#about" },
-    { label: "Our Story", href: "#story" },
-    { label: "Contact", href: "#contact" }
+    { label: "About", href: "/about" },
+    { label: "Services", href: "/services" },
+    { label: "Contact", href: "/contact" }
   ],
   Services: [
-    { label: "Web Development", href: "#services" },
-    { label: "UI/UX Design", href: "#design" },
-    { label: "Consulting", href: "#consulting" }
+    { label: "Web Development", href: "/services" },
+    { label: "UI/UX Design", href: "/services" },
+    { label: "Consulting", href: "/services" }
   ],
   Resources: [
-    { label: "Case Studies", href: "#cases" },
-    { label: "FAQ", href: "#faq" }
+    { label: "Work", href: "/work" },
+    { label: "FAQ", href: "/about#faq" }
   ]
 };
 
@@ -50,11 +51,14 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-8 lg:gap-12"> {/* Changed to lg:grid-cols-5 */} 
           {/* Logo section (First column) */}
           <div className="col-span-1">
-            <img
-              src="/lovable-uploads/logo.png"
-              alt="Nodera Studio"
-              className="h-14 w-auto opacity-80"
-            />
+            <Link to="/">
+              <img
+                src="/lovable-uploads/logo.png"
+                alt="Nodera Studio"
+                className="h-14 w-auto opacity-80"
+              />
+            </Link>
+            <p className="mt-2 text-sm">Web Design & Development</p>
           </div>
 
           {/* Ordered Navigation/Link sections (Next four columns) */}
@@ -90,12 +94,12 @@ const Footer = () => {
                     <ul className="space-y-3">
                       {links.map((link) => (
                         <li key={link.label}>
-                          <a
-                            href={link.href}
+                          <Link
+                            to={link.href}
                             className="text-sm hover:text-[#1d1d1f] transition-colors"
                           >
                             {link.label}
-                          </a>
+                          </Link>
                         </li>
                       ))}
                     </ul>
@@ -117,12 +121,12 @@ const Footer = () => {
         <div className="flex flex-col md:flex-row items-center justify-between text-xs">
           <p className="text-xs text-[#515154] font-baloo font-medium">© {currentYear} Nodera Studio. All rights reserved.</p>
           <div className="mt-4 md:mt-0 space-x-6">
-            <a href="#privacy" className="hover:text-[#1d1d1f] transition-colors">
+            <Link to="/about" className="hover:text-[#1d1d1f] transition-colors">
               Privacy Policy
-            </a>
-            <a href="#terms" className="hover:text-[#1d1d1f] transition-colors">
+            </Link>
+            <Link to="/about" className="hover:text-[#1d1d1f] transition-colors">
               Terms of Use
-            </a>
+            </Link>
           </div>
         </div>
       </div>

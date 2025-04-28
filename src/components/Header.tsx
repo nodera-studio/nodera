@@ -4,61 +4,32 @@ import styles from './Header.module.css';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useIsMobile, useBreakpoint } from '../hooks/use-mobile';
 import { Button } from "@/components/ui/button";
-import { useLocation } from 'react-router-dom';
-import {
-  NavigationMenu,
-  NavigationMenuContent,
-  NavigationMenuIndicator,
-  NavigationMenuItem,
-  NavigationMenuLink,
-  NavigationMenuList,
-  NavigationMenuTrigger,
-  NavigationMenuViewport,
-} from "@/components/ui/navigation-menu";
+import { Link, useLocation } from 'react-router-dom';
 
 const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState('home');
   const isMobile = useIsMobile();
   const breakpoint = useBreakpoint();
   const isMobileOrSmaller = isMobile || breakpoint === 'small_landscape';
   const location = useLocation();
+  const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      const sections = ['home', 'services', 'work', 'about', 'contact'];
-      const scrollPosition = window.scrollY + 100;
-
-      for (const section of sections) {
-        const element = document.getElementById(section);
-        if (element) {
-          const { offsetTop, offsetHeight } = element;
-          if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
-            setActiveSection(section);
-            break;
-          }
-        }
-      }
-    };
-
     // Add backdrop blur effect when scrolling
-    const header = document.querySelector(`.${styles.header}`);
     const handleScrollEffect = () => {
       if (window.scrollY > 10) {
-        header?.classList.add(styles.headerScrolled);
+        setScrolled(true);
       } else {
-        header?.classList.remove(styles.headerScrolled);
+        setScrolled(false);
       }
     };
 
-    window.addEventListener('scroll', handleScroll);
     window.addEventListener('scroll', handleScrollEffect);
     
     // Initial check
     handleScrollEffect();
     
     return () => {
-      window.removeEventListener('scroll', handleScroll);
       window.removeEventListener('scroll', handleScrollEffect);
     };
   }, []);
@@ -76,37 +47,43 @@ const Header = () => {
     };
   }, [mobileMenuOpen]);
 
+  const isActive = (path: string) => {
+    return location.pathname === path;
+  };
+
   const menuItems = [
-    { title: 'Home', href: '#home', section: 'home' },
-    { title: 'Services', href: '#services', section: 'services' },
-    { title: 'Work', href: '#work', section: 'work' },
-    { title: 'About', href: '#about', section: 'about' },
-    { title: 'Contact', href: '#contact', section: 'contact' },
+    { title: 'Home', path: '/' },
+    { title: 'Services', path: '/services' },
+    { title: 'Work', path: '/work' },
+    { title: 'About', path: '/about' },
+    { title: 'Contact', path: '/contact' },
   ];
 
   return (
-    <header className={styles.header}>
+    <header className={`${styles.header} ${scrolled ? styles.headerScrolled : ''}`}>
       <div className={styles.headerBg} />
       
       <div className={styles.logo}>
-        <img 
-          src="/lovable-uploads/logo.png" 
-          alt="Nodera Logo" 
-          className={styles.logoImg} 
-          loading="eager"
-        />
+        <Link to="/">
+          <img 
+            src="/lovable-uploads/logo.png" 
+            alt="Nodera Logo" 
+            className={styles.logoImg} 
+            loading="eager"
+          />
+        </Link>
       </div>
       
       {!isMobileOrSmaller ? (
         <nav className={styles.nav}>
           {menuItems.map((item) => (
-            <a 
-              key={item.section}
-              href={item.href} 
-              className={`${styles.navLink} ${activeSection === item.section ? styles.active : ''}`}
+            <Link 
+              key={item.path}
+              to={item.path}
+              className={`${styles.navLink} ${isActive(item.path) ? styles.active : ''}`}
             >
               {item.title}
-            </a>
+            </Link>
           ))}
         </nav>
       ) : (
@@ -134,14 +111,14 @@ const Header = () => {
             <div className={styles.mobileMenuContent}>
               <nav className={styles.mobileNav}>
                 {menuItems.map((item) => (
-                  <a 
-                    key={item.section}
-                    href={item.href} 
+                  <Link 
+                    key={item.path}
+                    to={item.path}
                     className={styles.mobileNavLink}
                     onClick={() => setMobileMenuOpen(false)}
                   >
                     {item.title}
-                  </a>
+                  </Link>
                 ))}
               </nav>
               
@@ -151,9 +128,9 @@ const Header = () => {
                   size="default" 
                   asChild
                 >
-                  <a href="#contact" onClick={() => setMobileMenuOpen(false)}>
+                  <Link to="/contact" onClick={() => setMobileMenuOpen(false)}>
                     Say Hi
-                  </a>
+                  </Link>
                 </Button>
               </div>
             </div>
@@ -168,7 +145,7 @@ const Header = () => {
           className={styles.sayHiButton}
           asChild
         >
-          <a href="#contact">Say Hi</a>
+          <Link to="/contact">Get Started</Link>
         </Button>
       </div>
     </header>

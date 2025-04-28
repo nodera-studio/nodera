@@ -7,12 +7,14 @@ import CallToAction from '../components/CallToAction';
 import WhatWeDo from '../components/WhatWeDo';
 import Footer from '../components/Footer';
 import { useIsMobile } from '../hooks/use-mobile';
+import { useLocation } from 'react-router-dom';
 
 const CustomCursor = lazy(() => import('../components/CustomCursor'));
 const TheProcess = lazy(() => import('../components/TheProcess'));
 
 const Index = () => {
   const isMobile = useIsMobile();
+  const location = useLocation();
   
   return (
     <div className="min-h-screen flex flex-col overflow-x-hidden">
