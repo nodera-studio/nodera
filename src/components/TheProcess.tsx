@@ -1,5 +1,5 @@
 import React, { useRef, useState, useEffect } from 'react';
-import { motion, useInView, useReducedMotion } from 'framer-motion';
+import { motion, useInView, useReducedMotion, AnimatePresence } from 'framer-motion';
 import styles from './styles/TheProcess.module.css';
 import cardStyles from './styles/ProcessCard.module.css';
 import { ChevronDown } from 'lucide-react';
@@ -110,12 +110,12 @@ function ModernApp() {
   const logoRow1 = placeholderLogos.slice(0, 5);
   const logoRow2 = placeholderLogos.slice(5, 10);
 
-  const renderTabContent = (tabKey: string) => {
-    const content = codeContent[tabKey as keyof typeof codeContent];
+  const getTabContentJSX = (tabKey: keyof typeof codeContent) => {
+    const content = codeContent[tabKey];
     const lines = content.split('\n');
     
     return (
-      <div className={`${activeTab === tabKey ? 'block' : 'hidden'} ${cardStyles.codeContent}`}>
+      <>
         <div className={cardStyles.lineNumbers}>
           {Array.from({ length: lines.length }, (_, i) => (
             <span key={i}>{i + 1}</span>
@@ -123,12 +123,11 @@ function ModernApp() {
         </div>
         <textarea
           value={content}
-          onChange={(e) => handleCodeChange(tabKey, e.target.value)}
           className={cardStyles.codeText}
           spellCheck={false}
           readOnly
         />
-      </div>
+      </>
     );
   };
 
@@ -155,7 +154,7 @@ function ModernApp() {
             variants={itemVariants}
             whileHover={{ y: shouldReduceMotion ? 0 : -5, transition: { duration: 0.2 } }}
             role="region"
-            aria-label="Partners and Integrations"
+            aria-label="Discovery & Strategy Card"
           >
             <div className="bg-white rounded-t-[1rem]">
               <div className={cardStyles.cardImageContainer}>
@@ -193,17 +192,12 @@ function ModernApp() {
                       role="img"
                       aria-label="Nodera company logo"
                     >
-                      <svg viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <circle cx="90" cy="90" r="90" fill="url(#paint0_linear_404_17)"/>
-                        <path d="M136.414 93.1993C136.414 90.1371 133.907 87.5052 131.003 87.5052H48.9968C46.0243 87.5052 43.5859 90.1371 43.5859 93.1993V135.81C43.5859 138.949 46.0243 141.504 48.9968 141.504H131.003C133.907 141.504 136.414 138.949 136.414 135.81V93.1993Z" fill="#4E4FEB"/>
-                        <path d="M136.414 46.1957C136.414 43.0566 133.907 40.5019 131.003 40.5019H48.9968C46.0243 40.5019 43.5859 43.0566 43.5859 46.1957V88.8832C43.5859 91.9452 46.0243 94.5 48.9968 94.5H131.003C133.907 94.5 136.414 91.9452 136.414 88.8832V46.1957Z" fill="#6366F1"/>
-                        <defs>
-                          <linearGradient id="paint0_linear_404_17" x1="0" y1="0" x2="180" y2="180" gradientUnits="userSpaceOnUse">
-                            <stop stopColor="#818CF8"/>
-                            <stop offset="1" stopColor="#4F46E5"/>
-                          </linearGradient>
-                        </defs>
-                      </svg>
+                      <img 
+                        src="/lovable-uploads/logo.png" 
+                        alt="Nodera Logo" 
+                        className={cardStyles.companyLogo}
+                        loading="lazy"
+                      />
                     </div>
                   </div>
                 </div>
@@ -237,35 +231,40 @@ function ModernApp() {
                         <span className={cardStyles.browserDot} aria-hidden="true" />
                       </div>
                       <div className={cardStyles.tabsList}>
-                        <div 
-                          className={`${cardStyles.tab} ${activeTab === 'html' ? cardStyles.activeTab : ''}`}
-                          onClick={() => setActiveTab('html')}
-                          role="button"
-                          aria-pressed={activeTab === 'html'}
-                        >
-                          HTML
-                        </div>
-                        <div 
-                          className={`${cardStyles.tab} ${activeTab === 'nextjs' ? cardStyles.activeTab : ''}`}
-                          onClick={() => setActiveTab('nextjs')}
-                          role="button"
-                          aria-pressed={activeTab === 'nextjs'}
-                        >
-                          NextJS
-                        </div>
-                        <div 
-                          className={`${cardStyles.tab} ${activeTab === 'css' ? cardStyles.activeTab : ''}`}
-                          onClick={() => setActiveTab('css')}
-                          role="button"
-                          aria-pressed={activeTab === 'css'}
-                        >
-                          CSS
-                        </div>
+                        {(['html', 'nextjs', 'css'] as const).map((tabKey) => (
+                          <div 
+                            key={tabKey}
+                            className={`${cardStyles.tab} ${activeTab === tabKey ? cardStyles.activeTab : ''}`}
+                            onClick={() => setActiveTab(tabKey)}
+                            role="button"
+                            aria-pressed={activeTab === tabKey}
+                          >
+                            {tabKey === 'html' && 'HTML'}
+                            {tabKey === 'nextjs' && 'NextJS'}
+                            {tabKey === 'css' && 'CSS'}
+                          </div>
+                        ))}
                       </div>
                     </div>
                     
-                    {/* Conditionally render only the active tab's content */}
-                    {renderTabContent(activeTab)}
+                    <div className={cardStyles.codeContentContainer}>
+                      <AnimatePresence mode="wait">
+                        {(['html', 'nextjs', 'css'] as const).map((tabKey) => (
+                          activeTab === tabKey && (
+                            <motion.div
+                              key={tabKey}
+                              className={cardStyles.codeContent}
+                              initial={{ opacity: 0, y: 10 }}
+                              animate={{ opacity: 1, y: 0 }}
+                              exit={{ opacity: 0, y: -10 }}
+                              transition={{ duration: 0.25 }}
+                            >
+                              {getTabContentJSX(tabKey)}
+                            </motion.div>
+                          )
+                        ))}
+                      </AnimatePresence>
+                    </div>
                   </div>
                 </div>
               </div>
