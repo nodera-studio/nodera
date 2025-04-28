@@ -1,6 +1,5 @@
-
 .processCard {
-  background-color: #fff;
+  background-color: #f9f9f9;
   border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 1rem;
   overflow: hidden;
@@ -23,6 +22,7 @@
   overflow: hidden;
   position: relative;
   margin-bottom: 24px;
+  background-color: #f9f9f9;
 }
 
 .cardImage {
@@ -117,7 +117,7 @@
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  background-color: #fff;
+  background-color: #f9f9f9;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
