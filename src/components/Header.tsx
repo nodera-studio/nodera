@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
 import styles from './Header.module.css';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { useIsMobile, useBreakpoint } from '../hooks/use-mobile';
 import { Button } from "@/components/ui/button";
 import { useLocation } from 'react-router-dom';
