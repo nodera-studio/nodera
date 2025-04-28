@@ -110,6 +110,27 @@ export default function Home() {
   const logoRow1 = placeholderLogos.slice(0, 5);
   const logoRow2 = placeholderLogos.slice(5, 10);
 
+  const renderTabContent = (tabKey: string) => {
+    const content = codeContent[tabKey as keyof typeof codeContent];
+    const lines = content.split('\n');
+    
+    return (
+      <TabsContent value={tabKey} className={cardStyles.codeContent}>
+        <div className={cardStyles.lineNumbers}>
+          {Array.from({ length: lines.length }, (_, i) => (
+            <span key={i}>{i + 1}</span>
+          ))}
+        </div>
+        <Textarea
+          value={content}
+          onChange={(e) => handleCodeChange(tabKey, e.target.value)}
+          className={cardStyles.codeText}
+          spellCheck={false}
+        />
+      </TabsContent>
+    );
+  };
+
   return (
     <section ref={ref} className={styles.processSection} aria-label="Our Process">
       <div className={styles.container}>
@@ -227,64 +248,26 @@ export default function Home() {
                           <TabsTrigger 
                             value="html" 
                             className={activeTab === 'html' ? cardStyles.activeTab : ''}
-                            aria-selected={activeTab === 'html'}
                           >
                             HTML
                           </TabsTrigger>
                           <TabsTrigger 
                             value="nextjs" 
                             className={activeTab === 'nextjs' ? cardStyles.activeTab : ''}
-                            aria-selected={activeTab === 'nextjs'}
                           >
                             NextJS
                           </TabsTrigger>
                           <TabsTrigger 
                             value="css" 
                             className={activeTab === 'css' ? cardStyles.activeTab : ''}
-                            aria-selected={activeTab === 'css'}
                           >
                             CSS
                           </TabsTrigger>
                         </TabsList>
-                        <TabsContent value="html" className={cardStyles.codeContent}>
-                          <div className={cardStyles.lineNumbers}>
-                            {Array.from({ length: codeContent.html.split('\n').length }, (_, i) => (
-                              <span key={i}>{i + 1}</span>
-                            ))}
-                          </div>
-                          <Textarea
-                            value={codeContent.html}
-                            onChange={(e) => handleCodeChange('html', e.target.value)}
-                            className={cardStyles.codeText}
-                            spellCheck={false}
-                          />
-                        </TabsContent>
-                        <TabsContent value="nextjs" className={cardStyles.codeContent}>
-                          <div className={cardStyles.lineNumbers}>
-                            {Array.from({ length: codeContent.nextjs.split('\n').length }, (_, i) => (
-                              <span key={i}>{i + 1}</span>
-                            ))}
-                          </div>
-                          <Textarea
-                            value={codeContent.nextjs}
-                            onChange={(e) => handleCodeChange('nextjs', e.target.value)}
-                            className={cardStyles.codeText}
-                            spellCheck={false}
-                          />
-                        </TabsContent>
-                        <TabsContent value="css" className={cardStyles.codeContent}>
-                          <div className={cardStyles.lineNumbers}>
-                            {Array.from({ length: codeContent.css.split('\n').length }, (_, i) => (
-                              <span key={i}>{i + 1}</span>
-                            ))}
-                          </div>
-                          <Textarea
-                            value={codeContent.css}
-                            onChange={(e) => handleCodeChange('css', e.target.value)}
-                            className={cardStyles.codeText}
-                            spellCheck={false}
-                          />
-                        </TabsContent>
+                        
+                        {renderTabContent('html')}
+                        {renderTabContent('nextjs')}
+                        {renderTabContent('css')}
                       </Tabs>
                     </div>
                   </div>
@@ -311,7 +294,7 @@ export default function Home() {
             tabIndex={0}
           >
             <div 
-              className="bg-white rounded-t-[1rem] relative"
+              className="bg-[#f8f9fa] rounded-t-[1rem] relative"
               onMouseEnter={() => setIsHoveringMetrics(true)}
               onMouseLeave={() => setIsHoveringMetrics(false)}
               aria-expanded={isHoveringMetrics}
