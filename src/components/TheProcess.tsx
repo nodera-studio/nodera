@@ -3,6 +3,7 @@ import { motion, useInView, useReducedMotion, AnimatePresence } from 'framer-mot
 import styles from './styles/TheProcess.module.css';
 import cardStyles from './styles/ProcessCard.module.css';
 import { ChevronDown } from 'lucide-react';
+import TechLogos from './TechLogos';
 
 const TheProcess = () => {
   const ref = useRef(null);
@@ -96,19 +97,24 @@ function ModernApp() {
     }
   };
 
-  const placeholderLogos = Array(10).fill(0).map((_, index) => (
+  const logoRows = (
     <motion.div 
-      key={index} 
-      className={cardStyles.placeholderLogo}
-      whileHover={{ scale: shouldReduceMotion ? 1 : 1.1 }}
-      transition={{ duration: 0.2 }}
-      role="img"
-      aria-label={`Placeholder logo ${index + 1}`}
-    />
-  ));
-
-  const logoRow1 = placeholderLogos.slice(0, 5);
-  const logoRow2 = placeholderLogos.slice(5, 10);
+      className={cardStyles.logoCarousel}
+      animate={shouldReduceMotion ? {} : { 
+        x: [0, -720]
+      }}
+      transition={{ 
+        repeat: Infinity,
+        repeatType: "loop",
+        duration: 25,
+        ease: "linear"
+      }}
+    >
+      <div className={cardStyles.logoRow}>
+        <TechLogos />
+      </div>
+    </motion.div>
+  );
 
   const getTabContentJSX = (tabKey: keyof typeof codeContent) => {
     const content = codeContent[tabKey];
@@ -164,29 +170,7 @@ function ModernApp() {
                     role="marquee"
                     aria-label="Scrolling logo carousel"
                   >
-                    <motion.div 
-                      className={cardStyles.logoCarousel}
-                      animate={shouldReduceMotion ? {} : { 
-                        x: [0, -720]
-                      }}
-                      transition={{ 
-                        repeat: Infinity,
-                        repeatType: "loop",
-                        duration: 25,
-                        ease: "linear"
-                      }}
-                    >
-                      <div className={cardStyles.logoRow}>
-                        {logoRow1}
-                        {logoRow1}
-                        {logoRow1}
-                      </div>
-                      <div className={cardStyles.logoRow}>
-                        {logoRow2}
-                        {logoRow2}
-                        {logoRow2}
-                      </div>
-                    </motion.div>
+                    {logoRows}
                     <div 
                       className={cardStyles.companyLogoWrapper}
                       role="img"

@@ -73,18 +73,20 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding: 1rem;
+  background-color: #f8f9fa;
 }
 
 .logoCarousel {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
-  width: 300%; /* Make it wider to ensure no empty space */
+  width: 100%;
 }
 
 .logoRow {
-  display: flex;
-  justify-content: space-around;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
   gap: 1rem;
   width: 100%;
 }
@@ -182,43 +184,33 @@
   color: white;
 }
 
-/* New container for the animated code content */
 .codeContentContainer {
-  flex-grow: 1; /* Take remaining space */
-  position: relative; /* Needed for absolute positioning of motion.div */
-  overflow: hidden; /* Clip animations */
-  background-color: #fff; /* Background for the container */
+  flex-grow: 1;
+  position: relative;
+  overflow: hidden;
+  background-color: #fff;
   border-left: 1px solid #e0e0e0;
   border-right: 1px solid #e0e0e0;
   border-bottom: 1px solid #e0e0e0;
-  border-bottom-left-radius: 0.5rem; /* Match editor rounding */
-  border-bottom-right-radius: 0.5rem; /* Match editor rounding */
+  border-bottom-left-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
 }
 
-/* Styles for the animating motion.div */
 .codeContent {
-  /* Use absolute positioning to stack animating divs */
-  position: absolute; 
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%; 
-  /* Keep flex display and padding for internal layout */
+  height: 100%;
   display: flex;
   padding: 16px !important;
   font-family: 'Menlo', monospace !important;
   font-size: 0.875rem !important;
   line-height: 1.5 !important;
-  /* Remove background/borders as container handles them */
-  /* background-color: #fff !important; */ 
-  /* height: 100% !important; */ 
-  /* min-height: 200px; */
-  /* width: 100% !important; */
-  /* overflow: visible !important; */
-  /* position: relative !important; */
-  /* border-left: 1px solid #e0e0e0; */
-  /* border-right: 1px solid #e0e0e0; */
-  /* border-bottom: 1px solid #e0e0e0; */
+  background-color: #fff !important;
+  border-left: 1px solid #e0e0e0;
+  border-right: 1px solid #e0e0e0;
+  border-bottom: 1px solid #e0e0e0;
 }
 
 .lineNumbers {
@@ -346,5 +338,9 @@
   .companyLogo {
     width: 50px;
     height: 50px;
+  }
+  
+  .logoRow {
+    grid-template-columns: repeat(3, 1fr);
   }
 }
