@@ -167,9 +167,14 @@
 }
 
 .activeTab {
-  background-color: rgba(0, 122, 255, 0.1) !important;
-  color: #007AFF !important;
+  background-color: #555555 !important;
+  color: white !important;
   font-weight: 500;
+}
+
+.tab:hover {
+  background-color: #555555;
+  color: white;
 }
 
 .codeContent {
@@ -185,6 +190,9 @@
   width: 100% !important;
   overflow: visible !important;
   position: relative !important;
+  border-left: 1px solid #e0e0e0;
+  border-right: 1px solid #e0e0e0;
+  border-bottom: 1px solid #e0e0e0;
 }
 
 .lineNumbers {
