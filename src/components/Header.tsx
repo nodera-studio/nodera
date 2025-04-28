@@ -1,137 +1,142 @@
-import React, { useEffect, useState } from 'react';
-import styles from './Header.module.css';
-import { motion, AnimatePresence } from 'framer-motion';
-import { useIsMobile, useBreakpoint } from '../hooks/use-mobile';
+
+import React, { useState, useEffect } from 'react';
 import { Button } from "@/components/ui/button";
+import { Menu, X } from 'lucide-react';
+import styles from './Header.module.css';
 
 const Header = () => {
-  const [isSticky, setIsSticky] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const isMobile = useIsMobile();
-  const breakpoint = useBreakpoint();
-  const isMobileOrSmaller = isMobile || breakpoint === 'small_landscape';
+  const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsSticky(window.scrollY > 0);
+      const isScrolled = window.scrollY > 10;
+      if (isScrolled !== scrolled) {
+        setScrolled(isScrolled);
+      }
     };
-    
-    // Use passive event listener for better performance
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
-  const toggleMobileMenu = () => {
+    document.addEventListener('scroll', handleScroll, { passive: true });
+    
+    return () => {
+      document.removeEventListener('scroll', handleScroll);
+    };
+  }, [scrolled]);
+
+  const toggleMenu = () => {
     setMobileMenuOpen(!mobileMenuOpen);
+    
+    // When opening mobile menu, prevent body scrolling
+    if (!mobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
   };
 
   return (
-    <header className={`${styles.header} ${isSticky ? styles.isSticky : ''}`}>
-      <div className={styles.headerBg} />
-      
-      <div className={styles.logo}>
-        <img 
-          src="/lovable-uploads/logo.png" 
-          alt="Nodera Logo" 
-          className={styles.logoImg} 
-          loading="eager" // Priority loading for logo
-        />
-      </div>
-      
-      {!isMobileOrSmaller ? (
-        <nav className={styles.nav}>
-          <a href="#" className={styles.navLink}>Home</a>
-          <a href="#services" className={styles.navLink}>Services</a>
-          <a href="#work" className={styles.navLink}>Work</a>
-          <a href="#about" className={styles.navLink}>About</a>
+    <header 
+      className={`${styles.header} ${scrolled ? styles.headerScrolled : ''}`}
+      role="navigation" 
+      aria-label="Main Navigation"
+    >
+      <div className={styles.headerContainer}>
+        <div className={styles.logoContainer}>
+          <a href="/" className={styles.logoLink} aria-label="Nodera Web Studio Homepage">
+            <img 
+              src="/lovable-uploads/logo.png" 
+              alt="Nodera Web Studio Logo" 
+              className={styles.logo} 
+            />
+            <span className={styles.logoText}>Nodera</span>
+          </a>
+        </div>
+
+        <nav className={styles.desktopNav}>
+          <ul className={styles.navList}>
+            <li className={styles.navItem}>
+              <a href="#showcases" className={styles.navLink}>Showcases</a>
+            </li>
+            <li className={styles.navItem}>
+              <a href="#services" className={styles.navLink}>Services</a>
+            </li>
+            <li className={styles.navItem}>
+              <a href="#about" className={styles.navLink}>About</a>
+            </li>
+            <li className={styles.navItem}>
+              <Button variant="primary" size="sm" asChild>
+                <a href="#contact">Contact</a>
+              </Button>
+            </li>
+          </ul>
         </nav>
-      ) : (
-        <motion.button 
+
+        <button 
           className={styles.mobileMenuButton}
-          onClick={toggleMobileMenu}
-          aria-label="Menu"
-          whileTap={{ scale: 0.95 }}
+          onClick={toggleMenu}
+          aria-expanded={mobileMenuOpen}
+          aria-controls="mobile-menu"
+          aria-label={mobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
         >
-          <div className={`${styles.menuBar} ${mobileMenuOpen ? styles.open : ''}`}></div>
-          <div className={`${styles.menuBar} ${mobileMenuOpen ? styles.open : ''}`}></div>
-          <div className={`${styles.menuBar} ${mobileMenuOpen ? styles.open : ''}`}></div>
-        </motion.button>
-      )}
-      
-      <AnimatePresence>
+          {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+        </button>
+
         {mobileMenuOpen && (
-          <motion.div 
+          <div 
             className={styles.mobileMenu}
-            initial={{ x: "100%" }}
-            animate={{ x: 0 }}
-            exit={{ x: "100%" }}
-            transition={{ type: "spring", bounce: 0, duration: 0.6 }}
+            id="mobile-menu"
+            role="dialog"
+            aria-modal="true"
+            aria-label="Navigation Menu"
           >
-            <div className={styles.mobileMenuContent}>
-              <nav className={styles.mobileNav}>
-                <a 
-                  href="#" 
-                  className={styles.mobileNavLink}
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  Home
-                </a>
-                <a 
-                  href="#services" 
-                  className={styles.mobileNavLink}
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  Services
-                </a>
-                <a 
-                  href="#work" 
-                  className={styles.mobileNavLink}
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  Work
-                </a>
-                <a 
-                  href="#about" 
-                  className={styles.mobileNavLink}
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  About
-                </a>
-                <a 
-                  href="#contact" 
-                  className={styles.mobileNavLink}
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  Contact
-                </a>
-              </nav>
-              
-              {/* Add "Say Hi" button to mobile menu */}
-              <div className={styles.mobileCta}>
-                <Button
-                  variant="accent"
-                  size="default" 
-                  asChild
-                >
-                  <a href="#contact" onClick={() => setMobileMenuOpen(false)}>
-                    Say Hi
+            <nav>
+              <ul className={styles.mobileNavList}>
+                <li className={styles.mobileNavItem}>
+                  <a 
+                    href="#showcases" 
+                    className={styles.mobileNavLink}
+                    onClick={toggleMenu}
+                  >
+                    Showcases
                   </a>
-                </Button>
-              </div>
-            </div>
-          </motion.div>
+                </li>
+                <li className={styles.mobileNavItem}>
+                  <a 
+                    href="#services" 
+                    className={styles.mobileNavLink}
+                    onClick={toggleMenu}
+                  >
+                    Services
+                  </a>
+                </li>
+                <li className={styles.mobileNavItem}>
+                  <a 
+                    href="#about" 
+                    className={styles.mobileNavLink}
+                    onClick={toggleMenu}
+                  >
+                    About
+                  </a>
+                </li>
+                <li className={styles.mobileNavItem}>
+                  <Button 
+                    variant="primary" 
+                    size="lg" 
+                    className="w-full" 
+                    asChild
+                  >
+                    <a 
+                      href="#contact"
+                      onClick={toggleMenu}
+                    >
+                      Contact
+                    </a>
+                  </Button>
+                </li>
+              </ul>
+            </nav>
+          </div>
         )}
-      </AnimatePresence>
-      
-      {/* Only show CTA button on non-mobile screens */}
-      <div className={styles.cta}>
-        <Button
-          variant="accent"
-          size="default"
-          asChild
-        >
-          <a href="#contact">Say Hi</a>
-        </Button>
       </div>
     </header>
   );
