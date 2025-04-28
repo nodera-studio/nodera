@@ -11,7 +11,7 @@
   top: 0;
   z-index: 1000;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-  height: 44px;
+  height: 49px;
 }
 
 .headerBg {
@@ -49,12 +49,12 @@
 }
 
 .navLink {
-  font-family: 'SF Pro Text', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  font-family: 'Baloo Da 2', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
   font-size: 14px;
   color: rgba(0, 0, 0, 0.8);
   text-decoration: none;
   transition: color 0.2s ease;
-  font-weight: 400;
+  font-weight: 500;
   letter-spacing: -0.01em;
   padding: 4px 8px;
   border-radius: 4px;
@@ -70,21 +70,10 @@
   font-weight: 500;
 }
 
-/* Remove the existing active link styling and add the new border indicator */
-.header::after {
-  content: '';
-  position: absolute;
-  bottom: -1px;
-  left: 0;
-  width: 100%;
-  height: 1px;
-  background-color: rgba(0, 0, 0, 0.1);
-}
-
 .navLink.active::before {
   content: '';
   position: absolute;
-  bottom: -12px;
+  bottom: -14px;
   left: 0;
   width: 100%;
   height: 2px;
@@ -119,7 +108,6 @@
   height: 32px !important;
 }
 
-/* Mobile menu styling */
 .mobileMenuButton {
   display: none;
   flex-direction: column;
@@ -188,14 +176,12 @@
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
-/* Mobile CTA button in menu */
 .mobileCta {
   margin-top: 30px;
   display: flex;
   justify-content: center;
 }
 
-/* Monitor screens */
 @media (min-width: 1441px) {
   .header {
     padding: 8px 60px;
@@ -206,12 +192,10 @@
   }
 }
 
-/* Laptop screens */
 @media (max-width: 1440px) {
   /* Maintain current styles */
 }
 
-/* Tablet screens */
 @media (max-width: 991px) {
   .header {
     padding: 8px 30px;
@@ -233,7 +217,6 @@
   }
 }
 
-/* Small landscape / Foldable phones */
 @media (max-width: 767px) {
   .header {
     padding: 12px 20px;
@@ -252,13 +235,11 @@
     display: flex;
   }
   
-  /* Hide the desktop CTA button on mobile */
   .cta {
     display: none;
   }
 }
 
-/* Mobile phones */
 @media (max-width: 640px) {
   .header {
     padding: 10px 15px;
