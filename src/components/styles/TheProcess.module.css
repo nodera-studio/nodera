@@ -1,3 +1,4 @@
+
 /* Styles specific to TheProcess component container */
 .processSection {
   background-color: #fff;
@@ -46,6 +47,6 @@
 }
 
 .activeTab {
-  background-color: #e0e0e0 !important; /* Example active tab style */
-  color: #333 !important;
+  background-color: rgba(99, 102, 241, 0.1) !important;
+  color: #6366F1 !important;
 }
