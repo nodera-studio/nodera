@@ -91,32 +91,19 @@
   background-color: rgba(0, 0, 0, 0.8);
 }
 
-.cta {
-  display: flex;
-}
-
-.sayHiButton {
-  background-color: rgba(0, 122, 255, 0.9) !important;
-  font-size: 14px !important;
-  padding: 0 15px !important;
-  height: 28px !important;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
 .mobileMenuButton {
-  display: none;
+  display: flex;
   flex-direction: column;
   justify-content: space-between;
   width: 20px;
-  height: 15px;
+  height: 12px; /* Reduced height to make lines closer */
   background: transparent;
   border: none;
   cursor: pointer;
   padding: 0;
   z-index: 110;
   position: relative;
+  margin-left: auto; /* Move to the right */
 }
 
 /* Apple-style hamburger menu with 2 bars instead of 3 */
@@ -131,7 +118,7 @@
 
 /* First bar animation - rotates to form X */
 .menuBar.open:nth-child(1) {
-  transform: translateY(6px) rotate(45deg);
+  transform: translateY(5px) rotate(45deg);
 }
 
 /* Second bar animation - rotates to form X */
@@ -188,7 +175,7 @@
 }
 
 .mobileNavLink.active {
-  color: rgba(0, 122, 255, 0.9);
+  color: #000; /* Changed from blue accent to black for active items */
 }
 
 .navChevron {
@@ -206,28 +193,10 @@
 
 .mobileNavLink.active .navChevron {
   opacity: 1;
-  color: rgba(0, 122, 255, 0.9);
+  color: #000; /* Changed from blue accent to black for active items */
 }
 
-.mobileCta {
-  margin-top: auto;
-  display: flex;
-  justify-content: center;
-  margin-bottom: 40px;
-}
-
-.mobileCtaButton {
-  background-color: rgba(0, 122, 255, 0.9) !important;
-  font-size: 18px !important;
-  padding: 12px 30px !important;
-  height: auto !important;
-  width: 100%;
-  max-width: 200px;
-  font-weight: 600 !important;
-  border-radius: 12px !important;
-  box-shadow: 0 4px 12px rgba(0, 122, 255, 0.2) !important;
-}
-
+/* Media queries */
 @media (min-width: 1441px) {
   .header {
     padding: 8px 60px;
@@ -256,10 +225,6 @@
     font-size: 13px;
     padding: 4px 6px;
   }
-  
-  .sayHiButton {
-    font-size: 13px !important;
-  }
 }
 
 @media (max-width: 767px) {
@@ -278,17 +243,6 @@
   
   .mobileMenuButton {
     display: flex;
-  }
-  
-  /* Keep CTA visible on mobile */
-  .cta {
-    display: flex;
-  }
-  
-  .sayHiButton {
-    font-size: 12px !important;
-    padding: 0 12px !important;
-    height: 26px !important;
   }
 }
 

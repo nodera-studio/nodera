@@ -3,7 +3,6 @@ import React, { useState, useEffect, useCallback } from 'react';
 import styles from './Header.module.css';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useIsMobile, useBreakpoint } from '../hooks/use-mobile';
-import { Button } from "@/components/ui/button";
 import { Link, useLocation } from 'react-router-dom';
 import { ChevronRight } from 'lucide-react';
 
@@ -150,24 +149,24 @@ const Header = () => {
             </Link>
           ))}
         </nav>
-      ) : (
-        <motion.button 
-          className={styles.mobileMenuButton}
-          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          aria-label="Menu"
-          whileTap={{ scale: 0.95 }}
-          initial="closed"
-        >
-          <motion.div 
-            className={`${styles.menuBar} ${mobileMenuOpen ? styles.open : ''}`}
-            transition={{ duration: 0.2 }}
-          ></motion.div>
-          <motion.div 
-            className={`${styles.menuBar} ${mobileMenuOpen ? styles.open : ''}`}
-            transition={{ duration: 0.2, delay: 0.05 }}
-          ></motion.div>
-        </motion.button>
-      )}
+      ) : null}
+      
+      <motion.button 
+        className={styles.mobileMenuButton}
+        onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+        aria-label="Menu"
+        whileTap={{ scale: 0.95 }}
+        initial="closed"
+      >
+        <motion.div 
+          className={`${styles.menuBar} ${mobileMenuOpen ? styles.open : ''}`}
+          transition={{ duration: 0.2 }}
+        ></motion.div>
+        <motion.div 
+          className={`${styles.menuBar} ${mobileMenuOpen ? styles.open : ''}`}
+          transition={{ duration: 0.2, delay: 0.05 }}
+        ></motion.div>
+      </motion.button>
       
       <AnimatePresence>
         {mobileMenuOpen && (
@@ -196,37 +195,10 @@ const Header = () => {
                   </motion.div>
                 ))}
               </motion.nav>
-              
-              <motion.div 
-                className={styles.mobileCta}
-                variants={itemVariants}
-              >
-                <Button
-                  variant="accent"
-                  size="default" 
-                  asChild
-                  className={styles.mobileCtaButton}
-                >
-                  <Link to="/contact" onClick={() => setMobileMenuOpen(false)}>
-                    Say Hi
-                  </Link>
-                </Button>
-              </motion.div>
             </motion.div>
           </motion.div>
         )}
       </AnimatePresence>
-      
-      <div className={styles.cta}>
-        <Button 
-          variant="primary"
-          size="default"
-          className={styles.sayHiButton}
-          asChild
-        >
-          <Link to="/contact">Get Started</Link>
-        </Button>
-      </div>
     </header>
   );
 };
