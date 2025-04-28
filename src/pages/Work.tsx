@@ -72,7 +72,7 @@ const Work = () => {
               {categories.map((category) => (
                 <Button
                   key={category.id}
-                  variant={activeCategory === category.id ? "default" : "outline"}
+                  variant={activeCategory === category.id ? "primary" : "outline"}
                   onClick={() => {
                     setActiveCategory(category.id);
                     setCurrentPage(1);
@@ -99,7 +99,7 @@ const Work = () => {
                 {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
                   <Button
                     key={page}
-                    variant={currentPage === page ? "default" : "outline"}
+                    variant={currentPage === page ? "primary" : "outline"}
                     size="sm"
                     onClick={() => setCurrentPage(page)}
                     className="w-10 h-10 rounded-full p-0"
