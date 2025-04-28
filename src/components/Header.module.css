@@ -80,6 +80,14 @@
   transform: scale(1.02);
 }
 
+.sayHiButton {
+  background-color: rgba(0, 122, 255, 0.9) !important;
+}
+
+.sayHiButton:hover {
+  background-color: rgba(0, 122, 255, 1) !important;
+}
+
 /* Mobile menu styling */
 .mobileMenuButton {
   display: none;

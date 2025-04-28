@@ -108,11 +108,14 @@ const Header = () => {
         )}
       </AnimatePresence>
       
-      <div className={styles.cta}>
-        <a href="#contact" className={styles.ctaButton}>
-          Say Hi
-        </a>
-      </div>
+      <Button 
+        variant="primary"
+        size="default"
+        className={styles.sayHiButton}
+        asChild
+      >
+        <a href="#contact">Say Hi</a>
+      </Button>
     </header>
   );
 };
