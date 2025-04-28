@@ -1,18 +1,47 @@
-.header {
+
+/* Base header styles that are shared between different states */
+.header, .headerInitial, .headerSticky {
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 20px 40px;
   background-color: #F9F9F9;
   width: 100%;
-  position: sticky;
+  position: fixed;
   top: 0;
   z-index: 100;
   overflow: hidden;
-  transition: background 0.3s;
+  transition: transform 0.3s ease, opacity 0.3s ease, padding 0.3s ease;
   border-bottom: 1px solid #F1F1F1;
 }
 
+/* Initial header styles - spread out for the landing view */
+.headerInitial {
+  padding: 30px 60px;
+  z-index: 90; /* Lower z-index so sticky header appears on top */
+}
+
+/* Styles for the initial header when it should be hidden */
+.headerHidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Sticky header styles - more condensed */
+.headerSticky {
+  padding: 15px 40px;
+  transform: translateY(-100%); /* Start offscreen */
+  opacity: 0;
+  z-index: 110; /* Higher z-index to appear on top */
+}
+
+/* Animation class for the sticky header when it becomes visible */
+.headerStickyVisible {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* Mobile sticky header style */
 .isSticky {
   background-color: #F9F9F9;
 }
@@ -36,7 +65,13 @@
   z-index: 1;
 }
 
-.logoImg {
+/* Adjust logo size based on header state */
+.headerInitial .logoImg {
+  width: 90px;
+  height: 90px;
+}
+
+.headerSticky .logoImg, .header .logoImg {
   width: 75px;
   height: 75px;
 }
@@ -44,6 +79,11 @@
 .nav {
   display: flex;
   gap: 20px;
+}
+
+/* Wider spacing for nav links in the initial header */
+.headerInitial .nav {
+  gap: 40px;
 }
 
 .navLink {
@@ -165,12 +205,20 @@
 
 /* Monitor screens */
 @media (min-width: 1441px) {
-  .header {
+  .headerInitial {
+    padding: 40px 80px;
+  }
+  
+  .headerSticky {
     padding: 24px 60px;
   }
   
   .nav {
     gap: 30px;
+  }
+  
+  .headerInitial .nav {
+    gap: 50px;
   }
 }
 
@@ -181,11 +229,20 @@
 
 /* Tablet screens */
 @media (max-width: 991px) {
-  .header {
+  .headerInitial {
+    padding: 25px 40px;
+  }
+  
+  .headerSticky {
     padding: 16px 30px;
   }
   
-  .logoImg {
+  .headerInitial .logoImg {
+    width: 75px;
+    height: 75px;
+  }
+  
+  .headerSticky .logoImg {
     width: 60px;
     height: 60px;
   }
@@ -203,8 +260,13 @@
 
 /* Small landscape / Foldable phones */
 @media (max-width: 767px) {
+  .headerInitial {
+    display: none; /* Hide the initial header on mobile */
+  }
+  
   .header {
     padding: 12px 20px;
+    position: sticky; /* Use sticky for mobile */
   }
   
   .logoImg {

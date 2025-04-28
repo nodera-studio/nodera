@@ -1,3 +1,4 @@
+
 import React, { lazy, Suspense } from 'react';
 import Header from '../components/Header';
 import Hero from '../components/Hero';
@@ -24,25 +25,25 @@ const Index = () => {
 			<Header />
 
 			<main className="relative flex-grow">
-				<section>
+				<section id="hero">
 					<Hero />
 				</section>
 				<div className="global-divider" />
-				<section className="relative z-10">
+				<section id="services" className="relative z-10">
 					<Showcases />
 				</section>
 				<div className="global-divider" />
-				<section className="relative z-30">
+				<section id="work" className="relative z-30">
 					<WhatWeDo />
 				</section>
 				<div className="global-divider" />
 				<Suspense fallback={<div style={{ height: '600px' }} />}>
-					<section className="relative z-40">
+					<section id="process" className="relative z-40">
 						<TheProcess />
 					</section>
 				</Suspense>
 				<div className="global-divider" />
-				<section className="relative z-50">
+				<section id="contact" className="relative z-50">
 					<CallToAction />
 				</section>
 			</main>
