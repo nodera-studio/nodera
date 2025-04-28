@@ -2,8 +2,8 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 12px 22px;
-  background-color: rgba(249, 249, 249, 0.8);
+  padding: 8px 22px;
+  background-color: rgba(249, 249, 249, 0.7);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   width: 100%;
@@ -11,6 +11,7 @@
   top: 0;
   z-index: 1000;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  height: 48px;
 }
 
 .headerBg {
@@ -29,8 +30,8 @@
 }
 
 .logoImg {
-  width: 60px;
-  height: 60px;
+  width: 40px;
+  height: 40px;
   transition: transform 0.2s ease;
 }
 
@@ -40,23 +41,44 @@
 
 .nav {
   display: flex;
-  gap: 28px;
+  gap: 24px;
   margin: 0 auto;
+  align-items: center;
+  height: 100%;
 }
 
 .navLink {
-  font-family: 'Baloo Da 2', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
-  font-size: 18px;
+  font-family: 'SF Pro Text', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  font-size: 14px;
   color: rgba(0, 0, 0, 0.8);
   text-decoration: none;
   transition: color 0.2s ease;
-  font-weight: 500;
+  font-weight: 400;
   letter-spacing: -0.01em;
   padding: 4px 8px;
+  border-radius: 4px;
+  position: relative;
 }
 
 .navLink:hover {
   color: rgba(0, 0, 0, 1);
+}
+
+.navLink.active {
+  color: rgba(0, 0, 0, 1);
+  font-weight: 500;
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.navLink.active::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 8px;
+  right: 8px;
+  height: 2px;
+  background-color: rgba(0, 0, 0, 0.8);
+  border-radius: 1px;
 }
 
 .cta {
@@ -168,11 +190,11 @@
 /* Monitor screens */
 @media (min-width: 1441px) {
   .header {
-    padding: 24px 60px;
+    padding: 8px 60px;
   }
   
   .nav {
-    gap: 30px;
+    gap: 28px;
   }
 }
 
@@ -184,21 +206,21 @@
 /* Tablet screens */
 @media (max-width: 991px) {
   .header {
-    padding: 16px 30px;
+    padding: 8px 30px;
   }
   
   .logoImg {
-    width: 60px;
-    height: 60px;
+    width: 36px;
+    height: 36px;
   }
   
   .navLink {
-    font-size: 15px;
+    font-size: 13px;
     padding: 4px 6px;
   }
   
   .ctaButton {
-    font-size: 15px;
+    font-size: 13px;
     padding: 6px 14px;
   }
 }

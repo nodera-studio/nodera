@@ -1,14 +1,39 @@
-import React, { useState } from 'react';
+
+import React, { useState, useEffect } from 'react';
 import styles from './Header.module.css';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { useIsMobile, useBreakpoint } from '../hooks/use-mobile';
 import { Button } from "@/components/ui/button";
+import { useLocation } from 'react-router-dom';
 
 const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState('home');
   const isMobile = useIsMobile();
   const breakpoint = useBreakpoint();
   const isMobileOrSmaller = isMobile || breakpoint === 'small_landscape';
+  const location = useLocation();
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const sections = ['home', 'services', 'work', 'about', 'contact'];
+      const scrollPosition = window.scrollY + 100;
+
+      for (const section of sections) {
+        const element = document.getElementById(section);
+        if (element) {
+          const { offsetTop, offsetHeight } = element;
+          if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
+            setActiveSection(section);
+            break;
+          }
+        }
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   return (
     <header className={styles.header}>
@@ -25,11 +50,36 @@ const Header = () => {
       
       {!isMobileOrSmaller ? (
         <nav className={styles.nav}>
-          <a href="#home" className={styles.navLink}>Home</a>
-          <a href="#services" className={styles.navLink}>Services</a>
-          <a href="#work" className={styles.navLink}>Work</a>
-          <a href="#about" className={styles.navLink}>About</a>
-          <a href="#contact" className={styles.navLink}>Contact</a>
+          <a 
+            href="#home" 
+            className={`${styles.navLink} ${activeSection === 'home' ? styles.active : ''}`}
+          >
+            Home
+          </a>
+          <a 
+            href="#services" 
+            className={`${styles.navLink} ${activeSection === 'services' ? styles.active : ''}`}
+          >
+            Services
+          </a>
+          <a 
+            href="#work" 
+            className={`${styles.navLink} ${activeSection === 'work' ? styles.active : ''}`}
+          >
+            Work
+          </a>
+          <a 
+            href="#about" 
+            className={`${styles.navLink} ${activeSection === 'about' ? styles.active : ''}`}
+          >
+            About
+          </a>
+          <a 
+            href="#contact" 
+            className={`${styles.navLink} ${activeSection === 'contact' ? styles.active : ''}`}
+          >
+            Contact
+          </a>
         </nav>
       ) : (
         <motion.button 
