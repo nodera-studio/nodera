@@ -1,20 +1,11 @@
-
 import React, { useEffect, useRef } from 'react';
 import { useIsMobile } from '../hooks/use-mobile';
 import styles from './styles/Showcases.module.css';
 import { Button } from "@/components/ui/button";
-import { motion, useScroll, useTransform } from "framer-motion";
 
 const Showcases = () => {
   const isMobile = useIsMobile();
   const sectionTitleRef = useRef<HTMLHeadingElement>(null);
-  const containerRef = useRef(null);
-
-  // For scroll-based animations
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start end", "end start"]
-  });
 
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
@@ -39,24 +30,21 @@ const Showcases = () => {
 
   return (
     <div className="bg-white py-16 md:py-24 lg:py-32 px-6 sm:px-10 lg:px-16">
-      <div className="max-w-7xl mx-auto" ref={containerRef}>
+      <div className="max-w-7xl mx-auto">
         <div className="flex flex-wrap justify-between items-center mb-12 md:mb-16 lg:mb-20 gap-4">
           <h2 ref={sectionTitleRef} className="text-black section-title">
             Digital <span className="gradient-word">Showcases</span>
           </h2>
-          <a href="#" className="view-all-link">
+          <a 
+            href="#" 
+            className="view-all-link"
+          >
             View All →
           </a>
         </div>
         
-        <div className="flex flex-col gap-8 lg:gap-12 relative">
-          <motion.div
-            className={styles.showcaseCard}
-            style={{
-              zIndex: 1
-            }}
-          >
-            {/* First showcase content */}
+        <div className="flex flex-col gap-8 lg:gap-12">
+          <div className={styles.showcaseCard}>
             <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 items-center">
               <div className="lg:w-1/2 space-y-4 md:space-y-6 order-2 lg:order-1">
                 <h3 className="">Museum CMS Platform</h3>
@@ -64,10 +52,18 @@ const Showcases = () => {
                   The behind-the-scenes system that powers museum mobile guides, intuitive for staff, informative for visitors.
                 </p>
                 <div className="flex flex-wrap gap-4 pt-4">
-                  <Button variant="primary" size="lg" asChild>
+                  <Button
+                    variant="primary"
+                    size="lg"
+                    asChild
+                  >
                     <a href="#">The Full Story</a>
                   </Button>
-                  <Button variant="secondary" size="lg" asChild>
+                  <Button
+                    variant="secondary"
+                    size="lg"
+                    asChild
+                  >
                     <a href="#">More Creations</a>
                   </Button>
                 </div>
@@ -80,16 +76,9 @@ const Showcases = () => {
                 />
               </div>
             </div>
-          </motion.div>
+          </div>
           
-          <motion.div
-            className={styles.showcaseCard}
-            style={{
-              zIndex: 2,
-              translateY: useTransform(scrollYProgress, [0.1, 0.4], ["0%", "-5%"])
-            }}
-          >
-            {/* Second showcase content */}
+          <div className={styles.showcaseCard}>
             <div className="flex flex-col-reverse lg:flex-row gap-8 lg:gap-12 items-center">
               <div className="lg:w-1/2">
                 <img 
@@ -104,16 +93,24 @@ const Showcases = () => {
                   Where craftsmanship meets digital presence. Elegantly showcasing custom furniture and connecting artisans with clients.
                 </p>
                 <div className="flex flex-wrap gap-4 pt-4">
-                  <Button variant="primary" size="lg" asChild>
+                  <Button
+                    variant="primary"
+                    size="lg"
+                    asChild
+                  >
                     <a href="#">The Full Story</a>
                   </Button>
-                  <Button variant="secondary" size="lg" asChild>
+                  <Button
+                    variant="secondary"
+                    size="lg"
+                    asChild
+                  >
                     <a href="#">More Creations</a>
                   </Button>
                 </div>
               </div>
             </div>
-          </motion.div>
+          </div>
         </div>
       </div>
     </div>
