@@ -1,31 +1,14 @@
-
-import React, { useState, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import React, { useState } from 'react';
 import styles from './Header.module.css';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useIsMobile, useBreakpoint } from '../hooks/use-mobile';
-import { Sun, Moon } from 'lucide-react';
 import { Button } from "@/components/ui/button";
-import { useTheme } from '@/hooks/use-theme';
 
 const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const isMobile = useIsMobile();
   const breakpoint = useBreakpoint();
   const isMobileOrSmaller = isMobile || breakpoint === 'small_landscape';
-  const { pathname, hash } = useLocation();
-  const { theme, setTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
-  
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  // Active link check
-  const isActive = (href: string) => {
-    if (href === '#home' && (hash === '' || hash === '#home')) return true;
-    return hash === href;
-  };
 
   return (
     <header className={styles.header}>
@@ -42,36 +25,11 @@ const Header = () => {
       
       {!isMobileOrSmaller ? (
         <nav className={styles.nav}>
-          <a 
-            href="#home" 
-            className={`${styles.navLink} ${isActive('#home') ? styles.active : ''}`}
-          >
-            Home
-          </a>
-          <a 
-            href="#services" 
-            className={`${styles.navLink} ${isActive('#services') ? styles.active : ''}`}
-          >
-            Services
-          </a>
-          <a 
-            href="#work" 
-            className={`${styles.navLink} ${isActive('#work') ? styles.active : ''}`}
-          >
-            Work
-          </a>
-          <a 
-            href="#about" 
-            className={`${styles.navLink} ${isActive('#about') ? styles.active : ''}`}
-          >
-            About
-          </a>
-          <a 
-            href="#contact" 
-            className={`${styles.navLink} ${isActive('#contact') ? styles.active : ''}`}
-          >
-            Contact
-          </a>
+          <a href="#home" className={styles.navLink}>Home</a>
+          <a href="#services" className={styles.navLink}>Services</a>
+          <a href="#work" className={styles.navLink}>Work</a>
+          <a href="#about" className={styles.navLink}>About</a>
+          <a href="#contact" className={styles.navLink}>Contact</a>
         </nav>
       ) : (
         <motion.button 
@@ -99,35 +57,35 @@ const Header = () => {
               <nav className={styles.mobileNav}>
                 <a 
                   href="#home" 
-                  className={`${styles.mobileNavLink} ${isActive('#home') ? styles.active : ''}`}
+                  className={styles.mobileNavLink}
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   Home
                 </a>
                 <a 
                   href="#services" 
-                  className={`${styles.mobileNavLink} ${isActive('#services') ? styles.active : ''}`}
+                  className={styles.mobileNavLink}
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   Services
                 </a>
                 <a 
                   href="#work" 
-                  className={`${styles.mobileNavLink} ${isActive('#work') ? styles.active : ''}`}
+                  className={styles.mobileNavLink}
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   Work
                 </a>
                 <a 
                   href="#about" 
-                  className={`${styles.mobileNavLink} ${isActive('#about') ? styles.active : ''}`}
+                  className={styles.mobileNavLink}
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   About
                 </a>
                 <a 
                   href="#contact" 
-                  className={`${styles.mobileNavLink} ${isActive('#contact') ? styles.active : ''}`}
+                  className={styles.mobileNavLink}
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   Contact
@@ -145,43 +103,19 @@ const Header = () => {
                   </a>
                 </Button>
               </div>
-
-              <Button
-                variant="ghost"
-                size="icon"
-                className={styles.mobileThemeToggle}
-                onClick={() => {
-                  setTheme(theme === 'dark' ? 'light' : 'dark');
-                }}
-              >
-                {mounted && theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
-              </Button>
             </div>
           </motion.div>
         )}
       </AnimatePresence>
       
-      <div className={styles.headerActions}>
-        <Button 
-          variant="ghost"
-          size="icon"
-          className={styles.themeToggle}
-          onClick={() => {
-            setTheme(theme === 'dark' ? 'light' : 'dark');
-          }}
-        >
-          {mounted && theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
-        </Button>
-      
-        <Button 
-          variant="primary"
-          size="default"
-          className={styles.sayHiButton}
-          asChild
-        >
-          <a href="#contact">Say Hi</a>
-        </Button>
-      </div>
+      <Button 
+        variant="primary"
+        size="default"
+        className={styles.sayHiButton}
+        asChild
+      >
+        <a href="#contact">Say Hi</a>
+      </Button>
     </header>
   );
 };
