@@ -64,26 +64,46 @@
 
 .gradient-background {
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(45deg, #FFFFFF, #007AFF, #D1A2FF, #FFFFFF);
-  background-size: 400% 400%;
-  animation: gradientWave 15s ease infinite;
-  opacity: 0.8;
+  top: -20%;
+  left: -10%;
+  right: -10%;
+  bottom: -10%;
+  background: radial-gradient(
+    circle at top left,
+    rgba(255, 255, 255, 0.95) 0%,
+    rgba(255, 255, 255, 0.7) 25%
+  ),
+  radial-gradient(
+    circle at top right,
+    rgba(0, 122, 255, 0.8) 0%,
+    rgba(0, 122, 255, 0.4) 30%
+  ),
+  radial-gradient(
+    circle at bottom right,
+    rgba(209, 162, 255, 0.8) 0%,
+    rgba(209, 162, 255, 0.3) 40%
+  );
+  background-size: 200% 200%;
+  animation: pulseGradient 15s ease-in-out infinite;
+  opacity: 0.9;
   z-index: 0;
+  filter: blur(50px);
+  transform: scale(1.2);
+  transition: opacity 0.3s ease;
 }
 
-@keyframes gradientWave {
+@keyframes pulseGradient {
   0% {
-    background-position: 0% 50%;
+    background-position: 0% 0%;
+    opacity: 0.85;
   }
   50% {
-    background-position: 100% 50%;
+    background-position: 100% 100%;
+    opacity: 0.95;
   }
   100% {
-    background-position: 0% 50%;
+    background-position: 0% 0%;
+    opacity: 0.85;
   }
 }
 
