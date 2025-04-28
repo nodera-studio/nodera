@@ -235,9 +235,6 @@ export default function Home() {
                         <span className={cardStyles.browserDot} aria-hidden="true" />
                         <span className={cardStyles.browserDot} aria-hidden="true" />
                       </div>
-                      <div className={cardStyles.urlBar} role="presentation">
-                        localhost:3000
-                      </div>
                       <Tabs 
                         defaultValue="html" 
                         className={cardStyles.codeTabs}
@@ -269,6 +266,10 @@ export default function Home() {
                         {renderTabContent('nextjs')}
                         {renderTabContent('css')}
                       </Tabs>
+                    </div>
+                    
+                    <div className={cardStyles.codeContent}>
+                      {/* Content will be rendered by the Tabs component */}
                     </div>
                   </div>
                 </div>

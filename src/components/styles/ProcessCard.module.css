@@ -1,4 +1,3 @@
-
 .processCard {
   background-color: #fff;
   border: 1px solid rgba(0, 0, 0, 0.1);
@@ -120,7 +119,9 @@
 
 .codeHeader {
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 1rem;
   background-color: #f8f9fa;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
@@ -128,7 +129,6 @@
 .browserControls {
   display: flex;
   align-items: center;
-  padding: 0.75rem 1rem;
   gap: 0.5rem;
 }
 
@@ -142,21 +142,12 @@
 .browserDot:nth-child(2) { background-color: #ffbd2e; }
 .browserDot:nth-child(3) { background-color: #28c840; }
 
-.urlBar {
-  background-color: #fff;
-  border: 1px solid #e5e7eb;
-  border-radius: 0.25rem;
-  margin: 0 1rem 0.75rem;
-  padding: 0.25rem 0.75rem;
-  font-size: 0.875rem;
-  color: #6b7280;
-}
-
 .tabsList {
   margin: 0 !important;
-  padding: 0 1rem !important;
+  padding: 0 !important;
   background-color: transparent !important;
-  height: 2.5rem !important;
+  height: auto !important;
+  border: none !important;
 }
 
 .activeTab {
