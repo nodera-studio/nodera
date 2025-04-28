@@ -1,4 +1,3 @@
-
 import React, { useRef, useState, useEffect } from 'react';
 import { motion, useInView, useReducedMotion } from 'framer-motion';
 import styles from './styles/TheProcess.module.css';
@@ -14,16 +13,50 @@ const TheProcess = () => {
   const [activeTab, setActiveTab] = useState('html');
   const [isHoveringMetrics, setIsHoveringMetrics] = useState(false);
   const [codeContent, setCodeContent] = useState({
-    html: `<html>\n  <head>\n    <meta charset="UTF-8">\n    <title>My Project</title>\n  </head>\n  <body>\n    <h1>Hello World</h1>\n  </body>\n</html>`,
-    nextjs: `// pages/index.js\nimport React from 'react';\n\nexport default function Home() {\n  return (\n    <div>\n      <h1 className="font-comfortaa font-bold">Welcome to Next.js!</h1>\n    </div>\n  )\n}`,
-    css: `.container {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  min-height: 100vh;\n  background: linear-gradient(\n    to right,\n    #f5f5f5,\n    #ffffff\n  );\n}`
+    html: `<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Modern Web App</title>
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>`,
+    nextjs: `// app/page.tsx
+import { Header } from '@/components/Header'
+import { Hero } from '@/components/Hero'
+
+export default function Home() {
+  return (
+    <main className="min-h-screen">
+      <Header />
+      <Hero />
+    </main>
+  )
+}`,
+    css: `.container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: linear-gradient(
+    135deg,
+    #f5f5f5 0%,
+    #ffffff 100%
+  );
+}
+
+.header {
+  padding: 1.5rem;
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}`
   });
 
-  // Ensure code content is visible when switching tabs
   useEffect(() => {
     const activeContent = codeContent[activeTab as keyof typeof codeContent];
     if (activeContent) {
-      // Force a re-render when tab changes to ensure content is displayed
       setCodeContent(prev => ({ ...prev }));
     }
   }, [activeTab]);
@@ -122,7 +155,6 @@ const TheProcess = () => {
                         ease: "linear"
                       }}
                     >
-                      {/* Triple the logo rows to create seamless infinite loop */}
                       <div className={cardStyles.logoRow}>
                         {logoRow1}
                         {logoRow1}
@@ -177,10 +209,13 @@ const TheProcess = () => {
                 <div className={`${cardStyles.cardImage} w-full`}>
                   <div className={`${cardStyles.codeEditor} w-full`}>
                     <div className={cardStyles.codeHeader}>
-                      <div className={cardStyles.dots} aria-hidden="true">
-                        <span></span>
-                        <span></span>
-                        <span></span>
+                      <div className={cardStyles.browserControls}>
+                        <span className={cardStyles.browserDot} aria-hidden="true" />
+                        <span className={cardStyles.browserDot} aria-hidden="true" />
+                        <span className={cardStyles.browserDot} aria-hidden="true" />
+                      </div>
+                      <div className={cardStyles.urlBar} role="presentation">
+                        localhost:3000
                       </div>
                       <Tabs 
                         defaultValue="html" 

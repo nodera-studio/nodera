@@ -1,4 +1,3 @@
-
 .processCard {
   background-color: #fff;
   border: 1px solid rgba(0, 0, 0, 0.1);
@@ -57,7 +56,6 @@
   color: #555;
 }
 
-/* Logo Carousel Styles */
 .logoCarouselContainer {
   width: 100%;
   height: 100%;
@@ -109,7 +107,6 @@
   height: 70px;
 }
 
-/* Code Editor Styles */
 .codeEditor {
   width: 100%;
   height: 100%;
@@ -117,60 +114,69 @@
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  background-color: #fff;
 }
 
 .codeHeader {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0.5rem 1rem;
+  flex-direction: column;
   background-color: #f8f9fa;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
-.dots {
+.browserControls {
   display: flex;
-  gap: 0.5rem;
   align-items: center;
-  padding: 0.25rem 0;
+  padding: 0.75rem 1rem;
+  gap: 0.5rem;
 }
 
-.dots span {
-  width: 0.5rem;
-  height: 0.5rem;
+.browserDot {
+  width: 0.75rem;
+  height: 0.75rem;
   border-radius: 50%;
-  background-color: rgba(0, 0, 0, 0.3);
 }
 
-.codeTabs {
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
+.browserDot:nth-child(1) { background-color: #ff5f57; }
+.browserDot:nth-child(2) { background-color: #ffbd2e; }
+.browserDot:nth-child(3) { background-color: #28c840; }
+
+.urlBar {
+  background-color: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.25rem;
+  margin: 0 1rem 0.75rem;
+  padding: 0.25rem 0.75rem;
+  font-size: 0.875rem;
+  color: #6b7280;
 }
 
 .tabsList {
-  justify-content: center;
+  margin: 0 !important;
+  padding: 0 1rem !important;
   background-color: transparent !important;
-  margin-bottom: 0.5rem;
+  height: 2.5rem !important;
 }
 
 .activeTab {
-  background-color: rgba(99, 102, 241, 0.1) !important;
+  background-color: #fff !important;
   color: #6366F1 !important;
+  border: 1px solid #e5e7eb !important;
+  border-bottom: none !important;
+  margin-bottom: -1px !important;
 }
 
 .codeContent {
   flex-grow: 1;
   display: flex;
-  padding: 0;
-  font-family: monospace !important;
+  padding: 1rem !important;
+  font-family: 'Menlo', monospace !important;
   font-size: 0.875rem !important;
   line-height: 1.5 !important;
-  background-color: transparent !important;
+  background-color: #fff !important;
   height: 100%;
   min-height: 200px;
   width: 100%;
-  padding-left: 0.5rem; /* Add a small padding to the left */
 }
 
 .lineNumbers {
@@ -211,7 +217,6 @@
   border: none !important;
 }
 
-/* Dashboard & Metrics Styles */
 .dashboard {
   width: 100%;
   height: 100%;
@@ -221,7 +226,7 @@
   justify-content: flex-start;
   position: relative;
   overflow: hidden;
-  background-color: #f8f9fa; /* Gray background for the top part */
+  background-color: #f8f9fa;
 }
 
 .metricsContainer {
@@ -233,7 +238,7 @@
 }
 
 .metric {
-  background-color: #fff; /* White background for metric cards */
+  background-color: #fff;
   padding: 0.75rem;
   border-radius: 0.5rem;
   display: flex;
