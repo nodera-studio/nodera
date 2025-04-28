@@ -1,3 +1,4 @@
+
 import React, { lazy, Suspense, useState, useEffect } from 'react';
 import Header from '../components/Header';
 import Hero from '../components/Hero';
@@ -48,13 +49,12 @@ const Index = () => {
         <section className="relative z-30 -mt-16 md:-mt-24 mask-fade-in-top">
           <WhatWeDo />
         </section>
-        <div className="w-full h-0.5 bg-[#F1F1F1] my-12" />
         <Suspense fallback={<div style={{ height: '600px' }} />}>
           <section className="relative z-40 -mt-16 md:-mt-24 mask-fade-in-top">
             <TheProcess />
           </section>
         </Suspense>
-        <div className="w-full h-0.5 bg-[#F1F1F1] mt-12" />
+        {/* Removed divider before CTA section */}
         <section className="relative z-20">
           <CallToAction />
         </section>
