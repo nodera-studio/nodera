@@ -35,33 +35,8 @@ const CallToAction = () => {
 
   return (
     <div className={`${styles['cta-section']} bg-white text-center relative overflow-hidden h-[400px]`}>
-      <div className={styles['cta-bg-art']} aria-hidden="true">
-        <svg className={styles['cta-bg-art-svg']} viewBox="0 0 800 600" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
-          <defs>
-            <linearGradient id="gridGradient" x1="0" y1="0" x2="800" y2="0" gradientUnits="userSpaceOnUse">
-              <stop stopColor="#e6eaf3" stopOpacity="0.5" />
-              <stop offset="1" stopColor="#e6eaf3" stopOpacity="0.05" />
-            </linearGradient>
-            <mask id="fadeMask">
-              <linearGradient id="fadeGradient" x1="0" y1="0" x2="800" y2="0" gradientUnits="userSpaceOnUse">
-                <stop stopColor="#fff" stopOpacity="1" />
-                <stop offset="1" stopColor="#fff" stopOpacity="0" />
-              </linearGradient>
-              <rect x="0" y="0" width="800" height="600" fill="url(#fadeGradient)" />
-            </mask>
-          </defs>
-          <g mask="url(#fadeMask)">
-            {Array.from({ length: 13 }).map((_, i) => (
-              <line key={i} x1={i * 64} y1="0" x2={i * 64} y2="600" stroke="url(#gridGradient)" strokeWidth="1.2" />
-            ))}
-            {Array.from({ length: 10 }).map((_, i) => (
-              <line key={i} x1="0" y1={i * 60} x2="800" y2={i * 60} stroke="url(#gridGradient)" strokeWidth="1.2" />
-            ))}
-            <path d="M0,600 Q400,200 800,600" stroke="url(#gridGradient)" strokeWidth="2.5" fill="none" />
-          </g>
-        </svg>
-      </div>
-
+      <div className={styles['gradient-background']} aria-hidden="true" />
+      
       <div className="flex items-center justify-center w-full h-full relative z-10">
         <div className={styles['cta-content-wrapper']}>
           <div

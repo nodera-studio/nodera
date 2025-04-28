@@ -57,8 +57,34 @@
 .cta-section {
   position: relative;
   z-index: 1;
-  background: #fff;
+  background: transparent;
   padding: 0;
+  overflow: hidden;
+}
+
+.gradient-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, #FFFFFF, #007AFF, #D1A2FF, #FFFFFF);
+  background-size: 400% 400%;
+  animation: gradientWave 15s ease infinite;
+  opacity: 0.8;
+  z-index: 0;
+}
+
+@keyframes gradientWave {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 .cta-bg-art {
@@ -115,10 +141,8 @@
 }
 
 .cta-content-wrapper {
-  /* position: relative; - No longer needed, handled by new parent */
-  /* z-index: 10;      - No longer needed, handled by new parent */
-  max-width: 56rem; /* Equivalent to max-w-3xl */
+  max-width: 56rem;
   margin-left: auto;
   margin-right: auto;
-  width: 100%;      /* Ensures it takes up space within the flex container */
+  width: 100%;
 }
