@@ -115,6 +115,7 @@
   display: flex;
   flex-direction: column;
   background-color: #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
 .codeHeader {
@@ -143,6 +144,8 @@
 .browserDot:nth-child(3) { background-color: #28c840; }
 
 .tabsList {
+  display: flex;
+  gap: 0.5rem;
   margin: 0 !important;
   padding: 0 !important;
   background-color: transparent !important;
@@ -150,12 +153,19 @@
   border: none !important;
 }
 
+.tab {
+  padding: 0.25rem 0.75rem;
+  border-radius: 0.25rem;
+  font-size: 0.875rem;
+  color: #6b7280;
+  background-color: transparent;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
 .activeTab {
-  background-color: #fff !important;
+  background-color: rgba(99, 102, 241, 0.1) !important;
   color: #6366F1 !important;
-  border: 1px solid #e5e7eb !important;
-  border-bottom: none !important;
-  margin-bottom: -1px !important;
 }
 
 .codeContent {

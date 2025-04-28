@@ -17,40 +17,42 @@ const TheProcess = () => {
 <html lang="en">
   <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width">
+    <meta name="viewport"
+      content="width=device,
+      width, initial-
+      scale=1.0">
     <title>Modern Web App</title>
   </head>
   <body>
     <div id="root"></div>
   </body>
 </html>`,
-    nextjs: `// app/page.tsx
-import { Header } from '@/components/Header'
-import { Hero } from '@/components/Hero'
+    nextjs: `import React,
+{ useState } from 'react';
+import Nodera 
+from './Nodera';
+import './App.css';
 
-export default function Home() {
+function ModernApp() {
+  const [state, setState] = 
+    useState(null);
+  
   return (
-    <main className="min-h-screen">
-      <Header />
-      <Hero />
-    </main>
-  )
-}`,
-    css: `.container {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  background: linear-gradient(
-    135deg,
-    #f5f5f5 0%,
-    #ffffff 100%
+    <Nodera />
   );
+}`,
+    css: `body {
+  margin: 0;
+  font-family: 'Arial',
+    sans-serif;
+  background-color: #eef2f7;
+  color: #333;
 }
 
-.header {
-  padding: 1.5rem;
-  backdrop-filter: blur(10px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
 }`
   });
 
