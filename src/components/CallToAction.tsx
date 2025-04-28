@@ -1,4 +1,3 @@
-
 import React, { useEffect, useRef } from 'react';
 import { Button } from "@/components/ui/button";
 import { useIsMobile } from '../hooks/use-mobile';
@@ -35,7 +34,7 @@ const CallToAction = () => {
   }, []);
 
   return (
-    <div className={`${styles['cta-section']} bg-transparent text-center relative overflow-hidden h-[400px] before:content-[''] before:absolute before:top-0 before:left-0 before:right-0 before:h-20 before:bg-gradient-to-b before:from-white before:to-transparent before:z-[1]`}>
+    <div className={`${styles['cta-section']} bg-transparent text-center relative overflow-hidden h-[500px] pt-24 before:content-[''] before:absolute before:top-0 before:left-0 before:right-0 before:h-20 before:bg-gradient-to-b before:from-white before:to-transparent before:z-[1]`}>
       <div className={styles['gradient-background']} aria-hidden="true" />
       
       <div className="flex items-center justify-center w-full h-full relative z-10">
