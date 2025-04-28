@@ -1,10 +1,30 @@
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import styles from './Header.module.css';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useIsMobile, useBreakpoint } from '../hooks/use-mobile';
 import { Button } from "@/components/ui/button";
 import { Link, useLocation } from 'react-router-dom';
+
+const menuVariants = {
+  hidden: { opacity: 0, height: 0 },
+  visible: { 
+    opacity: 1, 
+    height: "100vh",
+    transition: { 
+      duration: 0.5,
+      ease: [0.22, 1, 0.36, 1],
+    }
+  },
+  exit: { 
+    opacity: 0, 
+    height: 0,
+    transition: { 
+      duration: 0.5,
+      ease: [0.22, 1, 0.36, 1],
+    }
+  }
+};
 
 const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -14,17 +34,18 @@ const Header = () => {
   const location = useLocation();
   const [scrolled, setScrolled] = useState(false);
 
-  useEffect(() => {
-    // Add backdrop blur effect when scrolling
-    const handleScrollEffect = () => {
-      if (window.scrollY > 10) {
-        setScrolled(true);
-      } else {
-        setScrolled(false);
-      }
-    };
+  // Debounced scroll handler for better performance
+  const handleScrollEffect = useCallback(() => {
+    if (window.scrollY > 10) {
+      setScrolled(true);
+    } else {
+      setScrolled(false);
+    }
+  }, []);
 
-    window.addEventListener('scroll', handleScrollEffect);
+  useEffect(() => {
+    // Use passive event listener for better performance
+    window.addEventListener('scroll', handleScrollEffect, { passive: true });
     
     // Initial check
     handleScrollEffect();
@@ -32,7 +53,7 @@ const Header = () => {
     return () => {
       window.removeEventListener('scroll', handleScrollEffect);
     };
-  }, []);
+  }, [handleScrollEffect]);
 
   useEffect(() => {
     // Prevent body scrolling when mobile menu is open
@@ -46,6 +67,13 @@ const Header = () => {
       document.body.style.overflow = 'auto';
     };
   }, [mobileMenuOpen]);
+
+  // Close mobile menu when route changes
+  useEffect(() => {
+    if (mobileMenuOpen) {
+      setMobileMenuOpen(false);
+    }
+  }, [location.pathname]);
 
   const isActive = (path: string) => {
     return location.pathname === path;
@@ -65,11 +93,13 @@ const Header = () => {
       
       <div className={styles.logo}>
         <Link to="/">
-          <img 
+          <motion.img 
             src="/lovable-uploads/logo.png" 
             alt="Nodera Logo" 
             className={styles.logoImg} 
             loading="eager"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
           />
         </Link>
       </div>
@@ -93,9 +123,18 @@ const Header = () => {
           aria-label="Menu"
           whileTap={{ scale: 0.95 }}
         >
-          <div className={`${styles.menuBar} ${mobileMenuOpen ? styles.open : ''}`}></div>
-          <div className={`${styles.menuBar} ${mobileMenuOpen ? styles.open : ''}`}></div>
-          <div className={`${styles.menuBar} ${mobileMenuOpen ? styles.open : ''}`}></div>
+          <motion.div 
+            className={`${styles.menuBar} ${mobileMenuOpen ? styles.open : ''}`}
+            transition={{ duration: 0.2 }}
+          ></motion.div>
+          <motion.div 
+            className={`${styles.menuBar} ${mobileMenuOpen ? styles.open : ''}`}
+            transition={{ duration: 0.2, delay: 0.05 }}
+          ></motion.div>
+          <motion.div 
+            className={`${styles.menuBar} ${mobileMenuOpen ? styles.open : ''}`}
+            transition={{ duration: 0.2, delay: 0.1 }}
+          ></motion.div>
         </motion.button>
       )}
       
@@ -103,37 +142,49 @@ const Header = () => {
         {mobileMenuOpen && (
           <motion.div 
             className={styles.mobileMenu}
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "100vh" }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+            variants={menuVariants}
+            initial="hidden"
+            animate="visible"
+            exit="exit"
           >
-            <div className={styles.mobileMenuContent}>
-              <nav className={styles.mobileNav}>
-                {menuItems.map((item) => (
-                  <Link 
+            <motion.div className={styles.mobileMenuContent}>
+              <motion.nav className={styles.mobileNav}>
+                {menuItems.map((item, index) => (
+                  <motion.div
                     key={item.path}
-                    to={item.path}
-                    className={styles.mobileNavLink}
-                    onClick={() => setMobileMenuOpen(false)}
+                    initial={{ opacity: 0, x: -10 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.2 + index * 0.1 }}
                   >
-                    {item.title}
-                  </Link>
+                    <Link 
+                      to={item.path}
+                      className={`${styles.mobileNavLink} ${isActive(item.path) ? styles.active : ''}`}
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
+                      {item.title}
+                    </Link>
+                  </motion.div>
                 ))}
-              </nav>
+              </motion.nav>
               
-              <div className={styles.mobileCta}>
+              <motion.div 
+                className={styles.mobileCta}
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.5 }}
+              >
                 <Button
                   variant="accent"
                   size="default" 
                   asChild
+                  className="shadow-lg"
                 >
                   <Link to="/contact" onClick={() => setMobileMenuOpen(false)}>
                     Say Hi
                   </Link>
                 </Button>
-              </div>
-            </div>
+              </motion.div>
+            </motion.div>
           </motion.div>
         )}
       </AnimatePresence>

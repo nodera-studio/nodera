@@ -1,6 +1,7 @@
 
 import React from 'react';
 import styles from './PageHero.module.css';
+import { motion } from 'framer-motion';
 
 interface PageHeroProps {
   title: string;
@@ -11,12 +12,36 @@ const PageHero: React.FC<PageHeroProps> = ({ title, subtitle }) => {
   return (
     <div className={styles.pageHero}>
       <div className={styles.heroBackgroundContainer}>
-        <div className={styles.heroBackground}></div>
+        <motion.div 
+          className={styles.heroBackground}
+          initial={{ opacity: 0.7 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8 }}
+        ></motion.div>
       </div>
-      <div className={styles.heroContent}>
-        <h1 className="font-comfortaa">{title}</h1>
-        <p className="hero-subtitle mt-4 max-w-2xl mx-auto">{subtitle}</p>
-      </div>
+      <motion.div 
+        className={styles.heroContent}
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.2, duration: 0.5 }}
+      >
+        <motion.h1 
+          className="font-comfortaa"
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.4, duration: 0.5 }}
+        >
+          {title}
+        </motion.h1>
+        <motion.p 
+          className="hero-subtitle mt-4 max-w-2xl mx-auto"
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.6, duration: 0.5 }}
+        >
+          {subtitle}
+        </motion.p>
+      </motion.div>
     </div>
   );
 };

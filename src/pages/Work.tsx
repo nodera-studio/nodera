@@ -1,12 +1,12 @@
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import PageHero from '../components/PageHero';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const projects = [
   { id: 1, title: "Project 1", category: "websites", image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f" },
@@ -27,27 +27,36 @@ const categories = [
   { id: "portfolio", label: "Portfolio" },
 ];
 
-const ProjectCard = ({ title, image }: { title: string; image: string }) => (
-  <motion.div
-    initial={{ opacity: 0, y: 20 }}
-    animate={{ opacity: 1, y: 0 }}
-    transition={{ duration: 0.3 }}
-  >
-    <Card className="overflow-hidden">
-      <div className="aspect-video relative overflow-hidden">
-        <img 
-          src={image} 
-          alt={title}
-          className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
-          loading="lazy"
-        />
-      </div>
-      <CardFooter className="p-4">
-        <h3 className="text-xl font-medium">{title}</h3>
-      </CardFooter>
-    </Card>
-  </motion.div>
-);
+const ProjectCard = ({ title, image }: { title: string; image: string }) => {
+  const [isLoaded, setIsLoaded] = useState(false);
+  
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.3 }}
+      className="h-full"
+    >
+      <Card className="overflow-hidden h-full">
+        <div className="aspect-video relative overflow-hidden bg-gray-100">
+          <motion.img 
+            src={image} 
+            alt={title}
+            className={`w-full h-full object-cover transition-all duration-300 hover:scale-105 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}
+            loading="lazy"
+            onLoad={() => setIsLoaded(true)}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: isLoaded ? 1 : 0 }}
+            transition={{ duration: 0.3 }}
+          />
+        </div>
+        <CardFooter className="p-4">
+          <h3 className="text-xl font-medium">{title}</h3>
+        </CardFooter>
+      </Card>
+    </motion.div>
+  );
+};
 
 const Work = () => {
   const [activeCategory, setActiveCategory] = useState("all");
@@ -64,6 +73,11 @@ const Work = () => {
   
   const totalPages = Math.ceil(filteredProjects.length / projectsPerPage);
 
+  // Reset to page 1 when changing category
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [activeCategory]);
+
   return (
     <div className="min-h-screen flex flex-col overflow-x-hidden">
       <Header />
@@ -74,47 +88,60 @@ const Work = () => {
           subtitle="Explore our latest projects" 
         />
 
-        <section className="py-8 sm:py-12 md:py-16 px-4 sm:px-6">
+        <section className="py-6 sm:py-10 md:py-16 px-4 sm:px-6">
           <div className="container mx-auto">
-            <div className="flex flex-wrap justify-center gap-2 mb-8 sm:mb-12">
-              <div className="w-full overflow-x-auto pb-4 sm:pb-0 hide-scrollbar">
-                <div className="flex justify-start sm:justify-center gap-2 min-w-max px-4 sm:px-0">
+            <div className="mb-6 sm:mb-10">
+              <div className="w-full">
+                <div className="flex justify-start sm:justify-center gap-2 pb-2 overflow-x-auto scrollbar-hide scroll-smooth">
                   {categories.map((category) => (
-                    <Button
+                    <motion.div
                       key={category.id}
-                      variant={activeCategory === category.id ? "primary" : "outline"}
-                      onClick={() => {
-                        setActiveCategory(category.id);
-                        setCurrentPage(1);
-                      }}
-                      className="min-w-[100px] sm:min-w-24 whitespace-nowrap"
+                      whileTap={{ scale: 0.97 }}
                     >
-                      {category.label}
-                    </Button>
+                      <Button
+                        variant={activeCategory === category.id ? "primary" : "outline"}
+                        onClick={() => setActiveCategory(category.id)}
+                        className="min-w-[90px] sm:min-w-[120px] whitespace-nowrap text-sm h-9 sm:h-10 shadow-sm transition-all duration-200"
+                      >
+                        {category.label}
+                      </Button>
+                    </motion.div>
                   ))}
                 </div>
               </div>
             </div>
 
-            <div className="grid sm:grid-cols-2 gap-4 sm:gap-6 md:gap-8">
-              {currentProjects.map((project) => (
-                <ProjectCard
-                  key={project.id}
-                  title={project.title}
-                  image={project.image}
-                />
-              ))}
-            </div>
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={activeCategory + currentPage}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.2 }}
+                className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5 md:gap-6"
+              >
+                {currentProjects.map((project) => (
+                  <ProjectCard
+                    key={project.id}
+                    title={project.title}
+                    image={project.image}
+                  />
+                ))}
+              </motion.div>
+            </AnimatePresence>
 
             {totalPages > 1 && (
-              <div className="flex justify-center mt-8 sm:mt-12 gap-2">
+              <div className="flex justify-center mt-8 sm:mt-10 gap-2">
                 {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
                   <Button
                     key={page}
                     variant={currentPage === page ? "primary" : "outline"}
                     size="sm"
-                    onClick={() => setCurrentPage(page)}
-                    className="w-8 h-8 sm:w-10 sm:h-10 rounded-full p-0"
+                    onClick={() => {
+                      setCurrentPage(page);
+                      window.scrollTo({ top: 0, behavior: 'smooth' });
+                    }}
+                    className="w-8 h-8 sm:w-10 sm:h-10 rounded-full p-0 shadow-sm transition-all duration-200"
                   >
                     {page}
                   </Button>
@@ -124,10 +151,10 @@ const Work = () => {
           </div>
         </section>
 
-        <section className="py-12 sm:py-16 px-4 sm:px-6 bg-gray-900 text-white">
+        <section className="py-10 sm:py-14 px-4 sm:px-6 bg-gray-900 text-white">
           <div className="container mx-auto text-center">
             <h2 className="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6">Have a project in mind?</h2>
-            <Button size="lg" variant="outline" className="text-white border-white hover:bg-white hover:text-gray-900">
+            <Button size="lg" variant="outline" className="text-white border-white hover:bg-white hover:text-gray-900 transition-all duration-300">
               <Link to="/contact">Let's Talk</Link>
             </Button>
           </div>
@@ -138,11 +165,11 @@ const Work = () => {
       
       <style>
         {`
-        .hide-scrollbar {
+        .scrollbar-hide {
           -ms-overflow-style: none;
           scrollbar-width: none;
         }
-        .hide-scrollbar::-webkit-scrollbar {
+        .scrollbar-hide::-webkit-scrollbar {
           display: none;
         }
         `}
