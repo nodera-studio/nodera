@@ -54,8 +54,7 @@ const Index = () => {
             <TheProcess />
           </section>
         </Suspense>
-        {/* Removed divider before CTA section */}
-        <section className="relative z-20">
+        <section className="relative z-50">
           <CallToAction />
         </section>
       </main>
