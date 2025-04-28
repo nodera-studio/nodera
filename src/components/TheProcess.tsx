@@ -1,5 +1,6 @@
+
 import React, { useRef, useState, useEffect } from 'react';
-import { motion, useInView, useReducedMotion, useAnimation } from 'framer-motion';
+import { motion, useInView, useReducedMotion } from 'framer-motion';
 import styles from './styles/TheProcess.module.css';
 import cardStyles from './styles/ProcessCard.module.css';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from './ui/tabs';
@@ -112,6 +113,7 @@ const TheProcess = () => {
                         ease: "linear"
                       }}
                     >
+                      {/* Double the logo rows to create seamless infinite loop */}
                       <div className={cardStyles.logoRow}>
                         {logoRow1}
                         {logoRow1}
