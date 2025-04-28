@@ -1,9 +1,8 @@
+
 import React, { useRef, useState, useEffect } from 'react';
 import { motion, useInView, useReducedMotion } from 'framer-motion';
 import styles from './styles/TheProcess.module.css';
 import cardStyles from './styles/ProcessCard.module.css';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from './ui/tabs';
-import { Textarea } from './ui/textarea';
 import { ChevronDown } from 'lucide-react';
 
 const TheProcess = () => {
@@ -17,8 +16,8 @@ const TheProcess = () => {
 <html lang="en">
   <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-      content="width=device,
+    <meta name="viewport" 
+      content="width=device
       width, initial-
       scale=1.0">
     <title>Modern Web App</title>
@@ -117,19 +116,20 @@ function ModernApp() {
     const lines = content.split('\n');
     
     return (
-      <TabsContent value={tabKey} className={cardStyles.codeContent}>
+      <div className={`${activeTab === tabKey ? 'block' : 'hidden'} ${cardStyles.codeContent}`}>
         <div className={cardStyles.lineNumbers}>
           {Array.from({ length: lines.length }, (_, i) => (
             <span key={i}>{i + 1}</span>
           ))}
         </div>
-        <Textarea
+        <textarea
           value={content}
           onChange={(e) => handleCodeChange(tabKey, e.target.value)}
           className={cardStyles.codeText}
           spellCheck={false}
+          readOnly
         />
-      </TabsContent>
+      </div>
     );
   };
 
@@ -237,42 +237,37 @@ function ModernApp() {
                         <span className={cardStyles.browserDot} aria-hidden="true" />
                         <span className={cardStyles.browserDot} aria-hidden="true" />
                       </div>
-                      <Tabs 
-                        defaultValue="html" 
-                        className={cardStyles.codeTabs}
-                        onValueChange={setActiveTab}
-                        value={activeTab}
-                      >
-                        <TabsList className={cardStyles.tabsList} aria-label="Code language selection">
-                          <TabsTrigger 
-                            value="html" 
-                            className={activeTab === 'html' ? cardStyles.activeTab : ''}
-                          >
-                            HTML
-                          </TabsTrigger>
-                          <TabsTrigger 
-                            value="nextjs" 
-                            className={activeTab === 'nextjs' ? cardStyles.activeTab : ''}
-                          >
-                            NextJS
-                          </TabsTrigger>
-                          <TabsTrigger 
-                            value="css" 
-                            className={activeTab === 'css' ? cardStyles.activeTab : ''}
-                          >
-                            CSS
-                          </TabsTrigger>
-                        </TabsList>
-                        
-                        {renderTabContent('html')}
-                        {renderTabContent('nextjs')}
-                        {renderTabContent('css')}
-                      </Tabs>
+                      <div className={cardStyles.tabsList}>
+                        <div 
+                          className={`${cardStyles.tab} ${activeTab === 'html' ? cardStyles.activeTab : ''}`}
+                          onClick={() => setActiveTab('html')}
+                          role="button"
+                          aria-pressed={activeTab === 'html'}
+                        >
+                          HTML
+                        </div>
+                        <div 
+                          className={`${cardStyles.tab} ${activeTab === 'nextjs' ? cardStyles.activeTab : ''}`}
+                          onClick={() => setActiveTab('nextjs')}
+                          role="button"
+                          aria-pressed={activeTab === 'nextjs'}
+                        >
+                          NextJS
+                        </div>
+                        <div 
+                          className={`${cardStyles.tab} ${activeTab === 'css' ? cardStyles.activeTab : ''}`}
+                          onClick={() => setActiveTab('css')}
+                          role="button"
+                          aria-pressed={activeTab === 'css'}
+                        >
+                          CSS
+                        </div>
+                      </div>
                     </div>
                     
-                    <div className={cardStyles.codeContent}>
-                      {/* Content will be rendered by the Tabs component */}
-                    </div>
+                    {renderTabContent('html')}
+                    {renderTabContent('nextjs')}
+                    {renderTabContent('css')}
                   </div>
                 </div>
               </div>
