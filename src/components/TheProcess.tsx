@@ -1,4 +1,3 @@
-
 import React, { useRef, useState, useEffect } from 'react';
 import { motion, useInView, useReducedMotion } from 'framer-motion';
 import styles from './styles/TheProcess.module.css';
@@ -215,7 +214,7 @@ function ModernApp() {
               <div className={`${cardStyles.cardStep} gradient-text font-semibold`}>01</div>
               <h3 className={cardStyles.cardTitle}>Discovery & Strategy</h3>
               <p className={cardStyles.cardDescription}>
-                We dive deep into your business reality before writing a single line of code. Your goals become our roadmap, creating strategic foundations that support every pixel and function.
+                We dive into your business reality before coding. Your goals shape our roadmap, creating foundations for every pixel and function.
               </p>
             </div>
           </motion.div>
@@ -265,9 +264,8 @@ function ModernApp() {
                       </div>
                     </div>
                     
-                    {renderTabContent('html')}
-                    {renderTabContent('nextjs')}
-                    {renderTabContent('css')}
+                    {/* Conditionally render only the active tab's content */}
+                    {renderTabContent(activeTab)}
                   </div>
                 </div>
               </div>
@@ -277,7 +275,7 @@ function ModernApp() {
               <div className={`${cardStyles.cardStep} gradient-text font-semibold`}>02</div>
               <h3 className={cardStyles.cardTitle}>Design & Develop</h3>
               <p className={cardStyles.cardDescription}>
-                Vision becomes reality. Our collaborative approach eliminates the handoff gap, delivering experiences where beauty and functionality are inseparable from the start.
+                Vision becomes reality. Our collaborative approach eliminates handoffs, creating experiences where beauty and functionality are inseparable.
               </p>
             </div>
           </motion.div>
@@ -368,7 +366,7 @@ function ModernApp() {
               <div className={`${cardStyles.cardStep} gradient-text font-semibold`}>03</div>
               <h3 className={cardStyles.cardTitle}>Maintain & Improve</h3>
               <p className={cardStyles.cardDescription}>
-                Launch day isn't goodbye. It's just the beginning. Your digital product evolves as markets shift and users engage. Continuous refinement keeps you ahead, turning good into exceptional over time.
+                Launch day is just the beginning. Your product evolves with markets and users. Continuous refinement elevates good to exceptional.
               </p>
             </div>
           </motion.div>

@@ -21,7 +21,6 @@
   aspect-ratio: 16 / 9;
   overflow: hidden;
   position: relative;
-  margin-bottom: 24px;
   background-color: #f9f9f9;
 }
 
@@ -40,17 +39,21 @@
   flex-grow: 1;
   display: flex;
   flex-direction: column;
+  margin-top: 1rem;
 }
 
 .cardStep {
   font-weight: 500;
   font-size: 1.5rem;
-  margin-bottom: 0.5rem;
-  color: #8B5CF6;
+  margin-bottom: 0.25rem;
+  background-image: linear-gradient(90deg, #D1A2FF 0%, #007AFF 50%);
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
 }
 
 .cardTitle {
-  margin-bottom: 1.25rem;
+  margin-bottom: 0.75rem;
   color: inherit;
   font-size: 2rem;
   font-weight: 600;

@@ -29,9 +29,9 @@
   width: auto;
   height: 80%;
   object-fit: contain;
-  filter: blur(20px);
+  filter: blur(30px);
   transform: translate(-50%, -50%) scale(1.5);
-  opacity: 0.4;
+  opacity: 0.3;
   pointer-events: none;
 }
 
