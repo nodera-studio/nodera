@@ -1,24 +1,25 @@
+
 .header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 12px 22px;
-  background-color: rgba(249, 249, 249, 0.8);
+  padding: 0 22px;
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   width: 100%;
   position: fixed;
   top: 0;
   z-index: 1000;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  height: var(--header-height, 70px);
+  transition: all 0.3s ease;
 }
 
 .headerBg {
   position: absolute;
   inset: 0;
   z-index: -1;
-  background: inherit;
-  filter: saturate(180%);
+  background-color: hsla(var(--header-bg));
+  border-bottom: 1px solid hsla(var(--header-border));
 }
 
 .logo {
@@ -29,8 +30,8 @@
 }
 
 .logoImg {
-  width: 60px;
-  height: 60px;
+  width: 50px;
+  height: 50px;
   transition: transform 0.2s ease;
 }
 
@@ -46,43 +47,87 @@
 
 .navLink {
   font-family: 'Baloo Da 2', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
-  font-size: 18px;
+  font-size: 16px;
   color: rgba(0, 0, 0, 0.8);
   text-decoration: none;
   transition: color 0.2s ease;
   font-weight: 500;
   letter-spacing: -0.01em;
   padding: 4px 8px;
+  position: relative;
+}
+
+.dark .navLink {
+  color: rgba(247, 246, 251, 0.8);
 }
 
 .navLink:hover {
   color: rgba(0, 0, 0, 1);
 }
 
-.cta {
+.dark .navLink:hover {
+  color: rgba(247, 246, 251, 1);
+}
+
+.navLink::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 100%;
+  height: 1px;
+  background-color: currentColor;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.3s ease;
+}
+
+.navLink:hover::after {
+  transform: scaleX(0.5);
+  transform-origin: left;
+}
+
+.navLink.active::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.headerActions {
   display: flex;
+  align-items: center;
+  gap: 12px;
 }
 
-.ctaButton {
-  font-family: 'Baloo Da 2', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
-  background: rgba(0, 122, 255, 0.9);
-  color: white;
-  padding: 6px 16px;
-  border-radius: 980px;
-  text-decoration: none;
+.themeToggle {
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  color: rgba(0, 0, 0, 0.7);
   transition: all 0.2s ease;
-  letter-spacing: -0.01em;
-  font-weight: 500;
 }
 
-.ctaButton:hover {
-  background: rgba(0, 122, 255, 1);
-  transform: scale(1.02);
+.dark .themeToggle {
+  color: rgba(247, 246, 251, 0.8);
+}
+
+.themeToggle:hover {
+  background: rgba(0, 0, 0, 0.05);
+  color: rgba(0, 0, 0, 1);
+}
+
+.dark .themeToggle:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: rgba(247, 246, 251, 1);
 }
 
 .sayHiButton {
   background-color: rgba(0, 122, 255, 0.9) !important;
-  font-size: 18px !important;
+  font-size: 16px !important;
 }
 
 .sayHiButton:hover {
@@ -94,8 +139,8 @@
   display: none;
   flex-direction: column;
   justify-content: space-between;
-  width: 30px;
-  height: 20px;
+  width: 24px;
+  height: 18px;
   background: transparent;
   border: none;
   cursor: pointer;
@@ -105,14 +150,14 @@
 }
 
 .menuBar {
-  width: 30px;
-  height: 2px;
-  background-color: #000;
+  width: 24px;
+  height: 1.5px;
+  background-color: var(--foreground);
   transition: all 0.3s ease;
 }
 
 .menuBar.open:nth-child(1) {
-  transform: rotate(45deg) translate(5px, 6px);
+  transform: rotate(45deg) translate(5px, 5px);
 }
 
 .menuBar.open:nth-child(2) {
@@ -120,7 +165,7 @@
 }
 
 .menuBar.open:nth-child(3) {
-  transform: rotate(-45deg) translate(5px, -6px);
+  transform: rotate(-45deg) translate(5px, -5px);
 }
 
 .mobileMenu {
@@ -130,13 +175,13 @@
   bottom: 0;
   width: 100%;
   max-width: 300px;
-  background-color: #F9F9F9;
   z-index: 105;
   overflow-y: auto;
+  background-color: hsla(var(--background));
 }
 
 .mobileMenuContent {
-  padding: 100px 40px 40px;
+  padding: 90px 40px 40px;
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -150,12 +195,37 @@
 
 .mobileNavLink {
   font-family: 'Baloo Da 2', sans-serif;
-  font-size: 24px;
+  font-size: 22px;
   font-weight: 600;
-  color: #000;
+  color: var(--foreground);
   text-decoration: none;
   padding: 10px 0;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid hsla(var(--border));
+  position: relative;
+}
+
+.mobileNavLink.active {
+  color: rgba(0, 122, 255, 1);
+}
+
+.dark .mobileNavLink.active {
+  color: rgba(0, 132, 255, 1);
+}
+
+.mobileThemeToggle {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  color: var(--foreground);
+  transition: all 0.2s ease;
+  z-index: 120;
 }
 
 /* Mobile CTA button in menu */
@@ -168,7 +238,8 @@
 /* Monitor screens */
 @media (min-width: 1441px) {
   .header {
-    padding: 24px 60px;
+    padding: 0 60px;
+    height: var(--header-height, 70px);
   }
   
   .nav {
@@ -184,34 +255,31 @@
 /* Tablet screens */
 @media (max-width: 991px) {
   .header {
-    padding: 16px 30px;
+    padding: 0 30px;
+    height: var(--header-height, 70px);
   }
   
   .logoImg {
-    width: 60px;
-    height: 60px;
+    width: 45px;
+    height: 45px;
   }
   
   .navLink {
     font-size: 15px;
     padding: 4px 6px;
   }
-  
-  .ctaButton {
-    font-size: 15px;
-    padding: 6px 14px;
-  }
 }
 
 /* Small landscape / Foldable phones */
 @media (max-width: 767px) {
   .header {
-    padding: 12px 20px;
+    padding: 0 20px;
+    height: var(--header-height, 60px);
   }
   
   .logoImg {
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 40px;
   }
   
   .nav {
@@ -222,8 +290,7 @@
     display: flex;
   }
   
-  /* Hide the desktop CTA button on mobile */
-  .cta {
+  .themeToggle {
     display: none;
   }
 }
@@ -231,16 +298,12 @@
 /* Mobile phones */
 @media (max-width: 640px) {
   .header {
-    padding: 10px 15px;
+    padding: 0 15px;
+    height: var(--header-height, 60px);
   }
   
   .logoImg {
-    width: 45px;
-    height: 45px;
-  }
-  
-  .ctaButton {
-    font-size: 12px;
-    padding: 5px 12px;
+    width: 40px;
+    height: 40px;
   }
 }
