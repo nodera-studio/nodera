@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import styles from './Hero.module.css';
 
@@ -23,25 +22,20 @@ const Hero: React.FC = () => {
   const parallaxOffset = scrollY * 0.3; // Adjust 0.3 factor for desired speed
   
   return (
-    <div className={styles.hero} role="banner" aria-label="Nodera Web Studio - Main Banner">
+    <div className={styles.hero}>
       <div className={styles.heroBackgroundContainer}>
         <div
           className="absolute inset-0 rounded-full bg-gradient-to-r from-purple-200/30 via-blue-200/20 to-blue-300/30 opacity-80 blur-3xl pointer-events-none"
           style={{ transform: `translateY(${parallaxOffset}px)` }}
-          aria-hidden="true"
         />
         <div
           className="absolute inset-0 rounded-full bg-gradient-to-b from-blue-100/20 to-white/60 opacity-75 blur-3xl pointer-events-none"
           style={{ transform: `translateY(${parallaxOffset}px)` }}
-          aria-hidden="true"
         />
-        <div 
-          className="absolute bottom-0 left-0 w-full h-48 bg-gradient-to-b from-transparent via-white/80 to-white pointer-events-none z-20"
-          aria-hidden="true" 
-        />
+        <div className="absolute bottom-0 left-0 w-full h-48 bg-gradient-to-b from-transparent via-white/80 to-white pointer-events-none z-20" />
         <img 
           src="/lovable-uploads/logo.png" 
-          alt="Nodera logo background" 
+          alt="Blurred logo background" 
           className={`${styles.heroBackground} animate-pulse-logo`}
           loading="eager"
           style={{ transform: `translate(-50%, -50%) scale(1.5) translateY(${parallaxOffset * 0.8}px)` }} 
@@ -62,8 +56,6 @@ const Hero: React.FC = () => {
               backgroundClip: 'unset',
               background: 'transparent'
             }}
-            role="text"
-            aria-label="Web Studio"
           >
             {subtitle}
           </span>

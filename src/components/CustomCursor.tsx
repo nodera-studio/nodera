@@ -1,18 +1,10 @@
-
 import React, { useEffect, useState } from 'react';
-import { useReducedMotion } from 'framer-motion';
 
 const CustomCursor: React.FC = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [isHovering, setIsHovering] = useState(false);
-  const shouldReduceMotion = useReducedMotion();
-  
+
   useEffect(() => {
-    // Skip custom cursor for users who prefer reduced motion
-    if (shouldReduceMotion) {
-      return;
-    }
-    
     const handleMouseMove = (e: MouseEvent) => {
       setMousePosition({ x: e.clientX, y: e.clientY });
       
@@ -37,12 +29,7 @@ const CustomCursor: React.FC = () => {
       window.removeEventListener('mousemove', handleMouseMove);
       document.body.style.cursor = 'auto';
     };
-  }, [shouldReduceMotion]);
-
-  // Don't render custom cursor for users who prefer reduced motion
-  if (shouldReduceMotion) {
-    return null;
-  }
+  }, []);
 
   const cursorStyle = {
     position: 'fixed' as const,
@@ -58,7 +45,7 @@ const CustomCursor: React.FC = () => {
     transition: 'transform 0.2s ease-out'
   };
 
-  return <div style={cursorStyle} aria-hidden="true" />;
+  return <div style={cursorStyle} />;
 };
 
 export default CustomCursor;

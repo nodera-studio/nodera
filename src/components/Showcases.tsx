@@ -1,4 +1,3 @@
-
 import React, { useEffect, useRef } from 'react';
 import { useIsMobile } from '../hooks/use-mobile';
 import styles from './styles/Showcases.module.css';
@@ -30,34 +29,25 @@ const Showcases = () => {
   }, []);
 
   return (
-    <section 
-      id="showcases"
-      aria-labelledby="showcase-title"
-      className="bg-white py-16 md:py-24 lg:py-32 px-6 sm:px-10 lg:px-16"
-    >
+    <div className="bg-white py-16 md:py-24 lg:py-32 px-6 sm:px-10 lg:px-16">
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-wrap justify-between items-center mb-12 md:mb-16 lg:mb-20 gap-4">
-          <h2 
-            id="showcase-title" 
-            ref={sectionTitleRef} 
-            className="text-black section-title"
-          >
+          <h2 ref={sectionTitleRef} className="text-black section-title">
             Digital <span className="gradient-word">Showcases</span>
           </h2>
           <a 
             href="#" 
             className="view-all-link"
-            aria-label="View all showcases"
           >
             View All →
           </a>
         </div>
         
         <div className="flex flex-col gap-8 lg:gap-12">
-          <article className={styles.showcaseCard}>
+          <div className={styles.showcaseCard}>
             <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 items-center">
               <div className="lg:w-1/2 space-y-4 md:space-y-6 order-2 lg:order-1">
-                <h3 id="museum-cms">Museum CMS Platform</h3>
+                <h3 className="">Museum CMS Platform</h3>
                 <p className="text-gray-600">
                   The behind-the-scenes system that powers museum mobile guides, intuitive for staff, informative for visitors.
                 </p>
@@ -67,38 +57,38 @@ const Showcases = () => {
                     size="lg"
                     asChild
                   >
-                    <a href="#" aria-label="Read the full story about the Museum CMS Platform">The Full Story</a>
+                    <a href="#">The Full Story</a>
                   </Button>
                   <Button
                     variant="secondary"
                     size="lg"
                     asChild
                   >
-                    <a href="#" aria-label="View more creations like the Museum CMS Platform">More Creations</a>
+                    <a href="#">More Creations</a>
                   </Button>
                 </div>
               </div>
               <div className="lg:w-1/2 order-1 lg:order-2">
                 <img 
                   src="/lovable-uploads/nous-cms.png" 
-                  alt="Screenshot of Museum CMS Platform interface showing exhibit management system" 
+                  alt="Museum CMS Platform" 
                   className="showcase-image rounded-xl w-full h-auto object-cover"
                 />
               </div>
             </div>
-          </article>
+          </div>
           
-          <article className={styles.showcaseCard}>
+          <div className={styles.showcaseCard}>
             <div className="flex flex-col-reverse lg:flex-row gap-8 lg:gap-12 items-center">
               <div className="lg:w-1/2">
                 <img 
                   src="/lovable-uploads/8379e5c3-25c3-48da-9e3b-916491ac1570.png" 
-                  alt="Screenshot of Furnihaus Collection website showcasing luxury furniture designs" 
+                  alt="Furnihaus Collection" 
                   className="showcase-image rounded-xl w-full h-auto object-cover"
                 />
               </div>
               <div className="lg:w-1/2 space-y-4 md:space-y-6">
-                <h3 id="furnihaus">Furnihaus Collection</h3>
+                <h3 className="">Furnihaus Collection</h3>
                 <p className="text-gray-600">
                   Where craftsmanship meets digital presence. Elegantly showcasing custom furniture and connecting artisans with clients.
                 </p>
@@ -108,22 +98,22 @@ const Showcases = () => {
                     size="lg"
                     asChild
                   >
-                    <a href="#" aria-label="Read the full story about Furnihaus Collection">The Full Story</a>
+                    <a href="#">The Full Story</a>
                   </Button>
                   <Button
                     variant="secondary"
                     size="lg"
                     asChild
                   >
-                    <a href="#" aria-label="View more creations like the Furnihaus Collection">More Creations</a>
+                    <a href="#">More Creations</a>
                   </Button>
                 </div>
               </div>
             </div>
-          </article>
+          </div>
         </div>
       </div>
-    </section>
+    </div>
   );
 };
 

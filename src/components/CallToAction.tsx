@@ -1,13 +1,12 @@
-
 import React from 'react';
 import { Button } from "@/components/ui/button";
 import styles from './CallToAction.module.css';
 
 const CallToAction = () => {
   return (
-    <section id="contact" className={styles.ctaContainer} aria-labelledby="cta-heading">
+    <div className={styles.ctaContainer}>
       {/* Bottom decorative text - positioned to appear partially cut off */}
-      <div className={styles.ctaNodera} aria-hidden="true">
+      <div className={styles.ctaNodera}>
         <h1 className={styles.ctaNoderaTxt}>
           Nodera
         </h1>
@@ -16,7 +15,7 @@ const CallToAction = () => {
       {/* Central content - positioned toward the top */}
       <div className={styles.ctaContentBox}>
         <div className="mb-4">
-          <p id="cta-heading" className={`${styles.ctaText} mb-4 whitespace-nowrap`}>
+          <p className={`${styles.ctaText} mb-4 whitespace-nowrap`}>
             You've got a vision. We've got the code.
           </p>
           <p className={`${styles.ctaText} ${styles.gradientText}`}>
@@ -30,7 +29,7 @@ const CallToAction = () => {
             size="lg"
             asChild
           >
-            <a href="#contact" aria-label="Contact us to discuss your project">
+            <a href="#contact">
               Get in Touch
             </a>
           </Button>
@@ -40,13 +39,13 @@ const CallToAction = () => {
             size="lg"
             asChild
           >
-            <a href="#services" aria-label="View our available services">
+            <a href="#services">
               View Services
             </a>
           </Button>
         </div>
       </div>
-    </section>
+    </div>
   );
 };
 
