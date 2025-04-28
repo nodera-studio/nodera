@@ -1,6 +1,5 @@
-
 import React, { useRef, useState, useEffect } from 'react';
-import { motion, useInView, useReducedMotion, useAnimation, AnimatePresence } from 'framer-motion';
+import { motion, useInView, useReducedMotion, useAnimation } from 'framer-motion';
 import styles from './styles/TheProcess.module.css';
 import cardStyles from './styles/ProcessCard.module.css';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from './ui/tabs';
@@ -26,13 +25,21 @@ const TheProcess = () => {
     }));
   };
 
+  const handleKeyboardNavigation = (event: React.KeyboardEvent) => {
+    if (event.key === 'ArrowDown' && !isHoveringMetrics) {
+      setIsHoveringMetrics(true);
+    } else if (event.key === 'ArrowUp' && isHoveringMetrics) {
+      setIsHoveringMetrics(false);
+    }
+  };
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.3,
-        delayChildren: 0.2
+        staggerChildren: shouldReduceMotion ? 0 : 0.3,
+        delayChildren: shouldReduceMotion ? 0 : 0.2
       }
     }
   };
@@ -42,26 +49,26 @@ const TheProcess = () => {
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.7, ease: [0.23, 1, 0.32, 1] }
+      transition: { duration: shouldReduceMotion ? 0.1 : 0.7, ease: [0.23, 1, 0.32, 1] }
     }
   };
 
-  // Generate placeholder logos
   const placeholderLogos = Array(10).fill(0).map((_, index) => (
     <motion.div 
       key={index} 
       className={cardStyles.placeholderLogo}
-      whileHover={{ scale: 1.1 }}
+      whileHover={{ scale: shouldReduceMotion ? 1 : 1.1 }}
       transition={{ duration: 0.2 }}
+      role="img"
+      aria-label={`Placeholder logo ${index + 1}`}
     />
   ));
 
-  // Split logos into two rows
   const logoRow1 = placeholderLogos.slice(0, 5);
   const logoRow2 = placeholderLogos.slice(5, 10);
 
   return (
-    <section ref={ref} className={styles.processSection}>
+    <section ref={ref} className={styles.processSection} aria-label="Our Process">
       <div className={styles.container}>
         <motion.h2 
           className="text-black mb-10 section-title"
@@ -78,23 +85,28 @@ const TheProcess = () => {
           animate={isInView ? "visible" : "hidden"}
           variants={containerVariants}
         >
-          {/* Card 1: Logo Carousel */}
           <motion.div 
             className={`${cardStyles.processCard}`}
             variants={itemVariants}
-            whileHover={{ y: -5, transition: { duration: 0.2 } }}
+            whileHover={{ y: shouldReduceMotion ? 0 : -5, transition: { duration: 0.2 } }}
+            role="region"
+            aria-label="Partners and Integrations"
           >
             <div className="bg-white rounded-t-[1rem]">
               <div className={cardStyles.cardImageContainer}>
                 <div className={cardStyles.cardImage}>
-                  <div className={cardStyles.logoCarouselContainer}>
+                  <div 
+                    className={cardStyles.logoCarouselContainer}
+                    role="marquee"
+                    aria-label="Scrolling logo carousel"
+                  >
                     <motion.div 
                       className={cardStyles.logoCarousel}
-                      animate={{ 
-                        x: shouldReduceMotion ? 0 : [0, -480]
+                      animate={shouldReduceMotion ? {} : { 
+                        x: [0, -480]
                       }}
                       transition={{ 
-                        repeat: shouldReduceMotion ? 0 : Infinity,
+                        repeat: Infinity,
                         repeatType: "loop",
                         duration: 20,
                         ease: "linear"
@@ -102,27 +114,29 @@ const TheProcess = () => {
                     >
                       <div className={cardStyles.logoRow}>
                         {logoRow1}
-                        {logoRow1} {/* Duplicate for seamless loop */}
+                        {logoRow1}
                       </div>
                       <div className={cardStyles.logoRow}>
                         {logoRow2}
-                        {logoRow2} {/* Duplicate for seamless loop */}
+                        {logoRow2}
                       </div>
                     </motion.div>
-                    <div className={cardStyles.companyLogoWrapper}>
-                      <div className={cardStyles.companyLogo}>
-                        <svg viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg">
-                          <circle cx="90" cy="90" r="90" fill="url(#paint0_linear_404_17)"/>
-                          <path d="M136.414 93.1993C136.414 90.1371 133.907 87.5052 131.003 87.5052H48.9968C46.0243 87.5052 43.5859 90.1371 43.5859 93.1993V135.81C43.5859 138.949 46.0243 141.504 48.9968 141.504H131.003C133.907 141.504 136.414 138.949 136.414 135.81V93.1993Z" fill="#4E4FEB"/>
-                          <path d="M136.414 46.1957C136.414 43.0566 133.907 40.5019 131.003 40.5019H48.9968C46.0243 40.5019 43.5859 43.0566 43.5859 46.1957V88.8832C43.5859 91.9452 46.0243 94.5 48.9968 94.5H131.003C133.907 94.5 136.414 91.9452 136.414 88.8832V46.1957Z" fill="#6366F1"/>
-                          <defs>
-                            <linearGradient id="paint0_linear_404_17" x1="0" y1="0" x2="180" y2="180" gradientUnits="userSpaceOnUse">
-                              <stop stopColor="#818CF8"/>
-                              <stop offset="1" stopColor="#4F46E5"/>
-                            </linearGradient>
-                          </defs>
-                        </svg>
-                      </div>
+                    <div 
+                      className={cardStyles.companyLogoWrapper}
+                      role="img"
+                      aria-label="Nodera company logo"
+                    >
+                      <svg viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="90" cy="90" r="90" fill="url(#paint0_linear_404_17)"/>
+                        <path d="M136.414 93.1993C136.414 90.1371 133.907 87.5052 131.003 87.5052H48.9968C46.0243 87.5052 43.5859 90.1371 43.5859 93.1993V135.81C43.5859 138.949 46.0243 141.504 48.9968 141.504H131.003C133.907 141.504 136.414 138.949 136.414 135.81V93.1993Z" fill="#4E4FEB"/>
+                        <path d="M136.414 46.1957C136.414 43.0566 133.907 40.5019 131.003 40.5019H48.9968C46.0243 40.5019 43.5859 43.0566 43.5859 46.1957V88.8832C43.5859 91.9452 46.0243 94.5 48.9968 94.5H131.003C133.907 94.5 136.414 91.9452 136.414 88.8832V46.1957Z" fill="#6366F1"/>
+                        <defs>
+                          <linearGradient id="paint0_linear_404_17" x1="0" y1="0" x2="180" y2="180" gradientUnits="userSpaceOnUse">
+                            <stop stopColor="#818CF8"/>
+                            <stop offset="1" stopColor="#4F46E5"/>
+                          </linearGradient>
+                        </defs>
+                      </svg>
                     </div>
                   </div>
                 </div>
@@ -138,18 +152,19 @@ const TheProcess = () => {
             </div>
           </motion.div>
           
-          {/* Card 2: Expandable Code Display */}
           <motion.div 
             className={`${cardStyles.processCard}`}
             variants={itemVariants}
-            whileHover={{ y: -5, transition: { duration: 0.2 } }}
+            whileHover={{ y: shouldReduceMotion ? 0 : -5, transition: { duration: 0.2 } }}
+            role="region"
+            aria-label="Code Examples"
           >
             <div className="bg-white rounded-t-[1rem] w-full">
               <div className={cardStyles.cardImageContainer}>
                 <div className={`${cardStyles.cardImage} w-full`}>
                   <div className={`${cardStyles.codeEditor} w-full`}>
                     <div className={cardStyles.codeHeader}>
-                      <div className={cardStyles.dots}>
+                      <div className={cardStyles.dots} aria-hidden="true">
                         <span></span>
                         <span></span>
                         <span></span>
@@ -160,10 +175,28 @@ const TheProcess = () => {
                         onValueChange={setActiveTab}
                         value={activeTab}
                       >
-                        <TabsList className={cardStyles.tabsList}>
-                          <TabsTrigger value="html" className={activeTab === 'html' ? cardStyles.activeTab : ''}>HTML</TabsTrigger>
-                          <TabsTrigger value="nextjs" className={activeTab === 'nextjs' ? cardStyles.activeTab : ''}>NextJS</TabsTrigger>
-                          <TabsTrigger value="css" className={activeTab === 'css' ? cardStyles.activeTab : ''}>CSS</TabsTrigger>
+                        <TabsList className={cardStyles.tabsList} aria-label="Code language selection">
+                          <TabsTrigger 
+                            value="html" 
+                            className={activeTab === 'html' ? cardStyles.activeTab : ''}
+                            aria-selected={activeTab === 'html'}
+                          >
+                            HTML
+                          </TabsTrigger>
+                          <TabsTrigger 
+                            value="nextjs" 
+                            className={activeTab === 'nextjs' ? cardStyles.activeTab : ''}
+                            aria-selected={activeTab === 'nextjs'}
+                          >
+                            NextJS
+                          </TabsTrigger>
+                          <TabsTrigger 
+                            value="css" 
+                            className={activeTab === 'css' ? cardStyles.activeTab : ''}
+                            aria-selected={activeTab === 'css'}
+                          >
+                            CSS
+                          </TabsTrigger>
                         </TabsList>
                         <TabsContent value="html" className={cardStyles.codeContent}>
                           <div className={cardStyles.lineNumbers}>
@@ -220,16 +253,20 @@ const TheProcess = () => {
             </div>
           </motion.div>
           
-          {/* Card 3: Interactive Metrics Carousel */}
           <motion.div 
             className={`${cardStyles.processCard}`}
             variants={itemVariants}
-            whileHover={{ y: -5, transition: { duration: 0.2 } }}
+            whileHover={{ y: shouldReduceMotion ? 0 : -5, transition: { duration: 0.2 } }}
+            role="region"
+            aria-label="Performance Metrics"
+            onKeyDown={handleKeyboardNavigation}
+            tabIndex={0}
           >
             <div 
               className="bg-white rounded-t-[1rem] relative"
               onMouseEnter={() => setIsHoveringMetrics(true)}
               onMouseLeave={() => setIsHoveringMetrics(false)}
+              aria-expanded={isHoveringMetrics}
             >
               <div className={cardStyles.cardImageContainer}>
                 <div className={cardStyles.cardImage}>
@@ -240,11 +277,12 @@ const TheProcess = () => {
                         y: isHoveringMetrics && !shouldReduceMotion ? "-50%" : "0%" 
                       }}
                       transition={{ duration: 0.6, ease: "easeInOut" }}
+                      role="list"
+                      aria-label="Performance metrics list"
                     >
-                      {/* Visible metrics */}
-                      <div className={cardStyles.metric}>
-                        <div className={cardStyles.metricLabel}>Software speed</div>
-                        <div className={cardStyles.metricValue}>
+                      <div className={cardStyles.metric} role="listitem">
+                        <div className={cardStyles.metricLabel} id="software-speed">Software speed</div>
+                        <div className={cardStyles.metricValue} aria-labelledby="software-speed">
                           <span>+38%</span>
                         </div>
                       </div>
@@ -260,8 +298,6 @@ const TheProcess = () => {
                           <span className={cardStyles.negative}>-11%</span>
                         </div>
                       </div>
-                      
-                      {/* Hidden metrics (revealed on hover) */}
                       <div className={cardStyles.metric}>
                         <div className={cardStyles.metricLabel}>User satisfaction</div>
                         <div className={cardStyles.metricValue}>
@@ -282,7 +318,6 @@ const TheProcess = () => {
                       </div>
                     </motion.div>
                     
-                    {/* Indicator to show more content is available */}
                     <motion.div 
                       className={cardStyles.moreIndicator}
                       initial={{ opacity: 0.6 }}
@@ -291,6 +326,7 @@ const TheProcess = () => {
                         y: isHoveringMetrics ? 10 : 0 
                       }}
                       transition={{ duration: 0.3 }}
+                      aria-hidden="true"
                     >
                       <ChevronDown size={16} />
                     </motion.div>
