@@ -5,6 +5,16 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useIsMobile, useBreakpoint } from '../hooks/use-mobile';
 import { Button } from "@/components/ui/button";
 import { useLocation } from 'react-router-dom';
+import {
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuIndicator,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+  NavigationMenuViewport,
+} from "@/components/ui/navigation-menu";
 
 const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -31,9 +41,48 @@ const Header = () => {
       }
     };
 
+    // Add backdrop blur effect when scrolling
+    const header = document.querySelector(`.${styles.header}`);
+    const handleScrollEffect = () => {
+      if (window.scrollY > 10) {
+        header?.classList.add(styles.headerScrolled);
+      } else {
+        header?.classList.remove(styles.headerScrolled);
+      }
+    };
+
     window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScrollEffect);
+    
+    // Initial check
+    handleScrollEffect();
+    
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('scroll', handleScrollEffect);
+    };
   }, []);
+
+  useEffect(() => {
+    // Prevent body scrolling when mobile menu is open
+    if (mobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'auto';
+    }
+
+    return () => {
+      document.body.style.overflow = 'auto';
+    };
+  }, [mobileMenuOpen]);
+
+  const menuItems = [
+    { title: 'Home', href: '#home', section: 'home' },
+    { title: 'Services', href: '#services', section: 'services' },
+    { title: 'Work', href: '#work', section: 'work' },
+    { title: 'About', href: '#about', section: 'about' },
+    { title: 'Contact', href: '#contact', section: 'contact' },
+  ];
 
   return (
     <header className={styles.header}>
@@ -50,36 +99,15 @@ const Header = () => {
       
       {!isMobileOrSmaller ? (
         <nav className={styles.nav}>
-          <a 
-            href="#home" 
-            className={`${styles.navLink} ${activeSection === 'home' ? styles.active : ''}`}
-          >
-            Home
-          </a>
-          <a 
-            href="#services" 
-            className={`${styles.navLink} ${activeSection === 'services' ? styles.active : ''}`}
-          >
-            Services
-          </a>
-          <a 
-            href="#work" 
-            className={`${styles.navLink} ${activeSection === 'work' ? styles.active : ''}`}
-          >
-            Work
-          </a>
-          <a 
-            href="#about" 
-            className={`${styles.navLink} ${activeSection === 'about' ? styles.active : ''}`}
-          >
-            About
-          </a>
-          <a 
-            href="#contact" 
-            className={`${styles.navLink} ${activeSection === 'contact' ? styles.active : ''}`}
-          >
-            Contact
-          </a>
+          {menuItems.map((item) => (
+            <a 
+              key={item.section}
+              href={item.href} 
+              className={`${styles.navLink} ${activeSection === item.section ? styles.active : ''}`}
+            >
+              {item.title}
+            </a>
+          ))}
         </nav>
       ) : (
         <motion.button 
@@ -98,48 +126,23 @@ const Header = () => {
         {mobileMenuOpen && (
           <motion.div 
             className={styles.mobileMenu}
-            initial={{ x: "100%" }}
-            animate={{ x: 0 }}
-            exit={{ x: "100%" }}
-            transition={{ type: "spring", bounce: 0, duration: 0.6 }}
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "100vh" }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
           >
             <div className={styles.mobileMenuContent}>
               <nav className={styles.mobileNav}>
-                <a 
-                  href="#home" 
-                  className={styles.mobileNavLink}
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  Home
-                </a>
-                <a 
-                  href="#services" 
-                  className={styles.mobileNavLink}
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  Services
-                </a>
-                <a 
-                  href="#work" 
-                  className={styles.mobileNavLink}
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  Work
-                </a>
-                <a 
-                  href="#about" 
-                  className={styles.mobileNavLink}
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  About
-                </a>
-                <a 
-                  href="#contact" 
-                  className={styles.mobileNavLink}
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  Contact
-                </a>
+                {menuItems.map((item) => (
+                  <a 
+                    key={item.section}
+                    href={item.href} 
+                    className={styles.mobileNavLink}
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    {item.title}
+                  </a>
+                ))}
               </nav>
               
               <div className={styles.mobileCta}>
@@ -158,14 +161,16 @@ const Header = () => {
         )}
       </AnimatePresence>
       
-      <Button 
-        variant="primary"
-        size="default"
-        className={styles.sayHiButton}
-        asChild
-      >
-        <a href="#contact">Say Hi</a>
-      </Button>
+      <div className={styles.cta}>
+        <Button 
+          variant="primary"
+          size="default"
+          className={styles.sayHiButton}
+          asChild
+        >
+          <a href="#contact">Say Hi</a>
+        </Button>
+      </div>
     </header>
   );
 };
