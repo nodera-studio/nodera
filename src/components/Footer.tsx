@@ -58,7 +58,6 @@ const Footer = () => {
                 className="h-14 w-auto opacity-80"
               />
             </Link>
-            <p className="mt-2 text-sm">Web Design & Development</p>
           </div>
 
           {/* Ordered Navigation/Link sections (Next four columns) */}

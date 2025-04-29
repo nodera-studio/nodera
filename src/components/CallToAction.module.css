@@ -79,7 +79,7 @@
   text-align: center;
   padding-top: 140px;
   padding-bottom: 80px; /* Reduced from 120px */
-  min-height: 500px;
+  min-height: 350px;
 }
 
 .ctaContentBox {
@@ -96,13 +96,14 @@
 
 .ctaNodera {
   position: absolute;
-  bottom: -30px; /* Moved up from -50px */
+  bottom: -20px; /* Moved up from -50px */
   left: 0;
   right: 0;
   text-align: center;
   z-index: 0;
   width: 100%;
   overflow: hidden;
+  padding-top: 5px;
 }
 
 .ctaNoderaTxt {
