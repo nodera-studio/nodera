@@ -1,4 +1,5 @@
-import React, { lazy, Suspense } from 'react';
+
+import React, { lazy, Suspense, useEffect } from 'react';
 import Header from '../components/Header';
 import Hero from '../components/Hero';
 import Showcases from '../components/Showcases';
@@ -14,6 +15,19 @@ const TheProcess = lazy(() => import('../components/TheProcess'));
 const Index = () => {
   const isMobile = useIsMobile();
   const location = useLocation();
+  
+  // Handle scroll to section when URL has hash
+  useEffect(() => {
+    if (location.hash) {
+      const id = location.hash.replace('#', '');
+      const element = document.getElementById(id);
+      if (element) {
+        setTimeout(() => {
+          element.scrollIntoView();
+        }, 0);
+      }
+    }
+  }, [location.hash]);
   
   return (
     <div className="min-h-screen flex flex-col overflow-x-hidden">
