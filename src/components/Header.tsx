@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useIsMobile, useBreakpoint } from '../hooks/use-mobile';
 import { Link, useLocation } from 'react-router-dom';
 import { ChevronRight } from 'lucide-react';
+import { Button } from './ui/button';
 
 // Animation variants for the mobile menu
 const menuVariants = {
@@ -63,7 +64,7 @@ const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const isMobile = useIsMobile();
   const breakpoint = useBreakpoint();
-  const isMobileOrSmaller = isMobile || breakpoint === 'small_landscape';
+  const isMobileOrSmaller = breakpoint === 'mobile' || breakpoint === 'small_landscape';
   const location = useLocation();
   const [scrolled, setScrolled] = useState(false);
 
@@ -137,39 +138,52 @@ const Header = () => {
         </Link>
       </div>
       
-      {!isMobileOrSmaller ? (
-        <nav className={styles.nav}>
-          {menuItems.map((item) => (
-            <Link 
-              key={item.path}
-              to={item.path}
-              className={`${styles.navLink} ${isActive(item.path) ? styles.active : ''}`}
-            >
-              {item.title}
-            </Link>
-          ))}
-        </nav>
-      ) : null}
+      {!isMobileOrSmaller && (
+        <>
+          <nav className={styles.nav}>
+            {menuItems.map((item) => (
+              <Link 
+                key={item.path}
+                to={item.path}
+                className={`${styles.navLink} ${isActive(item.path) ? styles.active : ''}`}
+              >
+                {item.title}
+              </Link>
+            ))}
+          </nav>
+          
+          <Button
+            variant="primary"
+            size="lg"
+            asChild
+            className="ml-4"
+          >
+            <Link to="/contact">Say Hi</Link>
+          </Button>
+        </>
+      )}
       
-      <motion.button 
-        className={styles.mobileMenuButton}
-        onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-        aria-label="Menu"
-        whileTap={{ scale: 0.95 }}
-        initial="closed"
-      >
-        <motion.div 
-          className={`${styles.menuBar} ${mobileMenuOpen ? styles.open : ''}`}
-          transition={{ duration: 0.2 }}
-        ></motion.div>
-        <motion.div 
-          className={`${styles.menuBar} ${mobileMenuOpen ? styles.open : ''}`}
-          transition={{ duration: 0.2, delay: 0.05 }}
-        ></motion.div>
-      </motion.button>
+      {isMobileOrSmaller && (
+        <motion.button 
+          className={styles.mobileMenuButton}
+          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          aria-label="Menu"
+          whileTap={{ scale: 0.95 }}
+          initial="closed"
+        >
+          <motion.div 
+            className={`${styles.menuBar} ${mobileMenuOpen ? styles.open : ''}`}
+            transition={{ duration: 0.2 }}
+          ></motion.div>
+          <motion.div 
+            className={`${styles.menuBar} ${mobileMenuOpen ? styles.open : ''}`}
+            transition={{ duration: 0.2, delay: 0.05 }}
+          ></motion.div>
+        </motion.button>
+      )}
       
       <AnimatePresence>
-        {mobileMenuOpen && (
+        {mobileMenuOpen && isMobileOrSmaller && (
           <motion.div 
             className={styles.mobileMenu}
             variants={menuVariants}
