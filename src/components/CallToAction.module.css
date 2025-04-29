@@ -78,7 +78,7 @@
   overflow: hidden;
   text-align: center;
   padding-top: 140px;
-  padding-bottom: 80px; /* Reduced from 120px */
+  padding-bottom: 70px; /* Reduced from 80px */
   min-height: 500px;
 }
 
@@ -96,7 +96,7 @@
 
 .ctaNodera {
   position: absolute;
-  bottom: -30px; /* Moved up from -50px */
+  bottom: -10px; /* Moved up from -30px to bring Nodera up */
   left: 0;
   right: 0;
   text-align: center;
@@ -128,7 +128,10 @@
   }
   .ctaContainer {
     padding-top: 180px;
-    padding-bottom: 200px; /* Reduced from 220px */
+    padding-bottom: 170px; /* Reduced from 200px */
+  }
+  .ctaNodera {
+    bottom: -20px; /* Adjusted for larger screens */
   }
   .ctaContentBox {
     margin-top: -140px; /* Restore margin for larger screens */
@@ -142,5 +145,7 @@
   .ctaNoderaTxt {
     font-size: 360px;
   }
+  .ctaNodera {
+    bottom: -30px; /* Adjusted for larger screens */
+  }
 }
-

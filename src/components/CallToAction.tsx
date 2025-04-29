@@ -27,7 +27,7 @@ const CallToAction = () => {
           </p>
         </div>
         
-        <div className="flex gap-4 mb-8">
+        <div className="flex gap-4 mb-16">
           <Button
             variant="primary"
             size="lg"
