@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Button } from "@ui/button";
+import { Button } from "../../../ui/button";
 import styles from './CallToAction.module.css';
 
 const CallToAction = () => {
@@ -14,7 +14,7 @@ const CallToAction = () => {
       
       <div className={styles.ctaContentBox}>
         <div className="mb-6">
-          {/* Added the visionCodeContainer div to group these elements */}
+          {/* Modified this container to display text as two normal sentences on desktop */}
           <div className={styles.visionCodeContainer}>
             <p className={`${styles.ctaText} mb-2 md:mb-0`}>
               You've got a vision.
