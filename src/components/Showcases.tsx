@@ -17,7 +17,11 @@ const Showcases = () => {
   // State management
   const [animationState, setAnimationState] = useState<AnimationState>('idle');
   // Track if the card is *currently* positioned at the center trigger point
-  const isCenterTriggerActive = useRef(false); 
+  const isCenterTriggerActive = useRef(false);
+  // Ref to control if animation can start when centered (prevents immediate restart on scroll up)
+  const canAnimateOnCenter = useRef(true);
+  // A small cooldown timer ID to automatically re-enable animations after rapid scrolls
+  const canAnimateCooldownId = useRef<NodeJS.Timeout | null>(null);
   
   // Custom scroll progress value that we'll control
   const customScrollProgress = useMotionValue(0);
@@ -83,6 +87,15 @@ const Showcases = () => {
         setAnimationState('idle');
         console.log("Unlocking scroll (progress <= 0 in animating)");
         document.body.classList.remove(styles.bodyScrollLocked);
+        // Prevent immediate re-animation if still centered after scrolling up
+        canAnimateOnCenter.current = false; 
+        console.log("Set canAnimateOnCenter to false");
+        // Start a short cooldown to re-enable animation even if still centered
+        if (canAnimateCooldownId.current) clearTimeout(canAnimateCooldownId.current);
+        canAnimateCooldownId.current = setTimeout(() => {
+          canAnimateOnCenter.current = true;
+          console.log("Cooldown elapsed: canAnimateOnCenter reset to true");
+        }, 300); // 0.3s cooldown
       }
     } else if (animationState === 'completed') {
         if (newProgress < 1 && newProgress > 0) {
@@ -178,12 +191,17 @@ const Showcases = () => {
     if (isNowCentered !== isCenterTriggerActive.current) {
         isCenterTriggerActive.current = isNowCentered;
         console.log(`CenterCheck: Center trigger ref updated to ${isNowCentered}`);
+        // If we scroll OUT of center, allow animation trigger next time we enter
+        if (!isNowCentered) {
+            canAnimateOnCenter.current = true;
+            console.log("Reset canAnimateOnCenter to true (left center)");
+        }
     }
 
     // --- State Transitions based on Centering (checked independently of ref update) ---
-    if (isNowCentered && animationState === 'idle') {
+    if (isNowCentered && animationState === 'idle' && canAnimateOnCenter.current) {
         // Entered trigger zone while idle, start animating
-        console.log("Transition: idle -> animating (centered)");
+        console.log("Transition: idle -> animating (centered & allowed)");
         setAnimationState('animating');
         console.log("Locking scroll (entering animating)");
         document.body.classList.add(styles.bodyScrollLocked);
@@ -236,6 +254,7 @@ const Showcases = () => {
     return () => {
       console.log("Effect (Unmount): Removing body scroll lock if present.");
       document.body.classList.remove(styles.bodyScrollLocked);
+      if (canAnimateCooldownId.current) clearTimeout(canAnimateCooldownId.current);
     };
   }, []);
   
