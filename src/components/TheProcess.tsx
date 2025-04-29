@@ -118,8 +118,8 @@ function ModernApp() {
 
   // Calculate animation properties to ensure perfect looping
   const calculateAnimationProps = (direction: 'left-to-right' | 'right-to-left') => {
-    // Total width of 4 logos plus gaps (70px per logo + 1.5rem gap)
-    const totalWidth = 600; // Approximate width in pixels for 4 logos
+    // Adjusted total width calculation for closer logos
+    const totalWidth = 500; // Reduced from 600 for tighter spacing
     
     return {
       x: direction === 'left-to-right' ? [-totalWidth, 0] : [0, -totalWidth],

@@ -7,7 +7,7 @@
   display: flex;
   flex-direction: column;
   transition: transform 0.3s ease-out;
-  padding: 24px;
+  padding: 16px;
 }
 
 .processCard:hover {
@@ -39,7 +39,7 @@
   flex-grow: 1;
   display: flex;
   flex-direction: column;
-  margin-top: 1rem;
+  margin-top: 0.75rem;
 }
 
 .cardStep {
@@ -79,7 +79,7 @@
 .logoCarousel {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 1rem;
   width: 100%;
   will-change: transform;
   overflow: visible;
@@ -87,7 +87,7 @@
 
 .logoRow {
   display: flex;
-  gap: 1.5rem;
+  gap: 1.25rem;
   width: max-content;
   padding: 0.5rem 0;
 }
@@ -95,7 +95,7 @@
 .placeholderLogo {
   width: 70px;
   height: 70px;
-  background-color: #E5E5E5;
+  background-color: transparent;
   border-radius: 8px;
   display: flex;
   justify-content: center;
@@ -148,7 +148,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 8px 12px;
+  padding: 6px 10px;
   background-color: #e0e0e0;
   border-bottom: 1px solid #ddd;
 }
@@ -160,8 +160,8 @@
 }
 
 .browserDot {
-  width: 12px;
-  height: 12px;
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
 }
 
@@ -171,7 +171,7 @@
 
 .tabsList {
   display: flex;
-  gap: 12px;
+  gap: 6px;
   margin: 0;
   padding: 0;
   background-color: transparent;
@@ -180,9 +180,9 @@
 }
 
 .tab {
-  padding: 4px 12px;
+  padding: 3px 8px;
   border-radius: 4px;
-  font-size: 0.875rem;
+  font-size: 0.8rem;
   color: #666;
   background-color: transparent;
   cursor: pointer;
@@ -219,9 +219,9 @@
   width: 100%;
   height: 100%;
   display: flex;
-  padding: 16px !important;
+  padding: 12px !important;
   font-family: 'Menlo', monospace !important;
-  font-size: 0.875rem !important;
+  font-size: 0.8rem !important;
   line-height: 1.5 !important;
   background-color: #fff !important;
   border-left: 1px solid #e0e0e0;
@@ -254,7 +254,7 @@
   height: 100% !important;
   min-height: 200px;
   white-space: pre !important;
-  font-size: 0.875rem !important;
+  font-size: 0.8rem !important;
   line-height: 1.5 !important;
   color: #333 !important;
   outline: none !important;
@@ -340,34 +340,35 @@
 
 @media (max-width: 480px) {
   .cardImageContainer {
-    padding: 1rem;
+    padding: 0.5rem;
   }
   
   .cardContent {
-    padding: 1rem;
+    padding: 0.5rem;
   }
   
   .placeholderLogo {
-    width: 70px;
-    height: 70px;
-  }
-  
-  .companyLogoWrapper {
-    width: 80px;
-    height: 80px;
-  }
-  
-  .companyLogo {
     width: 60px;
     height: 60px;
   }
   
+  .companyLogoWrapper {
+    width: 70px;
+    height: 70px;
+  }
+  
+  .companyLogo {
+    width: 50px;
+    height: 50px;
+  }
+  
   .logoRow {
     grid-template-columns: repeat(3, 1fr);
+    gap: 0.75rem;
   }
   
   /* Reduce gap between logo rows in mobile view */
   .logoCarousel {
-    gap: 0.75rem;
+    gap: 0.5rem;
   }
 }
