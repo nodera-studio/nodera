@@ -15,7 +15,7 @@ const CallToAction = () => {
       
       {/* Central content - positioned toward the top */}
       <div className={styles.ctaContentBox}>
-        <div className="mb-4">
+        <div className="mb-6">
           <p className={`${styles.ctaText} mb-2`}>
             You've got a vision.
           </p>
@@ -27,7 +27,7 @@ const CallToAction = () => {
           </p>
         </div>
         
-        <div className="flex gap-4">
+        <div className="flex gap-4 mb-8">
           <Button
             variant="primary"
             size="lg"

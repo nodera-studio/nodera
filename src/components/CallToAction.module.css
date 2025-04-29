@@ -60,7 +60,7 @@
 .ctaText {
   font-family: 'Baloo Da 2', sans-serif;
   font-weight: 500; /* Medium */
-  font-size: 1.5rem; /* 24px - base size */
+  font-size: 1.75rem; /* Increased from 1.5rem */
   line-height: 1.2;
 }
 
@@ -78,7 +78,7 @@
   overflow: hidden;
   text-align: center;
   padding-top: 140px;
-  padding-bottom: 120px;
+  padding-bottom: 80px; /* Reduced from 120px */
   min-height: 500px;
 }
 
@@ -96,7 +96,7 @@
 
 .ctaNodera {
   position: absolute;
-  bottom: -50px; /* Moved up from -70px */
+  bottom: -30px; /* Moved up from -50px */
   left: 0;
   right: 0;
   text-align: center;
@@ -109,26 +109,26 @@
   font-weight: bold;
   color: white;
   text-shadow: 0 -2px 3px rgba(0, 0, 0, 0.15);
-  font-size: 120px; /* Reduced base font size */
+  font-size: 90px; /* Reduced from 120px */
 }
 
 /* Responsive text sizes */
 @media (min-width: 640px) {
   .ctaText {
-    font-size: 1.875rem; /* 30px - sm:text-3xl */
+    font-size: 2.125rem; /* Increased from 1.875rem */
   }
 }
 
 @media (min-width: 768px) {
   .ctaText {
-    font-size: 2.25rem; /* 36px - md:text-4xl */
+    font-size: 2.5rem; /* Increased from 2.25rem */
   }
   .ctaNoderaTxt {
     font-size: 240px;
   }
   .ctaContainer {
     padding-top: 180px;
-    padding-bottom: 220px;
+    padding-bottom: 200px; /* Reduced from 220px */
   }
   .ctaContentBox {
     margin-top: -140px; /* Restore margin for larger screens */
@@ -137,9 +137,10 @@
 
 @media (min-width: 1024px) {
   .ctaText {
-    font-size: 3rem; /* 48px - lg:text-5xl */
+    font-size: 3.25rem; /* Increased from 3rem */
   }
   .ctaNoderaTxt {
     font-size: 360px;
   }
 }
+
