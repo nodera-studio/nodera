@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect, useCallback } from 'react';
 import styles from './Header.module.css';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -173,11 +172,9 @@ const Header = () => {
         >
           <motion.div 
             className={`${styles.menuBar} ${mobileMenuOpen ? styles.open : ''}`}
-            transition={{ duration: 0.2 }}
           ></motion.div>
           <motion.div 
             className={`${styles.menuBar} ${mobileMenuOpen ? styles.open : ''}`}
-            transition={{ duration: 0.2, delay: 0.05 }}
           ></motion.div>
         </motion.button>
       )}
