@@ -1,0 +1,16 @@
+
+/* Theme variables and global styles */
+:root {
+  --primary: #007AFF;
+  --primary-hover: #0056b3;
+  --secondary: #6c757d;
+  --secondary-hover: #5a6268;
+  --accent: #D1A2FF;
+  --accent-hover: #c085ff;
+  --background: #ffffff;
+  --foreground: #000000;
+  --muted: #f8f9fa;
+  --muted-foreground: #6c757d;
+}
+
+/* Global theme styles can be added here */
