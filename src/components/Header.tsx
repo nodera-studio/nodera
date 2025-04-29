@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect, useCallback } from 'react';
 import styles from './Header.module.css';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -120,8 +121,13 @@ const Header = () => {
     { title: 'Contact', path: '/contact' },
   ];
 
+  // Combine header classes based on scroll state and menu open state
+  const headerClasses = `${styles.header} 
+    ${scrolled ? styles.headerScrolled : ''} 
+    ${mobileMenuOpen ? styles.headerMenuOpen : ''}`;
+
   return (
-    <header className={`${styles.header} ${scrolled ? styles.headerScrolled : ''}`}>
+    <header className={headerClasses}>
       <div className={styles.headerBg} />
       
       <div className={styles.logo}>
