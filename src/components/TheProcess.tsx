@@ -6,18 +6,23 @@ import cardStyles from './styles/ProcessCard.module.css';
 import { ChevronDown } from 'lucide-react';
 import TechLogos from './TechLogos';
 
-// Array of tech logo icons for the carousel
-const logoIcons = [
+// Design tech stack for the top row
+const designLogoIcons = [
+  // Using the provided SVGs for the design tech stack
+  '/lovable-uploads/figma-2.svg',
+  '/lovable-uploads/webflow.svg',
+  '/lovable-uploads/adobe-photoshop.svg',
+  '/lovable-uploads/adobe-illustrator.svg',
+  // We'll add framer using Lucide icon in the rendering
+];
+
+// Development tech stack for the bottom row
+const devLogoIcons = [
   '/lovable-uploads/html.svg',
   '/lovable-uploads/css-3.svg',
   '/lovable-uploads/js.svg',
-  '/lovable-uploads/adobe-illustrator.svg',
-  '/lovable-uploads/adobe-photoshop.svg',
-  '/lovable-uploads/figma-2.svg',
-  '/lovable-uploads/webflow.svg',
   '/lovable-uploads/supabase-logo-icon.svg',
-  '/lovable-uploads/picture.svg',
-  '/lovable-uploads/social.svg',
+  // We'll add Git using Lucide icon in the rendering
 ];
 
 const TheProcess = () => {
@@ -116,13 +121,18 @@ function ModernApp() {
   const renderLogoPlaceholders = (count: number, icons: string[]) => {
     return Array.from({ length: count }).map((_, index) => {
       const iconIndex = index % icons.length;
+      const iconSrc = icons[iconIndex];
+      
+      // Special handling for JS logo to make its text white
+      const isJsLogo = iconSrc.includes('js.svg');
+      
       return (
         <div key={index} className={cardStyles.placeholderLogo}>
           <div 
-            className={cardStyles.logoIcon} 
+            className={`${cardStyles.logoIcon} ${isJsLogo ? cardStyles.jsLogo : ''}`}
             style={{
-              maskImage: `url(${icons[iconIndex]})`,
-              WebkitMaskImage: `url(${icons[iconIndex]})`
+              maskImage: `url(${iconSrc})`,
+              WebkitMaskImage: `url(${iconSrc})`
             }}
             aria-hidden="true"
           />
@@ -132,7 +142,6 @@ function ModernApp() {
   };
 
   // Calculate animation properties to ensure perfect looping
-  // The duration is calculated based on the number of logos and the animation distance
   const calculateAnimationProps = (direction: 'left-to-right' | 'right-to-left') => {
     // Total width of 10 logos plus gaps (50px per logo + 1.5rem gap)
     const totalWidth = 720; // Approximate width in pixels
@@ -151,27 +160,27 @@ function ModernApp() {
   const logoCarousel = (
     <div className={cardStyles.logoCarouselContainer}>
       <div className={cardStyles.logoCarousel}>
-        {/* First row - moving left to right */}
+        {/* First row - moving left to right - Design tech stack */}
         <div className={cardStyles.logoRow}>
           <motion.div 
             className={cardStyles.logoRow}
             animate={shouldReduceMotion ? {} : calculateAnimationProps('left-to-right')}
           >
-            {renderLogoPlaceholders(10, logoIcons)}
+            {renderLogoPlaceholders(10, designLogoIcons)}
             {/* Duplicate for seamless loop */}
-            {renderLogoPlaceholders(10, logoIcons)}
+            {renderLogoPlaceholders(10, designLogoIcons)}
           </motion.div>
         </div>
         
-        {/* Second row - moving right to left */}
+        {/* Second row - moving right to left - Development tech stack */}
         <div className={cardStyles.logoRow}>
           <motion.div 
             className={cardStyles.logoRow}
             animate={shouldReduceMotion ? {} : calculateAnimationProps('right-to-left')}
           >
-            {renderLogoPlaceholders(10, logoIcons.slice().reverse())}
+            {renderLogoPlaceholders(10, devLogoIcons)}
             {/* Duplicate for seamless loop */}
-            {renderLogoPlaceholders(10, logoIcons.slice().reverse())}
+            {renderLogoPlaceholders(10, devLogoIcons)}
           </motion.div>
         </div>
       </div>
