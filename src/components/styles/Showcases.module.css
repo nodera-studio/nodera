@@ -18,6 +18,20 @@
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
 }
 
+.cardStackContainer {
+  position: relative;
+  perspective: 1200px;
+  min-height: 600px;
+  width: 100%;
+  overflow: visible;
+}
+
+.bodyScrollLocked {
+  overflow: hidden !important;
+  height: 100vh;
+  touch-action: none;
+}
+
 @media (max-width: 599px) {
   .hideOnMobile {
     display: none !important;
@@ -28,5 +42,9 @@
 @media (max-width: 480px) {
   .showcaseCard {
     padding: 1rem;
+  }
+
+  .cardStackContainer {
+    min-height: 500px;
   }
 }

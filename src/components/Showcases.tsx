@@ -1,60 +1,171 @@
 
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState, useCallback } from 'react';
 import { useIsMobile } from '../hooks/use-mobile';
 import styles from './styles/Showcases.module.css';
 import { Button } from "@/components/ui/button";
-import { motion, useScroll, useTransform, useMotionValueEvent } from 'framer-motion';
+import { motion, useScroll, useTransform, useMotionValueEvent, useSpring, useMotionValue } from 'framer-motion';
 
 const Showcases = () => {
   const isMobile = useIsMobile();
   const sectionTitleRef = useRef<HTMLHeadingElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const firstCardRef = useRef<HTMLDivElement>(null);
-  const [isFirstCardCentered, setIsFirstCardCentered] = useState(false);
+  const touchStartY = useRef<number | null>(null);
   
-  // Main scroll animation setup
+  // State management
+  const [isCardCentered, setIsCardCentered] = useState(false);
+  const [isAnimating, setIsAnimating] = useState(false);
+  const [hasAnimationCompleted, setHasAnimationCompleted] = useState(false);
+  
+  // Custom scroll progress value that we'll control
+  const customScrollProgress = useMotionValue(0);
+  const smoothProgress = useSpring(customScrollProgress, { damping: 30, stiffness: 90 });
+  
+  // Main scroll animation setup for detecting overall position
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start end", "end start"]
   });
   
-  // First card scroll effect - to create the pause effect
+  // First card scroll effect - to detect when centered in viewport
   const firstCardScrollEffect = useScroll({
     target: firstCardRef,
     offset: ["center center", "start start"] 
   });
   
-  // Use this to detect when first card is centered in viewport
-  useMotionValueEvent(firstCardScrollEffect.scrollYProgress, "change", (latest) => {
-    // When scrollYProgress is close to 0.5, the card is centered
-    if (latest >= 0.4 && latest <= 0.6) {
-      setIsFirstCardCentered(true);
-    } else {
-      setIsFirstCardCentered(false);
-    }
-  });
-  
-  // Transform values for the second card based on scroll position
-  // Adjusted to create the "wait until first card is centered" effect
+  // Transform values for the second card based on our custom progress
   const secondCardY = useTransform(
-    scrollYProgress, 
-    [0.3, 0.45, 0.55, 0.7], // Shifted values to create the pause effect
-    ['100%', '50%', '0%', '-100%']
+    smoothProgress,
+    [0, 1],
+    ['100%', '0%']
   );
   
   const secondCardOpacity = useTransform(
-    scrollYProgress,
-    [0.3, 0.4, 0.6, 0.7],
-    [0, 1, 1, 0]
+    smoothProgress,
+    [0, 0.3, 1],
+    [0, 1, 1]
   );
   
   // Scale effect for first card when second card is coming on top
   const firstCardScale = useTransform(
-    scrollYProgress,
-    [0.3, 0.45, 0.55, 0.7],
-    [1, 1, 0.95, 0.95]
+    smoothProgress,
+    [0, 0.5, 1],
+    [1, 0.98, 0.95]
   );
-
+  
+  // Detect when first card is centered in viewport
+  useMotionValueEvent(firstCardScrollEffect.scrollYProgress, "change", (latest) => {
+    // When scrollYProgress is close to 0.5, the card is centered
+    if (latest >= 0.45 && latest <= 0.55) {
+      setIsCardCentered(true);
+    } else {
+      setIsCardCentered(false);
+    }
+  });
+  
+  // Handle wheel events during animation
+  const handleWheelEvent = useCallback((e: WheelEvent) => {
+    if (!isAnimating) return;
+    
+    e.preventDefault();
+    
+    // Use wheel delta to drive animation progress
+    const delta = e.deltaY;
+    const progressStep = delta * 0.0015; // Adjust sensitivity
+    const newProgress = Math.max(0, Math.min(1, customScrollProgress.get() + progressStep));
+    customScrollProgress.set(newProgress);
+    
+    // When animation completes
+    if (newProgress >= 1) {
+      setHasAnimationCompleted(true);
+      setIsAnimating(false);
+      document.body.classList.remove(styles.bodyScrollLocked);
+    }
+    
+    // When scrolling back up from completed state
+    if (newProgress <= 0 && hasAnimationCompleted) {
+      setHasAnimationCompleted(false);
+      setIsAnimating(false);
+      document.body.classList.remove(styles.bodyScrollLocked);
+    }
+  }, [isAnimating, hasAnimationCompleted, customScrollProgress]);
+  
+  // Handle touch events for mobile
+  const handleTouchStart = useCallback((e: TouchEvent) => {
+    touchStartY.current = e.touches[0].clientY;
+  }, []);
+  
+  const handleTouchMove = useCallback((e: TouchEvent) => {
+    if (!touchStartY.current || !isAnimating) return;
+    
+    e.preventDefault();
+    
+    const touchY = e.touches[0].clientY;
+    const deltaY = touchStartY.current - touchY;
+    touchStartY.current = touchY;
+    
+    const progressStep = deltaY * 0.003; // Adjust sensitivity for touch
+    const newProgress = Math.max(0, Math.min(1, customScrollProgress.get() + progressStep));
+    customScrollProgress.set(newProgress);
+    
+    // When animation completes
+    if (newProgress >= 1) {
+      setHasAnimationCompleted(true);
+      setIsAnimating(false);
+      document.body.classList.remove(styles.bodyScrollLocked);
+    }
+    
+    // When scrolling back up from completed state
+    if (newProgress <= 0 && hasAnimationCompleted) {
+      setHasAnimationCompleted(false);
+      setIsAnimating(false);
+      document.body.classList.remove(styles.bodyScrollLocked);
+    }
+  }, [isAnimating, hasAnimationCompleted, customScrollProgress]);
+  
+  const handleTouchEnd = useCallback(() => {
+    touchStartY.current = null;
+  }, []);
+  
+  // Watch for when card is centered to start animation
+  useEffect(() => {
+    if (isCardCentered && !isAnimating && !hasAnimationCompleted) {
+      setIsAnimating(true);
+      document.body.classList.add(styles.bodyScrollLocked);
+    }
+  }, [isCardCentered, isAnimating, hasAnimationCompleted]);
+  
+  // Add and remove event listeners for scroll control
+  useEffect(() => {
+    if (isAnimating) {
+      if (isMobile) {
+        window.addEventListener('touchstart', handleTouchStart, { passive: false });
+        window.addEventListener('touchmove', handleTouchMove, { passive: false });
+        window.addEventListener('touchend', handleTouchEnd);
+      } else {
+        window.addEventListener('wheel', handleWheelEvent, { passive: false });
+      }
+    }
+    
+    return () => {
+      if (isMobile) {
+        window.removeEventListener('touchstart', handleTouchStart);
+        window.removeEventListener('touchmove', handleTouchMove);
+        window.removeEventListener('touchend', handleTouchEnd);
+      } else {
+        window.removeEventListener('wheel', handleWheelEvent);
+      }
+    };
+  }, [isAnimating, handleWheelEvent, handleTouchStart, handleTouchMove, handleTouchEnd, isMobile]);
+  
+  // Clean up on unmount
+  useEffect(() => {
+    return () => {
+      document.body.classList.remove(styles.bodyScrollLocked);
+    };
+  }, []);
+  
+  // Fade in effect for section title
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
@@ -93,11 +204,8 @@ const Showcases = () => {
         
         <div 
           ref={containerRef} 
-          className="flex flex-col gap-8 lg:gap-12 relative min-h-[600px] lg:min-h-[500px]"
-          style={{ 
-            perspective: '1000px', // Add 3D perspective for more depth
-            position: 'relative'
-          }}
+          className={`${styles.cardStackContainer} relative min-h-[600px] lg:min-h-[500px]`}
+          aria-live="polite"
         >
           {/* First Card - Always visible but scales when second card appears */}
           <motion.div 
@@ -108,10 +216,10 @@ const Showcases = () => {
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.5 }}
             style={{ 
-              scale: firstCardScale,
+              scale: (isAnimating || hasAnimationCompleted) ? firstCardScale : 1,
               position: 'sticky', 
               top: '20vh',
-              zIndex: isFirstCardCentered ? 30 : 10,
+              zIndex: isCardCentered ? 30 : 10,
             }}
           >
             <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 items-center">
@@ -151,8 +259,8 @@ const Showcases = () => {
           <motion.div 
             className={`${styles.showcaseCard} absolute w-full`}
             style={{ 
-              y: secondCardY,
-              opacity: secondCardOpacity,
+              y: (isAnimating || hasAnimationCompleted) ? secondCardY : '100%',
+              opacity: (isAnimating || hasAnimationCompleted) ? secondCardOpacity : 0,
               zIndex: 20,
               position: 'relative',
             }}
