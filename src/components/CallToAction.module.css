@@ -78,7 +78,7 @@
   overflow: hidden;
   text-align: center;
   padding-top: 140px;
-  padding-bottom: 70px; /* Reduced from 80px */
+  padding-bottom: 0; /* Removed bottom padding */
   min-height: 500px;
 }
 
@@ -96,7 +96,7 @@
 
 .ctaNodera {
   position: absolute;
-  bottom: -10px; /* Moved up from -30px to bring Nodera up */
+  bottom: 0; /* Moved to the very bottom */
   left: 0;
   right: 0;
   text-align: center;
@@ -128,10 +128,10 @@
   }
   .ctaContainer {
     padding-top: 180px;
-    padding-bottom: 170px; /* Reduced from 200px */
+    padding-bottom: 170px; /* Keep desktop padding */
   }
   .ctaNodera {
-    bottom: -20px; /* Adjusted for larger screens */
+    bottom: -20px; /* Restore position for larger screens */
   }
   .ctaContentBox {
     margin-top: -140px; /* Restore margin for larger screens */
