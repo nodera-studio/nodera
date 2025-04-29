@@ -7,6 +7,10 @@
         stroke: #fff;
         stroke-miterlimit: 10;
       }
+
+      .st0, .st1 {
+        fill: #555;
+      }
     </style>
   </defs>
   <g id="Group">
@@ -17,8 +21,8 @@
       <path class="st0" d="M173.8,320.4c-.1,0-.3,0-.4,0h66.9s-66.5,0-66.5,0Z"/>
     </g>
   </g>
-  <rect x="105.3" y="28.5" width="301.3" height="134.5" rx="67.3" ry="67.3"/>
-  <rect x="268.2" y="187.1" width="137.8" height="137.8" rx="65.8" ry="65.8"/>
-  <rect x="105.9" y="181.4" width="190.4" height="148" rx="65.8" ry="65.8"/>
-  <rect x="98" y="329.4" width="163.2" height="163.2" rx="65.8" ry="65.8"/>
+  <rect class="st1" x="105.3" y="28.5" width="301.3" height="134.5" rx="67.3" ry="67.3"/>
+  <rect class="st1" x="268.2" y="187.1" width="137.8" height="137.8" rx="65.8" ry="65.8"/>
+  <rect class="st1" x="105.9" y="181.4" width="190.4" height="148" rx="65.8" ry="65.8"/>
+  <rect class="st1" x="98" y="329.4" width="163.2" height="163.2" rx="65.8" ry="65.8"/>
 </svg>
