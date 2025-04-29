@@ -119,7 +119,7 @@ function ModernApp() {
   // Calculate animation properties to ensure perfect looping
   const calculateAnimationProps = (direction: 'left-to-right' | 'right-to-left') => {
     // Adjusted total width calculation for closer logos
-    const totalWidth = 500; // Reduced from 600 for tighter spacing
+    const totalWidth = 500; // This value works well with our spacing
     
     return {
       x: direction === 'left-to-right' ? [-totalWidth, 0] : [0, -totalWidth],
@@ -343,7 +343,7 @@ function ModernApp() {
                     <motion.div 
                       className={cardStyles.metricsContainer}
                       animate={{ 
-                        y: isHoveringMetrics && !shouldReduceMotion ? "-50%" : "0%" 
+                        y: isHoveringMetrics && !shouldReduceMotion ? "-55%" : "0%" // Adjusted value for better scrolling with reduced padding
                       }}
                       transition={{ duration: 0.6, ease: "easeInOut" }}
                       role="list"
