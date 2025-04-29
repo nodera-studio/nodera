@@ -1,4 +1,3 @@
-
 .cta-section {
   position: relative;
   z-index: 1;
@@ -41,7 +40,7 @@
   position: relative;
   overflow: hidden;
   text-align: center;
-  padding-top: 140px;
+  padding-top: 100px;
   padding-bottom: 40px;
   min-height: 350px;
 }
@@ -55,7 +54,7 @@
   max-width: 56rem;
   margin: 0 auto;
   padding: 0 1rem;
-  margin-top: -100px;
+  margin-top: -80px;
 }
 
 .ctaNodera {
@@ -102,11 +101,11 @@
     font-size: 240px;
   }
   .ctaContainer {
-    padding-top: 180px;
+    padding-top: 140px;
     padding-bottom: 200px;
   }
   .ctaContentBox {
-    margin-top: -140px;
+    margin-top: -120px;
   }
   .taglineContainer p:first-child {
     white-space: nowrap;
