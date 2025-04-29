@@ -1,9 +1,11 @@
-
 import React, { useEffect, useRef, useState, useCallback } from 'react';
 import { useIsMobile } from '../hooks/use-mobile';
 import styles from './styles/Showcases.module.css';
 import { Button } from "@/components/ui/button";
-import { motion, useScroll, useTransform, useMotionValueEvent, useSpring, useMotionValue } from 'framer-motion';
+import { motion, useScroll, useTransform, useMotionValueEvent, useSpring, useMotionValue, MotionValue } from 'framer-motion';
+
+// Define animation states
+type AnimationState = 'idle' | 'animating' | 'completed';
 
 const Showcases = () => {
   const isMobile = useIsMobile();
@@ -13,24 +15,24 @@ const Showcases = () => {
   const touchStartY = useRef<number | null>(null);
   
   // State management
-  const [isCardCentered, setIsCardCentered] = useState(false);
-  const [isAnimating, setIsAnimating] = useState(false);
-  const [hasAnimationCompleted, setHasAnimationCompleted] = useState(false);
+  const [animationState, setAnimationState] = useState<AnimationState>('idle');
+  // Track if the card is *currently* positioned at the center trigger point
+  const isCenterTriggerActive = useRef(false); 
   
   // Custom scroll progress value that we'll control
   const customScrollProgress = useMotionValue(0);
   const smoothProgress = useSpring(customScrollProgress, { damping: 30, stiffness: 90 });
   
   // Main scroll animation setup for detecting overall position
-  const { scrollYProgress } = useScroll({
+  const { scrollYProgress: mainScrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start end", "end start"]
   });
   
   // First card scroll effect - to detect when centered in viewport
-  const firstCardScrollEffect = useScroll({
+  const { scrollYProgress: firstCardCenterProgress } = useScroll({
     target: firstCardRef,
-    offset: ["center center", "start start"] 
+    offset: ["center center", "end start"] // 0 = center, 1 = end (top)
   });
   
   // Transform values for the second card based on our custom progress
@@ -42,7 +44,7 @@ const Showcases = () => {
   
   const secondCardOpacity = useTransform(
     smoothProgress,
-    [0, 0.3, 1],
+    [0, 0.1, 1],
     [0, 1, 1]
   );
   
@@ -53,101 +55,170 @@ const Showcases = () => {
     [1, 0.98, 0.95]
   );
   
-  // Detect when first card is centered in viewport
-  useMotionValueEvent(firstCardScrollEffect.scrollYProgress, "change", (latest) => {
-    // When scrollYProgress is close to 0.5, the card is centered
-    if (latest >= 0.45 && latest <= 0.55) {
-      setIsCardCentered(true);
-    } else {
-      setIsCardCentered(false);
+  // Handle interaction with scroll
+  const handleInteraction = useCallback((delta: number) => {
+    const currentProgress = customScrollProgress.get();
+    const progressStep = delta * (isMobile ? 0.003 : 0.0015); // Adjust sensitivity
+    let newProgress = currentProgress + progressStep;
+
+    console.log(`handleInteraction: delta=${delta.toFixed(2)}, currentProgress=${currentProgress.toFixed(2)}, newProgress=${newProgress.toFixed(2)}, state=${animationState}`);
+
+    // Clamp progress between 0 and 1
+    newProgress = Math.max(0, Math.min(1, newProgress));
+
+    // Only update if there's a change (prevents unnecessary updates)
+    if (newProgress !== currentProgress) {
+        customScrollProgress.set(newProgress);
     }
-  });
+
+    // --- State Transitions based on Progress ---
+    if (animationState === 'animating') {
+      if (newProgress >= 1) {
+        console.log("Transition: animating -> completed (progress >= 1)");
+        setAnimationState('completed');
+        console.log("Unlocking scroll (progress >= 1)");
+        document.body.classList.remove(styles.bodyScrollLocked);
+      } else if (newProgress <= 0) {
+        console.log("Transition: animating -> idle (progress <= 0)");
+        setAnimationState('idle');
+        console.log("Unlocking scroll (progress <= 0 in animating)");
+        document.body.classList.remove(styles.bodyScrollLocked);
+      }
+    } else if (animationState === 'completed') {
+        if (newProgress < 1 && newProgress > 0) {
+            if (isCenterTriggerActive.current) {
+                console.log("Transition: completed -> animating (scrolled back into view)");
+                setAnimationState('animating');
+                console.log("Locking scroll (re-entering animating)");
+                document.body.classList.add(styles.bodyScrollLocked);
+            } else {
+                 console.log("Condition: In completed, scrolled back (progress < 1), but NOT centered. State remains completed, scroll remains unlocked.")
+            }
+        } else if (newProgress <= 0) {
+            console.log("Transition: completed -> idle (progress <= 0)");
+            setAnimationState('idle');
+            // Ensure scroll is unlocked, although it should already be
+            if (document.body.classList.contains(styles.bodyScrollLocked)) {
+                console.warn("Scroll was locked in completed state when progress hit 0. Unlocking now.");
+                document.body.classList.remove(styles.bodyScrollLocked);
+            }
+        }
+    }
+  }, [customScrollProgress, animationState, isMobile]);
   
   // Handle wheel events during animation
   const handleWheelEvent = useCallback((e: WheelEvent) => {
-    if (!isAnimating) return;
-    
-    e.preventDefault();
-    
-    // Use wheel delta to drive animation progress
-    const delta = e.deltaY;
-    const progressStep = delta * 0.0015; // Adjust sensitivity
-    const newProgress = Math.max(0, Math.min(1, customScrollProgress.get() + progressStep));
-    customScrollProgress.set(newProgress);
-    
-    // When animation completes
-    if (newProgress >= 1) {
-      setHasAnimationCompleted(true);
-      setIsAnimating(false);
-      document.body.classList.remove(styles.bodyScrollLocked);
+    // Only PREVENT default scroll when actively animating
+    if (animationState === 'animating') {
+        console.log("handleWheelEvent: Preventing default scroll (state=animating)");
+        e.preventDefault();
+        handleInteraction(e.deltaY);
+    } 
+    // If completed and centered, still handle interaction for scroll-up, but DO NOT prevent default scroll-down.
+    else if (animationState === 'completed' && isCenterTriggerActive.current) {
+        console.log("handleWheelEvent: Handling interaction for scroll-up, allowing default scroll-down (state=completed, centered)");
+        handleInteraction(e.deltaY); // Allow driving progress back down
+        // No e.preventDefault() here
     }
-    
-    // When scrolling back up from completed state
-    if (newProgress <= 0 && hasAnimationCompleted) {
-      setHasAnimationCompleted(false);
-      setIsAnimating(false);
-      document.body.classList.remove(styles.bodyScrollLocked);
+    else {
+        console.log("handleWheelEvent: Allowing default scroll (state != animating and not (completed+centered))");
     }
-  }, [isAnimating, hasAnimationCompleted, customScrollProgress]);
+  }, [handleInteraction, animationState]);
   
   // Handle touch events for mobile
   const handleTouchStart = useCallback((e: TouchEvent) => {
-    touchStartY.current = e.touches[0].clientY;
-  }, []);
+    // Track start position if animating OR if completed+centered (to allow scroll-up)
+    if (animationState === 'animating' || (animationState === 'completed' && isCenterTriggerActive.current)) {
+        touchStartY.current = e.touches[0].clientY;
+        console.log("handleTouchStart: Tracking touch", { state: animationState, centered: isCenterTriggerActive.current });
+    } else {
+        touchStartY.current = null;
+        console.log("handleTouchStart: Not tracking touch", { state: animationState, centered: isCenterTriggerActive.current });
+    }
+  }, [animationState]);
   
   const handleTouchMove = useCallback((e: TouchEvent) => {
-    if (!touchStartY.current || !isAnimating) return;
-    
-    e.preventDefault();
-    
-    const touchY = e.touches[0].clientY;
-    const deltaY = touchStartY.current - touchY;
-    touchStartY.current = touchY;
-    
-    const progressStep = deltaY * 0.003; // Adjust sensitivity for touch
-    const newProgress = Math.max(0, Math.min(1, customScrollProgress.get() + progressStep));
-    customScrollProgress.set(newProgress);
-    
-    // When animation completes
-    if (newProgress >= 1) {
-      setHasAnimationCompleted(true);
-      setIsAnimating(false);
-      document.body.classList.remove(styles.bodyScrollLocked);
+    if (touchStartY.current === null) return;
+
+    // Only PREVENT default scroll when actively animating
+    if (animationState === 'animating') {
+        console.log("handleTouchMove: Preventing default scroll (state=animating)");
+        e.preventDefault();
+        const touchY = e.touches[0].clientY;
+        const deltaY = touchStartY.current - touchY;
+        touchStartY.current = touchY;
+        handleInteraction(deltaY);
+    } 
+    // If completed and centered, still handle interaction for scroll-up, but DO NOT prevent default scroll-down.
+    else if (animationState === 'completed' && isCenterTriggerActive.current) {
+        console.log("handleTouchMove: Handling interaction for scroll-up, allowing default scroll-down (state=completed, centered)");
+        const touchY = e.touches[0].clientY;
+        const deltaY = touchStartY.current - touchY;
+        touchStartY.current = touchY;
+        handleInteraction(deltaY); // Allow driving progress back down
+        // No e.preventDefault() here
+    } else {
+        console.log("handleTouchMove: Allowing default scroll (state != animating and not (completed+centered))");
+        // Reset touch tracking if default scroll is allowed mid-drag
+        touchStartY.current = null; 
     }
-    
-    // When scrolling back up from completed state
-    if (newProgress <= 0 && hasAnimationCompleted) {
-      setHasAnimationCompleted(false);
-      setIsAnimating(false);
-      document.body.classList.remove(styles.bodyScrollLocked);
-    }
-  }, [isAnimating, hasAnimationCompleted, customScrollProgress]);
+  }, [handleInteraction, animationState]);
   
   const handleTouchEnd = useCallback(() => {
+    console.log("handleTouchEnd: Resetting touch start Y");
     touchStartY.current = null;
   }, []);
   
-  // Watch for when card is centered to start animation
-  useEffect(() => {
-    if (isCardCentered && !isAnimating && !hasAnimationCompleted) {
-      setIsAnimating(true);
-      document.body.classList.add(styles.bodyScrollLocked);
+  // Effect 1: Detect when the card hits the center trigger point
+  useMotionValueEvent(firstCardCenterProgress, "change", (latest) => {
+    const isNowCentered = latest >= 0 && latest <= 0.1;
+    console.log(`CenterCheck: latest=${latest.toFixed(2)}, isNowCentered=${isNowCentered}, wasCentered=${isCenterTriggerActive.current}, state=${animationState}`);
+
+    // Always update the ref state if the centered status changes
+    if (isNowCentered !== isCenterTriggerActive.current) {
+        isCenterTriggerActive.current = isNowCentered;
+        console.log(`CenterCheck: Center trigger ref updated to ${isNowCentered}`);
     }
-  }, [isCardCentered, isAnimating, hasAnimationCompleted]);
+
+    // --- State Transitions based on Centering (checked independently of ref update) ---
+    if (isNowCentered && animationState === 'idle') {
+        // Entered trigger zone while idle, start animating
+        console.log("Transition: idle -> animating (centered)");
+        setAnimationState('animating');
+        console.log("Locking scroll (entering animating)");
+        document.body.classList.add(styles.bodyScrollLocked);
+    } else if (!isNowCentered && animationState === 'animating') {
+       console.log("Condition: Left center while animating. State remains animating.")
+        // Allow animation to finish even if center is left
+    } else if (!isNowCentered && animationState === 'completed') {
+        console.log("Condition: Left center after completed. State remains completed.")
+         // If they scroll back up now, handleInteraction will check isCenterTriggerActive
+         // before deciding to re-enter 'animating' state.
+    }
+  });
   
-  // Add and remove event listeners for scroll control
+  // Effect 2: Add/Remove global scroll/touch listeners based on animation state
   useEffect(() => {
-    if (isAnimating) {
+    // We need listeners if animating OR if completed and centered (to allow scroll up)
+    const shouldListen = animationState === 'animating' || (animationState === 'completed' && isCenterTriggerActive.current);
+    console.log(`Effect (Listeners): State=${animationState}, Centered=${isCenterTriggerActive.current}, ShouldListen=${shouldListen}`);
+
+    if (shouldListen) {
+      console.log("Effect (Listeners): Adding listeners");
       if (isMobile) {
-        window.addEventListener('touchstart', handleTouchStart, { passive: false });
-        window.addEventListener('touchmove', handleTouchMove, { passive: false });
+        window.addEventListener('touchstart', handleTouchStart, { passive: true }); // Start can be passive
+        window.addEventListener('touchmove', handleTouchMove, { passive: false }); // Move needs prevention
         window.addEventListener('touchend', handleTouchEnd);
       } else {
-        window.addEventListener('wheel', handleWheelEvent, { passive: false });
+        window.addEventListener('wheel', handleWheelEvent, { passive: false }); // Wheel needs prevention
       }
+    } else {
+      console.log("Effect (Listeners): Listeners should NOT be active (or will be removed).");
     }
-    
+
+    // Cleanup function
     return () => {
+      console.log("Effect (Listeners): Cleanup - Removing listeners");
       if (isMobile) {
         window.removeEventListener('touchstart', handleTouchStart);
         window.removeEventListener('touchmove', handleTouchMove);
@@ -156,11 +227,14 @@ const Showcases = () => {
         window.removeEventListener('wheel', handleWheelEvent);
       }
     };
-  }, [isAnimating, handleWheelEvent, handleTouchStart, handleTouchMove, handleTouchEnd, isMobile]);
+    // Rerun this effect if state changes OR if centered status changes while completed
+  }, [animationState, isMobile, handleWheelEvent, handleTouchStart, handleTouchMove, handleTouchEnd]);
   
   // Clean up on unmount
   useEffect(() => {
+    console.log("Effect (Mount/Unmount): Adding unmount cleanup for scroll lock.");
     return () => {
+      console.log("Effect (Unmount): Removing body scroll lock if present.");
       document.body.classList.remove(styles.bodyScrollLocked);
     };
   }, []);
@@ -176,16 +250,23 @@ const Showcases = () => {
       });
     }, { threshold: 0.3 });
     
-    if (sectionTitleRef.current) {
-      observer.observe(sectionTitleRef.current);
+    const currentTitleRef = sectionTitleRef.current; // Capture ref value
+    if (currentTitleRef) {
+      observer.observe(currentTitleRef);
     }
     
     return () => {
-      if (sectionTitleRef.current) {
-        observer.unobserve(sectionTitleRef.current);
+      if (currentTitleRef) {
+        observer.unobserve(currentTitleRef);
       }
     };
   }, []);
+
+  // --- Determine current visual state ---
+  const showSecondCard = animationState !== 'idle';
+  const applyScaling = animationState !== 'idle';
+  const disableHover = animationState !== 'idle';
+  console.log(`Render: state=${animationState}, showSecondCard=${showSecondCard}, applyScaling=${applyScaling}, disableHover=${disableHover}`);
 
   return (
     <div className="bg-white py-16 md:py-24 lg:py-32 px-6 sm:px-10 lg:px-16">
@@ -204,22 +285,22 @@ const Showcases = () => {
         
         <div 
           ref={containerRef} 
-          className={`${styles.cardStackContainer} relative min-h-[600px] lg:min-h-[500px]`}
+          className={`${styles.cardStackContainer} relative`}
           aria-live="polite"
         >
           {/* First Card - Always visible but scales when second card appears */}
           <motion.div 
             ref={firstCardRef}
-            className={`${styles.showcaseCard} z-10`}
+            className={`${styles.showcaseCard} ${disableHover ? styles.noHoverEffect : ''}`}
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.5 }}
             style={{ 
-              scale: (isAnimating || hasAnimationCompleted) ? firstCardScale : 1,
+              scale: applyScaling ? firstCardScale : 1,
               position: 'sticky', 
               top: '20vh',
-              zIndex: isCardCentered ? 30 : 10,
+              zIndex: 10,
             }}
           >
             <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 items-center">
@@ -256,19 +337,16 @@ const Showcases = () => {
           </motion.div>
           
           {/* Second Card - Animated to stack/unstack with parallax effect */}
-          <motion.div 
-            className={`${styles.showcaseCard} absolute w-full`}
-            style={{ 
-              y: (isAnimating || hasAnimationCompleted) ? secondCardY : '100%',
-              opacity: (isAnimating || hasAnimationCompleted) ? secondCardOpacity : 0,
-              zIndex: 20,
-              position: 'relative',
+          <motion.div
+            className={`${styles.showcaseCard} ${disableHover ? styles.noHoverEffect : ''} absolute w-full top-0 left-0`}
+            style={{
+              y: secondCardY,
+              opacity: secondCardOpacity,
+              // Conditionally increase z-index higher than divider (50)
+              zIndex: showSecondCard ? 60 : 20, 
+              pointerEvents: showSecondCard ? 'auto' : 'none',
             }}
-            transition={{ 
-              type: "spring", 
-              stiffness: 70, 
-              damping: 20 
-            }}
+            aria-hidden={!showSecondCard}
           >
             <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 items-center">
               <div className="lg:w-1/2 space-y-4 order-2 lg:order-1">

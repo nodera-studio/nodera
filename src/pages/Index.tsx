@@ -1,4 +1,3 @@
-
 import React, { lazy, Suspense } from 'react';
 import Header from '../components/Header';
 import Hero from '../components/Hero';
@@ -31,7 +30,7 @@ const Index = () => {
           <Hero />
         </section>
         <div className="global-divider" />
-        <section id="services" className="relative z-10">
+        <section id="services" className="relative z-[55]">
           <Showcases />
         </section>
         <div className="global-divider" />

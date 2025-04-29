@@ -1,8 +1,4 @@
 
-/* src/components/styles/Showcases.module.css */
-
-/* Remove .cardTitle and .cardDescription rules as they are now handled by global h3 and p styles */
-
 .showcaseCard {
   background-color: #F9F9F9;
   border-radius: 1.5rem;
@@ -18,12 +14,19 @@
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
 }
 
+/* Add this rule to disable hover when animating */
+.showcaseCard.noHoverEffect:hover {
+  transform: none;
+  box-shadow: none;
+}
+
 .cardStackContainer {
   position: relative;
   perspective: 1200px;
   min-height: 600px;
   width: 100%;
   overflow: visible;
+  z-index: 40; /* Elevate the container itself */
 }
 
 .bodyScrollLocked {
