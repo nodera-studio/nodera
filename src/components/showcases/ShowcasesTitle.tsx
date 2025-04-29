@@ -1,43 +1,43 @@
 
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import styles from '../styles/Showcases.module.css';
-import { motion } from 'framer-motion';
 
 const ShowcasesTitle: React.FC = () => {
-  const titleVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { 
-      opacity: 1, 
-      y: 0,
-      transition: {
-        duration: 0.7,
-        ease: [0.16, 1, 0.3, 1]
-      }
-    }
-  };
+  const sectionTitleRef = useRef<HTMLHeadingElement>(null);
   
+  useEffect(() => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.3 });
+    
+    const currentTitleRef = sectionTitleRef.current;
+    if (currentTitleRef) {
+      observer.observe(currentTitleRef);
+    }
+    
+    return () => {
+      if (currentTitleRef) {
+        observer.unobserve(currentTitleRef);
+      }
+    };
+  }, []);
+
   return (
-    <div className="flex flex-wrap justify-between items-center mb-20 md:mb-24 lg:mb-28 gap-4">
-      <motion.h2 
-        className="text-black font-medium tracking-tight"
-        variants={titleVariants}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-      >
-        Featured <span className="gradient-word">Projects</span>
-      </motion.h2>
-      <motion.a 
+    <div className="flex flex-wrap justify-between items-center mb-12 md:mb-16 lg:mb-20 gap-4">
+      <h2 ref={sectionTitleRef} className="text-black section-title">
+        Digital <span className="gradient-word">Showcases</span>
+      </h2>
+      <a 
         href="#" 
-        className={`${styles.hideOnMobile} view-all-link group flex items-center gap-2`}
-        variants={titleVariants}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
+        className={styles.hideOnMobile + " view-all-link"}
       >
-        View All 
-        <span className="inline-block transition-transform duration-500 group-hover:translate-x-1">→</span>
-      </motion.a>
+        View All →
+      </a>
     </div>
   );
 };
