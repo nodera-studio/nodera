@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Button } from "@/components/ui/button";
 import styles from './CallToAction.module.css';
@@ -15,8 +16,11 @@ const CallToAction = () => {
       {/* Central content - positioned toward the top */}
       <div className={styles.ctaContentBox}>
         <div className="mb-4">
-          <p className={`${styles.ctaText} mb-4 whitespace-nowrap`}>
-            You've got a vision. We've got the code.
+          <p className={`${styles.ctaText} mb-2`}>
+            You've got a vision.
+          </p>
+          <p className={`${styles.ctaText} mb-4`}>
+            We've got the code.
           </p>
           <p className={`${styles.ctaText} ${styles.gradientText}`}>
             Let's build something remarkable.
