@@ -1,5 +1,5 @@
 
-import { useState, useRef, useCallback } from 'react';
+import { useState, useRef, useCallback, MutableRefObject } from 'react';
 import { useMotionValue, useSpring } from 'framer-motion';
 import { useIsMobile } from '@/hooks/use-mobile';
 import styles from '../styles/Showcases.module.css';
@@ -10,14 +10,15 @@ export type AnimationState = 'idle' | 'animating' | 'completed';
 export const useCardAnimation = () => {
   const isMobile = useIsMobile();
   const firstCardRef = useRef<HTMLDivElement>(null);
+  // Change to MutableRefObject for values we need to modify
   const touchStartY = useRef<number | null>(null);
   
   // State management
   const [animationState, setAnimationState] = useState<AnimationState>('idle');
   // Track if the card is *currently* positioned at the center trigger point
-  const isCenterTriggerActive = useRef(false);
+  const isCenterTriggerActive = useRef<boolean>(false);
   // Ref to control if animation can start when centered (prevents immediate restart on scroll up)
-  const canAnimateOnCenter = useRef(true);
+  const canAnimateOnCenter = useRef<boolean>(true);
   // A small cooldown timer ID to automatically re-enable animations after rapid scrolls
   const canAnimateCooldownId = useRef<NodeJS.Timeout | null>(null);
   

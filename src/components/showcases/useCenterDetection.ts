@@ -1,6 +1,6 @@
 
 import { useMotionValueEvent, useScroll } from 'framer-motion';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, MutableRefObject } from 'react';
 import styles from '../styles/Showcases.module.css';
 import { AnimationState } from './useCardAnimation';
 
@@ -9,8 +9,8 @@ interface CenterDetectionProps {
   firstCardRef: React.RefObject<HTMLDivElement>;
   animationState: AnimationState;
   setAnimationState: (state: AnimationState) => void;
-  isCenterTriggerActive: React.RefObject<boolean>;
-  canAnimateOnCenter: React.RefObject<boolean>;
+  isCenterTriggerActive: MutableRefObject<boolean>;
+  canAnimateOnCenter: MutableRefObject<boolean>;
   isMobile: boolean;
 }
 

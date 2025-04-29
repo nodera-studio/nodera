@@ -1,13 +1,13 @@
 
-import { useCallback, useEffect } from 'react';
+import { useCallback, useEffect, MutableRefObject } from 'react';
 import styles from '../styles/Showcases.module.css';
 import { AnimationState } from './useCardAnimation';
 
 interface ScrollEventProps {
   animationState: AnimationState;
   handleInteraction: (delta: number) => void;
-  isCenterTriggerActive: React.MutableRefObject<boolean>;
-  touchStartY: React.MutableRefObject<number | null>;
+  isCenterTriggerActive: MutableRefObject<boolean>;
+  touchStartY: MutableRefObject<number | null>;
   isMobile: boolean;
 }
 

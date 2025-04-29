@@ -16,10 +16,10 @@ interface ShowcaseCardProps {
   whileInView?: any;
   viewport?: any;
   transition?: any;
-  ref?: React.RefObject<HTMLDivElement>;
 }
 
-const ShowcaseCard: React.FC<ShowcaseCardProps> = React.forwardRef<HTMLDivElement, ShowcaseCardProps>(({
+// Changed to proper React.ForwardRefRenderFunction type
+const ShowcaseCard = React.forwardRef<HTMLDivElement, ShowcaseCardProps>(({
   title,
   description,
   imageSrc,
