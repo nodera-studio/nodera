@@ -117,8 +117,8 @@ const Showcases = () => {
             disableHover={disableHover}
             className="absolute w-full top-0 left-0"
             style={{
-              // Fixed: Use string template expressions for y value instead of direct MotionValue
-              y: secondCardY as any,
+              // Fixed: Use standard CSS transform for the y translation
+              transform: `translateY(${secondCardY})`,
               // Fixed: Use as any for now to fix the opacity type
               opacity: secondCardOpacity as any,
               // Conditionally increase z-index higher than divider (50)
