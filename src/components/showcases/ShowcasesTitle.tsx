@@ -1,5 +1,5 @@
 
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
 import styles from '../styles/Showcases.module.css';
 import { motion } from 'framer-motion';
 
@@ -10,14 +10,14 @@ const ShowcasesTitle: React.FC = () => {
       opacity: 1, 
       y: 0,
       transition: {
-        duration: 0.6,
+        duration: 0.7,
         ease: [0.16, 1, 0.3, 1]
       }
     }
   };
   
   return (
-    <div className="flex flex-wrap justify-between items-center mb-16 md:mb-20 lg:mb-24 gap-4">
+    <div className="flex flex-wrap justify-between items-center mb-20 md:mb-24 lg:mb-28 gap-4">
       <motion.h2 
         className="text-black font-medium tracking-tight"
         variants={titleVariants}
@@ -36,7 +36,7 @@ const ShowcasesTitle: React.FC = () => {
         viewport={{ once: true }}
       >
         View All 
-        <span className="inline-block transition-transform duration-300 group-hover:translate-x-1">→</span>
+        <span className="inline-block transition-transform duration-500 group-hover:translate-x-1">→</span>
       </motion.a>
     </div>
   );

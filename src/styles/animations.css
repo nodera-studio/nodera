@@ -28,6 +28,11 @@
     0%, 100% { transform: scale(1); }
     50% { transform: scale(1.03); }
   }
+  
+  @keyframes revealIn {
+    0% { opacity: 0; transform: translateY(30px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
 }
 
 @layer utilities {
@@ -42,10 +47,14 @@
   }
   
   .apple-transition {
-    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
   }
   
   .text-balance {
     text-wrap: balance;
+  }
+  
+  .reveal-animation {
+    animation: revealIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   }
 }

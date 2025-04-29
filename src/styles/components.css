@@ -26,7 +26,7 @@
   }
   
   .card-hover {
-    @apply transition-transform duration-300 ease-out;
+    @apply transition-transform duration-500 ease-out;
     will-change: transform;
   }
   
@@ -44,7 +44,7 @@
   }
   
   .showcase-image {
-    @apply transition-transform duration-500;
+    @apply transition-transform duration-700;
     will-change: transform;
   }
   
@@ -111,7 +111,7 @@
   }
 
   .apple-button {
-    @apply py-3 px-6 rounded-full font-medium transition-all duration-300;
+    @apply py-3 px-6 rounded-full font-medium transition-all duration-500;
     background: linear-gradient(180deg, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0.6) 100%);
     backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.2);

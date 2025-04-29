@@ -10,6 +10,7 @@ interface ShowcaseCardProps {
   description: string;
   imageSrc: string;
   imageAlt: string;
+  category?: string;
   disableHover?: boolean;
   style?: React.CSSProperties;
   className?: string;
@@ -24,6 +25,7 @@ const ShowcaseCard = React.forwardRef<HTMLDivElement, ShowcaseCardProps>(({
   description,
   imageSrc,
   imageAlt,
+  category = "Case Study",
   disableHover = false,
   style,
   className = '',
@@ -36,8 +38,9 @@ const ShowcaseCard = React.forwardRef<HTMLDivElement, ShowcaseCardProps>(({
       style={style}
       {...props}
     >
-      <div className="flex flex-col lg:flex-row gap-8 lg:gap-16 items-center">
-        <div className="lg:w-1/2 space-y-4 order-2 lg:order-1">
+      <div className="flex flex-col lg:flex-row gap-10 lg:gap-16 items-center">
+        <div className="lg:w-3/5 space-y-4 order-2 lg:order-1">
+          <div className={styles.categoryTag}>{category}</div>
           <h3 className={styles.cardTitle}>{title}</h3>
           <p className={styles.cardDescription}>
             {description}
@@ -51,7 +54,7 @@ const ShowcaseCard = React.forwardRef<HTMLDivElement, ShowcaseCardProps>(({
             >
               <a href="#" className="flex items-center gap-2">
                 View Project
-                <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+                <ArrowRight className="h-4 w-4 transition-transform duration-500 group-hover:translate-x-1" />
               </a>
             </Button>
             <Button
@@ -63,7 +66,7 @@ const ShowcaseCard = React.forwardRef<HTMLDivElement, ShowcaseCardProps>(({
             </Button>
           </div>
         </div>
-        <div className="lg:w-1/2 order-1 lg:order-2">
+        <div className="lg:w-2/5 order-1 lg:order-2">
           <div className={styles.showcaseImage}>
             <img 
               src={imageSrc} 
