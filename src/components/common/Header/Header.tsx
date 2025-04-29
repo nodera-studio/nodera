@@ -1,10 +1,10 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import styles from './Header.module.css';
 import { motion, AnimatePresence } from 'framer-motion';
-import { useIsMobile, useBreakpoint } from '../hooks/use-mobile';
+import { useIsMobile, useBreakpoint } from '@hooks/use-mobile';
 import { Link, useLocation } from 'react-router-dom';
 import { ChevronRight } from 'lucide-react';
-import { Button } from './ui/button';
+import { Button } from '@ui/button';
 
 // Animation variants for the mobile menu
 const menuVariants = {

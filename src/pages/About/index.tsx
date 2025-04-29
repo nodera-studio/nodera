@@ -1,10 +1,9 @@
-
 import React from 'react';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
-import PageHero from '../components/PageHero';
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import { Card, CardContent } from "@/components/ui/card";
+import Header from '@components/common/Header/Header';
+import Footer from '@components/common/Footer/Footer';
+import PageHero from '@components/common/PageHero/PageHero';
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@ui/accordion";
+import { Card, CardContent } from "@ui/card";
 
 const values = [
   {

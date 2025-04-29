@@ -1,13 +1,12 @@
-
 import React from 'react';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
-import PageHero from '../components/PageHero';
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { useToast } from "@/hooks/use-toast";
+import Header from '@components/common/Header/Header';
+import Footer from '@components/common/Footer/Footer';
+import PageHero from '@components/common/PageHero/PageHero';
+import { Button } from "@ui/button";
+import { Input } from "@ui/input";
+import { Textarea } from "@ui/textarea";
+import { Card, CardContent, CardHeader, CardTitle } from "@ui/card";
+import { useToast } from "@hooks/use-toast";
 
 const Contact = () => {
   const { toast } = useToast();

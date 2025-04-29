@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
-import { useIsMobile } from '../hooks/use-mobile';
-import styles from './styles/Showcases.module.css';
-import { Button } from "@/components/ui/button";
+import { useIsMobile } from '@hooks/use-mobile';
+import styles from './Showcases.module.css';
+import { Button } from "@ui/button";
 
 const Showcases = () => {
   const isMobile = useIsMobile();

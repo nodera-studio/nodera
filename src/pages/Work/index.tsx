@@ -1,10 +1,9 @@
-
 import React, { useState, useEffect } from 'react';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
-import PageHero from '../components/PageHero';
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardFooter } from "@/components/ui/card";
+import Header from '@components/common/Header/Header';
+import Footer from '@components/common/Footer/Footer';
+import PageHero from '@components/common/PageHero/PageHero';
+import { Button } from "@ui/button";
+import { Card, CardContent, CardFooter } from "@ui/card";
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 
