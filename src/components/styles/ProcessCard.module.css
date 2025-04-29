@@ -93,8 +93,8 @@
 }
 
 .placeholderLogo {
-  width: 50px;
-  height: 50px;
+  width: 70px;
+  height: 70px;
   background-color: #E5E5E5;
   border-radius: 8px;
   display: flex;
@@ -107,7 +107,6 @@
 .logoIcon {
   width: 70%;
   height: 70%;
-  background-color: #555555;
   mask-size: contain;
   mask-repeat: no-repeat;
   mask-position: center;
@@ -349,8 +348,8 @@
   }
   
   .placeholderLogo {
-    width: 60px;
-    height: 60px;
+    width: 70px;
+    height: 70px;
   }
   
   .companyLogoWrapper {

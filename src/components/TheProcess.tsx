@@ -1,4 +1,3 @@
-
 import React, { useRef, useState, useEffect } from 'react';
 import { motion, useInView, useReducedMotion, AnimatePresence } from 'framer-motion';
 import styles from './styles/TheProcess.module.css';
@@ -117,34 +116,10 @@ function ModernApp() {
     }
   };
 
-  // Generate logos for the carousel with their respective icons
-  const renderLogoPlaceholders = (count: number, icons: string[]) => {
-    return Array.from({ length: count }).map((_, index) => {
-      const iconIndex = index % icons.length;
-      const iconSrc = icons[iconIndex];
-      
-      // Special handling for JS logo to make its text white
-      const isJsLogo = iconSrc.includes('js.svg');
-      
-      return (
-        <div key={index} className={cardStyles.placeholderLogo}>
-          <div 
-            className={`${cardStyles.logoIcon} ${isJsLogo ? cardStyles.jsLogo : ''}`}
-            style={{
-              maskImage: `url(${iconSrc})`,
-              WebkitMaskImage: `url(${iconSrc})`
-            }}
-            aria-hidden="true"
-          />
-        </div>
-      );
-    });
-  };
-
   // Calculate animation properties to ensure perfect looping
   const calculateAnimationProps = (direction: 'left-to-right' | 'right-to-left') => {
-    // Total width of 10 logos plus gaps (50px per logo + 1.5rem gap)
-    const totalWidth = 720; // Approximate width in pixels
+    // Total width of 4 logos plus gaps (70px per logo + 1.5rem gap)
+    const totalWidth = 600; // Approximate width in pixels for 4 logos
     
     return {
       x: direction === 'left-to-right' ? [-totalWidth, 0] : [0, -totalWidth],
@@ -157,6 +132,24 @@ function ModernApp() {
     };
   };
 
+  // Generate logos for the carousel with their respective icons
+  const renderLogoPlaceholders = (count: number, icons: string[]) => {
+    return Array.from({ length: count }).map((_, index) => {
+      const iconIndex = index % icons.length;
+      const iconSrc = icons[iconIndex];
+      
+      return (
+        <div key={index} className={cardStyles.placeholderLogo}>
+          <img 
+            src={iconSrc}
+            alt={`Tech logo ${index + 1}`}
+            className={cardStyles.logoIcon}
+          />
+        </div>
+      );
+    });
+  };
+
   const logoCarousel = (
     <div className={cardStyles.logoCarouselContainer}>
       <div className={cardStyles.logoCarousel}>
@@ -166,9 +159,9 @@ function ModernApp() {
             className={cardStyles.logoRow}
             animate={shouldReduceMotion ? {} : calculateAnimationProps('left-to-right')}
           >
-            {renderLogoPlaceholders(10, designLogoIcons)}
+            {renderLogoPlaceholders(8, designLogoIcons)}
             {/* Duplicate for seamless loop */}
-            {renderLogoPlaceholders(10, designLogoIcons)}
+            {renderLogoPlaceholders(8, designLogoIcons)}
           </motion.div>
         </div>
         
@@ -178,9 +171,9 @@ function ModernApp() {
             className={cardStyles.logoRow}
             animate={shouldReduceMotion ? {} : calculateAnimationProps('right-to-left')}
           >
-            {renderLogoPlaceholders(10, devLogoIcons)}
+            {renderLogoPlaceholders(8, devLogoIcons)}
             {/* Duplicate for seamless loop */}
-            {renderLogoPlaceholders(10, devLogoIcons)}
+            {renderLogoPlaceholders(8, devLogoIcons)}
           </motion.div>
         </div>
       </div>
