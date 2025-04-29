@@ -13,12 +13,9 @@ const CallToAction = () => {
       </div>
       
       <div className={styles.ctaContentBox}>
-        <div className="mb-6">
-          <p className={`${styles.ctaText} mb-2`}>
-            You've got a vision.
-          </p>
-          <p className={`${styles.ctaText} mb-4`}>
-            We've got the code.
+        <div className={styles.taglineContainer}>
+          <p className={styles.ctaText}>
+            You've got a vision. We've got the code.
           </p>
           <p className={`${styles.ctaText} ${styles.gradientText}`}>
             Let's build something remarkable.

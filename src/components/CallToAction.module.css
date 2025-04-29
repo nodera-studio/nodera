@@ -60,7 +60,7 @@
 
 .ctaNodera {
   position: absolute;
-  bottom: -20px;
+  bottom: -40px;
   left: 0;
   right: 0;
   text-align: center;
@@ -75,6 +75,10 @@
   color: white;
   text-shadow: 0 -2px 3px rgba(0, 0, 0, 0.15);
   font-size: 90px;
+}
+
+.taglineContainer {
+  margin-bottom: 1.5rem;
 }
 
 .ctaText {
@@ -104,6 +108,9 @@
   .ctaContentBox {
     margin-top: -140px;
   }
+  .taglineContainer p:first-child {
+    white-space: nowrap;
+  }
 }
 
 @media (min-width: 1024px) {
@@ -112,5 +119,8 @@
   }
   .ctaNoderaTxt {
     font-size: 360px;
+  }
+  .ctaNodera {
+    bottom: -80px;
   }
 }
