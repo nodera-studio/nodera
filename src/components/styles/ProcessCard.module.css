@@ -365,4 +365,9 @@
   .logoRow {
     grid-template-columns: repeat(3, 1fr);
   }
+  
+  /* Reduce gap between logo rows in mobile view */
+  .logoCarousel {
+    gap: 0.75rem;
+  }
 }
