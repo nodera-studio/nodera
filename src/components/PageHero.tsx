@@ -2,6 +2,7 @@
 import React from 'react';
 import styles from './PageHero.module.css';
 import { motion } from 'framer-motion';
+import { useBreakpoint } from '../hooks/use-mobile';
 
 interface PageHeroProps {
   title: string;
@@ -9,6 +10,9 @@ interface PageHeroProps {
 }
 
 const PageHero: React.FC<PageHeroProps> = ({ title, subtitle }) => {
+  const breakpoint = useBreakpoint();
+  const isMobileView = breakpoint === 'mobile';
+  
   return (
     <div className={styles.pageHero}>
       <div className={styles.heroBackgroundContainer}>
@@ -17,6 +21,10 @@ const PageHero: React.FC<PageHeroProps> = ({ title, subtitle }) => {
           initial={{ opacity: 0.7 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8 }}
+          style={{
+            filter: isMobileView ? 'blur(15px)' : 'blur(30px)', // Reduced blur on mobile
+            opacity: isMobileView ? 0.5 : 0.3, // Increased opacity on mobile
+          }}
         ></motion.div>
       </div>
       <motion.div 

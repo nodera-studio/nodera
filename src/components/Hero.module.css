@@ -1,3 +1,4 @@
+
 .hero {
   position: relative;
   text-align: center;
@@ -29,9 +30,9 @@
   width: auto;
   height: 80%;
   object-fit: contain;
-  filter: blur(30px);
+  /* filter moved to inline style for dynamic control */
   transform: translate(-50%, -50%) scale(1.5);
-  opacity: 0.3;
+  /* opacity moved to inline style for dynamic control */
   pointer-events: none;
 }
 
@@ -97,7 +98,7 @@
   
   .heroBackground {
     height: 60%;
-    opacity: 0.4;
+    /* opacity controlled inline */
   }
 }
 
@@ -110,6 +111,6 @@
   
   .heroBackground {
     height: 60%;
-    opacity: 0.4;
+    /* opacity controlled inline */
   }
 }

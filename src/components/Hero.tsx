@@ -1,11 +1,15 @@
+
 import React, { useState, useEffect } from 'react';
 import styles from './Hero.module.css';
+import { useBreakpoint } from '../hooks/use-mobile';
 
 const Hero: React.FC = () => {
   const title = "Nodera";
   const subtitle = "Web Studio";
   
   const [scrollY, setScrollY] = useState(0);
+  const breakpoint = useBreakpoint();
+  const isMobileView = breakpoint === 'mobile';
   
   useEffect(() => {
     const handleScroll = () => {
@@ -38,7 +42,11 @@ const Hero: React.FC = () => {
           alt="Blurred logo background" 
           className={`${styles.heroBackground} animate-pulse-logo`}
           loading="eager"
-          style={{ transform: `translate(-50%, -50%) scale(1.5) translateY(${parallaxOffset * 0.8}px)` }} 
+          style={{ 
+            transform: `translate(-50%, -50%) scale(1.5) translateY(${parallaxOffset * 0.8}px)`,
+            filter: isMobileView ? 'blur(15px)' : 'blur(30px)', // Reduced blur on mobile
+            opacity: isMobileView ? 0.5 : 0.3, // Increased opacity on mobile
+          }} 
         />
       </div>
       
