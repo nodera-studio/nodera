@@ -1,15 +1,15 @@
 import React, { lazy, Suspense } from 'react';
-import Header from '@components/common/Header/Header';
-import Hero from '@components/common/Hero/Hero';
-import Showcases from '@components/home/Showcases/Showcases';
-import CallToAction from '@components/common/CallToAction/CallToAction';
-import WhatWeDo from '@components/home/WhatWeDo/WhatWeDo';
-import Footer from '@components/common/Footer/Footer';
-import { useIsMobile } from '@hooks/use-mobile';
+import Header from '@/components/common/Header/Header';
+import Hero from '@/components/common/Hero/Hero';
+import Showcases from '@/components/home/Showcases/Showcases';
+import CallToAction from '@/components/common/CallToAction/CallToAction';
+import WhatWeDo from '@/components/home/WhatWeDo/WhatWeDo';
+import Footer from '@/components/common/Footer/Footer';
+import { useIsMobile } from '@/hooks/use-mobile';
 import { useLocation } from 'react-router-dom';
 
-const CustomCursor = lazy(() => import('@components/common/CustomCursor/CustomCursor'));
-const TheProcess = lazy(() => import('@components/home/TheProcess/TheProcess'));
+const CustomCursor = lazy(() => import('@/components/common/CustomCursor/CustomCursor'));
+const TheProcess = lazy(() => import('@/components/home/TheProcess/TheProcess'));
 
 const Home = () => {
   const isMobile = useIsMobile();
