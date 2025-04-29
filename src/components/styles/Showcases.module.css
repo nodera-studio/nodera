@@ -1,16 +1,18 @@
+
 .showcaseCard {
-  background-color: #F9F9F9;
-  border-radius: 1.5rem;
-  padding: 1.5rem;
+  background-color: #FFFFFF;
+  border-radius: 16px;
+  padding: 2rem;
   overflow: hidden;
-  transition: transform 0.3s ease-out, box-shadow 0.3s ease;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   transform: translate3d(0, 0, 0);
-  will-change: transform, opacity;
+  will-change: transform;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.03);
 }
 
 .showcaseCard:hover {
-  transform: scale(1.02) translateY(-5px);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+  transform: scale(1.01) translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.06);
 }
 
 .cardStackContainer {
@@ -20,6 +22,54 @@
   width: 100%;
   overflow: visible;
   z-index: 40;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.cardTitle {
+  font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-weight: 500;
+  font-size: clamp(28px, 4vw, 36px);
+  line-height: 1.2;
+  margin-bottom: 0.75rem;
+  background: linear-gradient(90deg, #000000 0%, #333333 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.cardDescription {
+  font-family: 'SF Pro Text', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-weight: 400;
+  font-size: clamp(16px, 2vw, 18px);
+  line-height: 1.5;
+  color: #555555;
+  margin-bottom: 2rem;
+}
+
+.showcaseImage {
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.showcaseImage img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transform: scale(1);
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.showcaseCard:hover .showcaseImage img {
+  transform: scale(1.03);
+}
+
+.showcaseButtons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
 }
 
 @media (max-width: 599px) {
@@ -30,12 +80,17 @@
 
 @media (max-width: 768px) {
   .showcaseCard {
-    padding: 1rem;
+    padding: 1.5rem;
   }
 
   .cardStackContainer {
     min-height: 500px;
     perspective: 800px;
+    gap: 2rem;
+  }
+
+  .cardDescription {
+    margin-bottom: 1.5rem;
   }
 }
 
