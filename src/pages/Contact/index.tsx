@@ -1,22 +1,30 @@
-import React from 'react';
+
+import React, { useState } from 'react';
 import Header from '@/components/common/Header/Header';
 import Footer from '@/components/common/Footer/Footer';
 import PageHero from '@/components/common/PageHero/PageHero';
-import { Button } from "@/ui/button";
-import { Input } from "@/ui/input";
-import { Textarea } from "@/ui/textarea";
-import { Card, CardContent, CardHeader, CardTitle } from "@/ui/card";
-import { useToast } from "@/hooks/use-toast";
+import { Button } from '@/ui/button';
+import { Input } from '@/ui/input';
+import { Textarea } from '@/ui/textarea';
+import { Card, CardContent, CardHeader, CardTitle } from '@/ui/card';
+import { useToast } from '@/hooks/use-toast';
 
 const Contact = () => {
   const { toast } = useToast();
-
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const [formSubmitting, setFormSubmitting] = useState(false);
+  
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    toast({
-      title: "Message sent!",
-      description: "We'll get back to you as soon as possible.",
-    });
+    setFormSubmitting(true);
+    
+    // Simulate form submission
+    setTimeout(() => {
+      setFormSubmitting(false);
+      toast({
+        title: "Message sent!",
+        variant: "success",
+      });
+    }, 1500);
   };
 
   return (

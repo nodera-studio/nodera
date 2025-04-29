@@ -26,10 +26,9 @@ const ToggleGroupItem = React.forwardRef<
   React.ElementRef<typeof ToggleGroupPrimitive.Item>,
   React.ComponentPropsWithoutRef<typeof ToggleGroupPrimitive.Item> &
     VariantProps<typeof toggleVariants>
->(({ className, variant, size, value, ...props }, ref) => (
+>(({ className, variant, size, ...props }, ref) => (
   <ToggleGroupPrimitive.Item
     ref={ref}
-    value={value}
     className={cn(toggleVariants({ variant, size }), className)}
     {...props}
   />
