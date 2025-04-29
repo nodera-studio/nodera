@@ -12,4 +12,10 @@
 
 .showcaseCard:hover {
   transform: scale(1.02) translateY(-5px);
+}
+
+@media (max-width: 599px) {
+  .hideOnMobile {
+    display: none !important;
+  }
 } 

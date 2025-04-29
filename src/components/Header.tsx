@@ -152,8 +152,8 @@ const Header = () => {
           </nav>
           
           <Button
-            variant="primary"
-            size="lg"
+            variant="accent"
+            size="sm"
             asChild
             className="ml-4"
           >

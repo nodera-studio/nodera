@@ -37,7 +37,7 @@ const Showcases = () => {
           </h2>
           <a 
             href="#" 
-            className="view-all-link"
+            className={styles.hideOnMobile + " view-all-link"}
           >
             View All →
           </a>
