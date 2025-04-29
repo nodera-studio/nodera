@@ -1,10 +1,11 @@
+
 import React, { useState } from 'react';
-import Header from '@components/common/Header/Header';
-import Footer from '@components/common/Footer/Footer';
-import PageHero from '@components/common/PageHero/PageHero';
-import { Tabs, TabsList, TabsTrigger, TabsContent } from "@ui/tabs";
-import { Button } from "@ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@ui/card";
+import Header from '../components/Header';
+import Footer from '../components/Footer';
+import PageHero from '../components/PageHero';
+import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 
 const serviceCategories = {
   websites: [

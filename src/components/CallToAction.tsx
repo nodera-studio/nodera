@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Button } from "../../../ui/button";
+import { Button } from "@/components/ui/button";
 import styles from './CallToAction.module.css';
 
 const CallToAction = () => {
@@ -14,16 +14,13 @@ const CallToAction = () => {
       
       <div className={styles.ctaContentBox}>
         <div className="mb-6">
-          {/* Modified this container to display text as two normal sentences on desktop */}
-          <div className={styles.visionCodeContainer}>
-            <p className={`${styles.ctaText} mb-2 md:mb-0`}>
-              You've got a vision.
-            </p>
-            <p className={`${styles.ctaText}`}>
-              We've got the code.
-            </p>
-          </div>
-          <p className={`${styles.ctaText} ${styles.gradientText} mt-4`}>
+          <p className={`${styles.ctaText} mb-2`}>
+            You've got a vision.
+          </p>
+          <p className={`${styles.ctaText} mb-4`}>
+            We've got the code.
+          </p>
+          <p className={`${styles.ctaText} ${styles.gradientText}`}>
             Let's build something remarkable.
           </p>
         </div>

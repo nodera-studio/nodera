@@ -7,13 +7,7 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./src/*"],
-      "@components/*": ["./src/components/*"],
-      "@ui/*": ["./src/ui/*"],
-      "@hooks/*": ["./src/hooks/*"],
-      "@lib/*": ["./src/lib/*"],
-      "@assets/*": ["./src/assets/*"],
-      "@styles/*": ["./src/styles/*"]
+      "@/*": ["./src/*"]
     },
     "noImplicitAny": false,
     "noUnusedParameters": false,

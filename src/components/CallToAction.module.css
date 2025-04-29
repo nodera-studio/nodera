@@ -42,7 +42,7 @@
   overflow: hidden;
   text-align: center;
   padding-top: 140px;
-  padding-bottom: 60px; /* Increased bottom padding to leave space for Nodera text */
+  padding-bottom: 40px;
   min-height: 350px;
 }
 
@@ -60,7 +60,7 @@
 
 .ctaNodera {
   position: absolute;
-  bottom: -50px; /* Moved lower, from -20px to -50px */
+  bottom: -20px;
   left: 0;
   right: 0;
   text-align: center;
@@ -84,11 +84,6 @@
   line-height: 1.2;
 }
 
-/* Modified this section to put text on same line in desktop */
-.visionCodeContainer {
-  display: block; /* Default for mobile */
-}
-
 @media (min-width: 640px) {
   .ctaText {
     font-size: 2.125rem;
@@ -104,18 +99,10 @@
   }
   .ctaContainer {
     padding-top: 180px;
-    padding-bottom: 220px; /* Increased for more space with Nodera text */
+    padding-bottom: 200px;
   }
   .ctaContentBox {
     margin-top: -140px;
-  }
-  /* Make the vision and code text appear on the same line */
-  .visionCodeContainer {
-    display: flex;
-    justify-content: center;
-    gap: 0.5rem; /* Reduced gap to make them appear as normal sentences */
-    align-items: center;
-    white-space: nowrap; /* Keep text on one line */
   }
 }
 
@@ -125,8 +112,5 @@
   }
   .ctaNoderaTxt {
     font-size: 360px;
-  }
-  .ctaNodera {
-    bottom: -80px; /* Pushed even lower on larger screens */
   }
 }

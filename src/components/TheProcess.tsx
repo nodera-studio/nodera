@@ -1,9 +1,9 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { motion, useInView, useReducedMotion, AnimatePresence } from 'framer-motion';
-import styles from './TheProcess.module.css';
-import cardStyles from './ProcessCard.module.css';
+import styles from './styles/TheProcess.module.css';
+import cardStyles from './styles/ProcessCard.module.css';
 import { ChevronDown } from 'lucide-react';
-import TechLogos from '@components/common/TechLogos/TechLogos';
+import TechLogos from './TechLogos';
 
 // Design tech stack for the top row
 const designLogoIcons = [

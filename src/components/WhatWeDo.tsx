@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
-import { cn } from '@lib/utils';
+import { cn } from '../lib/utils';
 import styles from './WhatWeDo.module.css';
 
 const WhatWeDo = () => {
