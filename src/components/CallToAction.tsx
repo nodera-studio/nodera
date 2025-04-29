@@ -6,14 +6,12 @@ import styles from './CallToAction.module.css';
 const CallToAction = () => {
   return (
     <div className={styles.ctaContainer}>
-      {/* Bottom decorative text - positioned to appear partially cut off */}
       <div className={styles.ctaNodera}>
         <h1 className={styles.ctaNoderaTxt}>
           Nodera
         </h1>
       </div>
       
-      {/* Central content - positioned toward the top */}
       <div className={styles.ctaContentBox}>
         <div className="mb-6">
           <p className={`${styles.ctaText} mb-2`}>

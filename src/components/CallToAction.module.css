@@ -22,46 +22,11 @@
   z-index: 0;
 }
 
-.cta-tagline-text {
-  font-family: 'Baloo Da 2', sans-serif;
-  font-weight: 500;
-  line-height: 1.5;
-  padding-bottom: 5px;
-  margin-bottom: 10px;
-  max-width: 100vw;
-  padding-left: 32px;
-  padding-right: 32px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.cta-button-blue {
-  background-color: #007AFF !important;
-  color: #fff !important;
-  border-radius: 12px;
-  font-family: 'Baloo Da 2', sans-serif;
-  font-weight: 600;
-  font-size: 18px;
-  padding: 10px 32px;
-  transition: background 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.cta-button-blue:hover {
-  background-color: #0070E0 !important;
-}
-
 .cta-content-wrapper {
   max-width: 56rem;
   margin-left: auto;
   margin-right: auto;
   width: 100%;
-}
-
-.ctaText {
-  font-family: 'Baloo Da 2', sans-serif;
-  font-weight: 500; /* Medium */
-  font-size: 1.75rem; /* Increased from 1.5rem */
-  line-height: 1.2;
 }
 
 .gradientText {
@@ -72,13 +37,12 @@
   background-clip: text;
 }
 
-/* Container styles */
 .ctaContainer {
   position: relative;
   overflow: hidden;
   text-align: center;
   padding-top: 140px;
-  padding-bottom: 80px; /* Reduced from 120px */
+  padding-bottom: 40px;
   min-height: 350px;
 }
 
@@ -91,12 +55,12 @@
   max-width: 56rem;
   margin: 0 auto;
   padding: 0 1rem;
-  margin-top: -100px; /* Reduced margin-top */
+  margin-top: -100px;
 }
 
 .ctaNodera {
   position: absolute;
-  bottom: -20px; /* Moved up from -50px */
+  bottom: -20px;
   left: 0;
   right: 0;
   text-align: center;
@@ -110,38 +74,43 @@
   font-weight: bold;
   color: white;
   text-shadow: 0 -2px 3px rgba(0, 0, 0, 0.15);
-  font-size: 90px; /* Reduced from 120px */
+  font-size: 90px;
 }
 
-/* Responsive text sizes */
+.ctaText {
+  font-family: 'Baloo Da 2', sans-serif;
+  font-weight: 500;
+  font-size: 1.75rem;
+  line-height: 1.2;
+}
+
 @media (min-width: 640px) {
   .ctaText {
-    font-size: 2.125rem; /* Increased from 1.875rem */
+    font-size: 2.125rem;
   }
 }
 
 @media (min-width: 768px) {
   .ctaText {
-    font-size: 2.5rem; /* Increased from 2.25rem */
+    font-size: 2.5rem;
   }
   .ctaNoderaTxt {
     font-size: 240px;
   }
   .ctaContainer {
     padding-top: 180px;
-    padding-bottom: 200px; /* Reduced from 220px */
+    padding-bottom: 200px;
   }
   .ctaContentBox {
-    margin-top: -140px; /* Restore margin for larger screens */
+    margin-top: -140px;
   }
 }
 
 @media (min-width: 1024px) {
   .ctaText {
-    font-size: 3.25rem; /* Increased from 3rem */
+    font-size: 3.25rem;
   }
   .ctaNoderaTxt {
     font-size: 360px;
   }
 }
-

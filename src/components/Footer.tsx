@@ -1,6 +1,5 @@
 
 import React from 'react';
-import { Github, Linkedin, Twitter } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
 import { Link } from 'react-router-dom';
 
@@ -25,31 +24,26 @@ const navigationLinks = {
 
 const socialLinks = [
   { 
-    icon: Linkedin,
     href: "https://linkedin.com",
     label: "LinkedIn"
   },
   { 
-    icon: Github,
     href: "https://github.com",
     label: "GitHub"
   },
   { 
-    icon: Twitter,
     href: "https://twitter.com",
     label: "Twitter"
   }
 ];
 
-const columnOrder = ['Company', 'Services', 'Connect', 'Resources']; // Define the desired order
+const columnOrder = ['Company', 'Services', 'Connect', 'Resources'];
 
 const Footer = () => {
   return (
     <footer className="w-full bg-[#f5f5f7] text-[#6e6e73]">
-      {/* Main footer content */}
       <div className="container mx-auto px-6 py-12 md:py-16">
-        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-8 lg:gap-12"> {/* Changed to lg:grid-cols-5 */} 
-          {/* Logo section (First column) */}
+        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-8 lg:gap-12">
           <div className="col-span-1">
             <Link to="/">
               <img
@@ -60,10 +54,8 @@ const Footer = () => {
             </Link>
           </div>
 
-          {/* Ordered Navigation/Link sections (Next four columns) */}
           {columnOrder.map((columnKey) => {
             if (columnKey === 'Connect') {
-              // Render Social Links column
               return (
                 <div key={columnKey} className="col-span-1">
                   <h3 className="text-sm font-baloo font-medium text-[#1d1d1f] mb-4">{columnKey}</h3>
@@ -84,7 +76,6 @@ const Footer = () => {
                 </div>
               );
             } else {
-              // Render Navigation Links column (Company, Services, Resources)
               const links = navigationLinks[columnKey as keyof typeof navigationLinks] || [];
               return (
                 <div key={columnKey} className="col-span-1">
@@ -112,10 +103,8 @@ const Footer = () => {
         </div>
       </div>
 
-      {/* Divider */}
       <Separator className="bg-[#d2d2d7]" />
 
-      {/* Copyright section */}
       <div className="container mx-auto px-6 py-6">
         <div className="flex flex-col md:flex-row items-center justify-between text-xs">
           <p className="text-xs text-[#515154] font-baloo font-medium">© {currentYear} Nodera Studio. All rights reserved.</p>
