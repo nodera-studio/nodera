@@ -1,5 +1,6 @@
+
 import React from 'react';
-import { Separator } from "@ui/separator";
+import { Separator } from "@/ui/separator";
 import { Link } from 'react-router-dom';
 
 const currentYear = new Date().getFullYear();

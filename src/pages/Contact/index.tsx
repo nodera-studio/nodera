@@ -22,7 +22,7 @@ const Contact = () => {
       setFormSubmitting(false);
       toast({
         title: "Message sent!",
-        variant: "success",
+        variant: "default", // Changed from "success" to "default" as only "default" and "destructive" are valid
       });
     }, 1500);
   };
