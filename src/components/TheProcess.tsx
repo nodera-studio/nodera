@@ -1,9 +1,24 @@
+
 import React, { useRef, useState, useEffect } from 'react';
 import { motion, useInView, useReducedMotion, AnimatePresence } from 'framer-motion';
 import styles from './styles/TheProcess.module.css';
 import cardStyles from './styles/ProcessCard.module.css';
 import { ChevronDown } from 'lucide-react';
 import TechLogos from './TechLogos';
+
+// Array of tech logo icons for the carousel
+const logoIcons = [
+  '/lovable-uploads/html.svg',
+  '/lovable-uploads/css-3.svg',
+  '/lovable-uploads/js.svg',
+  '/lovable-uploads/adobe-illustrator.svg',
+  '/lovable-uploads/adobe-photoshop.svg',
+  '/lovable-uploads/figma-2.svg',
+  '/lovable-uploads/webflow.svg',
+  '/lovable-uploads/supabase-logo-icon.svg',
+  '/lovable-uploads/picture.svg',
+  '/lovable-uploads/social.svg',
+];
 
 const TheProcess = () => {
   const ref = useRef(null);
@@ -97,23 +112,74 @@ function ModernApp() {
     }
   };
 
-  const logoRows = (
-    <motion.div 
-      className={cardStyles.logoCarousel}
-      animate={shouldReduceMotion ? {} : { 
-        x: [0, -720]
-      }}
-      transition={{ 
-        repeat: Infinity,
-        repeatType: "loop",
-        duration: 25,
-        ease: "linear"
-      }}
-    >
-      <div className={cardStyles.logoRow}>
-        <TechLogos />
+  // Generate logos for the carousel with their respective icons
+  const renderLogoPlaceholders = (count: number, icons: string[]) => {
+    return Array.from({ length: count }).map((_, index) => {
+      const iconIndex = index % icons.length;
+      return (
+        <div key={index} className={cardStyles.placeholderLogo}>
+          <div 
+            className={cardStyles.logoIcon} 
+            style={{
+              maskImage: `url(${icons[iconIndex]})`,
+              WebkitMaskImage: `url(${icons[iconIndex]})`
+            }}
+            aria-hidden="true"
+          />
+        </div>
+      );
+    });
+  };
+
+  const logoCarousel = (
+    <div className={cardStyles.logoCarouselContainer}>
+      <motion.div 
+        className={cardStyles.logoCarousel}
+        animate={shouldReduceMotion ? {} : { y: 0 }}
+      >
+        <motion.div 
+          className={cardStyles.logoRow}
+          animate={shouldReduceMotion ? {} : { 
+            x: [-720, 0]
+          }}
+          transition={{ 
+            repeat: Infinity,
+            repeatType: "loop",
+            duration: 20,
+            ease: "linear"
+          }}
+        >
+          {renderLogoPlaceholders(10, logoIcons)}
+        </motion.div>
+        <motion.div 
+          className={cardStyles.logoRow}
+          animate={shouldReduceMotion ? {} : { 
+            x: [0, -720]
+          }}
+          transition={{ 
+            repeat: Infinity,
+            repeatType: "loop",
+            duration: 16,
+            ease: "linear"
+          }}
+        >
+          {renderLogoPlaceholders(10, logoIcons.slice().reverse())}
+        </motion.div>
+      </motion.div>
+      
+      <div 
+        className={cardStyles.companyLogoWrapper}
+        role="img"
+        aria-label="Nodera company logo"
+      >
+        <img 
+          src="/lovable-uploads/logo.png" 
+          alt="Nodera Logo" 
+          className={cardStyles.companyLogo}
+          loading="lazy"
+        />
       </div>
-    </motion.div>
+    </div>
   );
 
   const getTabContentJSX = (tabKey: keyof typeof codeContent) => {
@@ -165,25 +231,7 @@ function ModernApp() {
             <div className="bg-white rounded-t-[1rem]">
               <div className={cardStyles.cardImageContainer}>
                 <div className={cardStyles.cardImage}>
-                  <div 
-                    className={cardStyles.logoCarouselContainer}
-                    role="marquee"
-                    aria-label="Scrolling logo carousel"
-                  >
-                    {logoRows}
-                    <div 
-                      className={cardStyles.companyLogoWrapper}
-                      role="img"
-                      aria-label="Nodera company logo"
-                    >
-                      <img 
-                        src="/lovable-uploads/logo.png" 
-                        alt="Nodera Logo" 
-                        className={cardStyles.companyLogo}
-                        loading="lazy"
-                      />
-                    </div>
-                  </div>
+                  {logoCarousel}
                 </div>
               </div>
             </div>
