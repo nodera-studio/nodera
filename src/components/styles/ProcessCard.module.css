@@ -73,7 +73,6 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 1rem;
   background-color: #f8f9fa;
 }
 
@@ -94,8 +93,8 @@
 }
 
 .placeholderLogo {
-  width: 60px;
-  height: 60px;
+  width: 50px;
+  height: 50px;
   background-color: #E5E5E5;
   border-radius: 8px;
   display: flex;
@@ -350,18 +349,18 @@
   }
   
   .placeholderLogo {
-    width: 40px;
-    height: 40px;
+    width: 60px;
+    height: 60px;
   }
   
   .companyLogoWrapper {
-    width: 70px;
-    height: 70px;
+    width: 80px;
+    height: 80px;
   }
   
   .companyLogo {
-    width: 50px;
-    height: 50px;
+    width: 60px;
+    height: 60px;
   }
   
   .logoRow {

@@ -20,3 +20,10 @@
     display: none !important;
   }
 } 
+
+/* Add responsive styling for consistency */
+@media (max-width: 480px) {
+  .showcaseCard {
+    padding: 1rem;
+  }
+}

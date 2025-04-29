@@ -131,41 +131,50 @@ function ModernApp() {
     });
   };
 
+  // Calculate animation properties to ensure perfect looping
+  // The duration is calculated based on the number of logos and the animation distance
+  const calculateAnimationProps = (direction: 'left-to-right' | 'right-to-left') => {
+    // Total width of 10 logos plus gaps (50px per logo + 1.5rem gap)
+    const totalWidth = 720; // Approximate width in pixels
+    
+    return {
+      x: direction === 'left-to-right' ? [-totalWidth, 0] : [0, -totalWidth],
+      transition: { 
+        repeat: Infinity,
+        repeatType: "loop" as const,
+        duration: direction === 'left-to-right' ? 20 : 16,
+        ease: "linear" as const
+      }
+    };
+  };
+
   const logoCarousel = (
     <div className={cardStyles.logoCarouselContainer}>
-      <motion.div 
-        className={cardStyles.logoCarousel}
-        animate={shouldReduceMotion ? {} : { y: 0 }}
-      >
-        <motion.div 
-          className={cardStyles.logoRow}
-          animate={shouldReduceMotion ? {} : { 
-            x: [-720, 0]
-          }}
-          transition={{ 
-            repeat: Infinity,
-            repeatType: "loop",
-            duration: 20,
-            ease: "linear"
-          }}
-        >
-          {renderLogoPlaceholders(10, logoIcons)}
-        </motion.div>
-        <motion.div 
-          className={cardStyles.logoRow}
-          animate={shouldReduceMotion ? {} : { 
-            x: [0, -720]
-          }}
-          transition={{ 
-            repeat: Infinity,
-            repeatType: "loop",
-            duration: 16,
-            ease: "linear"
-          }}
-        >
-          {renderLogoPlaceholders(10, logoIcons.slice().reverse())}
-        </motion.div>
-      </motion.div>
+      <div className={cardStyles.logoCarousel}>
+        {/* First row - moving left to right */}
+        <div className={cardStyles.logoRow}>
+          <motion.div 
+            className={cardStyles.logoRow}
+            animate={shouldReduceMotion ? {} : calculateAnimationProps('left-to-right')}
+          >
+            {renderLogoPlaceholders(10, logoIcons)}
+            {/* Duplicate for seamless loop */}
+            {renderLogoPlaceholders(10, logoIcons)}
+          </motion.div>
+        </div>
+        
+        {/* Second row - moving right to left */}
+        <div className={cardStyles.logoRow}>
+          <motion.div 
+            className={cardStyles.logoRow}
+            animate={shouldReduceMotion ? {} : calculateAnimationProps('right-to-left')}
+          >
+            {renderLogoPlaceholders(10, logoIcons.slice().reverse())}
+            {/* Duplicate for seamless loop */}
+            {renderLogoPlaceholders(10, logoIcons.slice().reverse())}
+          </motion.div>
+        </div>
+      </div>
       
       <div 
         className={cardStyles.companyLogoWrapper}
