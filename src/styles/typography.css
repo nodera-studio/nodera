@@ -1,41 +1,34 @@
 
-@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&family=Baloo+Da+2:wght@500;600&family=Inter:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&family=Baloo+Da+2:wght@500;600&display=swap');
 
 @layer base {
   h1 {
-    font-family: 'Inter', 'Comfortaa', sans-serif;
-    font-weight: 600;
+    font-family: 'Comfortaa', sans-serif;
+    font-weight: 700;
     font-size: clamp(60px, 10vw, 150px);
     line-height: 0.9;
-    letter-spacing: -0.02em;
   }
 
   h2 {
-    font-family: 'Inter', 'Comfortaa', sans-serif;
-    font-weight: 600;
+    font-family: 'Comfortaa', sans-serif;
+    font-weight: 700;
     font-size: clamp(40px, 6vw, 70px);
-    letter-spacing: -0.02em;
   }
   
   h3, h4 {
-    font-family: 'Inter', 'Baloo Da 2', sans-serif;
-    font-weight: 400;
+    font-family: 'Baloo Da 2', sans-serif;
+    font-weight: 500;
     font-size: clamp(24px, 4vw, 39px);
-    letter-spacing: -0.01em;
   }
   
   p {
-    font-family: 'Inter', 'Baloo Da 2', sans-serif;
-    font-weight: 400;
-    font-size: clamp(16px, 2vw, 19px);
+    font-family: 'Baloo Da 2', sans-serif;
+    font-weight: 500;
+    font-size: clamp(16px, 2vw, 24px);
     line-height: 1.6;
   }
 
   a, button {
     @apply transition-all duration-300;
-  }
-
-  .font-light {
-    font-weight: 300;
   }
 }

@@ -43,23 +43,13 @@
     animation: fadeInUp 0.8s cubic-bezier(0.25, 0.1, 0.25, 1.0) forwards;
   }
   
-  .showcase-card {
-    @apply rounded-sm bg-white;
-    box-shadow: 0 12px 24px rgba(0,0,0,0.04), 0 4px 8px rgba(0,0,0,0.02);
-    transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1);
-  }
-
-  .showcase-card:hover {
-    box-shadow: 0 20px 40px rgba(0,0,0,0.04), 0 8px 16px rgba(0,0,0,0.02);
-  }
-  
   .showcase-image {
-    @apply transition-transform duration-700;
+    @apply transition-transform duration-300 ease-out;
     will-change: transform;
   }
   
   .showcase-card:hover .showcase-image {
-    @apply transform scale-[1.03];
+    @apply transform scale-105 -translate-y-1;
   }
   
   .gradient-lights {
@@ -68,19 +58,6 @@
     filter: blur(80px);
     opacity: 0.5;
     animation: floatAround 15s ease-in-out infinite;
-  }
-  
-  .apple-button {
-    @apply font-light text-sm py-2 px-4 rounded-full border transition-colors duration-300;
-    letter-spacing: 0.2px;
-  }
-  
-  .apple-button-primary {
-    @apply bg-black text-white hover:bg-black/90;
-  }
-  
-  .apple-button-secondary {
-    @apply text-black border-black/10 hover:border-black/30;
   }
   
   @keyframes floatAround {
