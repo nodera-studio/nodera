@@ -1,0 +1,123 @@
+
+@tailwind components;
+
+@layer components {
+  .gradient-text {
+    @apply bg-gradient-text bg-clip-text text-transparent;
+  }
+  
+  .inner-shadow-text {
+    background-color: white;
+    color: white;
+    -webkit-background-clip: text;
+    background-clip: text;
+  }
+  
+  .gradient-word {
+    background-image: linear-gradient(90deg, #D1A2FF 0%, #007AFF 100%);
+    background-size: 200% auto;
+    color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+  }
+  
+  .gradient-word.is-visible {
+    animation: shimmer 2.5s linear infinite 0.5s;
+  }
+  
+  .card-hover {
+    @apply transition-transform duration-300 ease-out;
+    will-change: transform;
+  }
+  
+  .card-hover:hover {
+    @apply transform scale-105 z-10;
+  }
+  
+  .section-title {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  
+  .section-title.is-visible {
+    animation: fadeInUp 0.8s cubic-bezier(0.25, 0.1, 0.25, 1.0) forwards;
+  }
+  
+  .showcase-image {
+    @apply transition-transform duration-300 ease-out;
+    will-change: transform;
+  }
+  
+  .showcase-card:hover .showcase-image {
+    @apply transform scale-105 -translate-y-1;
+  }
+  
+  .gradient-lights {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.5;
+    animation: floatAround 15s ease-in-out infinite;
+  }
+  
+  @keyframes floatAround {
+    0%, 100% {
+      transform: translate(0, 0);
+    }
+    25% {
+      transform: translate(5%, 5%);
+    }
+    50% {
+      transform: translate(-5%, 2%);
+    }
+    75% {
+      transform: translate(2%, -5%);
+    }
+  }
+
+  .hero-subtitle {
+    font-family: 'Comfortaa', sans-serif;
+    font-weight: 700;
+    font-size: clamp(28px, 5vw, 54px);
+    background: linear-gradient(90deg, #333333 0%, #666666 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: 0.02em;
+  }
+
+  .view-all-link {
+    font-family: 'Comfortaa', sans-serif;
+    font-weight: 700;
+    font-size: clamp(18px, 3vw, 30px);
+    background: linear-gradient(90deg, #D1A2FF 0%, #007AFF 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-decoration: none;
+    @apply hover:translate-x-1 transition-transform;
+  }
+
+  .text-shadow-subtle {
+    text-shadow: 0 -2px 3px rgba(0, 0, 0, 0.15);
+  }
+  
+  .global-divider {
+    width: 100%;
+    height: 2px;
+    background-color: #F1F1F1;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    margin-left: 0;
+    margin-right: 0;
+    position: relative;
+    z-index: 50;
+  }
+
+  @media (max-width: 767px) {
+    .global-divider {
+      margin-top: 30px;
+      margin-bottom: 30px;
+    }
+  }
+}
