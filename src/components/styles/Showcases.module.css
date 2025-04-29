@@ -9,6 +9,8 @@
   padding: 1.5rem;
   overflow: hidden;
   transition: transform 0.3s ease-out, box-shadow 0.3s ease;
+  transform: translate3d(0, 0, 0); /* Force hardware acceleration */
+  will-change: transform, opacity; /* Improve performance */
 }
 
 .showcaseCard:hover {

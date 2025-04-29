@@ -1,31 +1,58 @@
 
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useIsMobile } from '../hooks/use-mobile';
 import styles from './styles/Showcases.module.css';
 import { Button } from "@/components/ui/button";
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion, useScroll, useTransform, useMotionValueEvent } from 'framer-motion';
 
 const Showcases = () => {
   const isMobile = useIsMobile();
   const sectionTitleRef = useRef<HTMLHeadingElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const firstCardRef = useRef<HTMLDivElement>(null);
+  const [isFirstCardCentered, setIsFirstCardCentered] = useState(false);
   
-  // Scroll animation setup
+  // Main scroll animation setup
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start end", "end start"]
   });
   
+  // First card scroll effect - to create the pause effect
+  const firstCardScrollEffect = useScroll({
+    target: firstCardRef,
+    offset: ["center center", "start start"] 
+  });
+  
+  // Use this to detect when first card is centered in viewport
+  useMotionValueEvent(firstCardScrollEffect.scrollYProgress, "change", (latest) => {
+    // When scrollYProgress is close to 0.5, the card is centered
+    if (latest >= 0.4 && latest <= 0.6) {
+      setIsFirstCardCentered(true);
+    } else {
+      setIsFirstCardCentered(false);
+    }
+  });
+  
   // Transform values for the second card based on scroll position
-  const secondCardY = useTransform(scrollYProgress, 
-    [0.1, 0.3, 0.7, 0.9], 
-    ['100%', '0%', '0%', '-100%']
+  // Adjusted to create the "wait until first card is centered" effect
+  const secondCardY = useTransform(
+    scrollYProgress, 
+    [0.3, 0.45, 0.55, 0.7], // Shifted values to create the pause effect
+    ['100%', '50%', '0%', '-100%']
   );
   
-  const secondCardOpacity = useTransform(scrollYProgress,
-    [0.05, 0.2, 0.8, 0.95],
+  const secondCardOpacity = useTransform(
+    scrollYProgress,
+    [0.3, 0.4, 0.6, 0.7],
     [0, 1, 1, 0]
+  );
+  
+  // Scale effect for first card when second card is coming on top
+  const firstCardScale = useTransform(
+    scrollYProgress,
+    [0.3, 0.45, 0.55, 0.7],
+    [1, 1, 0.95, 0.95]
   );
 
   useEffect(() => {
@@ -64,8 +91,15 @@ const Showcases = () => {
           </a>
         </div>
         
-        <div ref={containerRef} className="flex flex-col gap-8 lg:gap-12 relative">
-          {/* First Card - Always visible */}
+        <div 
+          ref={containerRef} 
+          className="flex flex-col gap-8 lg:gap-12 relative min-h-[600px] lg:min-h-[500px]"
+          style={{ 
+            perspective: '1000px', // Add 3D perspective for more depth
+            position: 'relative'
+          }}
+        >
+          {/* First Card - Always visible but scales when second card appears */}
           <motion.div 
             ref={firstCardRef}
             className={`${styles.showcaseCard} z-10`}
@@ -73,6 +107,12 @@ const Showcases = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.5 }}
+            style={{ 
+              scale: firstCardScale,
+              position: 'sticky', 
+              top: '20vh',
+              zIndex: isFirstCardCentered ? 30 : 10,
+            }}
           >
             <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 items-center">
               <div className="lg:w-1/2 space-y-4 order-2 lg:order-1">
@@ -107,15 +147,20 @@ const Showcases = () => {
             </div>
           </motion.div>
           
-          {/* Second Card - Animated to stack/unstack */}
+          {/* Second Card - Animated to stack/unstack with parallax effect */}
           <motion.div 
             className={`${styles.showcaseCard} absolute w-full`}
             style={{ 
               y: secondCardY,
               opacity: secondCardOpacity,
-              zIndex: 20
+              zIndex: 20,
+              position: 'relative',
             }}
-            transition={{ type: "spring", stiffness: 50 }}
+            transition={{ 
+              type: "spring", 
+              stiffness: 70, 
+              damping: 20 
+            }}
           >
             <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 items-center">
               <div className="lg:w-1/2 space-y-4 order-2 lg:order-1">
