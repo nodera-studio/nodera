@@ -8,11 +8,12 @@
   border-radius: 1.5rem;
   padding: 1.5rem;
   overflow: hidden;
-  transition: transform 0.3s ease-out;
+  transition: transform 0.3s ease-out, box-shadow 0.3s ease;
 }
 
 .showcaseCard:hover {
   transform: scale(1.02) translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
 }
 
 @media (max-width: 599px) {
