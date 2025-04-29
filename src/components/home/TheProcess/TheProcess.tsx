@@ -3,7 +3,7 @@ import { motion, useInView, useReducedMotion, AnimatePresence } from 'framer-mot
 import styles from './TheProcess.module.css';
 import cardStyles from './ProcessCard.module.css';
 import { ChevronDown } from 'lucide-react';
-import TechLogos from '@/components/common/TechLogos/TechLogos';
+import TechLogos from '@components/common/TechLogos/TechLogos';
 
 // Design tech stack for the top row
 const designLogoIcons = [

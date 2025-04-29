@@ -1,30 +1,22 @@
-
-import React, { useState } from 'react';
-import Header from '@/components/common/Header/Header';
-import Footer from '@/components/common/Footer/Footer';
-import PageHero from '@/components/common/PageHero/PageHero';
-import { Button } from '@/ui/button';
-import { Input } from '@/ui/input';
-import { Textarea } from '@/ui/textarea';
-import { Card, CardContent, CardHeader, CardTitle } from '@/ui/card';
-import { useToast } from '@/hooks/use-toast';
+import React from 'react';
+import Header from '@components/common/Header/Header';
+import Footer from '@components/common/Footer/Footer';
+import PageHero from '@components/common/PageHero/PageHero';
+import { Button } from "@ui/button";
+import { Input } from "@ui/input";
+import { Textarea } from "@ui/textarea";
+import { Card, CardContent, CardHeader, CardTitle } from "@ui/card";
+import { useToast } from "@hooks/use-toast";
 
 const Contact = () => {
   const { toast } = useToast();
-  const [formSubmitting, setFormSubmitting] = useState(false);
-  
-  const handleSubmit = (e: React.FormEvent) => {
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setFormSubmitting(true);
-    
-    // Simulate form submission
-    setTimeout(() => {
-      setFormSubmitting(false);
-      toast({
-        title: "Message sent!",
-        variant: "default", // Changed from "success" to "default" as only "default" and "destructive" are valid
-      });
-    }, 1500);
+    toast({
+      title: "Message sent!",
+      description: "We'll get back to you as soon as possible.",
+    });
   };
 
   return (
