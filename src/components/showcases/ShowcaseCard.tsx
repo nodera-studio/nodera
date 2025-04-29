@@ -18,7 +18,6 @@ interface ShowcaseCardProps {
   transition?: any;
 }
 
-// Using explicit forwardRef pattern with proper types
 const ShowcaseCard = React.forwardRef<HTMLDivElement, ShowcaseCardProps>(({
   title,
   description,

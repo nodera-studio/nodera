@@ -26,7 +26,6 @@ const Showcases = () => {
     cleanUp
   } = useCardAnimation();
   
-  // Setup scroll and touch event handlers
   useScrollEvents({
     animationState,
     handleInteraction,
@@ -35,7 +34,6 @@ const Showcases = () => {
     isMobile
   });
   
-  // Setup center detection
   useCenterDetection({
     containerRef,
     firstCardRef,
@@ -46,7 +44,6 @@ const Showcases = () => {
     isMobile
   });
   
-  // Transform values for the second card based on our custom progress
   const secondCardY = useTransform(
     smoothProgress,
     [0, 1],
@@ -59,19 +56,16 @@ const Showcases = () => {
     [0, 1, 1]
   );
   
-  // Scale effect for first card when second card is coming on top
   const firstCardScale = useTransform(
     smoothProgress,
     [0, 0.5, 1],
     [1, 0.98, 0.95]
   );
   
-  // Clean up on unmount
   useEffect(() => {
     return cleanUp;
   }, [cleanUp]);
   
-  // --- Determine current visual state ---
   const showSecondCard = animationState !== 'idle';
   const applyScaling = animationState !== 'idle';
   const disableHover = animationState !== 'idle';
@@ -86,7 +80,6 @@ const Showcases = () => {
           className={`${styles.cardStackContainer} relative`}
           aria-live="polite"
         >
-          {/* First Card - Always visible but scales when second card appears */}
           <ShowcaseCard
             ref={firstCardRef}
             title="Museum CMS Platform"
@@ -99,16 +92,13 @@ const Showcases = () => {
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.5 }}
             style={{ 
-              // Use explicit type assertion for scale
               scale: applyScaling ? firstCardScale as any : 1,
               position: 'sticky', 
-              // Adjust position to be more visible on mobile
               top: isMobile ? '15vh' : '20vh',
               zIndex: 10,
             }}
           />
           
-          {/* Second Card - Animated to stack/unstack with parallax effect */}
           <ShowcaseCard
             title="Furnihaus Collection"
             description="Where craftsmanship meets digital presence. Elegantly showcasing custom furniture and connecting artisans with clients."

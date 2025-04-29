@@ -22,8 +22,8 @@ const PageHero: React.FC<PageHeroProps> = ({ title, subtitle }) => {
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8 }}
           style={{
-            filter: isMobileView ? 'blur(15px)' : 'blur(30px)', // Reduced blur on mobile
-            opacity: isMobileView ? 0.5 : 0.3, // Increased opacity on mobile
+            filter: isMobileView ? 'blur(15px)' : 'blur(30px)',
+            opacity: isMobileView ? 0.5 : 0.3,
           }}
         ></motion.div>
       </div>

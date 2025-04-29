@@ -1,3 +1,4 @@
+
 .devContainer {
   position: relative;
   width: 100%;
@@ -8,11 +9,10 @@
   overflow: hidden;
 }
 
-/* Dynamic HTML Streaming Browser Window */
 .browserWindow {
   position: relative;
-  width: 100%; /* Mobile default */
-  height: 100%; /* Mobile default */
+  width: 100%;
+  height: 100%;
   background: white;
   border: 1px solid #EAEAEA;
   border-radius: 8px;
@@ -69,15 +69,14 @@
 }
 
 .contentBox {
-  aspect-ratio: 1 / 1; /* Mobile default */
+  aspect-ratio: 1 / 1;
   background: #F0F0F0;
   border-radius: 4px;
 }
 
-/* Performance Metrics Display */
 .metricsContainer {
-  width: 100%; /* Mobile default */
-  height: 100%; /* Mobile default */
+  width: 100%;
+  height: 100%;
   background-color: #f8f9fa;
   padding: 1rem;
   border-radius: 0.5rem;
@@ -113,7 +112,7 @@
 .metricLabel {
   position: relative;
   color: #111;
-  font-size: 11px; /* Slightly smaller for mobile */
+  font-size: 11px;
   font-weight: 500;
   z-index: 2;
   text-align: left;
@@ -154,7 +153,6 @@
   transform: scale(1.02) translateY(-5px);
 }
 
-/* Tablet and larger */
 @media (min-width: 640px) {
   .browserWindow {
     width: 240px;
@@ -163,12 +161,12 @@
   .metricsContainer {
     width: 240px;
     height: 154px;
-    padding: 0.75rem; /* Adjust padding slightly */
-    gap: 10px; /* Adjust gap */
+    padding: 0.75rem;
+    gap: 10px;
   }
   .contentBox {
-    height: 34px; /* Adjust height */
-    aspect-ratio: auto; /* Override mobile */
+    height: 34px;
+    aspect-ratio: auto;
   }
   .metricBar {
     height: 28px;
@@ -184,20 +182,19 @@
   }
 }
 
-/* Laptop and larger */
 @media (min-width: 768px) {
   .browserWindow {
-    width: 280px; /* Original size */
-    height: 180px; /* Original size */
+    width: 280px;
+    height: 180px;
   }
   .metricsContainer {
-    width: 280px; /* Original size */
-    height: 180px; /* Original size */
-    padding: 1rem; /* Original padding */
-    gap: 12px; /* Original gap */
+    width: 280px;
+    height: 180px;
+    padding: 1rem;
+    gap: 12px;
   }
   .contentBox {
-    height: 40px; /* Original height */
+    height: 40px;
   }
   .metricBar {
     height: 32px;

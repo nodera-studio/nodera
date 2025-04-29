@@ -5,7 +5,6 @@ import styles from '../styles/Showcases.module.css';
 const ShowcasesTitle: React.FC = () => {
   const sectionTitleRef = useRef<HTMLHeadingElement>(null);
   
-  // Fade in effect for section title
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
@@ -16,7 +15,7 @@ const ShowcasesTitle: React.FC = () => {
       });
     }, { threshold: 0.3 });
     
-    const currentTitleRef = sectionTitleRef.current; // Capture ref value
+    const currentTitleRef = sectionTitleRef.current;
     if (currentTitleRef) {
       observer.observe(currentTitleRef);
     }

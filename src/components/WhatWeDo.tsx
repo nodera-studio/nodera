@@ -1,3 +1,4 @@
+
 import React, { useEffect, useRef } from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
 import { cn } from '../lib/utils';
@@ -7,7 +8,6 @@ const WhatWeDo = () => {
   const shouldReduceMotion = useReducedMotion();
   const sectionTitleRef = useRef<HTMLHeadingElement>(null);
 
-  // Animation configurations
   const lineAnimation = shouldReduceMotion
     ? {}
     : {
@@ -32,7 +32,6 @@ const WhatWeDo = () => {
         }
       };
       
-  // Intersection Observer for section title animation
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
@@ -62,7 +61,6 @@ const WhatWeDo = () => {
         </h2>
         
         <div className="flex flex-wrap justify-center items-center gap-8">
-          {/* Dynamic HTML Streaming */}
           <motion.div
             className={cn("relative w-40 h-40 sm:w-64 sm:h-64 md:w-80 md:h-80 group", styles.cardHoverAnimate)}
           >
@@ -127,7 +125,6 @@ const WhatWeDo = () => {
             </div>
           </motion.div>
 
-          {/* Performance Metrics */}
           <motion.div
             className={cn("relative w-40 h-40 sm:w-64 sm:h-64 md:w-80 md:h-80 group", styles.cardHoverAnimate)}
           >
@@ -142,23 +139,18 @@ const WhatWeDo = () => {
                       animate={metricsAnimation}
                       style={{ originX: 0 }}
                       onUpdate={(latest) => {
-                        // This function runs on every animation frame
-                        // Get all metric value elements
                         const metricValues = document.querySelectorAll(`.${styles.metricValue}`);
                         if (metricValues && metricValues[index]) {
                           const metricValue = metricValues[index] as HTMLElement;
                           const scaleX = latest.scaleX || 0.4;
                           
-                          // Calculate the right position (12px from right edge)
                           const rightPosition = 12;
                           const valueWidth = metricValue.offsetWidth;
                           const barWidth = metricValue.parentElement?.offsetWidth || 0;
                           
-                          // Calculate where the edge of the gradient is
                           const gradientEdge = barWidth * (scaleX as number);
                           const valueStart = barWidth - rightPosition - valueWidth;
                           
-                          // If the gradient has reached the value, make text white, otherwise black
                           if (gradientEdge > valueStart) {
                             metricValue.style.color = 'white';
                           } else {

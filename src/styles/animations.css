@@ -26,7 +26,6 @@
     -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 10%);
   }
   
-  /* Add smooth scrolling utility class */
   .smooth-scroll {
     scroll-behavior: smooth;
     -webkit-overflow-scrolling: touch;

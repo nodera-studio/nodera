@@ -16,7 +16,6 @@ const Index = () => {
   const isMobile = useIsMobile();
   const location = useLocation();
   
-  // Handle scroll to section when URL has hash
   useEffect(() => {
     if (location.hash) {
       const id = location.hash.replace('#', '');

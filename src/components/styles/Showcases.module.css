@@ -5,8 +5,8 @@
   padding: 1.5rem;
   overflow: hidden;
   transition: transform 0.3s ease-out, box-shadow 0.3s ease;
-  transform: translate3d(0, 0, 0); /* Force hardware acceleration */
-  will-change: transform, opacity; /* Improve performance */
+  transform: translate3d(0, 0, 0);
+  will-change: transform, opacity;
 }
 
 .showcaseCard:hover {
@@ -14,7 +14,6 @@
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
 }
 
-/* Add this rule to disable hover when animating */
 .showcaseCard.noHoverEffect:hover {
   transform: none;
   box-shadow: none;
@@ -26,7 +25,7 @@
   min-height: 600px;
   width: 100%;
   overflow: visible;
-  z-index: 40; /* Elevate the container itself */
+  z-index: 40;
 }
 
 .bodyScrollLocked {
@@ -43,7 +42,6 @@
   }
 } 
 
-/* Improve responsive styling */
 @media (max-width: 768px) {
   .showcaseCard {
     padding: 1rem;
@@ -51,17 +49,15 @@
 
   .cardStackContainer {
     min-height: 500px;
-    perspective: 800px; /* Reduce perspective on mobile */
+    perspective: 800px;
   }
 }
 
-/* Small screens optimization */
 @media (max-width: 480px) {
   .cardStackContainer {
     min-height: 450px;
   }
   
-  /* Increase touch sensitivity for mobile */
   .bodyScrollLocked {
     touch-action: none;
     overscroll-behavior: none;
