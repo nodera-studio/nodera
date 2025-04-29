@@ -99,7 +99,7 @@ const Showcases = () => {
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.5 }}
             style={{ 
-              // Fixed: Use a function to convert MotionValue to a value
+              // Use explicit type assertion for scale
               scale: applyScaling ? firstCardScale as any : 1,
               position: 'sticky', 
               // Adjust position to be more visible on mobile
@@ -117,11 +117,8 @@ const Showcases = () => {
             disableHover={disableHover}
             className="absolute w-full top-0 left-0"
             style={{
-              // Fixed: Use standard CSS transform for the y translation
               transform: `translateY(${secondCardY})`,
-              // Fixed: Use as any for now to fix the opacity type
               opacity: secondCardOpacity as any,
-              // Conditionally increase z-index higher than divider (50)
               zIndex: showSecondCard ? 60 : 20, 
               pointerEvents: showSecondCard ? 'auto' : 'none',
             }}
