@@ -1,3 +1,4 @@
+
 import React, { useEffect, useRef } from 'react';
 import { useIsMobile } from '../hooks/use-mobile';
 import styles from './styles/Showcases.module.css';
@@ -46,12 +47,12 @@ const Showcases = () => {
         <div className="flex flex-col gap-8 lg:gap-12">
           <div className={styles.showcaseCard}>
             <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 items-center">
-              <div className="lg:w-1/2 space-y-4 md:space-y-6 order-2 lg:order-1">
+              <div className="lg:w-1/2 space-y-4 order-2 lg:order-1">
                 <h3 className="">Museum CMS Platform</h3>
-                <p className="text-gray-600">
+                <p className="text-gray-600 mb-3">
                   The behind-the-scenes system that powers museum mobile guides, intuitive for staff, informative for visitors.
                 </p>
-                <div className="flex flex-wrap gap-4 pt-4">
+                <div className="flex flex-wrap gap-4 mt-3">
                   <Button
                     variant="primary"
                     size="lg"
@@ -87,12 +88,12 @@ const Showcases = () => {
                   className="showcase-image rounded-xl w-full h-auto object-cover"
                 />
               </div>
-              <div className="lg:w-1/2 space-y-4 md:space-y-6">
+              <div className="lg:w-1/2 space-y-4">
                 <h3 className="">Furnihaus Collection</h3>
-                <p className="text-gray-600">
+                <p className="text-gray-600 mb-3">
                   Where craftsmanship meets digital presence. Elegantly showcasing custom furniture and connecting artisans with clients.
                 </p>
-                <div className="flex flex-wrap gap-4 pt-4">
+                <div className="flex flex-wrap gap-4 mt-3">
                   <Button
                     variant="primary"
                     size="lg"
