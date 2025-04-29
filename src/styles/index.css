@@ -10,3 +10,13 @@
 
 /* Animations */
 @import './animations.css';
+
+/* Global smooth scrolling */
+html {
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+
+body {
+  overflow-x: hidden;
+}

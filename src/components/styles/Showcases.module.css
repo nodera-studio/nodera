@@ -33,6 +33,8 @@
   overflow: hidden !important;
   height: 100vh;
   touch-action: none;
+  position: fixed;
+  width: 100%;
 }
 
 @media (max-width: 599px) {
@@ -41,13 +43,27 @@
   }
 } 
 
-/* Add responsive styling for consistency */
-@media (max-width: 480px) {
+/* Improve responsive styling */
+@media (max-width: 768px) {
   .showcaseCard {
     padding: 1rem;
   }
 
   .cardStackContainer {
     min-height: 500px;
+    perspective: 800px; /* Reduce perspective on mobile */
+  }
+}
+
+/* Small screens optimization */
+@media (max-width: 480px) {
+  .cardStackContainer {
+    min-height: 450px;
+  }
+  
+  /* Increase touch sensitivity for mobile */
+  .bodyScrollLocked {
+    touch-action: none;
+    overscroll-behavior: none;
   }
 }
