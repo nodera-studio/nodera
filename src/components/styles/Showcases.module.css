@@ -1,4 +1,3 @@
-
 .showcaseCard {
   background-color: #F9F9F9;
   border-radius: 1.5rem;
@@ -14,11 +13,6 @@
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
 }
 
-.showcaseCard.noHoverEffect:hover {
-  transform: none;
-  box-shadow: none;
-}
-
 .cardStackContainer {
   position: relative;
   perspective: 1200px;
@@ -26,14 +20,6 @@
   width: 100%;
   overflow: visible;
   z-index: 40;
-}
-
-.bodyScrollLocked {
-  overflow: hidden !important;
-  height: 100vh;
-  touch-action: none;
-  position: fixed;
-  width: 100%;
 }
 
 @media (max-width: 599px) {
