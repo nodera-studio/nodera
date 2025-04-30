@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import PageHero from '../components/PageHero';
+import Portfolio from '../components/Portfolio';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -115,6 +116,9 @@ const Services = () => {
             </Tabs>
           </div>
         </section>
+
+        {/* Insert Portfolio section here */}
+        <Portfolio />
 
         <section className="py-16 px-6 bg-gray-50">
           <div className="container mx-auto">
