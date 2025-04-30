@@ -65,7 +65,7 @@ const Services: React.FC = () => {
 					onClose={handleCloseModal}
 					title={selectedService.title}
 					description={selectedService.fullDescription}
-					features={selectedService.features}
+					// Removed features prop as it no longer exists in the type definitions
 					technologyOptions={selectedService.technologyOptions}
 					designApproach={selectedService.designApproach}
 					standardInclusions={selectedService.standardInclusions}
