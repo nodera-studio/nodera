@@ -30,7 +30,7 @@ const Index = () => {
       <Header />
 
       <main className="relative flex-grow pt-[60px]">
-        <section id="home">
+        <section id="home" className="min-h-screen">
           <Hero />
         </section>
         <div className="global-divider" />

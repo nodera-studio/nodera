@@ -1,3 +1,4 @@
+
 @tailwind components;
 
 @layer components {
@@ -77,13 +78,11 @@
   .hero-subtitle {
     font-family: 'Comfortaa', sans-serif;
     font-weight: 400;
-    font-size: clamp(18px, 3vw, 22px);
-    background: linear-gradient(90deg, #1D1D1F 0%, #6E6E73 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    font-size: clamp(18px, 3vw, 24px);
+    color: #000000;
     letter-spacing: 0.02em;
     line-height: 1.6;
+    opacity: 0.8;
   }
 
   .view-all-link {
@@ -104,8 +103,8 @@
   
   .global-divider {
     width: 100%;
-    height: 2px;
-    background-color: #F1F1F1;
+    height: 5px;
+    background-color: #F7F7F9;
     margin-top: 40px;
     margin-bottom: 40px;
     margin-left: 0;
@@ -124,8 +123,5 @@
   .card-animation {
     transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
     will-change: transform, opacity;
-  }
-  
-  .card-animation:hover {
   }
 }
