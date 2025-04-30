@@ -1,3 +1,4 @@
+
 .processCard {
   background-color: #FFFFFF;
   border-radius: 1rem;
@@ -144,7 +145,6 @@
   display: flex;
   flex-direction: column;
   background-color: #f9f9f9;
-  border: 1px solid #333333; /* Dark grey border around the entire window */
 }
 
 .codeHeader {
@@ -208,9 +208,9 @@
   position: relative;
   overflow: hidden;
   background-color: #fff;
-  border-left: 1px solid #333333; /* Dark grey left border */
-  border-right: 1px solid #333333; /* Dark grey right border */
-  border-bottom: 1px solid #333333; /* Dark grey bottom border */
+  border-left: 1px solid #e0e0e0;
+  border-right: 1px solid #e0e0e0;
+  border-bottom: 1px solid #e0e0e0;
   border-bottom-left-radius: 0.5rem;
   border-bottom-right-radius: 0.5rem;
 }
@@ -227,9 +227,9 @@
   font-size: 0.8rem !important;
   line-height: 1.5 !important;
   background-color: #fff !important;
-  border-left: none; /* Remove duplicate borders */
-  border-right: none; /* Remove duplicate borders */
-  border-bottom: none; /* Remove duplicate borders */
+  border-left: 1px solid #e0e0e0;
+  border-right: 1px solid #e0e0e0;
+  border-bottom: 1px solid #e0e0e0;
 }
 
 .lineNumbers {
