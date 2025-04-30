@@ -6,7 +6,7 @@ import Footer from '../components/Footer';
 import PageHero from '../components/PageHero';
 import BreadcrumbNav from '../components/BreadcrumbNav';
 import { Button } from "@/components/ui/button";
-import { ArrowLeft, CheckIcon } from 'lucide-react';
+import { CheckIcon } from 'lucide-react';
 import serviceCategories, { ServiceItem } from '../data/serviceData';
 import { cn } from "@/lib/utils";
 
@@ -67,15 +67,6 @@ const ServiceDetail: React.FC = () => {
                 { label: service.title, isCurrent: true }
               ]} 
             />
-
-            {/* Back link - now below breadcrumbs */}
-            <Link 
-              to="/services" 
-              className="inline-flex items-center text-[#6E6E73] hover:text-[#1D1D1F] transition-colors mb-10 font-comfortaa"
-            >
-              <ArrowLeft className="mr-2 h-4 w-4" />
-              Back to all services
-            </Link>
 
             {/* Full Description */}
             <div className="mb-16">
