@@ -1,10 +1,11 @@
+
 .button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
   white-space: nowrap;
-  border-radius: 20px;
+  border-radius: 9999px;
   transition: all 0.2s;
   cursor: pointer;
   font-family: 'Baloo Da 2', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
@@ -16,7 +17,8 @@
 }
 
 .button:hover {
-  transform: scale(1.02);
+  transform: none;
+  opacity: 0.85;
 }
 
 .button:focus-visible {
@@ -118,37 +120,38 @@
 
 .default {
   font-size: 14px;
-  padding: 10px 16px;
+  padding: 10px 22px;
 }
 
 .sm {
   font-size: 13px;
-  padding: 8px 14px;
+  padding: 8px 18px;
 }
 
 .lg {
   font-size: 16px;
-  padding: 14px 28px;
+  padding: 14px 32px;
 }
 
 .icon {
   padding: 10px;
   aspect-ratio: 1;
+  border-radius: 50%;
 }
 
 @media (min-width: 768px) {
   .default {
     font-size: 15px;
-    padding: 12px 20px;
+    padding: 12px 24px;
   }
 
   .sm {
     font-size: 14px;
-    padding: 10px 16px;
+    padding: 10px 20px;
   }
 
   .lg {
     font-size: 17px;
-    padding: 16px 32px;
+    padding: 16px 36px;
   }
 }
