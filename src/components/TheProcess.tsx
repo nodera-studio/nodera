@@ -233,7 +233,6 @@ function ModernApp() {
                   {logoCarousel}
                 </div>
               </div>
-              <div className={cardStyles.stepNumber}>01</div>
             </div>
             
             <div className={`${cardStyles.cardContent}`}>
@@ -301,7 +300,6 @@ function ModernApp() {
                   </div>
                 </div>
               </div>
-              <div className={cardStyles.stepNumber}>02</div>
             </div>
             
             <div className={`${cardStyles.cardContent}`}>
@@ -395,7 +393,6 @@ function ModernApp() {
                   </div>
                 </div>
               </div>
-              <div className={cardStyles.stepNumber}>03</div>
             </div>
             
             <div className={`${cardStyles.cardContent}`}>
