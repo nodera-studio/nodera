@@ -266,7 +266,7 @@ function ModernApp() {
                         {(['html', 'nextjs', 'css'] as const).map((tabKey) => (
                           <div 
                             key={tabKey}
-                            className={`${cardStyles.tab} ${activeTab === tabKey ? styles.activeTab : ''}`}
+                            className={`${cardStyles.tab} ${activeTab === tabKey ? cardStyles.activeTab : ''}`}
                             onClick={() => setActiveTab(tabKey)}
                             role="button"
                             aria-pressed={activeTab === tabKey}

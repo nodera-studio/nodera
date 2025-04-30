@@ -1,3 +1,4 @@
+
 .processCard {
   background-color: #FFFFFF;
   border-radius: 1rem;
@@ -151,8 +152,8 @@
   justify-content: space-between;
   align-items: center;
   padding: 6px 10px;
-  background-color: #e0e0e0;
-  border-bottom: 1px solid #ddd;
+  background-color: #555555;
+  border-bottom: 1px solid #444444;
 }
 
 .browserControls {
@@ -185,20 +186,20 @@
   padding: 3px 8px;
   border-radius: 4px;
   font-size: 0.8rem;
-  color: #666;
+  color: #e0e0e0;
   background-color: transparent;
   cursor: pointer;
   transition: all 0.2s;
 }
 
 .activeTab {
-  background-color: #555555 !important;
-  color: white !important;
+  background-color: #e0e0e0 !important;
+  color: #333333 !important;
   font-weight: 500;
 }
 
 .tab:hover {
-  background-color: #555555;
+  background-color: #777777;
   color: white;
 }
 
