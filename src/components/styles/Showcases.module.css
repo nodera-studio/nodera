@@ -1,16 +1,17 @@
+
 .showcaseCard {
   background-color: #F9F9F9;
   border-radius: 1.5rem;
   padding: 1.5rem;
   overflow: hidden;
-  transition: transform 0.3s ease-out, box-shadow 0.3s ease;
+  transition: transform 0.3s ease-out;
   transform: translate3d(0, 0, 0);
   will-change: transform, opacity;
+  border: 1px solid rgba(0, 0, 0, 0.05);
 }
 
 .showcaseCard:hover {
   transform: scale(1.02) translateY(-5px);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
 }
 
 .cardStackContainer {

@@ -97,7 +97,7 @@ const ServiceDetail: React.FC = () => {
                   {service.technologyOptions.map((tech, index) => (
                     <div 
                       key={index} 
-                      className="bg-white rounded-xl p-6 shadow-sm border border-gray-100"
+                      className="bg-white rounded-xl p-6 border border-gray-100"
                     >
                       <h3 className="text-xl font-comfortaa font-bold text-[#1D1D1F] mb-2">
                         {tech.name}
@@ -158,7 +158,7 @@ const ServiceDetail: React.FC = () => {
 
             {/* Ideal For */}
             {service.idealFor && (
-              <div className="mb-16 bg-white rounded-xl p-6 shadow-sm border border-gray-100">
+              <div className="mb-16 bg-white rounded-xl p-6 border border-gray-100">
                 <h2 className="text-2xl font-comfortaa font-bold text-[#1D1D1F] mb-4">
                   Who Is This For?
                 </h2>
