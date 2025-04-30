@@ -6,23 +6,15 @@ import styles from './CallToAction.module.css';
 const CallToAction = () => {
   return (
     <div className={styles.ctaContainer}>
-      <div className={styles.ctaNodera}>
-        <h1 className={styles.ctaNoderaTxt}>
-          Nodera
-        </h1>
-      </div>
-      
       <div className={styles.ctaContentBox}>
-        <div className={styles.taglineContainer}>
-          <p className={styles.ctaText}>
-            You've got a vision. We've got the code.
-          </p>
-          <p className={`${styles.ctaText} ${styles.gradientText}`}>
-            Let's build something remarkable.
-          </p>
-        </div>
+        <h2 className={styles.ctaHeading}>
+          You've got a vision. We've got the code.
+        </h2>
+        <p className={styles.ctaSubheading}>
+          Let's build something remarkable.
+        </p>
         
-        <div className="flex gap-4 mb-8">
+        <div className="flex gap-4 mt-8">
           <Button
             variant="primary"
             size="lg"

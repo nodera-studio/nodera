@@ -4,12 +4,22 @@ import { Button } from "@/components/ui/button";
 
 const CallToActionSection = () => {
   return (
-    <section className="py-16 px-6 bg-gray-900 text-white">
+    <section className="py-24 px-6 bg-white text-black">
       <div className="container mx-auto text-center">
-        <h2 className="text-3xl font-bold mb-6">Ready to get started?</h2>
-        <Button size="lg" asChild>
-          <a href="/contact">Contact Us</a>
-        </Button>
+        <h2 className="text-3xl md:text-4xl font-bold font-comfortaa mb-4">Ready to get started?</h2>
+        <p className="mb-8 text-lg md:text-xl font-medium text-gray-600 max-w-2xl mx-auto">
+          Let us help you bring your digital vision to life with our expertise.
+        </p>
+        
+        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <Button size="lg" variant="primary" asChild>
+            <a href="/contact">Contact Us</a>
+          </Button>
+          
+          <Button size="lg" variant="secondary" asChild>
+            <a href="/services">View Services</a>
+          </Button>
+        </div>
       </div>
     </section>
   );

@@ -206,12 +206,12 @@ function ModernApp() {
     <section ref={ref} className={styles.processSection} aria-label="Our Process">
       <div className={styles.container}>
         <motion.h2 
-          className="text-black mb-10 section-title"
+          className={styles.sectionTitle}
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
           variants={itemVariants}
         >
-          The <span className="gradient-word">Process</span>
+          The <span className={styles.gradientText}>Process</span>
         </motion.h2>
         
         <motion.div 
@@ -227,22 +227,24 @@ function ModernApp() {
             role="region"
             aria-label="Discovery & Strategy Card"
           >
-            <div className="bg-white rounded-t-[1rem]">
+            <div className="bg-white rounded-t-[1rem] relative">
               <div className={cardStyles.cardImageContainer}>
                 <div className={cardStyles.cardImage}>
                   {logoCarousel}
                 </div>
               </div>
+              <div className={cardStyles.stepNumber}>01</div>
             </div>
             
-            <div className={`${cardStyles.cardContent} bg-[#F9F9F9] rounded-b-[1rem]`}>
-              <div className={`${cardStyles.cardStep} gradient-text font-semibold`}>01</div>
+            <div className={`${cardStyles.cardContent}`}>
               <h3 className={cardStyles.cardTitle}>Discovery & Strategy</h3>
               <p className={cardStyles.cardDescription}>
                 We dive into your business reality before coding. Your goals shape our roadmap, creating foundations for every pixel and function.
               </p>
             </div>
           </motion.div>
+          
+          <div className={styles.columnDivider} />
           
           <motion.div 
             className={`${cardStyles.processCard}`}
@@ -251,7 +253,7 @@ function ModernApp() {
             role="region"
             aria-label="Code Examples"
           >
-            <div className="bg-white rounded-t-[1rem] w-full">
+            <div className="bg-white rounded-t-[1rem] w-full relative">
               <div className={cardStyles.cardImageContainer}>
                 <div className={`${cardStyles.cardImage} w-full`}>
                   <div className={`${cardStyles.codeEditor} w-full`}>
@@ -265,7 +267,7 @@ function ModernApp() {
                         {(['html', 'nextjs', 'css'] as const).map((tabKey) => (
                           <div 
                             key={tabKey}
-                            className={`${cardStyles.tab} ${activeTab === tabKey ? cardStyles.activeTab : ''}`}
+                            className={`${cardStyles.tab} ${activeTab === tabKey ? styles.activeTab : ''}`}
                             onClick={() => setActiveTab(tabKey)}
                             role="button"
                             aria-pressed={activeTab === tabKey}
@@ -299,16 +301,18 @@ function ModernApp() {
                   </div>
                 </div>
               </div>
+              <div className={cardStyles.stepNumber}>02</div>
             </div>
             
-            <div className={`${cardStyles.cardContent} bg-[#F9F9F9] rounded-b-[1rem]`}>
-              <div className={`${cardStyles.cardStep} gradient-text font-semibold`}>02</div>
+            <div className={`${cardStyles.cardContent}`}>
               <h3 className={cardStyles.cardTitle}>Design & Develop</h3>
               <p className={cardStyles.cardDescription}>
                 Vision becomes reality. Our collaborative approach eliminates handoffs, creating experiences where beauty and functionality are inseparable.
               </p>
             </div>
           </motion.div>
+          
+          <div className={styles.columnDivider} />
           
           <motion.div 
             className={`${cardStyles.processCard}`}
@@ -320,7 +324,7 @@ function ModernApp() {
             tabIndex={0}
           >
             <div 
-              className="bg-[#f8f9fa] rounded-t-[1rem] relative"
+              className="bg-white rounded-t-[1rem] relative"
               onMouseEnter={() => setIsHoveringMetrics(true)}
               onMouseLeave={() => setIsHoveringMetrics(false)}
               aria-expanded={isHoveringMetrics}
@@ -331,7 +335,7 @@ function ModernApp() {
                     <motion.div 
                       className={cardStyles.metricsContainer}
                       animate={{ 
-                        y: isHoveringMetrics && !shouldReduceMotion ? "-55%" : "0%" // Adjusted value for better scrolling with reduced padding
+                        y: isHoveringMetrics && !shouldReduceMotion ? "-55%" : "0%" 
                       }}
                       transition={{ duration: 0.6, ease: "easeInOut" }}
                       role="list"
@@ -343,6 +347,7 @@ function ModernApp() {
                           <span>+38%</span>
                         </div>
                       </div>
+                      
                       <div className={cardStyles.metric}>
                         <div className={cardStyles.metricLabel}>Workflow efficiency</div>
                         <div className={cardStyles.metricValue}>
@@ -390,10 +395,10 @@ function ModernApp() {
                   </div>
                 </div>
               </div>
+              <div className={cardStyles.stepNumber}>03</div>
             </div>
             
-            <div className={`${cardStyles.cardContent} bg-[#F9F9F9] rounded-b-[1rem]`}>
-              <div className={`${cardStyles.cardStep} gradient-text font-semibold`}>03</div>
+            <div className={`${cardStyles.cardContent}`}>
               <h3 className={cardStyles.cardTitle}>Maintain & Improve</h3>
               <p className={cardStyles.cardDescription}>
                 Launch day is just the beginning. Your product evolves with markets and users. Continuous refinement elevates good to exceptional.

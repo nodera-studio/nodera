@@ -1,52 +1,15 @@
-.cta-section {
-  position: relative;
-  z-index: 1;
-  background: transparent;
-  padding: 80px 0;
-  overflow: hidden;
-}
-
-.background-image {
-  position: absolute;
-  top: -20%;
-  left: -10%;
-  right: -10%;
-  bottom: -10%;
-  background-image: url('/lovable-uploads/1a4eed94-e0a5-4c02-bb01-e9db183a8ff6.png');
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  filter: blur(8px) brightness(0.8);
-  transform: scale(1.1);
-  z-index: 0;
-}
-
-.cta-content-wrapper {
-  max-width: 56rem;
-  margin-left: auto;
-  margin-right: auto;
-  width: 100%;
-}
-
-.gradientText {
-  background-image: linear-gradient(90deg, #D1A2FF 0%, #007AFF 100%);
-  background-size: 200% auto;
-  color: transparent;
-  -webkit-background-clip: text;
-  background-clip: text;
-}
 
 .ctaContainer {
   position: relative;
   overflow: hidden;
   text-align: center;
-  padding-top: 80px;
-  padding-bottom: 40px;
-  min-height: 500px;
-
-  @media (max-width: 767px) {
-    min-height: 350px;
-  }
+  padding: 80px 24px;
+  min-height: 50vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #FFFFFF;
 }
 
 .ctaContentBox {
@@ -58,71 +21,41 @@
   max-width: 56rem;
   margin: 0 auto;
   padding: 0 1rem;
-  margin-top: -60px;
 }
 
-.ctaNodera {
-  position: absolute;
-  bottom: -70px !important;
-  left: 0;
-  right: 0;
+.ctaHeading {
+  font-family: 'Comfortaa', sans-serif;
+  font-weight: 700;
+  font-size: clamp(2rem, 5vw, 2.625rem);
+  line-height: 1.2;
+  color: #000000;
+  margin-bottom: 1rem;
   text-align: center;
-  z-index: 0;
-  width: 100%;
-  overflow: hidden;
-  padding-top: 5px;
 }
 
-.ctaNoderaTxt {
-  font-weight: bold;
-  color: white;
-  font-size: 90px;
-}
-
-.taglineContainer {
-  margin-bottom: 1.5rem;
-}
-
-.ctaText {
+.ctaSubheading {
   font-family: 'Baloo Da 2', sans-serif;
   font-weight: 500;
-  font-size: 1.75rem;
-  line-height: 1.2;
-}
-
-@media (min-width: 640px) {
-  .ctaText {
-    font-size: 2.125rem;
-  }
+  font-size: clamp(1.25rem, 3vw, 1.5rem);
+  line-height: 1.4;
+  background-image: linear-gradient(90deg, #D1A2FF 0%, #007AFF 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  margin-bottom: 1.5rem;
+  text-align: center;
 }
 
 @media (min-width: 768px) {
-  .ctaText {
-    font-size: 2.5rem;
-  }
-  .ctaNoderaTxt {
-    font-size: 240px;
-  }
   .ctaContainer {
-    padding-top: 110px;
-    padding-bottom: 200px;
+    padding: 100px 24px;
   }
-  .ctaContentBox {
-    margin-top: -100px;
+  
+  .ctaHeading {
+    font-size: 2.625rem;
   }
-  .taglineContainer p:first-child {
-    white-space: nowrap;
-  }
-}
-
-@media (min-width: 1024px) {
-  .ctaText {
-    font-size: 3.25rem;
-  }
-  .ctaNoderaTxt {
-    font-size: 360px;
-  }
-  .ctaNodera {
-    bottom: -80px;
+  
+  .ctaSubheading {
+    font-size: 1.5rem;
   }
 }
