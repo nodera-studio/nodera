@@ -227,7 +227,7 @@ function ModernApp() {
             role="region"
             aria-label="Discovery & Strategy Card"
           >
-            <div className="bg-white rounded-t-[1rem] relative">
+            <div className="relative">
               <div className={cardStyles.cardImageContainer}>
                 <div className={cardStyles.cardImage}>
                   {logoCarousel}
@@ -252,7 +252,7 @@ function ModernApp() {
             role="region"
             aria-label="Code Examples"
           >
-            <div className="bg-white rounded-t-[1rem] w-full relative">
+            <div className="relative">
               <div className={cardStyles.cardImageContainer}>
                 <div className={`${cardStyles.cardImage} w-full`}>
                   <div className={`${cardStyles.codeEditor} w-full`}>
@@ -322,7 +322,7 @@ function ModernApp() {
             tabIndex={0}
           >
             <div 
-              className="bg-white rounded-t-[1rem] relative"
+              className="relative"
               onMouseEnter={() => setIsHoveringMetrics(true)}
               onMouseLeave={() => setIsHoveringMetrics(false)}
               aria-expanded={isHoveringMetrics}
