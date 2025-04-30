@@ -1,12 +1,10 @@
-
-/* Styles specific to TheProcess component container */
 .processSection {
   background-color: #fff;
   padding: 4rem 2rem;
 }
 
 .container {
-  max-width: 80rem; /* Equivalent to max-w-7xl */
+  max-width: 80rem;
   margin-left: auto;
   margin-right: auto;
 }

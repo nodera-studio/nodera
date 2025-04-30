@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
@@ -73,7 +72,6 @@ const Work = () => {
   
   const totalPages = Math.ceil(filteredProjects.length / projectsPerPage);
 
-  // Reset to page 1 when changing category
   useEffect(() => {
     setCurrentPage(1);
   }, [activeCategory]);
@@ -101,7 +99,7 @@ const Work = () => {
                       <Button
                         variant={activeCategory === category.id ? "primary" : "outline"}
                         onClick={() => setActiveCategory(category.id)}
-                        className="min-w-[90px] sm:min-w-[120px] whitespace-nowrap text-sm h-9 sm:h-10 shadow-sm transition-all duration-200"
+                        className="min-w-[90px] sm:min-w-[120px] whitespace-nowrap text-sm h-9 sm:h-10 transition-all duration-200"
                       >
                         {category.label}
                       </Button>
@@ -141,7 +139,7 @@ const Work = () => {
                       setCurrentPage(page);
                       window.scrollTo({ top: 0, behavior: 'smooth' });
                     }}
-                    className="w-8 h-8 sm:w-10 sm:h-10 rounded-full p-0 shadow-sm transition-all duration-200"
+                    className="w-8 h-8 sm:w-10 sm:h-10 rounded-full p-0 transition-all duration-200"
                   >
                     {page}
                   </Button>

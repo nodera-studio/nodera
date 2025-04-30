@@ -7,10 +7,8 @@ const Showcases = () => {
   return (
     <div className="bg-white py-16 md:py-24 lg:py-32 px-6 sm:px-10 lg:px-16">
       <div className="max-w-7xl mx-auto">
-        {/* Section title */}
         <ShowcasesTitle />
 
-        {/* Showcase cards (static, no animation) */}
         <div className={`${styles.cardStackContainer} space-y-20`}>
           <ShowcaseCard
             title="Museum CMS Platform"

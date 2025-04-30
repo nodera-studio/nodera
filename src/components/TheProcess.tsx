@@ -5,23 +5,18 @@ import cardStyles from './styles/ProcessCard.module.css';
 import { ChevronDown } from 'lucide-react';
 import TechLogos from './TechLogos';
 
-// Design tech stack for the top row
 const designLogoIcons = [
-  // Using the provided SVGs for the design tech stack
   '/lovable-uploads/figma-2.svg',
   '/lovable-uploads/webflow.svg',
   '/lovable-uploads/adobe-photoshop.svg',
   '/lovable-uploads/adobe-illustrator.svg',
-  // We'll add framer using Lucide icon in the rendering
 ];
 
-// Development tech stack for the bottom row
 const devLogoIcons = [
   '/lovable-uploads/html.svg',
   '/lovable-uploads/css-3.svg',
   '/lovable-uploads/js.svg',
   '/lovable-uploads/supabase-logo-icon.svg',
-  // We'll add Git using Lucide icon in the rendering
 ];
 
 const TheProcess = () => {
@@ -116,10 +111,8 @@ function ModernApp() {
     }
   };
 
-  // Calculate animation properties to ensure perfect looping
   const calculateAnimationProps = (direction: 'left-to-right' | 'right-to-left') => {
-    // Adjusted total width calculation for closer logos
-    const totalWidth = 500; // This value works well with our spacing
+    const totalWidth = 500;
     
     return {
       x: direction === 'left-to-right' ? [-totalWidth, 0] : [0, -totalWidth],
@@ -132,7 +125,6 @@ function ModernApp() {
     };
   };
 
-  // Generate logos for the carousel with their respective icons
   const renderLogoPlaceholders = (count: number, icons: string[]) => {
     return Array.from({ length: count }).map((_, index) => {
       const iconIndex = index % icons.length;
@@ -153,26 +145,22 @@ function ModernApp() {
   const logoCarousel = (
     <div className={cardStyles.logoCarouselContainer}>
       <div className={cardStyles.logoCarousel}>
-        {/* First row - moving left to right - Design tech stack */}
         <div className={cardStyles.logoRow}>
           <motion.div 
             className={cardStyles.logoRow}
             animate={shouldReduceMotion ? {} : calculateAnimationProps('left-to-right')}
           >
             {renderLogoPlaceholders(8, designLogoIcons)}
-            {/* Duplicate for seamless loop */}
             {renderLogoPlaceholders(8, designLogoIcons)}
           </motion.div>
         </div>
         
-        {/* Second row - moving right to left - Development tech stack */}
         <div className={cardStyles.logoRow}>
           <motion.div 
             className={cardStyles.logoRow}
             animate={shouldReduceMotion ? {} : calculateAnimationProps('right-to-left')}
           >
             {renderLogoPlaceholders(8, devLogoIcons)}
-            {/* Duplicate for seamless loop */}
             {renderLogoPlaceholders(8, devLogoIcons)}
           </motion.div>
         </div>

@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect, useCallback } from 'react';
 import styles from './Header.module.css';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -68,7 +67,6 @@ const Header = () => {
   const location = useLocation();
   const [scrolled, setScrolled] = useState(false);
 
-  // Debounced scroll handler for better performance
   const handleScrollEffect = useCallback(() => {
     if (window.scrollY > 10) {
       setScrolled(true);
@@ -78,10 +76,8 @@ const Header = () => {
   }, []);
 
   useEffect(() => {
-    // Use passive event listener for better performance
     window.addEventListener('scroll', handleScrollEffect, { passive: true });
     
-    // Initial check
     handleScrollEffect();
     
     return () => {
@@ -90,7 +86,6 @@ const Header = () => {
   }, [handleScrollEffect]);
 
   useEffect(() => {
-    // Prevent body scrolling when mobile menu is open
     if (mobileMenuOpen) {
       document.body.style.overflow = 'hidden';
     } else {
@@ -102,7 +97,6 @@ const Header = () => {
     };
   }, [mobileMenuOpen]);
 
-  // Close mobile menu when route changes
   useEffect(() => {
     if (mobileMenuOpen) {
       setMobileMenuOpen(false);
@@ -121,7 +115,6 @@ const Header = () => {
     { title: 'Contact', path: '/contact' },
   ];
 
-  // Combine header classes based on scroll state and menu open state
   const headerClasses = `${styles.header} 
     ${scrolled ? styles.headerScrolled : ''} 
     ${mobileMenuOpen ? styles.headerMenuOpen : ''}`;

@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import styles from './Hero.module.css';
 import { useBreakpoint } from '../hooks/use-mobile';
@@ -23,7 +22,7 @@ const Hero: React.FC = () => {
     };
   }, []);
   
-  const parallaxOffset = scrollY * 0.3; // Adjust 0.3 factor for desired speed
+  const parallaxOffset = scrollY * 0.3;
   
   return (
     <div className={styles.hero}>
@@ -44,19 +43,19 @@ const Hero: React.FC = () => {
           loading="eager"
           style={{ 
             transform: `translate(-50%, -50%) scale(1.5) translateY(${parallaxOffset * 0.8}px)`,
-            filter: isMobileView ? 'blur(15px)' : 'blur(30px)', // Reduced blur on mobile
-            opacity: isMobileView ? 0.5 : 0.3, // Increased opacity on mobile
+            filter: isMobileView ? 'blur(15px)' : 'blur(30px)',
+            opacity: isMobileView ? 0.5 : 0.3,
           }} 
         />
       </div>
       
       <div className="relative z-10 flex flex-col items-center justify-center h-full">
         <div className={styles.heroContent}>
-          <h1 className="text-white m-0 [text-shadow:0px_1px_2px_rgba(0,0,0,0.3)]">
+          <h1 className="text-white m-0">
             {title}
           </h1>
           <span 
-            className="hero-subtitle m-0 text-white [text-shadow:0px_1px_2px_rgba(0,0,0,0.3)]" 
+            className="hero-subtitle m-0 text-white" 
             style={{ 
               color: 'white', 
               WebkitBackgroundClip: 'unset', 

@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { motion } from 'framer-motion';
 import styles from './styles/Portfolio.module.css';
@@ -31,7 +30,6 @@ const PortfolioItem: React.FC<PortfolioItemProps> = ({ title, description, image
 };
 
 const Portfolio: React.FC = () => {
-  // Portfolio items data
   const portfolioItems = [
     {
       title: "Museum CMS Platform",

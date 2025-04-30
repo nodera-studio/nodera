@@ -1,4 +1,3 @@
-
 import React from 'react';
 
 type TechLogoProps = {
@@ -71,34 +70,34 @@ export const WebflowLogo: React.FC<TechLogoProps> = ({ className, fill = "#8E919
 const TechLogos = () => {
   return (
     <div className="grid grid-cols-5 gap-4 w-full">
-      <div className="p-4 bg-white rounded-lg shadow-sm flex items-center justify-center">
+      <div className="p-4 bg-white rounded-lg flex items-center justify-center">
         <Html5Logo className="w-10 h-10" />
       </div>
-      <div className="p-4 bg-white rounded-lg shadow-sm flex items-center justify-center">
+      <div className="p-4 bg-white rounded-lg flex items-center justify-center">
         <Css3Logo className="w-10 h-10" />
       </div>
-      <div className="p-4 bg-white rounded-lg shadow-sm flex items-center justify-center">
+      <div className="p-4 bg-white rounded-lg flex items-center justify-center">
         <JavaScriptLogo className="w-10 h-10" />
       </div>
-      <div className="p-4 bg-white rounded-lg shadow-sm flex items-center justify-center">
+      <div className="p-4 bg-white rounded-lg flex items-center justify-center">
         <GitLogo className="w-10 h-10" />
       </div>
-      <div className="p-4 bg-white rounded-lg shadow-sm flex items-center justify-center">
+      <div className="p-4 bg-white rounded-lg flex items-center justify-center">
         <ServerlessLogo className="w-10 h-10" />
       </div>
-      <div className="p-4 bg-white rounded-lg shadow-sm flex items-center justify-center">
+      <div className="p-4 bg-white rounded-lg flex items-center justify-center">
         <PhotoshopLogo className="w-10 h-10" />
       </div>
-      <div className="p-4 bg-white rounded-lg shadow-sm flex items-center justify-center">
+      <div className="p-4 bg-white rounded-lg flex items-center justify-center">
         <IllustratorLogo className="w-10 h-10" />
       </div>
-      <div className="p-4 bg-white rounded-lg shadow-sm flex items-center justify-center">
+      <div className="p-4 bg-white rounded-lg flex items-center justify-center">
         <FigmaLogo className="w-10 h-10" />
       </div>
-      <div className="p-4 bg-white rounded-lg shadow-sm flex items-center justify-center">
+      <div className="p-4 bg-white rounded-lg flex items-center justify-center">
         <FlutterLogo className="w-10 h-10" />
       </div>
-      <div className="p-4 bg-white rounded-lg shadow-sm flex items-center justify-center">
+      <div className="p-4 bg-white rounded-lg flex items-center justify-center">
         <WebflowLogo className="w-10 h-10" />
       </div>
     </div>
