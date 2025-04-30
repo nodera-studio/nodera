@@ -1,4 +1,3 @@
-
 import React, { useEffect, useRef } from 'react';
 import { Button } from "@/components/ui/button";
 import { ServiceItem } from '@/data/serviceData';
@@ -18,7 +17,7 @@ const ServiceGrid: React.FC<ServiceGridProps> = ({ services, onOpenModal }) => {
         if (entry.isIntersecting) {
           // Add small delay for staggered animation
           setTimeout(() => {
-            entry.target.classList.add('is-visible');
+            entry.target.classList.remove('opacity-0', 'translate-y-8');
           }, index * 150);
           observer.unobserve(entry.target);
         }
@@ -53,7 +52,7 @@ const ServiceGrid: React.FC<ServiceGridProps> = ({ services, onOpenModal }) => {
               ref={el => gridItemsRef.current[index] = el}
               className={`relative overflow-hidden rounded-3xl min-h-[450px] flex items-end 
                 ${gradients[index]} transform transition-all duration-300 ease-out 
-                opacity-0 translate-y-8 hover:scale-[1.03] cursor-pointer card-animation`}
+                opacity-0 translate-y-8 hover:scale-[1.03] cursor-pointer`}
               onClick={() => onOpenModal(service)}
             >
               <div className="absolute inset-0 opacity-20">
@@ -82,7 +81,7 @@ const ServiceGrid: React.FC<ServiceGridProps> = ({ services, onOpenModal }) => {
               ref={el => gridItemsRef.current[index + 2] = el}
               className={`relative overflow-hidden rounded-3xl min-h-[450px] flex items-end 
                 ${gradients[index + 2]} transform transition-all duration-300 ease-out 
-                opacity-0 translate-y-8 hover:scale-[1.03] cursor-pointer md:max-w-full mx-auto card-animation`}
+                opacity-0 translate-y-8 hover:scale-[1.03] cursor-pointer md:max-w-full mx-auto`}
               onClick={() => onOpenModal(service)}
             >
               <div className="absolute inset-0 opacity-20">
@@ -103,13 +102,6 @@ const ServiceGrid: React.FC<ServiceGridProps> = ({ services, onOpenModal }) => {
           ))}
         </div>
       </div>
-      
-      <style jsx>{`
-        .card-animation.is-visible {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      `}</style>
     </section>
   );
 };
