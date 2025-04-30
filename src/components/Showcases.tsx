@@ -1,3 +1,4 @@
+
 import React from 'react';
 import ShowcasesTitle from './showcases/ShowcasesTitle';
 import ShowcaseCard from './showcases/ShowcaseCard';
@@ -9,12 +10,14 @@ const Showcases = () => {
       <div className="max-w-7xl mx-auto">
         <ShowcasesTitle />
 
-        <div className={`${styles.cardStackContainer} space-y-20`}>
+        <div className="space-y-5">
           <ShowcaseCard
             title="Museum CMS Platform"
             description="The behind-the-scenes system that powers museum mobile guides, intuitive for staff, informative for visitors."
             imageSrc="/lovable-uploads/nous-cms.png"
             imageAlt="Museum CMS Platform"
+            gradientDirection="to-br"
+            gradientColor="from-purple-300"
           />
 
           <ShowcaseCard
@@ -22,6 +25,8 @@ const Showcases = () => {
             description="Where craftsmanship meets digital presence. Elegantly showcasing custom furniture and connecting artisans with clients."
             imageSrc="/lovable-uploads/8379e5c3-25c3-48da-9e3b-916491ac1570.png"
             imageAlt="Furnihaus Collection"
+            gradientDirection="to-bl"
+            gradientColor="from-blue-500"
           />
         </div>
       </div>

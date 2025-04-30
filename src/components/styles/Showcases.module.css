@@ -2,22 +2,22 @@
 .showcaseCard {
   background-color: #F9F9F9;
   border-radius: 1.5rem;
-  padding: 1.5rem;
   overflow: hidden;
   transition: transform 0.3s ease-out;
   transform: translate3d(0, 0, 0);
   will-change: transform, opacity;
+  position: relative;
   border: 1px solid rgba(0, 0, 0, 0.05);
+  margin-bottom: 60px;
 }
 
 .showcaseCard:hover {
-  transform: scale(1.02) translateY(-5px);
+  transform: translateY(-5px);
 }
 
 .cardStackContainer {
   position: relative;
-  perspective: 1200px;
-  min-height: 600px;
+  min-height: 500px;
   width: 100%;
   overflow: visible;
   z-index: 40;
@@ -35,18 +35,17 @@
   }
 
   .cardStackContainer {
-    min-height: 500px;
-    perspective: 800px;
-  }
-}
-
-@media (max-width: 480px) {
-  .cardStackContainer {
     min-height: 450px;
   }
   
   .bodyScrollLocked {
     touch-action: none;
     overscroll-behavior: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .cardStackContainer {
+    min-height: 400px;
   }
 }

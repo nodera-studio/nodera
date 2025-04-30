@@ -28,13 +28,13 @@ const ShowcasesTitle: React.FC = () => {
   }, []);
 
   return (
-    <div className="flex flex-wrap justify-between items-center mb-12 md:mb-16 lg:mb-20 gap-4">
-      <h2 ref={sectionTitleRef} className="text-black section-title">
+    <div className="flex flex-wrap justify-between items-center mb-12 md:mb-16 lg:mb-20">
+      <h2 ref={sectionTitleRef} className="text-black section-title text-left">
         Digital <span className="gradient-word">Showcases</span>
       </h2>
       <a 
         href="#" 
-        className={styles.hideOnMobile + " view-all-link"}
+        className="view-all-link"
       >
         View All →
       </a>

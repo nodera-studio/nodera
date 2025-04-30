@@ -9,7 +9,8 @@ interface ShowcaseCardProps {
   description: string;
   imageSrc: string;
   imageAlt: string;
-  disableHover?: boolean;
+  gradientDirection?: string;
+  gradientColor?: string;
   style?: React.CSSProperties;
   className?: string;
   initial?: any;
@@ -23,7 +24,8 @@ const ShowcaseCard = React.forwardRef<HTMLDivElement, ShowcaseCardProps>(({
   description,
   imageSrc,
   imageAlt,
-  disableHover = false,
+  gradientDirection = "to-br",
+  gradientColor = "from-purple-300",
   style,
   className = '',
   initial,
@@ -35,42 +37,44 @@ const ShowcaseCard = React.forwardRef<HTMLDivElement, ShowcaseCardProps>(({
   return (
     <motion.div 
       ref={ref}
-      className={`${styles.showcaseCard} ${disableHover ? styles.noHoverEffect : ''} ${className}`}
-      initial={initial}
-      whileInView={whileInView}
-      viewport={viewport}
-      transition={transition}
+      className={`${styles.showcaseCard} ${className}`}
+      initial={initial || { opacity: 0, y: 50 }}
+      whileInView={whileInView || { opacity: 1, y: 0 }}
+      viewport={viewport || { once: true, margin: "-100px" }}
+      transition={transition || { duration: 0.6 }}
       style={style}
       {...props}
     >
-      <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 items-center">
-        <div className="lg:w-1/2 space-y-4 order-2 lg:order-1">
-          <h3 className="">{title}</h3>
-          <p className="text-gray-600 mb-3">
-            {description}
-          </p>
-          <div className="flex flex-wrap gap-4 mt-3">
-            <Button
-              variant="primary"
-              size="lg"
-              asChild
-            >
-              <a href="#">The Full Story</a>
-            </Button>
-            <Button
-              variant="secondary"
-              size="lg"
-              asChild
-            >
-              <a href="#">More Creations</a>
-            </Button>
-          </div>
+      <div className={`h-full w-full absolute top-0 left-0 bg-gradient-to-br ${gradientDirection} ${gradientColor} opacity-10 rounded-2xl`} />
+      
+      <div className="flex flex-col items-center text-center px-6 md:px-10 py-10 relative z-10">
+        <h3 className="text-2xl md:text-3xl mb-4">{title}</h3>
+        <p className="text-gray-600 mb-8 max-w-lg">
+          {description}
+        </p>
+        <div className="flex flex-wrap justify-center gap-4 mb-10">
+          <Button
+            variant="primary"
+            size="lg"
+            asChild
+            className="rounded-full"
+          >
+            <a href="#">The Full Story</a>
+          </Button>
+          <Button
+            variant="secondary"
+            size="lg"
+            asChild
+            className="rounded-full"
+          >
+            <a href="#">More Creations</a>
+          </Button>
         </div>
-        <div className="lg:w-1/2 order-1 lg:order-2">
+        <div className="mt-6 max-w-4xl">
           <img 
             src={imageSrc} 
             alt={imageAlt} 
-            className="showcase-image rounded-xl w-full h-auto object-cover"
+            className="w-full h-auto object-contain rounded-md"
           />
         </div>
       </div>
