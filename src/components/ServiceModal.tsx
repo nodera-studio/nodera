@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { X } from "lucide-react";
@@ -12,6 +11,9 @@ interface ServiceFeature {
 interface TechnologyOption {
   name: string;
   description: string;
+  heading?: string;
+  intro?: string;
+  note?: string;
 }
 
 export interface ServiceModalProps {
@@ -24,8 +26,8 @@ export interface ServiceModalProps {
   visual?: string;
   technologyOptions?: TechnologyOption[];
   designApproach?: string;
-  standardInclusions?: string[];
-  optionalAddOns?: string;
+  standardInclusions?: { heading: string; items: string[] };
+  optionalAddOns?: { heading: string; description: string };
 }
 
 const ServiceModal = ({
@@ -41,17 +43,14 @@ const ServiceModal = ({
   standardInclusions,
   optionalAddOns
 }: ServiceModalProps) => {
+
+  const techHeading = technologyOptions?.[0]?.heading;
+  const techIntro = technologyOptions?.[0]?.intro;
+  const techNote = technologyOptions?.[technologyOptions.length - 1]?.note;
+
   return (
     <Dialog open={isOpen} onOpenChange={(open) => !open && onClose()}>
       <DialogContent className="max-w-[800px] p-0 bg-white rounded-xl">
-        <button
-          onClick={onClose}
-          className="absolute right-4 top-4 w-8 h-8 flex items-center justify-center rounded-full text-[#6E6E73] hover:bg-[#F5F5F7] transition-colors focus:outline-none focus:ring-2 focus:ring-[#007AFF] focus:ring-opacity-50"
-          aria-label="Close dialog"
-        >
-          <X className="h-5 w-5" />
-        </button>
-        
         <div className="py-8 px-10 max-h-[80vh] overflow-y-auto">
           <DialogHeader className="pb-4">
             <DialogTitle className="text-[28px] font-comfortaa font-bold text-[#1D1D1F]">
@@ -64,32 +63,23 @@ const ServiceModal = ({
               {description}
             </p>
             
-            <div className="space-y-2">
-              <h3 className="font-bold text-[18px] text-[#1D1D1F] mb-3">What's included</h3>
-              <ul className="space-y-3">
-                {features.map((feature, index) => (
-                  <li key={index} className="flex items-start">
-                    <CheckIcon className="h-5 w-5 text-[#007AFF] mr-3 flex-shrink-0 mt-0.5" />
-                    <span className="text-[15px] text-[#1D1D1F]">{feature.title}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            
             {technologyOptions && technologyOptions.length > 0 && (
               <div className="space-y-2">
-                <h3 className="font-bold text-[18px] text-[#1D1D1F] mb-3">Technology Options</h3>
+                {techHeading && <h3 className="font-bold text-[18px] text-[#1D1D1F] mb-3">{techHeading}</h3>}
+                {techIntro && <p className="text-[14px] text-[#1D1D1F] mb-3">{techIntro}</p>}
                 <ul className="space-y-4">
                   {technologyOptions.map((tech, index) => (
                     <li key={index}>
-                      <p className="text-[15px] font-bold text-[#1D1D1F]">{tech.name}</p>
+                      <span className="text-[15px] font-bold text-[#1D1D1F]">{tech.name}</span>
                       <p className="text-[14px] text-[#1D1D1F] mt-1">{tech.description}</p>
                     </li>
                   ))}
                 </ul>
-                <p className="text-[14px] text-[#6E6E73] mt-3">
-                  The best platform depends on your specific needs, design complexity, and budget. We'll help you choose.
-                </p>
+                {techNote && 
+                  <p className="text-[14px] text-[#6E6E73] mt-3">
+                    {techNote}
+                  </p>
+                }
               </div>
             )}
             
@@ -100,13 +90,12 @@ const ServiceModal = ({
               </div>
             )}
             
-            {standardInclusions && standardInclusions.length > 0 && (
+            {standardInclusions && standardInclusions.items.length > 0 && (
               <div className="space-y-2">
-                <h3 className="font-bold text-[18px] text-[#1D1D1F] mb-3">What's Always Included</h3>
+                <h3 className="font-bold text-[18px] text-[#1D1D1F] mb-3">{standardInclusions.heading}</h3>
                 <ul className="space-y-3">
-                  {standardInclusions.map((item, index) => (
+                  {standardInclusions.items.map((item, index) => (
                     <li key={index} className="flex items-start">
-                      <CheckIcon className="h-5 w-5 text-[#007AFF] mr-3 flex-shrink-0 mt-0.5" />
                       <span className="text-[14px] text-[#1D1D1F]">{item}</span>
                     </li>
                   ))}
@@ -116,8 +105,8 @@ const ServiceModal = ({
             
             {optionalAddOns && (
               <div className="space-y-2">
-                <h3 className="font-bold text-[18px] text-[#1D1D1F] mb-3">Available Add-ons</h3>
-                <p className="text-[14px] text-[#1D1D1F]">{optionalAddOns}</p>
+                <h3 className="font-bold text-[18px] text-[#1D1D1F] mb-3">{optionalAddOns.heading}</h3>
+                <p className="text-[14px] text-[#1D1D1F]">{optionalAddOns.description}</p>
               </div>
             )}
             
