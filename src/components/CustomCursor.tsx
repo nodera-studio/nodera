@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from 'react';
 
 const CustomCursor: React.FC = () => {
@@ -14,7 +15,9 @@ const CustomCursor: React.FC = () => {
           element.tagName === 'A' || 
           element.tagName === 'BUTTON' ||
           element.closest('a') !== null ||
-          element.closest('button') !== null;
+          element.closest('button') !== null ||
+          element.classList.contains('cursor-pointer') ||
+          element.closest('.cursor-pointer') !== null;
         
         setIsHovering(isInteractive);
       } else {
@@ -31,21 +34,27 @@ const CustomCursor: React.FC = () => {
     };
   }, []);
 
-  const cursorStyle = {
-    position: 'fixed' as const,
-    top: 0,
-    left: 0,
-    width: '30px',
-    height: '30px',
-    borderRadius: '50%',
-    background: 'linear-gradient(to bottom, #D1A2FF, #007AFF)',
-    pointerEvents: 'none' as const,
-    zIndex: 9999,
-    transform: `translate(${mousePosition.x - 15}px, ${mousePosition.y - 15}px) scale(${isHovering ? 1.2 : 1})`,
-    transition: 'transform 0.2s ease-out'
-  };
-
-  return <div style={cursorStyle} />;
+  // Smaller cursor size (changed from 30px to 20px)
+  // And different color/size on hover (scale 1.5 instead of 1.2)
+  return (
+    <div 
+      style={{
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        width: '20px', // Smaller size
+        height: '20px', // Smaller size
+        borderRadius: '50%',
+        background: isHovering 
+          ? 'linear-gradient(to bottom, #8B5CF6, #3B82F6)' // Different color on hover
+          : 'linear-gradient(to bottom, #D1A2FF, #007AFF)',
+        pointerEvents: 'none',
+        zIndex: 9999,
+        transform: `translate(${mousePosition.x - 10}px, ${mousePosition.y - 10}px) scale(${isHovering ? 1.5 : 1})`, // Adjusted position for smaller size
+        transition: 'transform 0.2s ease-out, background 0.3s ease-out'
+      }}
+    />
+  );
 };
 
 export default CustomCursor;
