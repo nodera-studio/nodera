@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
@@ -24,6 +25,29 @@ const serviceCategories = {
         { title: "Contact & Inquiry Forms" },
         { title: "Basic SEO Setup" }
       ],
+      technologyOptions: [
+        { 
+          name: "Framer", 
+          description: "A modern tool for designing and building highly interactive websites with smooth animations, great for visually rich projects." 
+        },
+        { 
+          name: "Webflow", 
+          description: "A powerful visual development platform allowing custom design and CMS features without traditional coding, ideal for content-focused sites." 
+        },
+        { 
+          name: "Next.js", 
+          description: "A flexible code-based framework for fast, scalable sites and web apps, offering high performance and customization for complex needs." 
+        }
+      ],
+      designApproach: "We offer flexible design options: choose from expertly customized templates for faster deployment or opt for a fully bespoke, custom design crafted uniquely for your brand, animations, and interaction goals. The best approach depends on your timeline, budget, and vision.",
+      standardInclusions: [
+        "Domain Name Assistance & Setup",
+        "Reliable Hosting Configuration",
+        "Foundational SEO Strategy & Implementation",
+        "Setup Assistance & Launch Support",
+        "Optional Ongoing Maintenance Plans"
+      ],
+      optionalAddOns: "Need more advanced features? We can integrate functionalities like online booking systems, membership portals, or other custom web application elements, typically priced separately. Let's discuss your specific requirements.",
       idealFor: "Ideal for creative professionals, consultants, photographers, and small studios needing a strong visual showcase."
     },
     {
@@ -38,6 +62,21 @@ const serviceCategories = {
         { title: "Order Tracking & Notifications" },
         { title: "Analytics Integration" }
       ],
+      technologyOptions: [
+        { 
+          name: "Shopify", 
+          description: "The leading platform specifically designed for building, managing, and scaling online stores, offering robust e-commerce features." 
+        }
+      ],
+      designApproach: "We offer flexible design options: choose from expertly customized templates for faster deployment or opt for a fully bespoke, custom design crafted uniquely for your brand, animations, and interaction goals. The best approach depends on your timeline, budget, and vision.",
+      standardInclusions: [
+        "Domain Name Assistance & Setup",
+        "Reliable Hosting Configuration",
+        "Foundational SEO Strategy & Implementation",
+        "Setup Assistance & Launch Support",
+        "Optional Ongoing Maintenance Plans"
+      ],
+      optionalAddOns: "Need more advanced features? We can integrate functionalities like payment gateways, shipping calculators, or subscription models, typically priced separately. Let's discuss your specific requirements.",
       idealFor: "Perfect for retailers, artisans, and businesses looking to expand their sales channels online."
     },
     {
@@ -52,6 +91,29 @@ const serviceCategories = {
         { title: "Contact & Quote Request Forms" },
         { title: "Integration with CRM Systems" }
       ],
+      technologyOptions: [
+        { 
+          name: "Framer", 
+          description: "A modern tool for designing and building highly interactive websites with smooth animations, great for visually rich projects." 
+        },
+        { 
+          name: "Webflow", 
+          description: "A powerful visual development platform allowing custom design and CMS features without traditional coding, ideal for content-focused sites." 
+        },
+        { 
+          name: "Next.js", 
+          description: "A flexible code-based framework for fast, scalable sites and web apps, offering high performance and customization for complex needs." 
+        }
+      ],
+      designApproach: "We offer flexible design options: choose from expertly customized templates for faster deployment or opt for a fully bespoke, custom design crafted uniquely for your brand, animations, and interaction goals. The best approach depends on your timeline, budget, and vision.",
+      standardInclusions: [
+        "Domain Name Assistance & Setup",
+        "Reliable Hosting Configuration",
+        "Foundational SEO Strategy & Implementation",
+        "Setup Assistance & Launch Support",
+        "Optional Ongoing Maintenance Plans"
+      ],
+      optionalAddOns: "Need more advanced features? We can integrate functionalities like appointment scheduling, customer portals, or other custom web application elements, typically priced separately. Let's discuss your specific requirements.",
       idealFor: "Designed for marketing agencies, consultancies, law firms, and professional service providers."
     },
     {
@@ -66,36 +128,97 @@ const serviceCategories = {
         { title: "Analytics & Conversion Tracking" },
         { title: "A/B Testing Support" }
       ],
+      technologyOptions: [
+        { 
+          name: "Framer", 
+          description: "A modern tool for designing and building highly interactive websites with smooth animations, great for visually rich projects." 
+        },
+        { 
+          name: "Webflow", 
+          description: "A powerful visual development platform allowing custom design and CMS features without traditional coding, ideal for content-focused sites." 
+        },
+        { 
+          name: "Next.js", 
+          description: "A flexible code-based framework for fast, scalable sites and web apps, offering high performance and customization for complex needs." 
+        }
+      ],
+      designApproach: "We offer flexible design options: choose from expertly customized templates for faster deployment or opt for a fully bespoke, custom design crafted uniquely for your brand, animations, and interaction goals. The best approach depends on your timeline, budget, and vision.",
+      standardInclusions: [
+        "Domain Name Assistance & Setup",
+        "Reliable Hosting Configuration",
+        "Foundational SEO Strategy & Implementation",
+        "Setup Assistance & Launch Support",
+        "Optional Ongoing Maintenance Plans"
+      ],
+      optionalAddOns: "Need more advanced features? We can integrate functionalities like lead capture forms, analytics dashboards, or other custom web application elements, typically priced separately. Let's discuss your specific requirements.",
       idealFor: "Excellent for product launches, startups, events, and focused marketing campaigns."
     }
   ],
   applications: [
     {
       title: "Custom Web Applications",
-      description: "Tailored solutions for your specific needs"
+      description: "Tailored solutions for your specific needs",
+      fullDescription: "We develop custom web applications that solve unique business problems and optimize operations. Our applications are built with the latest technologies and designed for long-term maintainability and performance.",
+      features: [
+        { title: "Custom User Interfaces" },
+        { title: "Database Design & Implementation" },
+        { title: "API Development & Integration" },
+        { title: "Authentication & Authorization" },
+        { title: "Automated Testing" },
+        { title: "Performance Optimization" }
+      ],
+      technologyOptions: [
+        { 
+          name: "Stack 1: Angular + Database Options", 
+          description: "Focuses on rich user interfaces using established technologies like Angular, suited for complex applications needing specific frontend structures and diverse database options." 
+        },
+        { 
+          name: "Stack 2: Next.js + Nest.js + Supabase", 
+          description: "A modern, efficient full-stack JavaScript approach using Next.js, ideal for streamlined development, real-time features (via Supabase), and projects requiring custom backend logic (via Nest.js)." 
+        }
+      ],
+      standardInclusions: [
+        "Domain Name Assistance & Setup",
+        "Reliable Hosting Configuration", 
+        "Security Implementation",
+        "Setup Assistance & Launch Support",
+        "Optional Ongoing Maintenance Plans"
+      ],
+      idealFor: "Ideal for businesses needing specialized functionality beyond what off-the-shelf solutions can provide."
     },
     {
       title: "Client Portals",
-      description: "Secure platforms for client interaction"
-    },
-    {
-      title: "Content Management",
-      description: "Easy-to-use systems to manage your content"
-    },
-    {
-      title: "API Integrations",
-      description: "Connect with third-party services and platforms"
+      description: "Secure platforms for client interaction",
+      fullDescription: "Build stronger relationships with your clients through a secure, branded portal where they can access documents, track progress, and communicate with your team. Our client portals enhance transparency and efficiency in your client relationships.",
+      features: [
+        { title: "Secure Authentication" },
+        { title: "Document Sharing & Management" },
+        { title: "Project Status Tracking" },
+        { title: "Messaging Capabilities" },
+        { title: "Branded Interface" },
+        { title: "Mobile Accessibility" }
+      ],
+      technologyOptions: [
+        { 
+          name: "Stack 1: Angular + Database Options", 
+          description: "Focuses on rich user interfaces using established technologies like Angular, suited for complex applications needing specific frontend structures and diverse database options." 
+        },
+        { 
+          name: "Stack 2: Next.js + Nest.js + Supabase", 
+          description: "A modern, efficient full-stack JavaScript approach using Next.js, ideal for streamlined development, real-time features (via Supabase), and projects requiring custom backend logic (via Nest.js)." 
+        }
+      ],
+      standardInclusions: [
+        "Domain Name Assistance & Setup",
+        "Reliable Hosting Configuration", 
+        "Security Implementation",
+        "Setup Assistance & Launch Support",
+        "Optional Ongoing Maintenance Plans"
+      ],
+      idealFor: "Perfect for professional service firms, agencies, consultants, and businesses with ongoing client relationships."
     }
   ]
 };
-
-const technologies = [
-  { name: "NextJS", logo: "/lovable-uploads/html.svg" },
-  { name: "Webflow", logo: "/lovable-uploads/webflow.svg" },
-  { name: "Framer", logo: "/lovable-uploads/social.svg" },
-  { name: "NodeJS", logo: "/lovable-uploads/js.svg" },
-  { name: "MongoDB", logo: "/lovable-uploads/supabase-logo-icon.svg" },
-];
 
 const ServiceCard = ({ 
   title, 
@@ -140,6 +263,10 @@ const Services = () => {
     description: string;
     fullDescription: string;
     features: { title: string }[];
+    technologyOptions?: { name: string; description: string }[];
+    designApproach?: string;
+    standardInclusions?: string[];
+    optionalAddOns?: string;
     idealFor?: string;
   }>(null);
   
@@ -181,17 +308,18 @@ const Services = () => {
         {/* Insert Portfolio section here */}
         <Portfolio />
 
-        <section className="py-16 px-6 bg-gray-50">
+        <section className="py-16 px-6">
           <div className="container mx-auto">
-            <h2 className="text-3xl font-bold text-center mb-12">Technologies</h2>
-            <div className="flex flex-wrap justify-center gap-8 md:gap-16">
-              {technologies.map((tech, index) => (
-                <div key={index} className="flex flex-col items-center">
-                  <div className="w-24 h-24 bg-white rounded-full flex items-center justify-center shadow-sm">
-                    <img src={tech.logo} alt={tech.name} className="w-12 h-12" />
-                  </div>
-                  <span className="mt-3 font-medium">{tech.name}</span>
-                </div>
+            <h2 className="text-3xl font-comfortaa font-bold text-center mb-12">Web Application Services</h2>
+            <div className="max-w-3xl mx-auto">
+              {serviceCategories.applications.map((service, index) => (
+                <ServiceCard
+                  key={index}
+                  index={index}
+                  title={service.title}
+                  description={service.description}
+                  onOpenModal={() => handleOpenModal(service)}
+                />
               ))}
             </div>
           </div>
@@ -263,6 +391,10 @@ const Services = () => {
           title={selectedService.title}
           description={selectedService.fullDescription}
           features={selectedService.features}
+          technologyOptions={selectedService.technologyOptions}
+          designApproach={selectedService.designApproach}
+          standardInclusions={selectedService.standardInclusions}
+          optionalAddOns={selectedService.optionalAddOns}
           idealFor={selectedService.idealFor}
         />
       )}
