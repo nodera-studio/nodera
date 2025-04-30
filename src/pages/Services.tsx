@@ -75,7 +75,7 @@ const Services = () => {
       <main className="relative flex-grow pt-[60px]">
         <PageHero 
           title="Our Services" 
-          subtitle="Crafting tailored digital solutions for your business" 
+          subtitle="Tailored digital solutions for your business" 
         />
 
         <section className="py-16 px-6">

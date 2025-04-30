@@ -21,10 +21,6 @@ const PageHero: React.FC<PageHeroProps> = ({ title, subtitle }) => {
           initial={{ opacity: 0.7 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8 }}
-          style={{
-            filter: isMobileView ? 'blur(15px)' : 'blur(30px)',
-            opacity: isMobileView ? 0.5 : 0.3,
-          }}
         ></motion.div>
       </div>
       <motion.div 
@@ -38,7 +34,7 @@ const PageHero: React.FC<PageHeroProps> = ({ title, subtitle }) => {
         }}
       >
         <motion.h1 
-          className="font-comfortaa"
+          className="text-[#1D1D1F] font-bold"
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ 
@@ -50,7 +46,7 @@ const PageHero: React.FC<PageHeroProps> = ({ title, subtitle }) => {
           {title}
         </motion.h1>
         <motion.p 
-          className="hero-subtitle mt-4 max-w-2xl mx-auto"
+          className="mt-6 max-w-2xl mx-auto text-[#6E6E73] font-normal"
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ 

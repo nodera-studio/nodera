@@ -1,18 +1,18 @@
 
-@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&family=Baloo+Da+2:wght@500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;700&family=Baloo+Da+2:wght@500;600&display=swap');
 
 @layer base {
   h1 {
     font-family: 'Comfortaa', sans-serif;
     font-weight: 700;
-    font-size: clamp(60px, 10vw, 150px);
-    line-height: 0.9;
+    font-size: clamp(36px, 8vw, 64px);
+    line-height: 1.2;
   }
 
   h2 {
     font-family: 'Comfortaa', sans-serif;
     font-weight: 700;
-    font-size: clamp(40px, 6vw, 70px);
+    font-size: clamp(30px, 5vw, 48px);
   }
   
   h3, h4 {

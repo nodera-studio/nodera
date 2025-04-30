@@ -1,4 +1,3 @@
-
 @tailwind components;
 
 @layer components {
@@ -77,13 +76,14 @@
 
   .hero-subtitle {
     font-family: 'Comfortaa', sans-serif;
-    font-weight: 700;
-    font-size: clamp(28px, 5vw, 54px);
-    background: linear-gradient(90deg, #333333 0%, #666666 100%);
+    font-weight: 400;
+    font-size: clamp(18px, 3vw, 22px);
+    background: linear-gradient(90deg, #1D1D1F 0%, #6E6E73 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
     letter-spacing: 0.02em;
+    line-height: 1.6;
   }
 
   .view-all-link {
