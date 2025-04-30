@@ -44,19 +44,13 @@ const Services = () => {
         />
 
         <ServiceList 
-          title="Website Services" 
-          services={serviceCategories.websites}
+          title="Services" 
+          services={serviceCategories.mainServices}
           onOpenModal={handleOpenModal}
         />
 
         <Portfolio />
-
-        <ServiceList 
-          title="Web Application Services" 
-          services={serviceCategories.applications}
-          onOpenModal={handleOpenModal}
-        />
-
+        
         <PricingSection />
         
         <CallToActionSection />
