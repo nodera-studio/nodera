@@ -6,14 +6,11 @@ import Showcases from '../components/Showcases';
 import CallToAction from '../components/CallToAction';
 import WhatWeDo from '../components/WhatWeDo';
 import Footer from '../components/Footer';
-import { useIsMobile } from '../hooks/use-mobile';
 import { useLocation } from 'react-router-dom';
 
-const CustomCursor = lazy(() => import('../components/CustomCursor'));
 const TheProcess = lazy(() => import('../components/TheProcess'));
 
 const Index = () => {
-  const isMobile = useIsMobile();
   const location = useLocation();
   
   useEffect(() => {
@@ -30,12 +27,6 @@ const Index = () => {
   
   return (
     <div className="min-h-screen flex flex-col overflow-x-hidden">
-      {!isMobile && (
-        <Suspense fallback={null}>
-          <CustomCursor />
-        </Suspense>
-      )}
-
       <Header />
 
       <main className="relative flex-grow pt-[60px]">
