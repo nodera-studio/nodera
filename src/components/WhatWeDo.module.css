@@ -9,6 +9,14 @@
   overflow: hidden;
 }
 
+.visualContainer {
+  position: relative;
+  width: 100%;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+  border-radius: 16px;
+  overflow: hidden;
+}
+
 .browserWindow {
   position: relative;
   width: 100%;
@@ -77,10 +85,10 @@
 .metricsContainer {
   width: 100%;
   height: 100%;
-  background-color: #f8f9fa;
+  background-color: white;
   padding: 1rem;
-  border-radius: 0.5rem;
-  border: 1px solid rgba(0, 0, 0, 0.05);
+  border-radius: 8px;
+  border: 1px solid #EAEAEA;
   display: flex;
   flex-direction: column;
   gap: 12px;
@@ -92,7 +100,7 @@
   align-items: center;
   height: 32px;
   background: #F5F5F5;
-  border-radius: 6px;
+  border-radius: 16px;
   position: relative;
   overflow: hidden;
   padding: 0 12px;
@@ -105,14 +113,14 @@
   width: 100%;
   height: 100%;
   background: linear-gradient(90deg, #007AFF, #D1A2FF);
-  border-radius: 6px;
+  border-radius: 16px;
   z-index: 1;
 }
 
 .metricLabel {
   position: relative;
   color: #111;
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 500;
   z-index: 2;
   text-align: left;
@@ -134,78 +142,72 @@
   flex-shrink: 0;
 }
 
-.whatWeDoCard {
-  background-color: #F9F9F9;
-  border-radius: 1rem;
-  padding: 2rem;
-  text-align: center;
-  transition: transform 0.3s ease-out;
+.contentBlock {
+  max-width: 590px;
 }
 
-.whatWeDoCard:hover {
-  transform: scale(1.02) translateY(-5px);
+.contentBlock h3 {
+  font-weight: 600;
 }
 
-.cardHoverAnimate {
-  transition: transform 0.3s ease-out;
-}
-.cardHoverAnimate:hover {
-  transform: scale(1.02) translateY(-5px);
+.contentBlock p {
+  font-size: 16px;
+  line-height: 1.6;
 }
 
 @media (min-width: 640px) {
   .browserWindow {
-    width: 240px;
-    height: 154px;
+    width: 100%;
+    min-height: 200px;
   }
   .metricsContainer {
-    width: 240px;
-    height: 154px;
-    padding: 0.75rem;
-    gap: 10px;
+    width: 100%;
+    min-height: 200px;
+    padding: 1rem;
+    gap: 12px;
   }
   .contentBox {
     height: 34px;
     aspect-ratio: auto;
   }
   .metricBar {
-    height: 28px;
-    border-radius: 5px;
-    padding: 0 10px;
+    height: 32px;
+    border-radius: 16px;
+    padding: 0 12px;
   }
   .metricFill {
-    border-radius: 5px;
+    border-radius: 16px;
   }
   .metricLabel,
   .metricValue {
-    font-size: 11px;
+    font-size: 12px;
   }
 }
 
 @media (min-width: 768px) {
   .browserWindow {
-    width: 280px;
-    height: 180px;
+    width: 100%;
+    min-height: 240px;
   }
   .metricsContainer {
-    width: 280px;
-    height: 180px;
-    padding: 1rem;
-    gap: 12px;
+    width: 100%;
+    min-height: 240px;
+    padding: 1.25rem;
+    gap: 14px;
   }
   .contentBox {
     height: 40px;
   }
   .metricBar {
-    height: 32px;
-    border-radius: 6px;
-    padding: 0 12px;
+    height: 36px;
+    border-radius: 18px;
+    padding: 0 14px;
   }
   .metricFill {
-    border-radius: 6px;
+    border-radius: 18px;
   }
   .metricLabel,
   .metricValue {
-    font-size: 12px;
+    font-size: 14px;
   }
 }

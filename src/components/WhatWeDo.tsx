@@ -54,18 +54,33 @@ const WhatWeDo = () => {
   }, []);
 
   return (
-    <section className="bg-white py-10 px-4 sm:px-10 md:py-20 text-center">
+    <section className="bg-white py-16 md:py-24 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
-        <h2 ref={sectionTitleRef} className="text-black mb-10 section-title">
-          What We <span className="gradient-word">Do</span>
-        </h2>
-        
-        <div className="flex flex-wrap justify-center items-center gap-8">
-          <motion.div
-            className={cn("relative w-40 h-40 sm:w-64 sm:h-64 md:w-80 md:h-80 group", styles.cardHoverAnimate)}
-          >
-            <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-[#007AFF] to-[#D1A2FF] opacity-80" />
-            <div className={styles.devContainer}>
+        <div className="flex flex-col lg:flex-row gap-16">
+          <div className="w-full lg:w-3/5">
+            <h2 ref={sectionTitleRef} className="text-black text-3xl md:text-4xl lg:text-[42px] font-semibold mb-12 section-title">
+              What We <span className="gradient-word">Do</span>
+            </h2>
+            
+            <div className="space-y-12 md:space-y-16">
+              <div className={styles.contentBlock}>
+                <h3 className="text-xl md:text-2xl font-medium mb-4">The Art of User Experience</h3>
+                <p className="text-gray-700 leading-relaxed">
+                  Powerful code that anticipates challenges. Scalable architecture paired with intuitive interfaces transforms visions into digital reality, no compromise needed.
+                </p>
+              </div>
+              
+              <div className={styles.contentBlock}>
+                <h3 className="text-xl md:text-2xl font-medium mb-4">Engineered for Performance</h3>
+                <p className="text-gray-700 leading-relaxed">
+                  Digital experiences that perform as beautifully as they look. Every element serves a purpose while engaging visitors and elevating brands. Simple outside, sophisticated inside.
+                </p>
+              </div>
+            </div>
+          </div>
+          
+          <div className="w-full lg:w-2/5 flex flex-col space-y-8">
+            <div className={styles.visualContainer}>
               <motion.div className={styles.browserWindow}>
                 <div className={styles.browserHeader}>
                   <div className={styles.browserDots}>
@@ -77,10 +92,10 @@ const WhatWeDo = () => {
                 <div className={styles.browserContent}>
                   <div className={styles.contentPlaceholder}>
                     <motion.div 
-                      className={cn(styles.contentLine, styles.contentShort, 'text-white')}
+                      className={cn(styles.contentLine, styles.contentShort)}
                       animate={{
                         opacity: [0.5, 1, 0.5],
-                        backgroundColor: ['#6E59A5', '#9b87f5', '#6E59A5'],
+                        backgroundColor: ['#E0E0E0', '#F0F0F0', '#E0E0E0'],
                         transition: {
                           repeat: Infinity,
                           repeatType: "mirror" as const,
@@ -90,10 +105,10 @@ const WhatWeDo = () => {
                       }}
                     />
                     <motion.div 
-                      className={cn(styles.contentLine, 'text-white')}
+                      className={cn(styles.contentLine)}
                       animate={{
                         opacity: [0.5, 1, 0.5],
-                        backgroundColor: ['#7E69AB', '#D6BCFA', '#7E69AB'],
+                        backgroundColor: ['#E8E8E8', '#F5F5F5', '#E8E8E8'],
                         transition: {
                           repeat: Infinity,
                           repeatType: "mirror" as const,
@@ -106,9 +121,9 @@ const WhatWeDo = () => {
                       {[1, 2, 3, 4].map((_, index) => (
                         <motion.div 
                           key={index}
-                          className={cn(styles.contentBox, 'text-white')}
+                          className={cn(styles.contentBox)}
                           animate={{
-                            backgroundColor: ['#9b87f5', '#D1A2FF', '#9b87f5'],
+                            backgroundColor: ['#D8D8FF', '#E5E5FF', '#D8D8FF'],
                             transition: {
                               repeat: Infinity,
                               repeatType: "mirror" as const,
@@ -123,13 +138,8 @@ const WhatWeDo = () => {
                 </div>
               </motion.div>
             </div>
-          </motion.div>
-
-          <motion.div
-            className={cn("relative w-40 h-40 sm:w-64 sm:h-64 md:w-80 md:h-80 group", styles.cardHoverAnimate)}
-          >
-            <div className="absolute inset-0 rounded-2xl bg-gradient-to-tl from-[#007AFF] to-[#D1A2FF] opacity-80" />
-            <div className={styles.devContainer}>
+            
+            <div className={styles.visualContainer}>
               <div className={styles.metricsContainer}>
                 {['Speed Index', 'Performance', 'Accessibility', 'Best Practices'].map((metric, index) => (
                   <div key={metric} className={styles.metricBar}>
@@ -159,7 +169,7 @@ const WhatWeDo = () => {
                         }
                       }}
                     />
-                    <span className={cn(styles.metricLabel, 'text-white')}>{metric}</span>
+                    <span className={styles.metricLabel}>{metric}</span>
                     <span className={styles.metricValue}>
                       {['98', '96', '100', '94'][index]}
                     </span>
@@ -167,22 +177,6 @@ const WhatWeDo = () => {
                 ))}
               </div>
             </div>
-          </motion.div>
-        </div>
-        
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
-          <div className={styles.whatWeDoCard}>
-            <h3 className="mb-5">The Art of User Experience</h3>
-            <p className="text-[#555]">
-              Powerful code that anticipates challenges. Scalable architecture paired with intuitive interfaces transforms visions into digital reality, no compromise needed.
-            </p>
-          </div>
-          
-          <div className={styles.whatWeDoCard}>
-            <h3 className="mb-5">Engineered for Performance</h3>
-            <p className="text-[#555]">
-              Digital experiences that perform as beautifully as they look. Every element serves a purpose while engaging visitors and elevating brands. Simple outside, sophisticated inside.
-            </p>
           </div>
         </div>
       </div>
