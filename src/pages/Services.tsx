@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
@@ -8,24 +7,66 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { ChevronRight } from "lucide-react";
 import { cn } from "@/lib/utils";
+import ServiceModal from '../components/ServiceModal';
 
+// Service data with expanded information for modals
 const serviceCategories = {
   websites: [
     {
       title: "Portfolio Websites",
-      description: "Your work. Beautifully showcased on every device."
+      description: "Your work. Beautifully showcased on every device.",
+      fullDescription: "A professionally designed portfolio website puts your best work front and center, establishing credibility and making a memorable impression on potential clients. We create visually striking, highly functional portfolios that adapt perfectly to any screen size.",
+      features: [
+        { title: "Custom Visual Design" },
+        { title: "Mobile-Responsive Layout" },
+        { title: "Content Management System (CMS)" },
+        { title: "Optimized Image Galleries" },
+        { title: "Contact & Inquiry Forms" },
+        { title: "Basic SEO Setup" }
+      ],
+      idealFor: "Ideal for creative professionals, consultants, photographers, and small studios needing a strong visual showcase."
     },
     {
       title: "E-commerce Websites",
-      description: "Sell your products online with a smooth, powerful shopping experience."
+      description: "Sell your products online with a smooth, powerful shopping experience.",
+      fullDescription: "Transform your business with a professionally designed online store that makes shopping easy and enjoyable for your customers. Our e-commerce solutions combine beautiful design with powerful functionality to drive conversions and build your brand.",
+      features: [
+        { title: "Intuitive Product Catalogs" },
+        { title: "Secure Payment Processing" },
+        { title: "Inventory Management" },
+        { title: "Mobile Shopping Experience" },
+        { title: "Order Tracking & Notifications" },
+        { title: "Analytics Integration" }
+      ],
+      idealFor: "Perfect for retailers, artisans, and businesses looking to expand their sales channels online."
     },
     {
       title: "Agency Websites",
-      description: "Give your service business a professional online presence."
+      description: "Give your service business a professional online presence.",
+      fullDescription: "Establish trust and credibility with a polished website that effectively communicates your services, approach, and expertise. We create agency websites that attract clients and provide them with all the information they need to make a decision.",
+      features: [
+        { title: "Professional Service Pages" },
+        { title: "Team & About Sections" },
+        { title: "Case Study Showcases" },
+        { title: "Client Testimonials" },
+        { title: "Contact & Quote Request Forms" },
+        { title: "Integration with CRM Systems" }
+      ],
+      idealFor: "Designed for marketing agencies, consultancies, law firms, and professional service providers."
     },
     {
       title: "Presentation Sites",
-      description: "Sleek landing pages that brilliantly showcase your product or service."
+      description: "Sleek landing pages that brilliantly showcase your product or service.",
+      fullDescription: "Make a powerful first impression with a focused, high-impact landing page that clearly communicates your value proposition and drives visitors toward a specific action. Our presentation sites are optimized for conversions.",
+      features: [
+        { title: "Compelling Value Proposition" },
+        { title: "Streamlined User Journeys" },
+        { title: "Clear Call-to-Action Elements" },
+        { title: "Performance Optimization" },
+        { title: "Analytics & Conversion Tracking" },
+        { title: "A/B Testing Support" }
+      ],
+      idealFor: "Excellent for product launches, startups, events, and focused marketing campaigns."
     }
   ],
   applications: [
@@ -56,38 +97,59 @@ const technologies = [
   { name: "MongoDB", logo: "/lovable-uploads/supabase-logo-icon.svg" },
 ];
 
-const ServiceCard = ({ title, description, index }: { title: string; description: string; index: number }) => (
-  <a 
-    href={`/services/${title.toLowerCase().replace(/\s+/g, '-')}`} 
-    className="block no-underline group"
+const ServiceCard = ({ 
+  title, 
+  description, 
+  index,
+  onOpenModal 
+}: { 
+  title: string; 
+  description: string; 
+  index: number;
+  onOpenModal: () => void;
+}) => (
+  <div 
+    onClick={onOpenModal}
+    className={cn(
+      "bg-white rounded-xl px-7 py-6 transition-all cursor-pointer",
+      "border border-[#EAEAEA] hover:shadow-sm mb-6",
+      "flex justify-between items-center"
+    )}
   >
-    <div 
-      className={cn(
-        "bg-white rounded-xl px-7 py-6 transition-all",
-        "border border-[#EAEAEA] hover:shadow-sm mb-6",
-        "flex justify-between items-center"
-      )}
-    >
-      <div className="flex-grow">
-        <h3 className="font-comfortaa font-bold text-[22px] text-[#1D1D1F] mb-3">
-          {title}
-        </h3>
-        <p className="font-comfortaa font-normal text-[16px] text-[#6E6E73] leading-[1.6]">
-          {description}
-        </p>
-      </div>
-      <div className="flex-shrink-0 ml-6">
-        <ChevronRight 
-          className="text-[#6E6E73] w-5 h-5 group-hover:translate-x-1 transition-transform" 
-          aria-hidden="true"
-        />
-      </div>
+    <div className="flex-grow">
+      <h3 className="font-comfortaa font-bold text-[22px] text-[#1D1D1F] mb-3">
+        {title}
+      </h3>
+      <p className="font-comfortaa font-normal text-[16px] text-[#6E6E73] leading-[1.6]">
+        {description}
+      </p>
     </div>
-  </a>
+    <div className="flex-shrink-0 ml-6">
+      <ChevronRight 
+        className="text-[#6E6E73] w-5 h-5 group-hover:translate-x-1 transition-transform" 
+        aria-hidden="true"
+      />
+    </div>
+  </div>
 );
 
 const Services = () => {
   const [activeTab, setActiveTab] = useState("websites");
+  const [selectedService, setSelectedService] = useState<null | {
+    title: string;
+    description: string;
+    fullDescription: string;
+    features: { title: string }[];
+    idealFor?: string;
+  }>(null);
+  
+  const handleOpenModal = (service: typeof selectedService) => {
+    setSelectedService(service);
+  };
+  
+  const handleCloseModal = () => {
+    setSelectedService(null);
+  };
 
   return (
     <div className="min-h-screen flex flex-col overflow-x-hidden">
@@ -109,6 +171,7 @@ const Services = () => {
                   index={index}
                   title={service.title}
                   description={service.description}
+                  onOpenModal={() => handleOpenModal(service)}
                 />
               ))}
             </div>
@@ -192,6 +255,17 @@ const Services = () => {
           </div>
         </section>
       </main>
+
+      {selectedService && (
+        <ServiceModal
+          isOpen={!!selectedService}
+          onClose={handleCloseModal}
+          title={selectedService.title}
+          description={selectedService.fullDescription}
+          features={selectedService.features}
+          idealFor={selectedService.idealFor}
+        />
+      )}
 
       <Footer />
     </div>
