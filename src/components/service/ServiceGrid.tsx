@@ -1,14 +1,14 @@
 
 import React, { useEffect, useRef } from 'react';
+import { Link } from 'react-router-dom';
 import { Button } from "@/components/ui/button";
 import { ServiceItem } from '@/data/serviceData';
 
 interface ServiceGridProps {
   services: ServiceItem[];
-  onOpenModal: (service: ServiceItem) => void;
 }
 
-const ServiceGrid: React.FC<ServiceGridProps> = ({ services, onOpenModal }) => {
+const ServiceGrid: React.FC<ServiceGridProps> = ({ services }) => {
   const gridItemsRef = useRef<(HTMLDivElement | null)[]>([]);
   
   useEffect(() => {
@@ -33,6 +33,14 @@ const ServiceGrid: React.FC<ServiceGridProps> = ({ services, onOpenModal }) => {
     return () => observer.disconnect();
   }, []);
   
+  // Function to create slugs from titles
+  function convertToSlug(title: string): string {
+    return title
+      .toLowerCase()
+      .replace(/[^\w ]+/g, '')
+      .replace(/ +/g, '-');
+  }
+  
   // Gradient backgrounds for each service
   const gradients = [
     'bg-gradient-to-br from-blue-400 to-purple-600', // Websites
@@ -48,58 +56,64 @@ const ServiceGrid: React.FC<ServiceGridProps> = ({ services, onOpenModal }) => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
           {/* First row - two services side by side */}
           {services.slice(0, 2).map((service, index) => (
-            <div
+            <Link
               key={service.title}
-              ref={el => gridItemsRef.current[index] = el}
-              className={`relative overflow-hidden rounded-3xl min-h-[450px] flex items-end 
-                ${gradients[index]} transform transition-all duration-300 ease-out 
-                opacity-0 translate-y-8 hover:scale-[1.03]`}
-              onClick={() => onOpenModal(service)}
+              to={`/services/${convertToSlug(service.title)}`}
             >
-              <div className="absolute inset-0 opacity-20">
-                {/* Optional background pattern or graphic could go here */}
+              <div
+                ref={el => gridItemsRef.current[index] = el}
+                className={`relative overflow-hidden rounded-3xl min-h-[450px] flex items-end 
+                  ${gradients[index]} transform transition-all duration-300 ease-out 
+                  opacity-0 translate-y-8 hover:scale-[1.03]`}
+              >
+                <div className="absolute inset-0 opacity-20">
+                  {/* Optional background pattern or graphic could go here */}
+                </div>
+                <div className="p-8 md:p-12 text-white z-10">
+                  <h3 className="text-3xl md:text-4xl font-comfortaa font-bold mb-3">{service.title}</h3>
+                  <p className="text-base md:text-lg font-comfortaa opacity-90 mb-6 max-w-md">{service.description}</p>
+                  <Button 
+                    variant="secondary" 
+                    size="lg"
+                    className="font-comfortaa font-medium text-white border-2 border-white/70 bg-white/10 hover:bg-white/20"
+                  >
+                    Learn More
+                  </Button>
+                </div>
               </div>
-              <div className="p-8 md:p-12 text-white z-10">
-                <h3 className="text-3xl md:text-4xl font-comfortaa font-bold mb-3">{service.title}</h3>
-                <p className="text-base md:text-lg font-comfortaa opacity-90 mb-6 max-w-md">{service.description}</p>
-                <Button 
-                  variant="secondary" 
-                  size="lg"
-                  className="font-comfortaa font-medium text-white border-2 border-white/70 bg-white/10 hover:bg-white/20"
-                >
-                  Learn More
-                </Button>
-              </div>
-            </div>
+            </Link>
           ))}
         </div>
         
         {/* Second row - one service spanning full width (or centered) */}
         <div className="mt-6 md:mt-8">
           {services.slice(2, 3).map((service, index) => (
-            <div
+            <Link
               key={service.title}
-              ref={el => gridItemsRef.current[index + 2] = el}
-              className={`relative overflow-hidden rounded-3xl min-h-[450px] flex items-end 
-                ${gradients[index + 2]} transform transition-all duration-300 ease-out 
-                opacity-0 translate-y-8 hover:scale-[1.03] md:max-w-full mx-auto`}
-              onClick={() => onOpenModal(service)}
+              to={`/services/${convertToSlug(service.title)}`}
             >
-              <div className="absolute inset-0 opacity-20">
-                {/* Optional background pattern or graphic could go here */}
+              <div
+                ref={el => gridItemsRef.current[index + 2] = el}
+                className={`relative overflow-hidden rounded-3xl min-h-[450px] flex items-end 
+                  ${gradients[index + 2]} transform transition-all duration-300 ease-out 
+                  opacity-0 translate-y-8 hover:scale-[1.03] md:max-w-full mx-auto`}
+              >
+                <div className="absolute inset-0 opacity-20">
+                  {/* Optional background pattern or graphic could go here */}
+                </div>
+                <div className="p-8 md:p-12 text-white z-10">
+                  <h3 className="text-3xl md:text-4xl font-comfortaa font-bold mb-3">{service.title}</h3>
+                  <p className="text-base md:text-lg font-comfortaa opacity-90 mb-6 max-w-md">{service.description}</p>
+                  <Button 
+                    variant="secondary" 
+                    size="lg"
+                    className="font-comfortaa font-medium text-white border-2 border-white/70 bg-white/10 hover:bg-white/20"
+                  >
+                    Learn More
+                  </Button>
+                </div>
               </div>
-              <div className="p-8 md:p-12 text-white z-10">
-                <h3 className="text-3xl md:text-4xl font-comfortaa font-bold mb-3">{service.title}</h3>
-                <p className="text-base md:text-lg font-comfortaa opacity-90 mb-6 max-w-md">{service.description}</p>
-                <Button 
-                  variant="secondary" 
-                  size="lg"
-                  className="font-comfortaa font-medium text-white border-2 border-white/70 bg-white/10 hover:bg-white/20"
-                >
-                  Learn More
-                </Button>
-              </div>
-            </div>
+            </Link>
           ))}
         </div>
       </div>
