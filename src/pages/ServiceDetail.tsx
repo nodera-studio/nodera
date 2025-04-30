@@ -4,6 +4,7 @@ import { useParams, Link } from 'react-router-dom';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import PageHero from '../components/PageHero';
+import BreadcrumbNav from '../components/BreadcrumbNav';
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, CheckIcon } from 'lucide-react';
 import serviceCategories, { ServiceItem } from '../data/serviceData';
@@ -58,7 +59,16 @@ const ServiceDetail: React.FC = () => {
         {/* Service Detail Content */}
         <section className="py-16 md:py-20 lg:py-24 px-4 sm:px-6">
           <div className="container mx-auto max-w-4xl">
-            {/* Back link */}
+            {/* Breadcrumb navigation */}
+            <BreadcrumbNav 
+              items={[
+                { label: 'Home', href: '/' },
+                { label: 'Services', href: '/services' },
+                { label: service.title, isCurrent: true }
+              ]} 
+            />
+
+            {/* Back link - now below breadcrumbs */}
             <Link 
               to="/services" 
               className="inline-flex items-center text-[#6E6E73] hover:text-[#1D1D1F] transition-colors mb-10 font-comfortaa"
