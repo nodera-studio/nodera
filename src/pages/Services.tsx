@@ -4,27 +4,28 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import PageHero from '../components/PageHero';
 import Portfolio from '../components/Portfolio';
-import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { ChevronRight } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 const serviceCategories = {
   websites: [
     {
       title: "Portfolio Websites",
-      description: "Showcase your work with elegant, responsive design"
+      description: "Your work. Beautifully showcased on every device."
     },
     {
       title: "E-commerce Websites",
-      description: "Sell products online with powerful shopping features"
+      description: "Sell your products online with a smooth, powerful shopping experience."
     },
     {
       title: "Agency Websites",
-      description: "Professional presence for service-based businesses"
+      description: "Give your service business a professional online presence."
     },
     {
       title: "Presentation Sites",
-      description: "Sleek landing pages to promote products/services"
+      description: "Sleek landing pages that brilliantly showcase your product or service."
     }
   ],
   applications: [
@@ -55,15 +56,34 @@ const technologies = [
   { name: "MongoDB", logo: "/lovable-uploads/supabase-logo-icon.svg" },
 ];
 
-const ServiceCard = ({ title, description }: { title: string; description: string }) => (
-  <Card className="h-full">
-    <CardHeader>
-      <CardTitle>{title}</CardTitle>
-    </CardHeader>
-    <CardContent>
-      <CardDescription className="text-base">{description}</CardDescription>
-    </CardContent>
-  </Card>
+const ServiceCard = ({ title, description, index }: { title: string; description: string; index: number }) => (
+  <a 
+    href={`/services/${title.toLowerCase().replace(/\s+/g, '-')}`} 
+    className="block no-underline group"
+  >
+    <div 
+      className={cn(
+        "bg-white rounded-xl px-7 py-6 transition-all",
+        "border border-[#EAEAEA] hover:shadow-sm mb-6",
+        "flex justify-between items-center"
+      )}
+    >
+      <div className="flex-grow">
+        <h3 className="font-comfortaa font-bold text-[22px] text-[#1D1D1F] mb-3">
+          {title}
+        </h3>
+        <p className="font-comfortaa font-normal text-[16px] text-[#6E6E73] leading-[1.6]">
+          {description}
+        </p>
+      </div>
+      <div className="flex-shrink-0 ml-6">
+        <ChevronRight 
+          className="text-[#6E6E73] w-5 h-5 group-hover:translate-x-1 transition-transform" 
+          aria-hidden="true"
+        />
+      </div>
+    </div>
+  </a>
 );
 
 const Services = () => {
@@ -81,39 +101,17 @@ const Services = () => {
 
         <section className="py-16 px-6">
           <div className="container mx-auto">
-            <Tabs 
-              defaultValue="websites" 
-              className="w-full" 
-              onValueChange={setActiveTab}
-              value={activeTab}
-            >
-              <TabsList className="grid w-full max-w-md mx-auto mb-12 grid-cols-2">
-                <TabsTrigger value="websites">Website Services</TabsTrigger>
-                <TabsTrigger value="applications">Web Application Services</TabsTrigger>
-              </TabsList>
-              <TabsContent value="websites" className="mt-6">
-                <div className="grid md:grid-cols-2 gap-8">
-                  {serviceCategories.websites.map((service, index) => (
-                    <ServiceCard
-                      key={index}
-                      title={service.title}
-                      description={service.description}
-                    />
-                  ))}
-                </div>
-              </TabsContent>
-              <TabsContent value="applications" className="mt-6">
-                <div className="grid md:grid-cols-2 gap-8">
-                  {serviceCategories.applications.map((service, index) => (
-                    <ServiceCard
-                      key={index}
-                      title={service.title}
-                      description={service.description}
-                    />
-                  ))}
-                </div>
-              </TabsContent>
-            </Tabs>
+            <h2 className="text-3xl font-comfortaa font-bold text-center mb-12">Website Services</h2>
+            <div className="max-w-3xl mx-auto">
+              {serviceCategories.websites.map((service, index) => (
+                <ServiceCard
+                  key={index}
+                  index={index}
+                  title={service.title}
+                  description={service.description}
+                />
+              ))}
+            </div>
           </div>
         </section>
 
