@@ -53,7 +53,7 @@ const ServiceGrid: React.FC<ServiceGridProps> = ({ services, onOpenModal }) => {
               ref={el => gridItemsRef.current[index] = el}
               className={`relative overflow-hidden rounded-3xl min-h-[450px] flex items-end 
                 ${gradients[index]} transform transition-all duration-300 ease-out 
-                opacity-0 translate-y-8 hover:scale-[1.03] cursor-pointer`}
+                opacity-0 translate-y-8 hover:scale-[1.03]`}
               onClick={() => onOpenModal(service)}
             >
               <div className="absolute inset-0 opacity-20">
@@ -82,7 +82,7 @@ const ServiceGrid: React.FC<ServiceGridProps> = ({ services, onOpenModal }) => {
               ref={el => gridItemsRef.current[index + 2] = el}
               className={`relative overflow-hidden rounded-3xl min-h-[450px] flex items-end 
                 ${gradients[index + 2]} transform transition-all duration-300 ease-out 
-                opacity-0 translate-y-8 hover:scale-[1.03] cursor-pointer md:max-w-full mx-auto`}
+                opacity-0 translate-y-8 hover:scale-[1.03] md:max-w-full mx-auto`}
               onClick={() => onOpenModal(service)}
             >
               <div className="absolute inset-0 opacity-20">
