@@ -14,7 +14,7 @@ const CallToAction = () => {
           Let's build something remarkable.
         </p>
         
-        <div className="flex flex-col sm:flex-row gap-4 mt-8">
+        <div className="flex flex-row gap-4 mt-8 justify-center">
           <Button
             variant="primary"
             size="default"

@@ -35,8 +35,8 @@
 
 .ctaSubheading {
   font-family: 'Baloo Da 2', sans-serif;
-  font-weight: 500;
-  font-size: clamp(1.25rem, 3vw, 1.5rem);
+  font-weight: 700;
+  font-size: clamp(1.5rem, 3.5vw, 1.875rem);
   line-height: 1.4;
   background-image: linear-gradient(90deg, #D1A2FF 0%, #007AFF 100%);
   background-clip: text;
@@ -56,6 +56,6 @@
   }
   
   .ctaSubheading {
-    font-size: 1.5rem;
+    font-size: 1.875rem;
   }
 }
