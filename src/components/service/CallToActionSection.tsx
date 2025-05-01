@@ -12,11 +12,11 @@ const CallToActionSection = () => {
         </p>
         
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <Button size="lg" variant="primary" asChild>
+          <Button size="default" variant="primary" asChild>
             <a href="/contact">Contact Us</a>
           </Button>
           
-          <Button size="lg" variant="secondary" asChild>
+          <Button size="default" variant="secondary" asChild>
             <a href="/services">View Services</a>
           </Button>
         </div>

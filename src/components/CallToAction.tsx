@@ -17,7 +17,7 @@ const CallToAction = () => {
         <div className="flex flex-col sm:flex-row gap-4 mt-8">
           <Button
             variant="primary"
-            size="lg"
+            size="default"
             asChild
           >
             <a href="#contact">
@@ -27,7 +27,7 @@ const CallToAction = () => {
           
           <Button
             variant="secondary"
-            size="lg"
+            size="default"
             asChild
           >
             <a href="#services">

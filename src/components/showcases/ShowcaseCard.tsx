@@ -55,17 +55,15 @@ const ShowcaseCard = React.forwardRef<HTMLDivElement, ShowcaseCardProps>(({
         <div className="flex flex-wrap justify-center gap-4 mb-10">
           <Button
             variant="primary"
-            size="lg"
+            size="default"
             asChild
-            className="rounded-full"
           >
             <a href="#">The Full Story</a>
           </Button>
           <Button
             variant="secondary"
-            size="lg"
+            size="default"
             asChild
-            className="rounded-full"
           >
             <a href="#">More Creations</a>
           </Button>
