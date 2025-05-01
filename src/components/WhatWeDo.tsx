@@ -55,13 +55,15 @@ const WhatWeDo = () => {
 
   return (
     <section className="bg-white py-16 md:py-24 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-7xl mx-auto">
+      <div className="bg-[#F9F9F9] py-10 text-center mb-[5px]">
+        <h2 ref={sectionTitleRef} className="text-black text-3xl md:text-4xl lg:text-[42px] font-semibold section-title mx-auto">
+          What We <span className="gradient-word">Do</span>
+        </h2>
+      </div>
+      
+      <div className="max-w-7xl mx-auto mt-[5px]">
         <div className="flex flex-col lg:flex-row gap-16">
           <div className="w-full lg:w-3/5">
-            <h2 ref={sectionTitleRef} className="text-black text-3xl md:text-4xl lg:text-[42px] font-semibold mb-12 section-title">
-              What We <span className="gradient-word">Do</span>
-            </h2>
-            
             <div className="space-y-12 md:space-y-16">
               <div className={styles.contentBlock}>
                 <h3 className="text-xl md:text-2xl font-medium mb-4">The Art of User Experience</h3>

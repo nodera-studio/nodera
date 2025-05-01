@@ -59,18 +59,12 @@ const Portfolio: React.FC = () => {
 
   return (
     <section className={styles.portfolioSection}>
-      <div className="container mx-auto px-6">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          viewport={{ once: true }}
-          className="text-center mb-16"
-        >
-          <h2 className={styles.sectionTitle}>Our Work</h2>
-          <p className={styles.sectionIntro}>A selection of projects we're proud of.</p>
-        </motion.div>
+      <div className="bg-[#F9F9F9] py-10 text-center mb-[5px]">
+        <h2 className={styles.sectionTitle}>Our Work</h2>
+        <p className={styles.sectionIntro}>A selection of projects we're proud of.</p>
+      </div>
 
+      <div className="container mx-auto px-6 mt-[5px]">
         <div className={styles.portfolioGrid}>
           {portfolioItems.map((item, index) => (
             <motion.div
