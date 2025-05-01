@@ -101,9 +101,9 @@
   .global-divider {
     width: 100%;
     height: 5px;
-    background-color: #F7F7F9;
-    margin-top: 40px;
-    margin-bottom: 40px;
+    background-color: transparent;
+    margin-top: 0;
+    margin-bottom: 0;
     margin-left: 0;
     margin-right: 0;
     position: relative;
@@ -112,8 +112,8 @@
 
   @media (max-width: 767px) {
     .global-divider {
-      margin-top: 30px;
-      margin-bottom: 30px;
+      margin-top: 0;
+      margin-bottom: 0;
     }
   }
   
