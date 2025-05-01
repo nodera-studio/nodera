@@ -33,7 +33,7 @@ const Index = () => {
         <section id="home" className="min-h-screen">
           <Hero />
         </section>
-        <div className="global-divider" style={{ height: '5px' }} />
+        <div className="global-divider" />
         <section id="services" className="relative z-[55]">
           <Showcases />
         </section>

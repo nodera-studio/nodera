@@ -3,10 +3,10 @@ import React, { useEffect, useRef } from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
 import { cn } from '../lib/utils';
 import styles from './WhatWeDo.module.css';
+import WhatWeDoTitle from './whatwedo/WhatWeDoTitle';
 
 const WhatWeDo = () => {
   const shouldReduceMotion = useReducedMotion();
-  const sectionTitleRef = useRef<HTMLHeadingElement>(null);
 
   const lineAnimation = shouldReduceMotion
     ? {}
@@ -31,37 +31,12 @@ const WhatWeDo = () => {
           ease: "easeInOut"
         }
       };
-      
-  useEffect(() => {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('is-visible');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.3 });
-    
-    if (sectionTitleRef.current) {
-      observer.observe(sectionTitleRef.current);
-    }
-    
-    return () => {
-      if (sectionTitleRef.current) {
-        observer.unobserve(sectionTitleRef.current);
-      }
-    };
-  }, []);
 
   return (
-    <section className="bg-white py-16 md:py-24 px-4 sm:px-6 lg:px-8">
-      <div className="bg-[#F9F9F9] py-10 text-center mb-[5px]">
-        <h2 ref={sectionTitleRef} className="text-black text-3xl md:text-4xl lg:text-[42px] font-semibold section-title mx-auto">
-          What We <span className="gradient-word">Do</span>
-        </h2>
-      </div>
-      
-      <div className="max-w-7xl mx-auto mt-[5px]">
+    <div className="bg-white">
+      <WhatWeDoTitle />
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col lg:flex-row gap-16">
           <div className="w-full lg:w-3/5">
             <div className="space-y-12 md:space-y-16">
@@ -182,7 +157,7 @@ const WhatWeDo = () => {
           </div>
         </div>
       </div>
-    </section>
+    </div>
   );
 };
 
