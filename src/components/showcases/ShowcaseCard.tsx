@@ -45,7 +45,7 @@ const ShowcaseCard = React.forwardRef<HTMLDivElement, ShowcaseCardProps>(({
       style={style}
       {...props}
     >
-      <div className={`h-full w-full absolute top-0 left-0 bg-gradient-to-br ${gradientDirection} ${gradientColor} opacity-10 rounded-2xl`} />
+      <div className={`h-full w-full absolute top-0 left-0 bg-gradient-to-br ${gradientDirection} ${gradientColor} opacity-10`} />
       
       <div className="flex flex-col items-center text-center px-6 md:px-10 py-10 relative z-10">
         <h3 className="text-2xl md:text-3xl mb-4">{title}</h3>
@@ -74,7 +74,7 @@ const ShowcaseCard = React.forwardRef<HTMLDivElement, ShowcaseCardProps>(({
           <img 
             src={imageSrc} 
             alt={imageAlt} 
-            className="w-full h-auto object-contain rounded-md"
+            className="w-full h-auto object-contain"
           />
         </div>
       </div>

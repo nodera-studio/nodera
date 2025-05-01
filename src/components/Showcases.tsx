@@ -6,7 +6,7 @@ import styles from './styles/Showcases.module.css';
 
 const Showcases = () => {
   return (
-    <div className="bg-white py-16 md:py-24 lg:py-32 px-6 sm:px-10 lg:px-16">
+    <div className="bg-white">
       <div className="max-w-7xl mx-auto">
         <ShowcasesTitle />
 

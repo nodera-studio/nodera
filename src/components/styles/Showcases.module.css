@@ -1,14 +1,14 @@
 
 .showcaseCard {
   background-color: #F9F9F9;
-  border-radius: 1.5rem;
+  border-radius: 0;
   overflow: hidden;
   transition: transform 0.3s ease-out;
   transform: translate3d(0, 0, 0);
   will-change: transform, opacity;
   position: relative;
   border: 1px solid rgba(0, 0, 0, 0.05);
-  margin-bottom: 60px;
+  margin-bottom: 5px;
 }
 
 .showcaseCard:hover {
