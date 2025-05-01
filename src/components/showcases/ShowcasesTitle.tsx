@@ -1,9 +1,11 @@
 
 import React, { useEffect, useRef } from 'react';
 import styles from '../styles/Showcases.module.css';
+import { useIsMobile } from '../../hooks/use-mobile';
 
 const ShowcasesTitle: React.FC = () => {
   const sectionTitleRef = useRef<HTMLHeadingElement>(null);
+  const isMobile = useIsMobile();
   
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
@@ -28,16 +30,18 @@ const ShowcasesTitle: React.FC = () => {
   }, []);
 
   return (
-    <div className="flex flex-wrap justify-between items-center mb-12 md:mb-16 lg:mb-20">
-      <h2 ref={sectionTitleRef} className="text-black section-title text-left">
+    <div className={`flex flex-wrap ${isMobile ? 'justify-center' : 'justify-between'} items-center mb-12 md:mb-16 lg:mb-20`}>
+      <h2 ref={sectionTitleRef} className={`text-black section-title ${isMobile ? 'text-center' : 'text-left'}`}>
         Digital <span className="gradient-word">Showcases</span>
       </h2>
-      <a 
-        href="#" 
-        className="view-all-link"
-      >
-        View All →
-      </a>
+      {!isMobile && (
+        <a 
+          href="#" 
+          className="view-all-link"
+        >
+          View All →
+        </a>
+      )}
     </div>
   );
 };
