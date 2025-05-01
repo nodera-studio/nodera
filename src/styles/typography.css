@@ -5,14 +5,14 @@
   h1 {
     font-family: 'Comfortaa', sans-serif;
     font-weight: 700;
-    font-size: clamp(41px, 8vw, 69px);
+    font-size: 100px;
     line-height: 1.2;
   }
 
   h2 {
     font-family: 'Comfortaa', sans-serif;
     font-weight: 700;
-    font-size: clamp(35px, 5vw, 53px);
+    font-size: 70px;
   }
   
   h3, h4 {
