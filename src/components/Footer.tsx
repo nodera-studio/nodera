@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Separator } from "@/components/ui/separator";
 import { Link } from 'react-router-dom';
@@ -11,74 +12,42 @@ import {
 
 const currentYear = new Date().getFullYear();
 
-// Accordion sections for footer
+// Accordion sections for footer based on the image provided
 const footerSections = [
   {
-    title: "Shop and Learn",
+    title: "Company",
     links: [
-      { label: "Services", href: "/services" },
-      { label: "Work", href: "/work" },
       { label: "About", href: "/about" },
+      { label: "Services", href: "/services" },
       { label: "Contact", href: "/contact" }
     ]
   },
   {
-    title: "Nodera Services",
+    title: "Services",
     links: [
       { label: "Web Development", href: "/services" },
       { label: "UI/UX Design", href: "/services" },
-      { label: "Mobile Development", href: "/services" },
       { label: "Consulting", href: "/services" }
     ]
   },
   {
-    title: "Account",
+    title: "Connect",
     links: [
-      { label: "Manage Your Account", href: "/about" },
-      { label: "Create Account", href: "/contact" }
+      { label: "LinkedIn", href: "https://linkedin.com" },
+      { label: "GitHub", href: "https://github.com" },
+      { label: "Twitter", href: "https://twitter.com" }
     ]
   },
   {
-    title: "Projects",
+    title: "Resources",
     links: [
-      { label: "Latest Work", href: "/work" },
-      { label: "Case Studies", href: "/work" },
-      { label: "Client Testimonials", href: "/about" }
-    ]
-  },
-  {
-    title: "Nodera Studio",
-    links: [
-      { label: "Our Team", href: "/about" },
-      { label: "Our Values", href: "/about" },
-      { label: "Our Process", href: "/#about" }
-    ]
-  },
-  {
-    title: "For Business",
-    links: [
-      { label: "Enterprise Solutions", href: "/services" },
-      { label: "Business Consulting", href: "/services" }
-    ]
-  },
-  {
-    title: "For Education",
-    links: [
-      { label: "Educational Resources", href: "/about" },
-      { label: "Workshops", href: "/about" }
-    ]
-  },
-  {
-    title: "About Nodera",
-    links: [
-      { label: "Our Story", href: "/about" },
-      { label: "Leadership", href: "/about" },
-      { label: "Careers", href: "/about" }
+      { label: "Work", href: "/work" },
+      { label: "FAQ", href: "/about" }
     ]
   }
 ];
 
-// Social links remain the same
+// Social links for desktop footer
 const socialLinks = [
   { 
     href: "https://linkedin.com",
@@ -112,8 +81,6 @@ const Footer = () => {
                 className="h-8 w-auto opacity-80"
               />
             </Link>
-            <span className="mx-4 text-[#86868b]">›</span>
-            <span className="text-[#1d1d1f] text-sm">Site Map</span>
           </div>
           
           <Separator className="bg-[#d2d2d7]" />
@@ -130,12 +97,23 @@ const Footer = () => {
                     <ul className="py-2 space-y-3">
                       {section.links.map((link) => (
                         <li key={link.label}>
-                          <Link
-                            to={link.href}
-                            className="text-sm hover:text-[#1d1d1f] transition-colors"
-                          >
-                            {link.label}
-                          </Link>
+                          {link.href.startsWith("http") ? (
+                            <a
+                              href={link.href}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="text-sm hover:text-[#1d1d1f] transition-colors"
+                            >
+                              {link.label}
+                            </a>
+                          ) : (
+                            <Link
+                              to={link.href}
+                              className="text-sm hover:text-[#1d1d1f] transition-colors"
+                            >
+                              {link.label}
+                            </Link>
+                          )}
                         </li>
                       ))}
                     </ul>
@@ -175,15 +153,7 @@ const Footer = () => {
                 </Link>
                 <span className="text-[#d2d2d7] hidden md:inline">|</span>
                 <Link to="/about" className="hover:text-[#1d1d1f] transition-colors mb-2">
-                  Sales and Refunds
-                </Link>
-                <span className="text-[#d2d2d7] hidden md:inline">|</span>
-                <Link to="/about" className="hover:text-[#1d1d1f] transition-colors mb-2">
                   Legal
-                </Link>
-                <span className="text-[#d2d2d7] hidden md:inline">|</span>
-                <Link to="/" className="hover:text-[#1d1d1f] transition-colors mb-2">
-                  Site Map
                 </Link>
               </div>
             </div>
@@ -193,18 +163,29 @@ const Footer = () => {
         // Desktop footer (simpler version)
         <div className="container mx-auto px-6 py-12">
           <div className="grid grid-cols-4 gap-8">
-            {footerSections.slice(0, 4).map((section) => (
+            {footerSections.map((section) => (
               <div key={section.title}>
                 <h3 className="text-lg font-semibold mb-4 text-[#1d1d1f]">{section.title}</h3>
                 <ul className="space-y-2">
                   {section.links.map((link) => (
                     <li key={link.label}>
-                      <Link
-                        to={link.href}
-                        className="text-sm hover:text-[#1d1d1f] transition-colors"
-                      >
-                        {link.label}
-                      </Link>
+                      {link.href.startsWith("http") ? (
+                        <a
+                          href={link.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-sm hover:text-[#1d1d1f] transition-colors"
+                        >
+                          {link.label}
+                        </a>
+                      ) : (
+                        <Link
+                          to={link.href}
+                          className="text-sm hover:text-[#1d1d1f] transition-colors"
+                        >
+                          {link.label}
+                        </Link>
+                      )}
                     </li>
                   ))}
                 </ul>

@@ -23,7 +23,7 @@ const BreadcrumbNav: React.FC<BreadcrumbProps> = ({ items }) => {
   const location = useLocation();
   
   // Hide breadcrumbs on home page
-  if (location.pathname === '/') {
+  if (location.pathname === '/' || location.pathname === '') {
     return null;
   }
   
