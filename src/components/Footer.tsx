@@ -1,8 +1,6 @@
-
-import React, { useState } from 'react';
+import React from 'react';
 import { Separator } from "@/components/ui/separator";
 import { Link } from 'react-router-dom';
-import { ChevronDown } from 'lucide-react';
 import { useBreakpoint } from '../hooks/use-mobile';
 import { 
   Accordion,
