@@ -31,7 +31,7 @@ const ShowcasesTitle: React.FC = () => {
 
   return (
     <div className={`flex flex-wrap ${isMobile ? 'justify-center' : 'justify-between'} items-center mb-12 md:mb-16 lg:mb-20`}>
-      <h2 ref={sectionTitleRef} className={`text-black section-title ${isMobile ? 'text-center' : 'text-left'}`}>
+      <h2 ref={sectionTitleRef} className={`section-title ${isMobile ? 'text-center' : 'text-left'}`}>
         Digital <span className="gradient-word">Showcases</span>
       </h2>
       {!isMobile && (
