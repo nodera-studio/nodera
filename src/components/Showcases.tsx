@@ -7,28 +7,26 @@ import styles from './styles/Showcases.module.css';
 const Showcases = () => {
   return (
     <div className="bg-white">
-      <div className="max-w-7xl mx-auto">
-        <ShowcasesTitle />
+      <ShowcasesTitle />
 
-        <div className="space-y-5">
-          <ShowcaseCard
-            title="Museum CMS Platform"
-            description="The behind-the-scenes system that powers museum mobile guides, intuitive for staff, informative for visitors."
-            imageSrc="/lovable-uploads/nous-cms.png"
-            imageAlt="Museum CMS Platform"
-            gradientDirection="to-br"
-            gradientColor="from-purple-300"
-          />
+      <div className="space-y-5 max-w-7xl mx-auto">
+        <ShowcaseCard
+          title="Museum CMS Platform"
+          description="The behind-the-scenes system that powers museum mobile guides, intuitive for staff, informative for visitors."
+          imageSrc="/lovable-uploads/nous-cms.png"
+          imageAlt="Museum CMS Platform"
+          gradientDirection="to-br"
+          gradientColor="from-purple-300"
+        />
 
-          <ShowcaseCard
-            title="Furnihaus Collection"
-            description="Where craftsmanship meets digital presence. Elegantly showcasing custom furniture and connecting artisans with clients."
-            imageSrc="/lovable-uploads/8379e5c3-25c3-48da-9e3b-916491ac1570.png"
-            imageAlt="Furnihaus Collection"
-            gradientDirection="to-bl"
-            gradientColor="from-blue-500"
-          />
-        </div>
+        <ShowcaseCard
+          title="Furnihaus Collection"
+          description="Where craftsmanship meets digital presence. Elegantly showcasing custom furniture and connecting artisans with clients."
+          imageSrc="/lovable-uploads/8379e5c3-25c3-48da-9e3b-916491ac1570.png"
+          imageAlt="Furnihaus Collection"
+          gradientDirection="to-bl"
+          gradientColor="from-blue-500"
+        />
       </div>
     </div>
   );

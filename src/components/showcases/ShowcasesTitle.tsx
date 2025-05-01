@@ -30,18 +30,10 @@ const ShowcasesTitle: React.FC = () => {
   }, []);
 
   return (
-    <div className={`flex flex-wrap ${isMobile ? 'justify-center' : 'justify-between'} items-center mb-12 md:mb-16 lg:mb-20`}>
-      <h2 ref={sectionTitleRef} className={`section-title ${isMobile ? 'text-center' : 'text-left'}`}>
+    <div className="bg-[#F9F9F9] py-10 text-center mb-5">
+      <h2 ref={sectionTitleRef} className="section-title mx-auto">
         Digital <span className="gradient-word">Showcases</span>
       </h2>
-      {!isMobile && (
-        <a 
-          href="#" 
-          className="view-all-link"
-        >
-          View All →
-        </a>
-      )}
     </div>
   );
 };
