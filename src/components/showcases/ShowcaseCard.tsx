@@ -49,7 +49,7 @@ const ShowcaseCard = React.forwardRef<HTMLDivElement, ShowcaseCardProps>(({
       
       <div className="flex flex-col items-center text-center px-5 md:px-8 py-8 relative z-10">
         <h3 className="text-[27px] md:text-[33px] mb-3">{title}</h3>
-        <p className="text-gray-600 text-[19px] mb-6 max-w-lg">
+        <p className="text-gray-600 mb-6 max-w-lg">
           {description}
         </p>
         <div className="flex flex-wrap justify-center gap-3 mb-6">
