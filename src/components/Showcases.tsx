@@ -9,7 +9,7 @@ const Showcases = () => {
     <div className="bg-white">
       <ShowcasesTitle />
 
-      <div className="space-y-5 max-w-7xl mx-auto">
+      <div className="flex flex-row gap-[5px] max-w-7xl mx-auto">
         <ShowcaseCard
           title="Museum CMS Platform"
           description="The behind-the-scenes system that powers museum mobile guides, intuitive for staff, informative for visitors."

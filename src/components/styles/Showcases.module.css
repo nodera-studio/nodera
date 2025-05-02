@@ -9,6 +9,7 @@
   position: relative;
   margin-bottom: 5px;
   height: 80vh;
+  flex: 1;
 }
 
 .showcaseCard:hover {
