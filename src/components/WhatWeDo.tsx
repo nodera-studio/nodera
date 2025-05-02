@@ -1,9 +1,12 @@
 
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
 import { cn } from '../lib/utils';
 import styles from './WhatWeDo.module.css';
 import WhatWeDoTitle from './whatwedo/WhatWeDoTitle';
+import { Button } from './ui/button';
+import { Card } from './ui/card';
+import { ArrowRight } from 'lucide-react';
 
 const WhatWeDo = () => {
   const shouldReduceMotion = useReducedMotion();
@@ -36,28 +39,32 @@ const WhatWeDo = () => {
     <div className="bg-white">
       <WhatWeDoTitle />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col lg:flex-row gap-16">
-          <div className="w-full lg:w-3/5">
-            <div className="space-y-12 md:space-y-16">
-              <div className={styles.contentBlock}>
-                <h3 className="text-xl md:text-2xl font-medium mb-4">The Art of User Experience</h3>
-                <p className="text-gray-700 leading-relaxed">
-                  Powerful code that anticipates challenges. Scalable architecture paired with intuitive interfaces transforms visions into digital reality, no compromise needed.
-                </p>
-              </div>
-              
-              <div className={styles.contentBlock}>
-                <h3 className="text-xl md:text-2xl font-medium mb-4">Engineered for Performance</h3>
-                <p className="text-gray-700 leading-relaxed">
-                  Digital experiences that perform as beautifully as they look. Every element serves a purpose while engaging visitors and elevating brands. Simple outside, sophisticated inside.
-                </p>
-              </div>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
+          {/* Left Column - Content */}
+          <div className="lg:col-span-6 space-y-16">
+            <div>
+              <h3 className="text-2xl md:text-3xl font-bold mb-4">The Art of User Experience</h3>
+              <p className="text-gray-700 leading-relaxed mb-6">
+                Powerful code that anticipates challenges. Scalable architecture paired with intuitive interfaces transforms visions into digital reality, no compromise needed.
+              </p>
+              <Button className="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-full flex items-center">
+                Learn more <ArrowRight className="ml-2 h-4 w-4" />
+              </Button>
+            </div>
+            
+            <div>
+              <h3 className="text-2xl md:text-3xl font-bold mb-4">Engineered for Performance</h3>
+              <p className="text-gray-700 leading-relaxed">
+                Digital experiences that perform as beautifully as they look. Every element serves a purpose while engaging visitors and elevating brands. Simple outside, sophisticated inside.
+              </p>
             </div>
           </div>
           
-          <div className="w-full lg:w-2/5 flex flex-col space-y-8">
-            <div className={styles.visualContainer}>
+          {/* Right Column - Visual Elements */}
+          <div className="lg:col-span-6 space-y-10">
+            {/* Browser UI Card */}
+            <Card className={styles.visualContainer}>
               <motion.div className={styles.browserWindow}>
                 <div className={styles.browserHeader}>
                   <div className={styles.browserDots}>
@@ -70,42 +77,25 @@ const WhatWeDo = () => {
                   <div className={styles.contentPlaceholder}>
                     <motion.div 
                       className={cn(styles.contentLine, styles.contentShort)}
-                      animate={{
-                        opacity: [0.5, 1, 0.5],
-                        backgroundColor: ['#E0E0E0', '#F0F0F0', '#E0E0E0'],
-                        transition: {
-                          repeat: Infinity,
-                          repeatType: "mirror" as const,
-                          duration: 2,
-                          ease: "easeInOut"
-                        }
-                      }}
+                      animate={lineAnimation}
                     />
                     <motion.div 
-                      className={cn(styles.contentLine)}
-                      animate={{
-                        opacity: [0.5, 1, 0.5],
-                        backgroundColor: ['#E8E8E8', '#F5F5F5', '#E8E8E8'],
-                        transition: {
-                          repeat: Infinity,
-                          repeatType: "mirror" as const,
-                          duration: 2,
-                          ease: "easeInOut"
-                        }
-                      }}
+                      className={styles.contentLine}
+                      animate={lineAnimation}
                     />
                     <div className={styles.contentBoxes}>
                       {[1, 2, 3, 4].map((_, index) => (
                         <motion.div 
                           key={index}
-                          className={cn(styles.contentBox)}
+                          className={styles.contentBox}
                           animate={{
                             backgroundColor: ['#D8D8FF', '#E5E5FF', '#D8D8FF'],
                             transition: {
                               repeat: Infinity,
-                              repeatType: "mirror" as const,
+                              repeatType: "mirror",
                               duration: 2,
-                              ease: "easeInOut"
+                              ease: "easeInOut",
+                              delay: index * 0.2
                             }
                           }}
                         />
@@ -114,46 +104,35 @@ const WhatWeDo = () => {
                   </div>
                 </div>
               </motion.div>
-            </div>
+            </Card>
             
-            <div className={styles.visualContainer}>
+            {/* Metrics Card */}
+            <Card className={styles.visualContainer}>
               <div className={styles.metricsContainer}>
-                {['Speed Index', 'Performance', 'Accessibility', 'Best Practices'].map((metric, index) => (
-                  <div key={metric} className={styles.metricBar}>
+                {[
+                  { name: 'Speed Index', value: '98' },
+                  { name: 'Performance', value: '96' },
+                  { name: 'Accessibility', value: '100' },
+                  { name: 'Best Practices', value: '94' }
+                ].map((metric, index) => (
+                  <div key={metric.name} className={styles.metricBar}>
                     <motion.div 
                       className={styles.metricFill}
                       initial={{ scaleX: 0.4 }}
                       animate={metricsAnimation}
-                      style={{ originX: 0 }}
-                      onUpdate={(latest) => {
-                        const metricValues = document.querySelectorAll(`.${styles.metricValue}`);
-                        if (metricValues && metricValues[index]) {
-                          const metricValue = metricValues[index] as HTMLElement;
-                          const scaleX = latest.scaleX || 0.4;
-                          
-                          const rightPosition = 12;
-                          const valueWidth = metricValue.offsetWidth;
-                          const barWidth = metricValue.parentElement?.offsetWidth || 0;
-                          
-                          const gradientEdge = barWidth * (scaleX as number);
-                          const valueStart = barWidth - rightPosition - valueWidth;
-                          
-                          if (gradientEdge > valueStart) {
-                            metricValue.style.color = 'white';
-                          } else {
-                            metricValue.style.color = 'black';
-                          }
-                        }
+                      style={{ 
+                        originX: 0,
+                        background: 'linear-gradient(90deg, #007AFF 0%, #D1A2FF 100%)' 
                       }}
                     />
-                    <span className={styles.metricLabel}>{metric}</span>
+                    <span className={styles.metricLabel}>{metric.name}</span>
                     <span className={styles.metricValue}>
-                      {['98', '96', '100', '94'][index]}
+                      {metric.value}
                     </span>
                   </div>
                 ))}
               </div>
-            </div>
+            </Card>
           </div>
         </div>
       </div>

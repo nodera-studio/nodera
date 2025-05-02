@@ -15,6 +15,8 @@
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
   border-radius: 16px;
   overflow: hidden;
+  background-color: #FFF;
+  border: 1px solid #EAEAEA;
 }
 
 .browserWindow {
@@ -22,47 +24,45 @@
   width: 100%;
   height: 100%;
   background: white;
-  border: 1px solid #EAEAEA;
-  border-radius: 8px;
+  border-radius: 10px;
   overflow: hidden;
 }
 
 .browserHeader {
-  height: 24px;
+  height: 30px;
   background: #F5F5F5;
   border-bottom: 1px solid #EAEAEA;
   display: flex;
   align-items: center;
-  padding: 0 8px;
+  padding: 0 12px;
 }
 
 .browserDots {
   display: flex;
-  gap: 4px;
+  gap: 6px;
 }
 
 .dot {
-  width: 6px;
-  height: 6px;
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
-  background: #D4D4D4;
 }
 
 .browserContent {
-  padding: 12px;
+  padding: 16px;
 }
 
 .contentPlaceholder {
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 12px;
 }
 
 .contentLine {
-  height: 8px;
+  height: 12px;
   background: #F0F0F0;
-  border-radius: 4px;
+  border-radius: 6px;
 }
 
 .contentShort {
@@ -72,38 +72,37 @@
 .contentBoxes {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 8px;
-  margin-top: 12px;
+  gap: 10px;
+  margin-top: 16px;
 }
 
 .contentBox {
-  aspect-ratio: 1 / 1;
+  aspect-ratio: 16 / 9;
   background: #F0F0F0;
-  border-radius: 4px;
+  border-radius: 6px;
 }
 
 .metricsContainer {
   width: 100%;
   height: 100%;
   background-color: white;
-  padding: 1rem;
-  border-radius: 8px;
-  border: 1px solid #EAEAEA;
+  padding: 1.5rem;
+  border-radius: 10px;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 16px;
 }
 
 .metricBar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 32px;
+  height: 40px;
   background: #F5F5F5;
-  border-radius: 16px;
+  border-radius: 20px;
   position: relative;
   overflow: hidden;
-  padding: 0 12px;
+  padding: 0 16px;
 }
 
 .metricFill {
@@ -112,15 +111,15 @@
   top: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(90deg, #007AFF, #D1A2FF);
-  border-radius: 16px;
+  background: linear-gradient(90deg, #007AFF 0%, #D1A2FF 100%);
+  border-radius: 20px;
   z-index: 1;
 }
 
 .metricLabel {
   position: relative;
   color: #111;
-  font-size: 12px;
+  font-size: 16px;
   font-weight: 500;
   z-index: 2;
   text-align: left;
@@ -134,16 +133,15 @@
 .metricValue {
   position: relative;
   color: #111;
-  font-size: 12px;
+  font-size: 16px;
   font-weight: 600;
   z-index: 2;
   text-align: right;
   margin-left: 8px;
   flex-shrink: 0;
-}
-
-.contentBlock {
-  max-width: 590px;
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 2px 8px;
+  border-radius: 10px;
 }
 
 .contentBlock h3 {
@@ -158,56 +156,66 @@
 @media (min-width: 640px) {
   .browserWindow {
     width: 100%;
-    min-height: 200px;
+    min-height: 240px;
   }
+  
   .metricsContainer {
     width: 100%;
-    min-height: 200px;
-    padding: 1rem;
-    gap: 12px;
+    min-height: 240px;
+    padding: 1.5rem;
+    gap: 16px;
   }
+  
   .contentBox {
-    height: 34px;
+    height: 120px;
     aspect-ratio: auto;
   }
+  
   .metricBar {
-    height: 32px;
-    border-radius: 16px;
-    padding: 0 12px;
+    height: 40px;
+    border-radius: 20px;
+    padding: 0 16px;
   }
+  
   .metricFill {
-    border-radius: 16px;
+    border-radius: 20px;
   }
+  
   .metricLabel,
   .metricValue {
-    font-size: 12px;
+    font-size: 16px;
   }
 }
 
 @media (min-width: 768px) {
   .browserWindow {
     width: 100%;
-    min-height: 240px;
+    min-height: 280px;
   }
+  
   .metricsContainer {
     width: 100%;
-    min-height: 240px;
-    padding: 1.25rem;
-    gap: 14px;
+    min-height: 280px;
+    padding: 1.75rem;
+    gap: 18px;
   }
+  
   .contentBox {
-    height: 40px;
+    height: 140px;
   }
+  
   .metricBar {
-    height: 36px;
-    border-radius: 18px;
-    padding: 0 14px;
+    height: 44px;
+    border-radius: 22px;
+    padding: 0 18px;
   }
+  
   .metricFill {
-    border-radius: 18px;
+    border-radius: 22px;
   }
+  
   .metricLabel,
   .metricValue {
-    font-size: 14px;
+    font-size: 16px;
   }
 }
