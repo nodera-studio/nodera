@@ -36,10 +36,10 @@ const WhatWeDo = () => {
     <div className="bg-white">
       <WhatWeDoTitle />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-[10px]">
-        <div className="flex flex-col lg:flex-row gap-[10px]">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex flex-col lg:flex-row gap-16">
           <div className="w-full lg:w-3/5">
-            <div className="space-y-[10px] md:space-y-[10px]">
+            <div className="space-y-12 md:space-y-16">
               <div className={styles.contentBlock}>
                 <h3 className="text-xl md:text-2xl font-medium mb-4">The Art of User Experience</h3>
                 <p className="text-gray-700 leading-relaxed">
@@ -56,7 +56,7 @@ const WhatWeDo = () => {
             </div>
           </div>
           
-          <div className="w-full lg:w-2/5 flex flex-col space-y-[10px]">
+          <div className="w-full lg:w-2/5 flex flex-col space-y-8">
             <div className={styles.visualContainer}>
               <motion.div className={styles.browserWindow}>
                 <div className={styles.browserHeader}>
