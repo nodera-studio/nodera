@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Button } from "@/components/ui/button";
 import styles from '../styles/Showcases.module.css';
@@ -13,9 +12,13 @@ interface ShowcaseCardProps {
   gradientColor?: string;
   style?: React.CSSProperties;
   className?: string;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   initial?: any;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   whileInView?: any;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   viewport?: any;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   transition?: any;
 }
 
@@ -47,12 +50,12 @@ const ShowcaseCard = React.forwardRef<HTMLDivElement, ShowcaseCardProps>(({
     >
       <div className={`h-full w-full absolute top-0 left-0 bg-gradient-to-br ${gradientDirection} ${gradientColor} opacity-10`} />
       
-      <div className="flex flex-col items-center text-center px-5 md:px-8 py-8 relative z-10">
-        <h3 className="text-[27px] md:text-[33px] mb-3">{title}</h3>
-        <p className="text-gray-600 mb-6 max-w-lg">
+      <div className="flex flex-col items-center text-center px-5 md:px-8 pt-10 pb-8 relative z-10">
+        <h3 className="text-3xl md:text-4xl mb-3">{title}</h3>
+        <p className="text-gray-600 text-lg mb-6 max-w-lg">
           {description}
         </p>
-        <div className="flex flex-wrap justify-center gap-3 mb-6">
+        <div className="flex flex-wrap justify-center gap-3 mb-1">
           <Button
             variant="primary"
             size="default"
@@ -68,7 +71,7 @@ const ShowcaseCard = React.forwardRef<HTMLDivElement, ShowcaseCardProps>(({
             <a href="#">More Creations</a>
           </Button>
         </div>
-        <div className="mt-4 max-w-4xl">
+        <div className="mt-4 max-w-xl">
           <img 
             src={imageSrc} 
             alt={imageAlt} 

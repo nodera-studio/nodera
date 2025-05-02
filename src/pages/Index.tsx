@@ -1,4 +1,3 @@
-
 import React, { lazy, Suspense, useEffect } from 'react';
 import Header from '../components/Header';
 import Hero from '../components/Hero';
@@ -33,21 +32,17 @@ const Index = () => {
         <section id="home" className="min-h-screen">
           <Hero />
         </section>
-        <div className="global-divider" />
         <section id="services" className="relative z-[55]">
           <Showcases />
         </section>
-        <div className="global-divider" />
         <section id="work" className="relative z-30">
           <WhatWeDo />
         </section>
-        <div className="global-divider" />
         <Suspense fallback={<div className="h-[600px]" />}>
           <section id="about" className="relative z-40">
             <TheProcess />
           </section>
         </Suspense>
-        <div className="global-divider" />
         <section id="contact" className="relative z-50">
           <CallToAction />
         </section>

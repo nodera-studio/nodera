@@ -1,4 +1,3 @@
-
 import React from 'react';
 import ShowcasesTitle from './showcases/ShowcasesTitle';
 import ShowcaseCard from './showcases/ShowcaseCard';
@@ -9,7 +8,7 @@ const Showcases = () => {
     <div className="bg-white">
       <ShowcasesTitle />
 
-      <div className="flex flex-row gap-[5px] max-w-7xl mx-auto">
+      <div className="flex flex-col md:flex-row gap-2.5">
         <ShowcaseCard
           title="Museum CMS Platform"
           description="The behind-the-scenes system that powers museum mobile guides, intuitive for staff, informative for visitors."
