@@ -3,7 +3,6 @@ import { motion, useInView, useReducedMotion, AnimatePresence } from 'framer-mot
 import styles from './styles/TheProcess.module.css';
 import cardStyles from './styles/ProcessCard.module.css';
 import { ChevronDown } from 'lucide-react';
-import TechLogos from './TechLogos';
 
 const designLogoIcons = [
   '/lovable-uploads/figma-2.svg',
