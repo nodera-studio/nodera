@@ -1,6 +1,6 @@
 
 import React, { ReactNode } from 'react';
-import styles from '../WhatWeDo.module.css';
+import styles from './BrowserWindow.module.css';
 
 interface BrowserWindowProps {
   children: ReactNode;
