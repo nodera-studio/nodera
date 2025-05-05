@@ -18,7 +18,7 @@ const UserExperienceCard: React.FC<UserExperienceCardProps> = ({ shouldReduceMot
       
       <div className="flex flex-col items-center text-center px-5 md:px-8 pt-10 pb-8 relative z-10 h-full">
         <h3 className="text-3xl md:text-4xl mb-3">The Art of User Experience</h3>
-        <p className="text-gray-600 text-lg mb-6 max-w-lg">
+        <p className="text-gray-600 text-base md:text-base mb-6 max-w-lg">
           Powerful code that anticipates challenges. Scalable architecture paired with intuitive interfaces transforms visions into digital reality, no compromise needed.
         </p>
         

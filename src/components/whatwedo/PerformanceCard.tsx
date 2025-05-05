@@ -37,7 +37,7 @@ const PerformanceCard: React.FC<PerformanceCardProps> = ({ shouldReduceMotion, i
       
       <div className="flex flex-col items-center text-center px-5 md:px-8 pt-10 pb-8 relative z-10 h-full">
         <h3 className="text-3xl md:text-4xl mb-3">Engineered for Performance</h3>
-        <p className="text-gray-600 text-lg mb-6 max-w-lg">
+        <p className="text-gray-600 text-base md:text-base mb-6 max-w-lg">
           Digital experiences that perform as beautifully as they look. Every element serves a purpose while engaging visitors and elevating brands. Simple outside, sophisticated inside.
         </p>
         
@@ -53,7 +53,7 @@ const PerformanceCard: React.FC<PerformanceCardProps> = ({ shouldReduceMotion, i
         <BrowserWindow>
           <div className="p-2 md:p-4 bg-white">
             <div className="pb-2 md:pb-4">
-              <h4 className="text-base md:text-lg font-medium mb-3 md:mb-4 text-gray-800">Report from May 5, 2025</h4>
+              <h4 className="text-sm md:text-base font-medium mb-3 md:mb-4 text-gray-800">Report from May 5, 2025</h4>
               <div className="flex space-x-2 items-center mb-3 md:mb-4">
                 <div className="flex-grow relative">
                   <Input 
@@ -102,7 +102,7 @@ const PerformanceCard: React.FC<PerformanceCardProps> = ({ shouldReduceMotion, i
             </div>
             
             <div>
-              <h5 className="text-sm md:text-base font-medium mb-3 md:mb-5 text-gray-700">Performance metrics</h5>
+              <h5 className="text-xs md:text-sm font-medium mb-3 md:mb-5 text-gray-700">Performance metrics</h5>
               
               <div className="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-3 text-center">
                 {metrics.map((metric) => (
@@ -134,11 +134,11 @@ const PerformanceCard: React.FC<PerformanceCardProps> = ({ shouldReduceMotion, i
                           </linearGradient>
                         </defs>
                       </svg>
-                      <div className="absolute top-0 left-0 w-full h-full flex items-center justify-center text-xs md:text-base font-semibold text-gray-800">
+                      <div className="absolute top-0 left-0 w-full h-full flex items-center justify-center text-xs md:text-sm font-semibold text-gray-800">
                         {metric.value}
                       </div>
                     </div>
-                    <span className="text-xs md:text-sm text-gray-600">{metric.name}</span>
+                    <span className="text-2xs md:text-xs text-gray-600">{metric.name}</span>
                   </div>
                 ))}
               </div>

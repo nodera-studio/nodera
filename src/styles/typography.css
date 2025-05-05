@@ -32,3 +32,10 @@
     @apply transition-all duration-300;
   }
 }
+
+/* Add text-2xs utility class for very small text */
+@layer utilities {
+  .text-2xs {
+    font-size: 0.625rem;
+  }
+}
