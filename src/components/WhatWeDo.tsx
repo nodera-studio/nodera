@@ -15,7 +15,7 @@ const WhatWeDo = () => {
         opacity: [0.5, 1, 0.5],
         transition: {
           repeat: Infinity,
-          repeatType: "mirror",
+          repeatType: "mirror" as const,
           duration: 2,
           ease: "easeInOut"
         }
@@ -27,7 +27,7 @@ const WhatWeDo = () => {
         scaleX: [0.4, 1],
         transition: {
           repeat: Infinity,
-          repeatType: "reverse",
+          repeatType: "reverse" as const,
           duration: 4,
           ease: "easeInOut"
         }
@@ -71,7 +71,7 @@ const WhatWeDo = () => {
                             backgroundColor: ['#D8D8FF', '#E5E5FF', '#D8D8FF'],
                             transition: {
                               repeat: Infinity,
-                              repeatType: "mirror",
+                              repeatType: "mirror" as const,
                               duration: 2,
                               ease: "easeInOut",
                               delay: index * 0.2
