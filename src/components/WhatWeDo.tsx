@@ -9,10 +9,10 @@ const WhatWeDo = () => {
   const shouldReduceMotion = useReducedMotion();
 
   return (
-    <div className="bg-white px-4 py-10 md:py-16 container mx-auto">
+    <div className="bg-white px-2.5 py-12">
       <WhatWeDoTitle />
       
-      <div className="flex flex-col md:flex-row gap-8 mt-8">
+      <div className="flex flex-col md:flex-row gap-6 mt-4">
         <UserExperienceCard shouldReduceMotion={shouldReduceMotion} />
         <PerformanceCard shouldReduceMotion={shouldReduceMotion} />
       </div>

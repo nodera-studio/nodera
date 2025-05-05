@@ -11,13 +11,26 @@ interface UserExperienceCardProps {
 }
 
 const UserExperienceCard: React.FC<UserExperienceCardProps> = ({ shouldReduceMotion }) => {
+  const pulseAnimation = shouldReduceMotion
+    ? {}
+    : {
+        opacity: [0.6, 0.8, 0.6],
+        transition: {
+          repeat: Infinity,
+          repeatType: "mirror" as const,
+          duration: 2.5,
+          ease: "easeInOut"
+        }
+      };
+
   return (
     <div className={`${styles.showcaseCard} transform-none`}>
-      <div className={`h-full w-full absolute top-0 left-0 bg-gradient-to-br from-blue-300 opacity-10`} />
+      {/* Apply a subtle gradient background with low opacity */}
+      <div className="h-full w-full absolute top-0 left-0 bg-gradient-to-br from-blue-300 to-purple-100 opacity-10 backdrop-blur-sm rounded-xl" />
       
       <div className="flex flex-col items-center text-center px-5 md:px-8 pt-10 pb-8 relative z-10 h-full">
         <h3 className="text-3xl md:text-4xl mb-3 font-light">The Art of User Experience</h3>
-        <p className="text-gray-600 text-lg mb-6 max-w-lg font-light">
+        <p className="text-gray-600 text-lg mb-6 max-w-lg">
           Powerful code that anticipates challenges. Scalable architecture paired with intuitive interfaces transforms visions into digital reality, no compromise needed.
         </p>
         
@@ -25,86 +38,58 @@ const UserExperienceCard: React.FC<UserExperienceCardProps> = ({ shouldReduceMot
           variant="primary"
           size="default"
           asChild
-          className="mb-8 rounded-full px-6 bg-gradient-to-r from-blue-500 to-indigo-500 hover:from-blue-600 hover:to-indigo-600"
+          className="mb-8 bg-gradient-to-r from-blue-500 to-indigo-500 border-none shadow-sm hover:shadow-md transition-shadow"
         >
           <Link to="/services">Learn more</Link>
         </Button>
         
         <BrowserWindow>
-          <div className="p-4 space-y-6">
-            {/* Skeleton loading UI */}
-            <div className="space-y-3">
-              <div className="h-3 bg-gradient-to-r from-gray-200 to-gray-100 w-3/4 rounded-full"></div>
-              <div className="h-3 bg-gradient-to-r from-gray-200 to-gray-100 w-full rounded-full"></div>
-            </div>
+          <div className="p-6 bg-white bg-opacity-90 space-y-6">
+            {/* Skeleton-like loading lines */}
+            <motion.div 
+              className="h-4 bg-gradient-to-r from-gray-200 to-gray-100 w-3/4 rounded-md"
+              animate={pulseAnimation}
+            />
+            <motion.div 
+              className="h-4 bg-gradient-to-r from-gray-200 to-gray-100 w-full rounded-md"
+              animate={pulseAnimation}
+            />
             
-            <div className="grid grid-cols-2 gap-6 pt-4">
+            <div className="grid grid-cols-2 gap-5 pt-4">
               {[1, 2, 3, 4].map((_, index) => (
-                <div 
+                <motion.div 
                   key={index}
-                  className="h-24 md:h-36 rounded-2xl flex items-center justify-center p-4"
+                  className="h-24 rounded-xl backdrop-blur-sm flex items-center justify-center"
                   style={{
-                    background: index === 0 
-                      ? 'linear-gradient(135deg, rgba(219,234,254,0.6) 0%, rgba(191,219,254,0.6) 100%)'
-                      : index === 1
-                      ? 'linear-gradient(135deg, rgba(254,226,226,0.6) 0%, rgba(254,202,202,0.6) 100%)'
-                      : index === 2
-                      ? 'linear-gradient(135deg, rgba(236,253,245,0.6) 0%, rgba(209,250,229,0.6) 100%)'
-                      : 'linear-gradient(135deg, rgba(237,233,254,0.6) 0%, rgba(221,214,254,0.6) 100%)',
-                    backdropFilter: 'blur(8px)',
-                    border: '1px solid rgba(255, 255, 255, 0.2)'
+                    background: 'linear-gradient(135deg, rgba(139,92,246,0.7), rgba(124,58,237,0.5))',
+                    boxShadow: '0 4px 12px rgba(139,92,246,0.15)'
                   }}
+                  animate={pulseAnimation}
                 >
-                  <div 
-                    className="h-10 w-10 rounded-full"
-                    style={{
-                      background: index === 0 
-                        ? 'linear-gradient(135deg, #60A5FA 0%, #3B82F6 100%)'
-                        : index === 1
-                        ? 'linear-gradient(135deg, #F87171 0%, #EF4444 100%)'
-                        : index === 2
-                        ? 'linear-gradient(135deg, #34D399 0%, #10B981 100%)'
-                        : 'linear-gradient(135deg, #A78BFA 0%, #8B5CF6 100%)',
-                      opacity: 0.9
-                    }}
-                  />
-                </div>
+                  <div className="h-10 w-10 bg-white bg-opacity-30 rounded-lg" />
+                </motion.div>
               ))}
             </div>
             
-            <div className="grid grid-cols-3 gap-3 pt-2">
-              <div 
-                className="h-14 rounded-xl"
-                style={{
-                  background: 'linear-gradient(135deg, rgba(239,246,255,0.6) 0%, rgba(219,234,254,0.6) 100%)',
-                  backdropFilter: 'blur(8px)',
-                  border: '1px solid rgba(255, 255, 255, 0.2)'
-                }}
+            <div className="grid grid-cols-3 gap-4 pt-3">
+              <motion.div 
+                className="h-16 rounded-xl bg-gradient-to-r from-blue-100 to-blue-50"
+                animate={pulseAnimation}
               />
-              <div 
-                className="h-14 rounded-xl col-span-2"
-                style={{
-                  background: 'linear-gradient(135deg, rgba(243,244,246,0.6) 0%, rgba(229,231,235,0.6) 100%)',
-                  backdropFilter: 'blur(8px)',
-                  border: '1px solid rgba(255, 255, 255, 0.2)'
-                }}
+              <motion.div 
+                className="h-16 rounded-xl col-span-2 bg-gradient-to-r from-blue-50 to-indigo-50"
+                animate={pulseAnimation}
               />
             </div>
             
-            <div className="flex justify-end space-x-3 pt-2">
-              <div 
-                className="h-8 w-8 rounded-full"
-                style={{
-                  background: 'linear-gradient(135deg, #34D399 0%, #10B981 100%)',
-                  opacity: 0.9
-                }}
+            <div className="flex justify-end space-x-3 pt-3">
+              <motion.div 
+                className="h-9 w-9 rounded-xl bg-gradient-to-br from-green-400 to-green-300"
+                animate={pulseAnimation}
               />
-              <div 
-                className="h-8 w-8 rounded-full"
-                style={{
-                  background: 'linear-gradient(135deg, #60A5FA 0%, #3B82F6 100%)',
-                  opacity: 0.9
-                }}
+              <motion.div 
+                className="h-9 w-9 rounded-xl bg-gradient-to-br from-blue-400 to-blue-300"
+                animate={pulseAnimation}
               />
             </div>
           </div>
