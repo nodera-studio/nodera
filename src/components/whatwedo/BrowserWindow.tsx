@@ -8,7 +8,7 @@ interface BrowserWindowProps {
 
 const BrowserWindow: React.FC<BrowserWindowProps> = ({ children }) => {
   return (
-    <div className={`${styles.browserWindow} w-full max-w-lg mt-4`}>
+    <div className={`${styles.browserWindow} w-full max-w-xl mt-4`}>
       <div className={styles.browserHeader}>
         <div className={styles.browserDots}>
           <div className={`${styles.dot} bg-red-400`}></div>
