@@ -35,13 +35,13 @@
 @media (min-width: 640px) {
   .browserWindow {
     width: 100%;
-    min-height: 240px;
+    min-height: 280px;
   }
 }
 
 @media (min-width: 768px) {
   .browserWindow {
     width: 100%;
-    min-height: 280px;
+    min-height: 320px;
   }
 }
