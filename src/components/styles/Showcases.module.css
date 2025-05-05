@@ -7,7 +7,7 @@
   transform: translate3d(0, 0, 0);
   will-change: transform, opacity;
   position: relative;
-  height: 80vh;
+  height: 100vh;
   flex: 1;
 }
 
@@ -44,7 +44,7 @@
 
 @media (min-width: 768px) {
   .showcaseCard {
-    height: 50vh; /* Set height to 50vh for tablet and desktop views */
+    height: 100vh; /* Updated to 100vh for tablet and desktop views */
   }
   
   .imageContainer {
@@ -55,7 +55,7 @@
 @media (max-width: 768px) {
   .showcaseCard {
     padding: 1rem;
-    height: 80vh; /* Keep the height consistent on mobile */
+    height: 100vh; /* Updated to 100vh for mobile */
   }
 
   .cardStackContainer {
