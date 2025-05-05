@@ -20,13 +20,13 @@ const queryClient = new QueryClient({
     queries: {
       retry: false,
       refetchOnWindowFocus: false,
-      suspense: false, // Disable React Suspense mode for queries
+      // Removed the suspense property as it's not supported in the current type definition
     },
   },
 });
 
 // Error boundary component for catching and displaying errors
-class ErrorBoundary extends React.Component {
+class ErrorBoundary extends React.Component<{ children: React.ReactNode }> {
   state = { hasError: false, error: null };
   
   static getDerivedStateFromError(error) {
