@@ -39,7 +39,7 @@ const WhatWeDo = () => {
       
       <div className="px-2.5 space-y-2.5">
         {/* Card 1: User Experience */}
-        <div className={styles.showcaseCard}>
+        <div className={`${styles.showcaseCard} transform-none`}>
           <div className={`h-full w-full absolute top-0 left-0 bg-gradient-to-br from-blue-300 opacity-10`} />
           
           <div className="flex flex-col items-center text-center px-5 md:px-8 pt-10 pb-8 relative z-10 h-full">
@@ -102,7 +102,7 @@ const WhatWeDo = () => {
         </div>
         
         {/* Card 2: Performance */}
-        <div className={styles.showcaseCard}>
+        <div className={`${styles.showcaseCard} transform-none`}>
           <div className={`h-full w-full absolute top-0 left-0 bg-gradient-to-bl from-purple-300 opacity-10`} />
           
           <div className="flex flex-col items-center text-center px-5 md:px-8 pt-10 pb-8 relative z-10 h-full">
