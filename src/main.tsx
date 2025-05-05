@@ -4,9 +4,10 @@ import { createRoot } from 'react-dom/client';
 import App from './App.tsx';
 import './styles/index.css';
 
-// Function to initialize the app
-const initializeApp = () => {
+// Wait for document to be fully loaded and available
+document.addEventListener('DOMContentLoaded', () => {
   const rootElement = document.getElementById("root");
+  
   if (rootElement) {
     createRoot(rootElement).render(
       <React.StrictMode>
@@ -16,12 +17,22 @@ const initializeApp = () => {
   } else {
     console.error("Root element not found");
   }
-};
+});
 
-// Ensure DOM is fully loaded before initializing
+// In case DOMContentLoaded has already fired
 if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', initializeApp);
+  // The document is still loading, wait for DOMContentLoaded
 } else {
-  // DOM already loaded
-  initializeApp();
+  // DOMContentLoaded has already fired
+  const rootElement = document.getElementById("root");
+  
+  if (rootElement) {
+    createRoot(rootElement).render(
+      <React.StrictMode>
+        <App />
+      </React.StrictMode>
+    );
+  } else {
+    console.error("Root element not found");
+  }
 }
