@@ -1,3 +1,4 @@
+
 .showcaseCard {
   background-color: #F9F9F9;
   border-radius: 0;
@@ -27,6 +28,12 @@
     display: none !important;
   }
 } 
+
+@media (min-width: 768px) {
+  .showcaseCard {
+    height: 50vh; /* Set height to 50vh for tablet and desktop views */
+  }
+}
 
 @media (max-width: 768px) {
   .showcaseCard {
