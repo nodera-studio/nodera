@@ -11,9 +11,10 @@
   flex: 1;
 }
 
-.showcaseCard:hover {
+/* Removing this hover effect */
+/* .showcaseCard:hover {
   transform: translateY(-5px);
-}
+} */
 
 .cardStackContainer {
   position: relative;
