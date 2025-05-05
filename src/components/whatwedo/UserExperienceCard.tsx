@@ -43,32 +43,96 @@ const UserExperienceCard: React.FC<UserExperienceCardProps> = ({ shouldReduceMot
         </Button>
         
         <BrowserWindow>
-          <div className="p-4 bg-white space-y-3">
+          <div className="p-4 bg-white space-y-5">
             <motion.div 
-              className="h-3 bg-gray-100 w-3/4 rounded"
+              className="h-4 bg-gray-200 w-3/4 rounded-md"
               animate={lineAnimation}
             />
             <motion.div 
-              className="h-3 bg-gray-100 w-full rounded"
+              className="h-4 bg-gray-200 w-full rounded-md"
               animate={lineAnimation}
             />
-            <div className="grid grid-cols-2 gap-2 pt-2">
+            
+            <div className="grid grid-cols-2 gap-4 pt-4">
               {[1, 2, 3, 4].map((_, index) => (
                 <motion.div 
                   key={index}
-                  className="h-16 rounded bg-blue-50"
+                  className="h-24 rounded-lg flex items-center justify-center"
+                  style={{
+                    backgroundColor: '#8B5CF6', // Vivid purple for a bolder appearance
+                    opacity: 0.8
+                  }}
                   animate={{
-                    backgroundColor: ['#D8D8FF', '#E5E5FF', '#D8D8FF'],
+                    backgroundColor: ['#8B5CF6', '#9061F9', '#8B5CF6'],
+                    opacity: [0.8, 0.9, 0.8],
+                    scale: [1, 1.02, 1],
                     transition: {
                       repeat: Infinity,
                       repeatType: "mirror" as const,
-                      duration: 2,
+                      duration: 3,
                       ease: "easeInOut",
                       delay: index * 0.2
                     }
                   }}
-                />
+                >
+                  <div className="h-12 w-12 bg-white bg-opacity-30 rounded-md" />
+                </motion.div>
               ))}
+            </div>
+            
+            <div className="grid grid-cols-3 gap-3 pt-2">
+              <motion.div 
+                className="h-16 rounded-lg bg-blue-100"
+                animate={{
+                  backgroundColor: ['#E6EFFF', '#F0F7FF', '#E6EFFF'],
+                  transition: {
+                    repeat: Infinity,
+                    repeatType: "mirror" as const,
+                    duration: 2.5,
+                    ease: "easeInOut"
+                  }
+                }}
+              />
+              <motion.div 
+                className="h-16 rounded-lg col-span-2 bg-blue-50"
+                animate={{
+                  backgroundColor: ['#EDF5FF', '#F5F9FF', '#EDF5FF'],
+                  transition: {
+                    repeat: Infinity,
+                    repeatType: "mirror" as const,
+                    duration: 3,
+                    ease: "easeInOut"
+                  }
+                }}
+              />
+            </div>
+            
+            <div className="flex justify-end space-x-2 pt-2">
+              <motion.div 
+                className="h-10 w-10 rounded-lg bg-green-400"
+                animate={{
+                  rotate: shouldReduceMotion ? 0 : [0, 5, 0, -5, 0],
+                  transition: {
+                    repeat: Infinity,
+                    repeatType: "loop" as const,
+                    duration: 5,
+                    ease: "easeInOut"
+                  }
+                }}
+              />
+              <motion.div 
+                className="h-10 w-10 rounded-lg bg-blue-400"
+                animate={{
+                  rotate: shouldReduceMotion ? 0 : [0, -5, 0, 5, 0],
+                  transition: {
+                    repeat: Infinity,
+                    repeatType: "loop" as const,
+                    duration: 5,
+                    ease: "easeInOut",
+                    delay: 0.5
+                  }
+                }}
+              />
             </div>
           </div>
         </BrowserWindow>
