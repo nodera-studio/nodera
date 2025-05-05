@@ -37,7 +37,7 @@ const WhatWeDo = () => {
     <div className="bg-white">
       <WhatWeDoTitle />
       
-      <div className="px-2.5 space-y-2.5">
+      <div className="px-0 space-y-2.5">
         {/* Card 1: User Experience */}
         <div className={`${styles.showcaseCard} transform-none`}>
           <div className={`h-full w-full absolute top-0 left-0 bg-gradient-to-br from-blue-300 opacity-10`} />
