@@ -4,14 +4,7 @@ import { createRoot } from 'react-dom/client';
 import App from './App.tsx';
 import './styles/index.css';
 
-if (window.matchMedia("(max-width: 768px)").matches) {
-  document.addEventListener('touchmove', function(e) {
-    if (document.body.classList.contains('bodyScrollLocked')) {
-      e.preventDefault();
-    }
-  }, { passive: false });
-}
-
+// Create a root for rendering
 const rootElement = document.getElementById("root");
 if (rootElement) {
   createRoot(rootElement).render(
