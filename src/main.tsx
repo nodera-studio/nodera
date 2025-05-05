@@ -4,35 +4,40 @@ import { createRoot } from 'react-dom/client';
 import App from './App.tsx';
 import './styles/index.css';
 
-// Wait for document to be fully loaded and available
-document.addEventListener('DOMContentLoaded', () => {
+// Safe mounting function to ensure DOM is ready
+const mountApp = () => {
   const rootElement = document.getElementById("root");
   
   if (rootElement) {
-    createRoot(rootElement).render(
-      <React.StrictMode>
-        <App />
-      </React.StrictMode>
-    );
+    try {
+      createRoot(rootElement).render(
+        <React.StrictMode>
+          <App />
+        </React.StrictMode>
+      );
+    } catch (error) {
+      console.error("Error rendering app:", error);
+      
+      // Fallback rendering without StrictMode if there's an error
+      if (error && rootElement) {
+        try {
+          createRoot(rootElement).render(<App />);
+        } catch (fallbackError) {
+          console.error("Critical error rendering app:", fallbackError);
+          rootElement.innerHTML = '<div style="padding: 20px; text-align: center;">Unable to load application. Please refresh the page.</div>';
+        }
+      }
+    }
   } else {
     console.error("Root element not found");
   }
-});
+};
 
-// In case DOMContentLoaded has already fired
+// Handle different document ready states
 if (document.readyState === 'loading') {
-  // The document is still loading, wait for DOMContentLoaded
+  // Document still loading, wait for DOMContentLoaded
+  document.addEventListener('DOMContentLoaded', mountApp);
 } else {
   // DOMContentLoaded has already fired
-  const rootElement = document.getElementById("root");
-  
-  if (rootElement) {
-    createRoot(rootElement).render(
-      <React.StrictMode>
-        <App />
-      </React.StrictMode>
-    );
-  } else {
-    console.error("Root element not found");
-  }
+  mountApp();
 }
