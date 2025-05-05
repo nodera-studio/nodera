@@ -4,28 +4,30 @@
   width: 100%;
   height: 100%;
   background: white;
-  border-radius: 10px;
+  border-radius: 16px;
   overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05);
 }
 
 .browserHeader {
-  height: 30px;
-  background: #333333;
-  border-bottom: 1px solid #EAEAEA;
+  height: 36px;
+  background: linear-gradient(to bottom, #f8f8f8, #eeeeee);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
   display: flex;
   align-items: center;
-  padding: 0 12px;
+  padding: 0 16px;
 }
 
 .browserDots {
   display: flex;
-  gap: 6px;
+  gap: 8px;
 }
 
 .dot {
-  width: 10px;
-  height: 10px;
+  width: 12px;
+  height: 12px;
   border-radius: 50%;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
 }
 
 .browserContent {
