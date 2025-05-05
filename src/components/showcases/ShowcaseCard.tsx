@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Button } from "@/components/ui/button";
 import styles from '../styles/Showcases.module.css';
@@ -50,7 +51,7 @@ const ShowcaseCard = React.forwardRef<HTMLDivElement, ShowcaseCardProps>(({
     >
       <div className={`h-full w-full absolute top-0 left-0 bg-gradient-to-br ${gradientDirection} ${gradientColor} opacity-10`} />
       
-      <div className="flex flex-col items-center text-center px-5 md:px-8 pt-10 pb-8 relative z-10">
+      <div className="flex flex-col items-center text-center px-5 md:px-8 pt-10 pb-8 relative z-10 h-full">
         <h3 className="text-3xl md:text-4xl mb-3">{title}</h3>
         <p className="text-gray-600 text-lg mb-6 max-w-lg">
           {description}
@@ -71,11 +72,11 @@ const ShowcaseCard = React.forwardRef<HTMLDivElement, ShowcaseCardProps>(({
             <a href="#">More Creations</a>
           </Button>
         </div>
-        <div className="mt-4 max-w-xl">
+        <div className={`${styles.imageContainer} mt-4 flex-grow flex items-center justify-center`}>
           <img 
             src={imageSrc} 
             alt={imageAlt} 
-            className="w-full h-auto object-contain"
+            className="w-auto h-auto max-w-full max-h-full object-contain"
           />
         </div>
       </div>
