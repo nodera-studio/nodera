@@ -4,14 +4,14 @@
   width: 100%;
   height: 100%;
   background: white;
-  border-radius: 12px;
+  border-radius: 8px;
   overflow: hidden;
   border: 1px solid #EAEAEA;
 }
 
 .browserHeader {
   height: 36px;
-  background: linear-gradient(to bottom, #f8f8f8, #eeeeee);
+  background: #f8f8f8;
   border-bottom: 1px solid #EAEAEA;
   display: flex;
   align-items: center;
@@ -49,14 +49,3 @@
   }
 }
 
-@media (min-width: 641px) and (max-width: 768px) {
-  .browserWindow {
-    min-height: 280px;
-  }
-}
-
-@media (min-width: 769px) {
-  .browserWindow {
-    min-height: 320px;
-  }
-}

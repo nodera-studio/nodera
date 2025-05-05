@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import styles from '../styles/Showcases.module.css';
@@ -33,19 +32,19 @@ const PerformanceCard: React.FC<PerformanceCardProps> = ({ shouldReduceMotion, i
 
   return (
     <div className={`${styles.showcaseCard} transform-none`}>
-      <div className={`h-full w-full absolute top-0 left-0 bg-gradient-to-bl from-purple-300 opacity-10`} />
+      <div className={`h-full w-full absolute top-0 left-0 bg-purple-50`} />
       
       <div className="flex flex-col items-center text-center px-5 md:px-8 pt-10 pb-8 relative z-10 h-full">
-        <h3 className="text-3xl md:text-4xl mb-3">Engineered for Performance</h3>
-        <p className="text-gray-600 text-base md:text-base mb-6 max-w-lg">
+        <h3 className="text-2xl md:text-3xl mb-3">Engineered for Performance</h3>
+        <p className="text-gray-600 text-sm md:text-base mb-6 max-w-lg">
           Digital experiences that perform as beautifully as they look. Every element serves a purpose while engaging visitors and elevating brands. Simple outside, sophisticated inside.
         </p>
         
         <Button
-          variant="primary"
+          variant="outline"
           size="default"
           asChild
-          className="mb-8"
+          className="mb-8 border border-gray-200"
         >
           <Link to="/services">Learn more</Link>
         </Button>
@@ -61,16 +60,16 @@ const PerformanceCard: React.FC<PerformanceCardProps> = ({ shouldReduceMotion, i
                     placeholder="https://nodera.studio/" 
                     className="border-gray-200 bg-gray-50 pr-16 text-xs md:text-sm h-8 md:h-10"
                   />
-                  <button className="absolute right-1 top-1 bottom-1 px-2 md:px-3 bg-gradient-to-br from-blue-500 to-blue-600 rounded-md text-white text-xs">
+                  <button className="absolute right-1 top-1 bottom-1 px-2 md:px-3 bg-blue-500 rounded text-white text-xs">
                     Analyze
                   </button>
                 </div>
               </div>
               
-              <div className="flex justify-center mb-4 md:mb-6 overflow-hidden rounded-full bg-gray-100 p-0.5">
+              <div className="flex justify-center mb-4 md:mb-6 overflow-hidden rounded bg-gray-50 p-0.5 border border-gray-100">
                 <button
                   onClick={() => setActiveTab('mobile')}
-                  className={`flex items-center px-3 py-1 md:py-1.5 text-xs md:text-sm transition-all duration-300 rounded-full ${
+                  className={`flex items-center px-3 py-1 md:py-1.5 text-xs md:text-sm transition-colors rounded ${
                     activeTab === 'mobile'
                       ? 'bg-white text-gray-800 border border-gray-100'
                       : 'text-gray-600'
@@ -85,7 +84,7 @@ const PerformanceCard: React.FC<PerformanceCardProps> = ({ shouldReduceMotion, i
                 </button>
                 <button
                   onClick={() => setActiveTab('desktop')}
-                  className={`flex items-center px-3 py-1 md:py-1.5 text-xs md:text-sm transition-all duration-300 rounded-full ${
+                  className={`flex items-center px-3 py-1 md:py-1.5 text-xs md:text-sm transition-colors rounded ${
                     activeTab === 'desktop'
                       ? 'bg-white text-gray-800 border border-gray-100'
                       : 'text-gray-600'
@@ -122,17 +121,11 @@ const PerformanceCard: React.FC<PerformanceCardProps> = ({ shouldReduceMotion, i
                           cy="18"
                           r="16"
                           fill="none"
-                          stroke="url(#gradient-${metric.name})"
+                          stroke="#00C48C"
                           strokeWidth="1"
                           strokeDasharray={`${Number(metric.value)} 100`}
                           strokeLinecap="round"
                         />
-                        <defs>
-                          <linearGradient id={`gradient-${metric.name}`} x1="0%" y1="0%" x2="100%" y2="100%">
-                            <stop offset="0%" stopColor="#00C48C" />
-                            <stop offset="100%" stopColor="#00E4A1" />
-                          </linearGradient>
-                        </defs>
                       </svg>
                       <div className="absolute top-0 left-0 w-full h-full flex items-center justify-center text-xs md:text-sm font-semibold text-gray-800">
                         {metric.value}
