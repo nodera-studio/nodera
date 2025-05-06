@@ -1,7 +1,5 @@
-
 .processSection {
   background-color: #FFFFFF;
-  padding: 2rem;
 }
 
 .container {
@@ -30,8 +28,6 @@
 .titleContainer {
   width: 100%;
   background-color: #F9F9F9;
-  padding: 2.5rem 0;
-  margin-bottom: 2.5rem;
   margin-top: 0.625rem;
 }
 
@@ -63,7 +59,12 @@
 
 @media (max-width: 480px) {
   .processSection {
-    padding: 1rem;
+    /* padding: 1rem; */ /* Removed to allow full-width title card */
+  }
+  
+  .container { /* Added rule for mobile padding for card container */
+    padding-left: 1rem;
+    padding-right: 1rem;
   }
   
   .sectionTitle {
