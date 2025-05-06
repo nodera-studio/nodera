@@ -11,7 +11,7 @@
 }
 
 .browserHeader {
-  height: 32px;
+  height: 36px;
   background: #f8f8f8;
   border-bottom: 1px solid #EAEAEA;
   display: flex;
@@ -32,7 +32,7 @@
 
 .browserContent {
   padding: 0;
-  height: calc(100% - 32px);
+  height: calc(100% - 36px);
   overflow-y: auto;
   overflow-x: hidden;
   scroll-behavior: smooth;
@@ -55,16 +55,16 @@
 
 @media (max-width: 640px) {
   .browserHeader {
-    height: 24px;
+    height: 36px; /* Keep consistent with desktop */
     padding: 0 10px;
   }
   
   .dot {
-    width: 7px;
-    height: 7px;
+    width: 8px;
+    height: 8px;
   }
   
   .browserContent {
-    height: calc(100% - 24px);
+    height: calc(100% - 36px);
   }
 }

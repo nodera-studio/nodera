@@ -126,6 +126,7 @@ const PerformanceCard: React.FC<PerformanceCardProps> = ({ shouldReduceMotion, i
       ([entry]) => {
         if (entry.isIntersecting) {
           setIsInView(true);
+          setShowMetrics(true); // Ensure metrics are shown when in view
         }
       },
       { threshold: 0.3 }
@@ -143,15 +144,18 @@ const PerformanceCard: React.FC<PerformanceCardProps> = ({ shouldReduceMotion, i
     };
   }, []);
   
-  // Handle tab change animation
+  // Handle tab change
   const handleTabChange = (tab: 'desktop' | 'mobile') => {
     if (tab === activeTab) return;
     
+    // Temporarily hide metrics during tab change
     setShowMetrics(false);
+    
+    // Use setTimeout to create a visual transition between tabs
     setTimeout(() => {
       setActiveTab(tab);
-      setKey(prev => prev + 1);
-      setShowMetrics(true);
+      setKey(prev => prev + 1); // Increment key to force re-render
+      setShowMetrics(true); // Show metrics for the new tab
     }, 300);
   };
 
@@ -194,7 +198,7 @@ const PerformanceCard: React.FC<PerformanceCardProps> = ({ shouldReduceMotion, i
         <div className="flex-1 w-full flex items-center justify-center mb-4">
           <BrowserWindow className="max-h-[450px] h-[450px] mx-4 md:mx-8">
             <motion.div 
-              className="p-4 md:p-6 bg-white"
+              className="p-4 md:p-6 bg-white h-full"
               initial={{ opacity: 0 }}
               animate={isInView ? { opacity: 1 } : { opacity: 0 }}
               transition={{ duration: 0.5 }}
@@ -235,10 +239,10 @@ const PerformanceCard: React.FC<PerformanceCardProps> = ({ shouldReduceMotion, i
                 >
                   <button
                     onClick={() => handleTabChange('mobile')}
-                    className={`flex items-center px-4 py-1.5 text-sm transition-colors rounded-md ${
+                    className={`flex items-center px-4 py-2 text-sm transition-colors rounded-md ${
                       activeTab === 'mobile'
                         ? 'bg-white text-gray-800 border border-gray-200 shadow-sm'
-                        : 'text-gray-600'
+                        : 'text-gray-600 hover:bg-gray-100'
                     }`}
                   >
                     <span className="flex items-center">
@@ -250,10 +254,10 @@ const PerformanceCard: React.FC<PerformanceCardProps> = ({ shouldReduceMotion, i
                   </button>
                   <button
                     onClick={() => handleTabChange('desktop')}
-                    className={`flex items-center px-4 py-1.5 text-sm transition-colors rounded-md ${
+                    className={`flex items-center px-4 py-2 text-sm transition-colors rounded-md ${
                       activeTab === 'desktop'
                         ? 'bg-white text-gray-800 border border-gray-200 shadow-sm'
-                        : 'text-gray-600'
+                        : 'text-gray-600 hover:bg-gray-100'
                     }`}
                   >
                     <span className="flex items-center">
@@ -266,7 +270,7 @@ const PerformanceCard: React.FC<PerformanceCardProps> = ({ shouldReduceMotion, i
                 </motion.div>
               </div>
               
-              <div>
+              <div className="flex-1">
                 <motion.h5 
                   className="text-sm font-medium mb-5 text-gray-700"
                   initial={{ opacity: 0 }}
@@ -288,7 +292,7 @@ const PerformanceCard: React.FC<PerformanceCardProps> = ({ shouldReduceMotion, i
                     >
                       {metrics.map((metric, index) => (
                         <MetricCircle 
-                          key={`${metric.name}-${key}`}
+                          key={`${metric.name}-${key}-${index}`}
                           name={metric.name}
                           value={metric.value}
                           color={metric.color}
