@@ -1,5 +1,7 @@
+
 .processSection {
   background-color: #FFFFFF;
+  padding-bottom: 3rem;
 }
 
 .container {
@@ -25,44 +27,23 @@
   color: transparent;
 }
 
-.titleContainer {
-  width: 100%;
-  background-color: #F9F9F9;
-  margin-top: 0.625rem;
-}
-
 .processCards {
   display: grid;
   grid-template-columns: repeat(1, minmax(0, 1fr));
-  gap: 1rem;
+  gap: 10px;
   position: relative;
-}
-
-.columnDivider {
-  display: none;
+  padding: 0 1rem;
 }
 
 @media (min-width: 768px) {
   .processCards {
     grid-template-columns: repeat(3, 1fr);
-    gap: 0;
-  }
-  
-  .columnDivider {
-    display: block;
-    width: 1px;
-    background-color: #E5E5E5;
-    height: 100%;
-    margin: 0 20px;
+    padding: 0;
   }
 }
 
 @media (max-width: 480px) {
-  .processSection {
-    /* padding: 1rem; */ /* Removed to allow full-width title card */
-  }
-  
-  .container { /* Added rule for mobile padding for card container */
+  .container {
     padding-left: 1rem;
     padding-right: 1rem;
   }
@@ -73,7 +54,7 @@
   }
   
   .processCards {
-    gap: 2rem;
+    gap: 10px;
   }
 }
 

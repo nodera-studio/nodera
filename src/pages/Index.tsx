@@ -1,3 +1,4 @@
+
 import React, { lazy, Suspense, useEffect } from 'react';
 import Header from '../components/Header';
 import Hero from '../components/Hero';
@@ -6,8 +7,7 @@ import CallToAction from '../components/CallToAction';
 import WhatWeDo from '../components/WhatWeDo';
 import Footer from '../components/Footer';
 import { useLocation } from 'react-router-dom';
-
-const TheProcess = lazy(() => import('../components/TheProcess'));
+import TheProcess from '../components/TheProcess';
 
 const Index = () => {
   const location = useLocation();
@@ -38,11 +38,9 @@ const Index = () => {
         <section id="work" className="relative z-30">
           <WhatWeDo />
         </section>
-        <Suspense fallback={<div className="h-[600px]" />}>
-          <section id="about" className="relative z-40">
-            <TheProcess />
-          </section>
-        </Suspense>
+        <section id="about" className="relative z-40">
+          <TheProcess />
+        </section>
         <section id="contact" className="relative z-50">
           <CallToAction />
         </section>

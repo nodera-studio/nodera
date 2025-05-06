@@ -1,0 +1,44 @@
+
+.processCard {
+  background-color: #F9F9F9;
+  height: 50vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.iconContainer {
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cardTitle {
+  font-family: 'Baloo Da 2', sans-serif;
+  font-size: 1.75rem;
+  font-weight: 600;
+  color: #000000;
+  margin-bottom: 1rem;
+}
+
+.cardDescription {
+  font-family: 'Baloo Da 2', sans-serif;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #555;
+}
+
+/* Apply margins to the first and last cards when they are in a grid */
+@media (min-width: 768px) {
+  .processCard:first-child {
+    margin-left: 10px;
+  }
+  
+  .processCard:last-child {
+    margin-right: 10px;
+  }
+}

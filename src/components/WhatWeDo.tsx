@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { useReducedMotion } from 'framer-motion';
 import WhatWeDoTitle from './whatwedo/WhatWeDoTitle';
@@ -14,7 +15,7 @@ const WhatWeDo = () => {
     <div className="bg-white">
       <WhatWeDoTitle />
       
-      <div className="flex flex-col md:flex-row gap-2.5 max-w-full px-2.5 mb-2.5">
+      <div className="flex flex-col md:flex-row gap-2.5 max-w-full px-2.5 mb-10">
         <UserExperienceCard shouldReduceMotion={shouldReduceMotion} isMobile={isMobile} />
         <PerformanceCard shouldReduceMotion={shouldReduceMotion} isMobile={isMobile} />
       </div>

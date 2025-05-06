@@ -1,192 +1,25 @@
 
-@tailwind components;
+/* Global components styles */
 
-@layer components {
-  .gradient-text {
-    @apply bg-gradient-text bg-clip-text text-transparent;
-  }
-  
-  .inner-shadow-text {
-    background-color: white;
-    color: white;
-    -webkit-background-clip: text;
-    background-clip: text;
-  }
-  
-  .gradient-word {
-    background-image: linear-gradient(90deg, #D1A2FF 0%, #007AFF 100%);
-    background-size: 200% auto;
-    color: transparent;
-    -webkit-background-clip: text;
-    background-clip: text;
-  }
-  
-  .gradient-word.is-visible {
-    animation: shimmer 2.5s linear infinite 0.5s;
-  }
-  
-  .card-hover {
-    @apply transition-transform duration-300 ease-out;
-    will-change: transform;
-  }
-  
-  .card-hover:hover {
-    @apply transform scale-105 z-10;
-  }
-  
+.gradient-word {
+  background: linear-gradient(90deg, #D1A2FF 0%, #007AFF 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+}
+
+.section-title {
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 42px;
+  font-weight: 700;
+  font-family: 'Comfortaa', sans-serif;
+  color: #000000;
+}
+
+@media (max-width: 480px) {
   .section-title {
-    opacity: 0;
-    transform: translateY(20px);
-    font-size: clamp(30px, 5vw, 48px);
-  }
-  
-  .section-title.is-visible {
-    animation: fadeInUp 0.8s cubic-bezier(0.25, 0.1, 0.25, 1.0) forwards;
-  }
-  
-  .showcase-image {
-    @apply transition-transform duration-300 ease-out;
-    will-change: transform;
-  }
-  
-  .gradient-lights {
-    position: absolute;
-    border-radius: 50%;
-    filter: blur(80px);
-    opacity: 0.5;
-    animation: floatAround 15s ease-in-out infinite;
-  }
-  
-  @keyframes floatAround {
-    0%, 100% {
-      transform: translate(0, 0);
-    }
-    25% {
-      transform: translate(5%, 5%);
-    }
-    50% {
-      transform: translate(-5%, 2%);
-    }
-    75% {
-      transform: translate(2%, -5%);
-    }
-  }
-
-  .hero-subtitle {
-    font-family: 'Comfortaa', sans-serif;
-    font-weight: 400;
-    font-size: clamp(18px, 3vw, 24px);
-    color: #000000;
-    letter-spacing: 0.02em;
-    line-height: 1.6;
-    opacity: 0.8;
-  }
-
-  .view-all-link {
-    font-family: 'Comfortaa', sans-serif;
-    font-weight: 700;
-    font-size: clamp(18px, 3vw, 30px);
-    background: linear-gradient(90deg, #D1A2FF 0%, #007AFF 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    text-decoration: none;
-    @apply hover:translate-x-1 transition-transform;
-  }
-
-  .text-shadow-subtle {
-    text-shadow: none;
-  }
-  
-  .global-divider {
-    width: 100%;
-    height: 5px;
-    background-color: transparent;
-    margin-top: 0;
-    margin-bottom: 0;
-    margin-left: 0;
-    margin-right: 0;
-    position: relative;
-    z-index: 50;
-  }
-
-  @media (max-width: 767px) {
-    .global-divider {
-      margin-top: 0;
-      margin-bottom: 0;
-    }
-  }
-  
-  .card-animation {
-    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-    will-change: transform, opacity;
-  }
-  
-  /* New styles for lighter, more refined UI elements */
-  .apple-gradient-blue {
-    @apply bg-gradient-to-r from-blue-300 to-indigo-400;
-  }
-  
-  .apple-gradient-gray {
-    @apply bg-gradient-to-r from-gray-100 to-gray-200;
-  }
-  
-  .apple-card {
-    @apply bg-white rounded-xl border border-gray-100 shadow-sm;
-  }
-  
-  .apple-button {
-    @apply rounded-full px-4 py-2 text-sm font-medium transition-all duration-300;
-  }
-  
-  .apple-button-primary {
-    @apply bg-gradient-to-r from-blue-400 to-indigo-400 text-white hover:from-blue-500 hover:to-indigo-500 transition-colors duration-300;
-  }
-  
-  .apple-button-secondary {
-    @apply bg-gray-100 text-gray-800 hover:bg-gray-200 transition-colors duration-300;
-  }
-  
-  /* Animation for scroll hint */
-  @keyframes scrollHint {
-    0%, 100% {
-      transform: translateY(0);
-    }
-    50% {
-      transform: translateY(8px);
-    }
-  }
-  
-  .scroll-hint {
-    animation: scrollHint 2s ease-in-out infinite;
-    opacity: 0.7;
-  }
-  
-  /* Animation for circle progress - shortened duration */
-  @keyframes circleProgress {
-    from {
-      stroke-dasharray: 0 100;
-    }
-    to {
-      stroke-dasharray: var(--target-value) 100;
-    }
-  }
-  
-  .circle-progress {
-    animation: circleProgress 1s ease-out forwards;
-  }
-  
-  /* Enhanced smooth transitions for UI elements */
-  .smooth-hover-transition {
-    transition: all 0.3s ease-out;
-  }
-  
-  .feature-card {
-    transition: transform 0.3s ease-out, background-color 0.3s ease-out, 
-                border-color 0.3s ease-out, box-shadow 0.3s ease-out;
-  }
-  
-  .feature-card:hover {
-    transform: scale(1.03);
+    font-size: 32px;
   }
 }
