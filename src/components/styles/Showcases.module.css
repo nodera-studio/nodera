@@ -18,11 +18,12 @@
 
 .imageContainer {
   width: 100%;
-  max-height: 68%;
+  max-height: 62%;
   overflow: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-bottom: 16px;
 }
 
 .imageContainer img {
@@ -43,7 +44,7 @@
   }
   
   .imageContainer {
-    max-height: 62%;
+    max-height: 58%;
   }
 }
 

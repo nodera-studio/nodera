@@ -12,10 +12,10 @@ const WhatWeDo = () => {
   const isMobile = useIsMobile();
 
   return (
-    <div className="bg-white">
+    <div className="bg-white pb-8">
       <WhatWeDoTitle />
       
-      <div className="flex flex-col md:flex-row gap-2.5 max-w-full px-2.5">
+      <div className="flex flex-col md:flex-row gap-2.5 max-w-full px-2.5 mb-4">
         <UserExperienceCard shouldReduceMotion={shouldReduceMotion} isMobile={isMobile} />
         <PerformanceCard shouldReduceMotion={shouldReduceMotion} isMobile={isMobile} />
       </div>

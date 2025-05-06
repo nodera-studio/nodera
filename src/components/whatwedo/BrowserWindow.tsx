@@ -4,11 +4,12 @@ import styles from './BrowserWindow.module.css';
 
 interface BrowserWindowProps {
   children: ReactNode;
+  className?: string;
 }
 
-const BrowserWindow: React.FC<BrowserWindowProps> = ({ children }) => {
+const BrowserWindow: React.FC<BrowserWindowProps> = ({ children, className = '' }) => {
   return (
-    <div className={`${styles.browserWindow} w-full max-w-xl mt-2`}>
+    <div className={`${styles.browserWindow} ${className} w-full`}>
       <div className={styles.browserHeader}>
         <div className={styles.browserDots}>
           <div className={`${styles.dot} bg-red-400`}></div>

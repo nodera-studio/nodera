@@ -22,13 +22,13 @@ const UserExperienceCard: React.FC<UserExperienceCardProps> = ({ shouldReduceMot
     >
       <div className={`h-full w-full absolute top-0 left-0 bg-gradient-to-br from-blue-300/10 to-blue-100/10`} />
       
-      <div className="flex flex-col items-center text-center px-5 md:px-8 pt-10 pb-8 relative z-10 h-full">
+      <div className="flex flex-col items-center text-center px-5 md:px-8 pt-10 pb-12 relative z-10 h-full">
         <h3 className="text-3xl md:text-4xl mb-3 font-bold">The Art of User Experience</h3>
         <p className="text-gray-600 text-lg mb-6 max-w-lg">
           Powerful code that anticipates challenges. Scalable architecture paired with intuitive interfaces transforms visions into digital reality, no compromise needed.
         </p>
         
-        <div className="flex flex-wrap justify-center gap-3 mb-8">
+        <div className="flex flex-wrap justify-center gap-3 mb-6">
           <Button
             variant="primary"
             size="default"
@@ -45,8 +45,8 @@ const UserExperienceCard: React.FC<UserExperienceCardProps> = ({ shouldReduceMot
           </Button>
         </div>
         
-        <div className={`${styles.imageContainer} mt-4 flex-grow flex items-center justify-center`}>
-          <BrowserWindow>
+        <div className="flex-1 w-full flex items-center justify-center mb-4">
+          <BrowserWindow className="max-h-[450px]">
             <div className="p-4 md:p-6 bg-white space-y-6">
               {/* Header lines with improved styling */}
               <div className="space-y-3">

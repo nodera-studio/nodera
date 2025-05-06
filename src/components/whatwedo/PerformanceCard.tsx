@@ -41,13 +41,13 @@ const PerformanceCard: React.FC<PerformanceCardProps> = ({ shouldReduceMotion, i
     >
       <div className={`h-full w-full absolute top-0 left-0 bg-gradient-to-br from-purple-300/10 to-pink-100/10`} />
       
-      <div className="flex flex-col items-center text-center px-5 md:px-8 pt-10 pb-8 relative z-10 h-full">
+      <div className="flex flex-col items-center text-center px-5 md:px-8 pt-10 pb-12 relative z-10 h-full">
         <h3 className="text-3xl md:text-4xl mb-3 font-bold">Engineered for Performance</h3>
         <p className="text-gray-600 text-lg mb-6 max-w-lg">
           Digital experiences that perform as beautifully as they look. Every element serves a purpose while engaging visitors and elevating brands. Simple outside, sophisticated inside.
         </p>
         
-        <div className="flex flex-wrap justify-center gap-3 mb-8">
+        <div className="flex flex-wrap justify-center gap-3 mb-6">
           <Button
             variant="primary"
             size="default"
@@ -64,8 +64,8 @@ const PerformanceCard: React.FC<PerformanceCardProps> = ({ shouldReduceMotion, i
           </Button>
         </div>
         
-        <div className={`${styles.imageContainer} mt-4 flex-grow flex items-center justify-center`}>
-          <BrowserWindow>
+        <div className="flex-1 w-full flex items-center justify-center mb-4">
+          <BrowserWindow className="max-h-[450px]">
             <div className="p-4 md:p-6 bg-white">
               <div className="pb-4 md:pb-6">
                 <h4 className="text-sm md:text-base font-medium mb-4 text-gray-800">Report from May 5, 2025</h4>
