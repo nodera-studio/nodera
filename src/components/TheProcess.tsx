@@ -20,6 +20,7 @@ const devLogoIcons = [
 
 const TheProcess = () => {
   const ref = useRef(null);
+  const sectionTitleRef = useRef<HTMLHeadingElement>(null);
   const isInView = useInView(ref, { once: true, amount: 0.2 });
   const shouldReduceMotion = useReducedMotion();
   const [activeTab, setActiveTab] = useState('html');
@@ -74,6 +75,28 @@ function ModernApp() {
       setCodeContent(prev => ({ ...prev }));
     }
   }, [activeTab]);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.3 });
+    
+    const currentTitleRef = sectionTitleRef.current;
+    if (currentTitleRef) {
+      observer.observe(currentTitleRef);
+    }
+    
+    return () => {
+      if (currentTitleRef) {
+        observer.unobserve(currentTitleRef);
+      }
+    };
+  }, []);
 
   const handleCodeChange = (language: string, value: string) => {
     setCodeContent(prev => ({
@@ -203,16 +226,13 @@ function ModernApp() {
 
   return (
     <section ref={ref} className={styles.processSection} aria-label="Our Process">
+      <div className="bg-[#F9F9F9] py-10 text-center my-2.5">
+        <h2 ref={sectionTitleRef} className="section-title mx-auto">
+          The <span className="gradient-word">Process</span>
+        </h2>
+      </div>
+      
       <div className={styles.container}>
-        <motion.h2 
-          className={styles.sectionTitle}
-          initial="hidden"
-          animate={isInView ? "visible" : "hidden"}
-          variants={itemVariants}
-        >
-          The <span className={styles.gradientText}>Process</span>
-        </motion.h2>
-        
         <motion.div 
           className={styles.processCards}
           initial="hidden"

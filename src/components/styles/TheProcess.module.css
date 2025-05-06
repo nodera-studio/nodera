@@ -1,7 +1,7 @@
 
 .processSection {
-  background-color: #F7F7F9;
-  padding: 6rem 2rem;
+  background-color: #FFFFFF;
+  padding: 2rem;
 }
 
 .container {
@@ -55,7 +55,7 @@
 
 @media (max-width: 480px) {
   .processSection {
-    padding: 3rem 1rem;
+    padding: 1rem;
   }
   
   .sectionTitle {

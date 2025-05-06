@@ -8,6 +8,11 @@
   overflow: hidden;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
   border: 1px solid #EAEAEA;
+  transition: transform 0.3s ease;
+}
+
+.browserWindow:hover {
+  transform: translateY(-5px);
 }
 
 .browserHeader {
@@ -28,6 +33,11 @@
   width: 10px;
   height: 10px;
   border-radius: 50%;
+  transition: transform 0.2s ease;
+}
+
+.browserWindow:hover .dot {
+  transform: scale(1.1);
 }
 
 .browserContent {
