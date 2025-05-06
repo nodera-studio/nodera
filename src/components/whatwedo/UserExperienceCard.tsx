@@ -1,5 +1,5 @@
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import styles from '../styles/Showcases.module.css';
 import { Button } from '../ui/button';
@@ -16,13 +16,32 @@ const UserExperienceCard: React.FC<UserExperienceCardProps> = ({ shouldReduceMot
   const [activeFeature, setActiveFeature] = useState<number | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [showScrollHint, setShowScrollHint] = useState(true);
-
-  // Simulate loading state for the shimmer effect
+  const inViewRef = useRef(null);
+  
+  // Simulate loading state for the shimmer effect when component comes into view
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 1500);
-    return () => clearTimeout(timer);
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          const timer = setTimeout(() => {
+            setIsLoading(false);
+          }, 1500);
+          return () => clearTimeout(timer);
+        }
+      },
+      { threshold: 0.3 }
+    );
+
+    const currentRef = inViewRef.current;
+    if (currentRef) {
+      observer.observe(currentRef);
+    }
+
+    return () => {
+      if (currentRef) {
+        observer.unobserve(currentRef);
+      }
+    };
   }, []);
 
   // Hide scroll hint after a while
@@ -58,6 +77,7 @@ const UserExperienceCard: React.FC<UserExperienceCardProps> = ({ shouldReduceMot
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-100px" }}
       transition={{ duration: 0.6 }}
+      ref={inViewRef}
     >
       <div className={`h-full w-full absolute top-0 left-0 bg-gradient-to-br from-blue-300/10 to-blue-100/10`} />
       
@@ -92,7 +112,8 @@ const UserExperienceCard: React.FC<UserExperienceCardProps> = ({ shouldReduceMot
                 <div className="flex justify-between items-center px-4 py-3">
                   <motion.div 
                     initial={{ opacity: 0, scale: 0.8 }}
-                    animate={{ opacity: 1, scale: 1 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
                     transition={{ delay: 0.2, duration: 0.6 }}
                     className={`h-7 w-7 rounded-lg bg-gradient-to-r from-blue-400 to-blue-500 ${isLoading ? 'animate-pulse' : ''}`}
                   ></motion.div>
@@ -101,17 +122,19 @@ const UserExperienceCard: React.FC<UserExperienceCardProps> = ({ shouldReduceMot
                       <motion.div
                         key={item}
                         initial={{ opacity: 0, y: -10 }}
-                        animate={{ opacity: 1, y: 0 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
                         transition={{ delay: 0.2 + (item * 0.1), duration: 0.5 }}
-                        className={`h-3 w-14 rounded-full ${isLoading ? 'bg-gray-100 animate-pulse' : 'bg-gray-100 hover:bg-gray-200 transition-colors'}`}
+                        className={`h-3 w-14 rounded-full ${isLoading ? 'bg-gray-100 animate-pulse' : 'bg-gray-100 hover:bg-gray-200 transition-colors duration-300'}`}
                       ></motion.div>
                     ))}
                   </div>
                   <motion.div 
                     initial={{ opacity: 0, scale: 0.8 }}
-                    animate={{ opacity: 1, scale: 1 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
                     transition={{ delay: 0.6, duration: 0.5 }}
-                    className={`h-7 w-7 rounded-full ${isLoading ? 'bg-gray-100 animate-pulse' : 'bg-gray-100 hover:bg-gray-200 transition-colors'}`}
+                    className={`h-7 w-7 rounded-full ${isLoading ? 'bg-gray-100 animate-pulse' : 'bg-gray-100 hover:bg-gray-200 transition-colors duration-300'}`}
                   ></motion.div>
                 </div>
               </div>
@@ -121,19 +144,22 @@ const UserExperienceCard: React.FC<UserExperienceCardProps> = ({ shouldReduceMot
                 <div className="text-center space-y-4 mb-6">
                   <motion.div 
                     initial={{ opacity: 0, scale: 0.9 }}
-                    animate={{ opacity: 1, scale: 1 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
                     transition={{ delay: 0.7, duration: 0.6 }}
                     className={`h-7 w-3/4 mx-auto rounded-full ${isLoading ? 'bg-gray-100 animate-pulse' : 'bg-gradient-to-r from-blue-300 to-indigo-400 text-white'}`}
                   ></motion.div>
                   <motion.div 
                     initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
                     transition={{ delay: 0.8, duration: 0.5 }}
                     className={`h-3 w-full md:w-2/3 mx-auto rounded-full ${isLoading ? 'bg-gray-50 animate-pulse' : 'bg-gray-50'}`}
                   ></motion.div>
                   <motion.div 
                     initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
                     transition={{ delay: 0.9, duration: 0.5 }}
                     className={`h-3 w-5/6 md:w-1/2 mx-auto rounded-full ${isLoading ? 'bg-gray-50 animate-pulse' : 'bg-gray-50'}`}
                   ></motion.div>
@@ -141,7 +167,8 @@ const UserExperienceCard: React.FC<UserExperienceCardProps> = ({ shouldReduceMot
                 
                 <motion.div 
                   initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
                   transition={{ delay: 1.0, duration: 0.7 }}
                   className={`h-36 w-full rounded-xl overflow-hidden ${isLoading ? 'bg-gray-100 animate-pulse' : 'bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-100/50'}`}
                   whileHover={{ scale: 1.02 }}
@@ -150,7 +177,8 @@ const UserExperienceCard: React.FC<UserExperienceCardProps> = ({ shouldReduceMot
                     {!isLoading && (
                       <motion.div 
                         initial={{ opacity: 0, scale: 0 }}
-                        animate={{ opacity: 1, scale: 1 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        viewport={{ once: true }}
                         transition={{ delay: 1.3, type: "spring", stiffness: 200 }}
                         className="h-14 w-14 bg-gradient-to-r from-blue-400 to-indigo-400 rounded-full flex items-center justify-center"
                       >
@@ -165,7 +193,8 @@ const UserExperienceCard: React.FC<UserExperienceCardProps> = ({ shouldReduceMot
               <div className="px-4 py-6 bg-gray-50/70">
                 <motion.div 
                   initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
                   transition={{ delay: 1.4, duration: 0.5 }}
                   className={`h-5 w-28 mx-auto rounded-full mb-6 ${isLoading ? 'bg-gray-200 animate-pulse' : 'bg-gradient-to-r from-gray-700 to-gray-800'}`}
                 ></motion.div>
@@ -175,7 +204,8 @@ const UserExperienceCard: React.FC<UserExperienceCardProps> = ({ shouldReduceMot
                     <motion.div
                       key={feature}
                       initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
                       transition={{ delay: 1.5 + (feature * 0.15), duration: 0.5 }}
                       className={`p-3 rounded-xl ${isLoading 
                         ? 'bg-gray-100 animate-pulse' 
@@ -189,6 +219,7 @@ const UserExperienceCard: React.FC<UserExperienceCardProps> = ({ shouldReduceMot
                       }}
                       onHoverStart={() => handleFeatureHover(feature)}
                       onHoverEnd={() => handleFeatureHover(null)}
+                      style={{ transition: 'background 0.3s ease, border-color 0.3s ease, transform 0.3s ease' }}
                     >
                       <div className="flex flex-col items-center text-center">
                         <div className={`h-7 w-7 rounded-lg mb-2 ${isLoading 
@@ -196,7 +227,7 @@ const UserExperienceCard: React.FC<UserExperienceCardProps> = ({ shouldReduceMot
                           : activeFeature === feature
                             ? 'bg-gradient-to-r from-blue-400 to-blue-500'
                             : 'bg-gray-100'
-                        }`}></div>
+                        }`} style={{ transition: 'background 0.3s ease' }}></div>
                         <div className={`h-2.5 w-2/3 rounded-full mb-1 ${isLoading ? 'bg-gray-200' : 'bg-gray-200'}`}></div>
                         <div className={`h-1.5 w-3/4 rounded-full ${isLoading ? 'bg-gray-200' : 'bg-gray-100'}`}></div>
                       </div>
@@ -209,19 +240,22 @@ const UserExperienceCard: React.FC<UserExperienceCardProps> = ({ shouldReduceMot
               <div className="px-4 py-8 text-center">
                 <motion.div 
                   initial={{ opacity: 0, y: 15 }}
-                  animate={{ opacity: 1, y: 0 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
                   transition={{ delay: 2.2, duration: 0.5 }}
                   className={`h-5 w-2/3 mx-auto rounded-full mb-4 ${isLoading ? 'bg-gray-100 animate-pulse' : 'bg-gradient-to-r from-gray-700 to-gray-800'}`}
                 ></motion.div>
                 <motion.div 
                   initial={{ opacity: 0, y: 15 }}
-                  animate={{ opacity: 1, y: 0 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
                   transition={{ delay: 2.3, duration: 0.5 }}
                   className={`h-3 w-5/6 md:w-1/2 mx-auto rounded-full mb-6 ${isLoading ? 'bg-gray-50 animate-pulse' : 'bg-gray-100'}`}
                 ></motion.div>
                 <motion.div 
                   initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
                   transition={{ delay: 2.4, duration: 0.5 }}
                   className={`h-8 w-28 mx-auto rounded-full ${isLoading 
                     ? 'bg-gray-200 animate-pulse' 
@@ -229,6 +263,7 @@ const UserExperienceCard: React.FC<UserExperienceCardProps> = ({ shouldReduceMot
                   }`}
                   whileHover={{ scale: isLoading ? 1 : 1.05 }}
                   whileTap={{ scale: isLoading ? 1 : 0.95 }}
+                  style={{ transition: 'background 0.3s ease, transform 0.3s ease' }}
                 ></motion.div>
               </div>
               
@@ -238,19 +273,22 @@ const UserExperienceCard: React.FC<UserExperienceCardProps> = ({ shouldReduceMot
                   <div className="w-full md:w-1/3 mb-4 md:mb-0">
                     <motion.div 
                       initial={{ opacity: 0, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
                       transition={{ delay: 2.5, duration: 0.4 }}
                       className={`h-4 w-20 rounded-full mb-3 ${isLoading ? 'bg-gray-700 animate-pulse' : 'bg-gray-700'}`}
                     ></motion.div>
                     <motion.div 
                       initial={{ opacity: 0, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
                       transition={{ delay: 2.6, duration: 0.4 }}
                       className={`h-2.5 w-4/5 rounded-full mb-2 ${isLoading ? 'bg-gray-700 animate-pulse' : 'bg-gray-700'}`}
                     ></motion.div>
                     <motion.div 
                       initial={{ opacity: 0, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
                       transition={{ delay: 2.7, duration: 0.4 }}
                       className={`h-2.5 w-3/4 rounded-full ${isLoading ? 'bg-gray-700 animate-pulse' : 'bg-gray-700'}`}
                     ></motion.div>
@@ -259,7 +297,8 @@ const UserExperienceCard: React.FC<UserExperienceCardProps> = ({ shouldReduceMot
                   <div className="w-1/2 md:w-1/4">
                     <motion.div 
                       initial={{ opacity: 0, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
                       transition={{ delay: 2.8, duration: 0.4 }}
                       className={`h-3.5 w-14 rounded-full mb-3 ${isLoading ? 'bg-gray-700 animate-pulse' : 'bg-gray-700'}`}
                     ></motion.div>
@@ -267,9 +306,10 @@ const UserExperienceCard: React.FC<UserExperienceCardProps> = ({ shouldReduceMot
                       <motion.div 
                         key={item}
                         initial={{ opacity: 0, y: 5 }}
-                        animate={{ opacity: 1, y: 0 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
                         transition={{ delay: 2.9 + (item * 0.1), duration: 0.4 }}
-                        className={`h-2.5 w-16 rounded-full mb-2 ${isLoading ? 'bg-gray-700 animate-pulse' : 'bg-gray-700 hover:bg-gray-600 transition-colors'}`}
+                        className={`h-2.5 w-16 rounded-full mb-2 ${isLoading ? 'bg-gray-700 animate-pulse' : 'bg-gray-700 hover:bg-gray-600 transition-colors duration-300'}`}
                       ></motion.div>
                     ))}
                   </div>
@@ -277,7 +317,8 @@ const UserExperienceCard: React.FC<UserExperienceCardProps> = ({ shouldReduceMot
                   <div className="w-1/2 md:w-1/4">
                     <motion.div 
                       initial={{ opacity: 0, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
                       transition={{ delay: 3.2, duration: 0.4 }}
                       className={`h-3.5 w-14 rounded-full mb-3 ${isLoading ? 'bg-gray-700 animate-pulse' : 'bg-gray-700'}`}
                     ></motion.div>
@@ -285,9 +326,10 @@ const UserExperienceCard: React.FC<UserExperienceCardProps> = ({ shouldReduceMot
                       <motion.div 
                         key={item} 
                         initial={{ opacity: 0, y: 5 }}
-                        animate={{ opacity: 1, y: 0 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
                         transition={{ delay: 3.3 + (item * 0.1), duration: 0.4 }}
-                        className={`h-2.5 w-16 rounded-full mb-2 ${isLoading ? 'bg-gray-700 animate-pulse' : 'bg-gray-700 hover:bg-gray-600 transition-colors'}`}
+                        className={`h-2.5 w-16 rounded-full mb-2 ${isLoading ? 'bg-gray-700 animate-pulse' : 'bg-gray-700 hover:bg-gray-600 transition-colors duration-300'}`}
                       ></motion.div>
                     ))}
                   </div>
@@ -295,7 +337,8 @@ const UserExperienceCard: React.FC<UserExperienceCardProps> = ({ shouldReduceMot
                 
                 <motion.div 
                   initial={{ opacity: 0, scaleX: 0 }}
-                  animate={{ opacity: 1, scaleX: 1 }}
+                  whileInView={{ opacity: 1, scaleX: 1 }}
+                  viewport={{ once: true }}
                   transition={{ delay: 3.6, duration: 0.5 }}
                   className={`h-0.5 w-full my-4 origin-left ${isLoading ? 'bg-gray-700 animate-pulse' : 'bg-gray-700'}`}
                 ></motion.div>
@@ -303,7 +346,8 @@ const UserExperienceCard: React.FC<UserExperienceCardProps> = ({ shouldReduceMot
                 <div className="flex justify-between items-center">
                   <motion.div 
                     initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
+                    whileInView={{ opacity: 1 }}
+                    viewport={{ once: true }}
                     transition={{ delay: 3.7, duration: 0.4 }}
                     className={`h-2.5 w-20 rounded-full ${isLoading ? 'bg-gray-700 animate-pulse' : 'bg-gray-700'}`}
                   ></motion.div>
@@ -312,9 +356,10 @@ const UserExperienceCard: React.FC<UserExperienceCardProps> = ({ shouldReduceMot
                       <motion.div 
                         key={item} 
                         initial={{ opacity: 0, scale: 0.8 }}
-                        animate={{ opacity: 1, scale: 1 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        viewport={{ once: true }}
                         transition={{ delay: 3.8 + (item * 0.1), duration: 0.4 }}
-                        className={`h-5 w-5 rounded-full ${isLoading ? 'bg-gray-700 animate-pulse' : 'bg-gray-700 hover:bg-gray-600 transition-colors'}`}
+                        className={`h-5 w-5 rounded-full ${isLoading ? 'bg-gray-700 animate-pulse' : 'bg-gray-700 hover:bg-gray-600 transition-colors duration-300'}`}
                       ></motion.div>
                     ))}
                   </div>

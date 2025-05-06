@@ -104,6 +104,7 @@ const PerformanceCard: React.FC<PerformanceCardProps> = ({ shouldReduceMotion, i
   const [activeTab, setActiveTab] = useState<'desktop' | 'mobile'>('desktop');
   const [showMetrics, setShowMetrics] = useState(false);
   const [key, setKey] = useState(0); // Used to force re-render metrics on tab change
+  const inViewRef = useRef(null);
   
   const desktopMetrics = [
     { name: 'Performance', value: '97', color: 'from-green-300 to-green-400' },
@@ -118,14 +119,6 @@ const PerformanceCard: React.FC<PerformanceCardProps> = ({ shouldReduceMotion, i
     { name: 'Best Practices', value: '100', color: 'from-green-300 to-green-400' },
     { name: 'SEO', value: '94', color: 'from-green-300 to-green-400' }
   ];
-  
-  // Trigger metrics animation after a delay
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setShowMetrics(true);
-    }, 500);
-    return () => clearTimeout(timer);
-  }, []);
   
   // Handle tab change animation
   const handleTabChange = (tab: 'desktop' | 'mobile') => {
@@ -148,6 +141,7 @@ const PerformanceCard: React.FC<PerformanceCardProps> = ({ shouldReduceMotion, i
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-100px" }}
       transition={{ duration: 0.6 }}
+      ref={inViewRef}
     >
       <div className={`h-full w-full absolute top-0 left-0 bg-gradient-to-br from-purple-300/10 to-pink-100/10`} />
       
@@ -179,14 +173,16 @@ const PerformanceCard: React.FC<PerformanceCardProps> = ({ shouldReduceMotion, i
             <motion.div 
               className="p-4 md:p-6 bg-white"
               initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
               transition={{ duration: 0.5 }}
             >
               <div className="pb-4 md:pb-6">
                 <motion.h4 
                   className="text-sm md:text-base font-medium mb-4 text-gray-800"
                   initial={{ opacity: 0, y: -5 }}
-                  animate={{ opacity: 1, y: 0 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
                   transition={{ delay: 0.2, duration: 0.4 }}
                 >
                   Report from May 5, 2025
@@ -195,7 +191,8 @@ const PerformanceCard: React.FC<PerformanceCardProps> = ({ shouldReduceMotion, i
                 <motion.div 
                   className="flex space-x-2 items-center mb-4"
                   initial={{ opacity: 0, y: 5 }}
-                  animate={{ opacity: 1, y: 0 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
                   transition={{ delay: 0.3, duration: 0.5 }}
                 >
                   <div className="flex-grow relative">
@@ -213,7 +210,8 @@ const PerformanceCard: React.FC<PerformanceCardProps> = ({ shouldReduceMotion, i
                 <motion.div 
                   className="flex justify-center mb-6 overflow-hidden rounded-lg bg-gray-50 p-1 border border-gray-200"
                   initial={{ opacity: 0, y: 5 }}
-                  animate={{ opacity: 1, y: 0 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
                   transition={{ delay: 0.4, duration: 0.5 }}
                 >
                   <button
@@ -253,7 +251,8 @@ const PerformanceCard: React.FC<PerformanceCardProps> = ({ shouldReduceMotion, i
                 <motion.h5 
                   className="text-sm font-medium mb-5 text-gray-700"
                   initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
+                  whileInView={{ opacity: 1 }}
+                  viewport={{ once: true }}
                   transition={{ delay: 0.6, duration: 0.4 }}
                 >
                   Performance metrics
