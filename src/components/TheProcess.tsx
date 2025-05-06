@@ -1,7 +1,7 @@
 
 import React, { useRef } from 'react';
 import { motion, useInView, useReducedMotion } from 'framer-motion';
-import { Layers, Zap, Rocket } from 'lucide-react';
+import { Tornado, Yoga, DollarSign } from 'lucide-react';
 import styles from './styles/TheProcess.module.css';
 import ProcessCard from './process/ProcessCard';
 import ProcessTitle from './process/ProcessTitle';
@@ -46,7 +46,7 @@ const TheProcess = () => {
             <ProcessCard 
               title="Discovery & Strategy"
               description="We dive into your business reality before coding. Your goals shape our roadmap, creating foundations for every pixel and function."
-              icon={Layers}
+              icon={Tornado}
               iconColor="#007AFF"
             />
           </motion.div>
@@ -55,7 +55,7 @@ const TheProcess = () => {
             <ProcessCard 
               title="Design & Develop"
               description="Vision becomes reality. Our collaborative approach eliminates handoffs, creating experiences where beauty and functionality are inseparable."
-              icon={Zap}
+              icon={Yoga}
               iconColor="#D000FF"
             />
           </motion.div>
@@ -64,7 +64,7 @@ const TheProcess = () => {
             <ProcessCard 
               title="Maintain & Improve"
               description="Launch day is just the beginning. Your product evolves with markets and users. Continuous refinement elevates good to exceptional."
-              icon={Rocket}
+              icon={DollarSign}
               iconColor="#10B981"
             />
           </motion.div>
