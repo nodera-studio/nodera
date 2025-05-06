@@ -55,6 +55,26 @@
   transform: scale(1.05);
 }
 
+/* New pulsating animation for the logo */
+@keyframes pulsate {
+  0% {
+    transform: scale(1);
+    filter: brightness(1);
+  }
+  50% {
+    transform: scale(1.05);
+    filter: brightness(1.1);
+  }
+  100% {
+    transform: scale(1);
+    filter: brightness(1);
+  }
+}
+
+.pulsating {
+  animation: pulsate 2s ease-in-out infinite;
+}
+
 .nav {
   display: flex;
   gap: 24px;

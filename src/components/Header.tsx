@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect, useCallback } from 'react';
 import styles from './Header.module.css';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -128,7 +129,7 @@ const Header = () => {
           <motion.img 
             src="/lovable-uploads/logo.png" 
             alt="Nodera Logo" 
-            className={styles.logoImg} 
+            className={`${styles.logoImg} ${styles.pulsating}`} 
             loading="eager"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
