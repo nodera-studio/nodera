@@ -17,6 +17,20 @@
   justify-content: center;
 }
 
+.iconBackground {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease;
+}
+
+.processCard:hover .iconBackground {
+  transform: scale(1.05);
+}
+
 .cardTitle {
   font-family: 'Baloo Da 2', sans-serif;
   font-size: 1.75rem;

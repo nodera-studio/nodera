@@ -14,7 +14,9 @@ const ProcessCard = ({ title, description, icon: Icon, iconColor }: ProcessCardP
   return (
     <div className={styles.processCard}>
       <div className={styles.iconContainer}>
-        <Icon size={48} color={iconColor} strokeWidth={2} />
+        <div className={styles.iconBackground} style={{ backgroundColor: `${iconColor}15` }}>
+          <Icon size={48} color={iconColor} strokeWidth={2.5} />
+        </div>
       </div>
       <h3 className={styles.cardTitle}>{title}</h3>
       <p className={styles.cardDescription}>{description}</p>
