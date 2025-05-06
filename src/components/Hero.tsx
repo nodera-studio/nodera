@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import styles from './Hero.module.css';
 import { useBreakpoint } from '../hooks/use-mobile';
@@ -41,49 +40,49 @@ const Hero: React.FC = () => {
   };
   
   return (
-    <div className={styles.hero}>
-      <div className={styles.heroBackgroundContainer}>
-        <motion.img 
-          src="/lovable-uploads/logo.png" 
-          alt="Blurred logo background" 
-          className={styles.heroBackground}
-          loading="eager"
-          initial={{ opacity: 0 }}
-          animate={{ 
-            opacity: 0.4,
-            filter: `blur(${getBlurAmount()})`,
-            transform: `translate(-50%, -50%) scale(${getScale()})`,
-          }}
-          transition={{ duration: 1.2, ease: "easeInOut" }}
-        />
-      </div>
-      
-      <motion.div 
-        className="relative z-10 flex flex-col items-center justify-center h-full"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 0.3 }}
-      >
-        <div className={styles.heroContent}>
-          <motion.h1 
-            className="text-black m-0 text-6xl sm:text-8xl md:!text-9xl lg:!text-10xl font-comfortaa font-bold"
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.5 }}
-          >
-            {title}
-          </motion.h1>
-          <motion.span 
-            className="hero-subtitle text-black m-0 text-3xl sm:text-4xl md:!text-5xl font-comfortaa font-bold mt-2"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.7 }}
-          >
-            {subtitle}
-          </motion.span>
-        </div>
-      </motion.div>
-    </div>
+		<div className={styles.hero}>
+			<div className={styles.heroBackgroundContainer}>
+				<motion.img
+					src="/lovable-uploads/logo.png"
+					alt="Blurred logo background"
+					className={styles.heroBackground}
+					loading="eager"
+					initial={{ opacity: 0 }}
+					animate={{
+						opacity: 0.4,
+						filter: `blur(${getBlurAmount()})`,
+						transform: `translate(-50%, -50%) scale(${getScale()})`,
+					}}
+					transition={{ duration: 1.2, ease: 'easeInOut' }}
+				/>
+			</div>
+
+			<motion.div
+				className="relative z-10 flex flex-col items-center justify-center h-full"
+				initial={{ opacity: 0, y: 20 }}
+				animate={{ opacity: 1, y: 0 }}
+				transition={{ duration: 0.8, delay: 0.3 }}
+			>
+				<div className={styles.heroContent}>
+					<motion.h1
+						className="text-[#f5f7f8] drop-shadow-md m-0 text-6xl sm:text-8xl md:!text-9xl lg:!text-10xl font-comfortaa font-bold"
+						initial={{ opacity: 0, y: -20 }}
+						animate={{ opacity: 1, y: 0 }}
+						transition={{ duration: 0.6, delay: 0.5 }}
+					>
+						{title}
+					</motion.h1>
+					<motion.span
+						className="hero-subtitle text-[#f5f7f8] drop-shadow-md m-0 text-3xl sm:text-4xl md:!text-5xl font-comfortaa font-bold mt-2"
+						initial={{ opacity: 0, y: 20 }}
+						animate={{ opacity: 1, y: 0 }}
+						transition={{ duration: 0.6, delay: 0.7 }}
+					>
+						{subtitle}
+					</motion.span>
+				</div>
+			</motion.div>
+		</div>
   );
 };
 
