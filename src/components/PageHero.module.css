@@ -3,8 +3,6 @@
   position: relative;
   text-align: center;
   width: 100%;
-  height: 70vh;
-  min-height: 500px;
   overflow: hidden;
   display: flex;
   align-items: center;
@@ -33,23 +31,92 @@
 .heroContent {
   position: relative;
   width: 100%;
-  max-width: 1200px;
-  padding: 0 2rem;
+  max-width: 100%;
   z-index: 1;
 }
 
-@media (max-width: 768px) {
+/* Full HD Desktops (1920px) */
+@media (min-width: 1920px) {
   .pageHero {
-    height: 60vh;
-    min-height: 400px;
-    padding: 0;
+    height: 70vh;
+    min-height: 600px;
+  }
+
+  .heroContent {
+    max-width: 1800px;
+    margin: 0 auto;
   }
 }
 
-@media (max-width: 480px) {
+/* Large Desktops / Laptops (1440px) */
+@media (min-width: 1440px) and (max-width: 1919px) {
+  .pageHero {
+    height: 70vh;
+    min-height: 550px;
+  }
+
+  .heroContent {
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+}
+
+/* Standard Desktops / Laptops (1280px) */
+@media (min-width: 1280px) and (max-width: 1439px) {
+  .pageHero {
+    height: 70vh;
+    min-height: 500px;
+  }
+
+  .heroContent {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+}
+
+/* Tablets - Landscape / Portrait, Small Laptops (770px) */
+@media (min-width: 770px) and (max-width: 1279px) {
+  .pageHero {
+    height: 60vh;
+    min-height: 450px;
+  }
+
+  .heroContent {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+}
+
+/* Large Phones - Landscape / Small Tablets - Portrait (600px) */
+@media (min-width: 600px) and (max-width: 769px) {
+  .pageHero {
+    height: 55vh;
+    min-height: 400px;
+  }
+
+  .heroContent {
+    max-width: 540px;
+    margin: 0 auto;
+  }
+}
+
+/* Mobile Phones - Portrait / Landscape (480px) */
+@media (max-width: 599px) {
   .pageHero {
     height: 50vh;
     min-height: 350px;
-    padding: 0;
+  }
+
+  .heroContent {
+    max-width: 100%;
+    padding: 0 20px;
+  }
+}
+
+/* Small landscape orientations for any device */
+@media (max-height: 500px) and (orientation: landscape) {
+  .pageHero {
+    height: 100vh;
+    min-height: 300px;
   }
 }

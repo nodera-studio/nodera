@@ -4,7 +4,7 @@
   text-align: center;
   width: 100%;
   height: 100vh;
-  min-height: 500px;
+  min-height: 480px; /* Adjusted for smallest breakpoint */
   overflow: hidden;
   display: flex;
   align-items: center;
@@ -38,10 +38,27 @@
   color: #000;
   width: 100%;
   z-index: 2;
+  padding: 0 1rem;
 }
 
-/* Monitor and larger screens */
-@media (min-width: 1441px) {
+/* Full HD Desktops (1920px) */
+@media (min-width: 1920px) {
+  .hero {
+    height: 100vh;
+  }
+  
+  .heroContent {
+    max-width: 1800px;
+    margin: 0 auto;
+  }
+  
+  .heroBackground {
+    width: 55%;
+  }
+}
+
+/* Large Desktops / Laptops (1440px) */
+@media (min-width: 1440px) and (max-width: 1919px) {
   .hero {
     height: 100vh;
   }
@@ -56,10 +73,15 @@
   }
 }
 
-/* Laptop screens */
-@media (max-width: 1440px) {
+/* Standard Desktops / Laptops (1280px) */
+@media (min-width: 1280px) and (max-width: 1439px) {
   .hero {
     height: 100vh;
+  }
+  
+  .heroContent {
+    max-width: 1200px;
+    margin: 0 auto;
   }
   
   .heroBackground {
@@ -67,38 +89,51 @@
   }
 }
 
-/* Tablet screens */
-@media (max-width: 991px) {
+/* Tablets - Landscape / Portrait, Small Laptops (770px) */
+@media (min-width: 770px) and (max-width: 1279px) {
   .hero {
     height: 100vh;
+    min-height: 500px;
+  }
+  
+  .heroContent {
+    max-width: 700px;
+    margin: 0 auto;
+  }
+  
+  .heroBackground {
+    width: 70%;
+  }
+}
+
+/* Large Phones - Landscape / Small Tablets - Portrait (600px) */
+@media (min-width: 600px) and (max-width: 769px) {
+  .hero {
+    height: 90vh;
     min-height: 450px;
   }
   
   .heroBackground {
-    width: 70%;
+    width: 75%;
   }
 }
 
-/* Small landscape / Foldable phones */
-@media (max-width: 767px) and (orientation: landscape) {
+/* Mobile Phones - Portrait / Landscape (480px) */
+@media (max-width: 599px) {
   .hero {
-    height: 100vh;
-    padding: 80px 20px;
-  }
-  
-  .heroBackground {
-    width: 60%;
-  }
-}
-
-/* Mobile phones */
-@media (max-width: 640px) {
-  .hero {
-    height: 100vh;
+    height: 80vh;
     min-height: 400px;
   }
   
   .heroBackground {
-    width: 70%;
+    width: 80%;
+  }
+}
+
+/* Small landscape orientations for any device */
+@media (max-height: 500px) and (orientation: landscape) {
+  .hero {
+    height: 100vh;
+    padding: 80px 20px;
   }
 }

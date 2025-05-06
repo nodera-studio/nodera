@@ -1,14 +1,15 @@
+
 .ctaContainer {
   position: relative;
   overflow: hidden;
   text-align: center;
-  padding: 120px 0 !important;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   background-color: #FFFFFF;
   margin-bottom: 2rem;
+  width: 100%;
 }
 
 .ctaContentBox {
@@ -17,16 +18,13 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  max-width: 56rem;
   margin: 0 auto;
-  padding: 0 1rem;
+  width: 100%;
 }
 
 .ctaHeading {
   font-family: 'Comfortaa', sans-serif;
   font-weight: 700;
-  font-size: clamp(2.25rem, 5vw, 2.625rem);
-  line-height: 1.2;
   color: #000000;
   margin-bottom: 1rem;
   text-align: center;
@@ -35,8 +33,6 @@
 .ctaSubheading {
   font-family: 'Baloo Da 2', sans-serif;
   font-weight: 500;
-  font-size: clamp(1.5rem, 3.5vw, 1.875rem);
-  line-height: 1.4;
   background-image: linear-gradient(90deg, #D1A2FF 0%, #007AFF 100%);
   background-clip: text;
   -webkit-background-clip: text;
@@ -45,17 +41,131 @@
   text-align: center;
 }
 
-@media (min-width: 768px) {
+/* Full HD Desktops (1920px) */
+@media (min-width: 1920px) {
   .ctaContainer {
-    padding: 70px 24px;
+    padding: 140px 40px;
     margin-bottom: 3rem;
   }
   
+  .ctaContentBox {
+    max-width: 60rem;
+    padding: 0 2rem;
+  }
+  
   .ctaHeading {
-    font-size: 2.625rem;
+    font-size: 3.5rem;
+  }
+  
+  .ctaSubheading {
+    font-size: 2.25rem;
+  }
+}
+
+/* Large Desktops / Laptops (1440px) */
+@media (min-width: 1440px) and (max-width: 1919px) {
+  .ctaContainer {
+    padding: 120px 32px;
+    margin-bottom: 3rem;
+  }
+  
+  .ctaContentBox {
+    max-width: 58rem;
+    padding: 0 2rem;
+  }
+  
+  .ctaHeading {
+    font-size: 3rem;
+  }
+  
+  .ctaSubheading {
+    font-size: 2rem;
+  }
+}
+
+/* Standard Desktops / Laptops (1280px) */
+@media (min-width: 1280px) and (max-width: 1439px) {
+  .ctaContainer {
+    padding: 100px 24px;
+    margin-bottom: 3rem;
+  }
+  
+  .ctaContentBox {
+    max-width: 56rem;
+    padding: 0 1.5rem;
+  }
+  
+  .ctaHeading {
+    font-size: 2.75rem;
   }
   
   .ctaSubheading {
     font-size: 1.875rem;
+  }
+}
+
+/* Tablets - Landscape / Portrait, Small Laptops (770px) */
+@media (min-width: 770px) and (max-width: 1279px) {
+  .ctaContainer {
+    padding: 80px 20px;
+    margin-bottom: 2.5rem;
+  }
+  
+  .ctaContentBox {
+    max-width: 48rem;
+    padding: 0 1rem;
+  }
+  
+  .ctaHeading {
+    font-size: 2.5rem;
+  }
+  
+  .ctaSubheading {
+    font-size: 1.75rem;
+  }
+}
+
+/* Large Phones - Landscape / Small Tablets - Portrait (600px) */
+@media (min-width: 600px) and (max-width: 769px) {
+  .ctaContainer {
+    padding: 70px 16px;
+    margin-bottom: 2rem;
+  }
+  
+  .ctaContentBox {
+    max-width: 40rem;
+    padding: 0 1rem;
+  }
+  
+  .ctaHeading {
+    font-size: 2.25rem;
+  }
+  
+  .ctaSubheading {
+    font-size: 1.5rem;
+  }
+}
+
+/* Mobile Phones - Portrait / Landscape (480px) */
+@media (max-width: 599px) {
+  .ctaContainer {
+    padding: 60px 12px;
+    margin-bottom: 1.5rem;
+  }
+  
+  .ctaContentBox {
+    max-width: 100%;
+    padding: 0 0.75rem;
+  }
+  
+  .ctaHeading {
+    font-size: 1.75rem;
+    line-height: 1.3;
+    margin-bottom: 0.75rem;
+  }
+  
+  .ctaSubheading {
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
   }
 }

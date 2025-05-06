@@ -1,40 +1,88 @@
+
 import React, { useState, useEffect } from 'react';
 import styles from './Hero.module.css';
 import { useBreakpoint } from '../hooks/use-mobile';
+import { motion } from 'framer-motion';
 
 const Hero: React.FC = () => {
   const title = "Nodera";
   const subtitle = "Web Studio";
   
   const breakpoint = useBreakpoint();
-  const isMobileView = breakpoint === 'mobile';
+  
+  // Get responsive settings based on breakpoint
+  const getBlurAmount = () => {
+    switch (breakpoint) {
+      case 'mobile':
+        return '25px';
+      case 'small_tablet':
+      case 'tablet':
+        return '30px';
+      case 'desktop':
+      case 'large_desktop':
+      case 'wide':
+        return '40px';
+      default:
+        return '30px';
+    }
+  };
+  
+  const getScale = () => {
+    switch (breakpoint) {
+      case 'mobile':
+        return 1.3;
+      case 'small_tablet':
+        return 1.4;
+      case 'tablet':
+        return 1.5;
+      default:
+        return 1.5;
+    }
+  };
   
   return (
     <div className={styles.hero}>
       <div className={styles.heroBackgroundContainer}>
-        <img 
+        <motion.img 
           src="/lovable-uploads/logo.png" 
           alt="Blurred logo background" 
           className={styles.heroBackground}
           loading="eager"
-          style={{ 
-            transform: `translate(-50%, -50%) scale(1.5)`,
-            filter: isMobileView ? 'blur(30px)' : 'blur(40px)',
+          initial={{ opacity: 0 }}
+          animate={{ 
             opacity: 0.4,
-          }} 
+            filter: `blur(${getBlurAmount()})`,
+            transform: `translate(-50%, -50%) scale(${getScale()})`,
+          }}
+          transition={{ duration: 1.2, ease: "easeInOut" }}
         />
       </div>
       
-      <div className="relative z-10 flex flex-col items-center justify-center h-full">
+      <motion.div 
+        className="relative z-10 flex flex-col items-center justify-center h-full"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, delay: 0.3 }}
+      >
         <div className={styles.heroContent}>
-          <h1 className="text-white m-0 !text-10xl">
+          <motion.h1 
+            className="text-black m-0 text-6xl sm:text-8xl md:!text-9xl lg:!text-10xl font-comfortaa font-bold"
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.5 }}
+          >
             {title}
-          </h1>
-          <span className="hero-subtitle text-white m-0 !text-5xl font-comfortaa font-bold">
+          </motion.h1>
+          <motion.span 
+            className="hero-subtitle text-black m-0 text-3xl sm:text-4xl md:!text-5xl font-comfortaa font-bold mt-2"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.7 }}
+          >
             {subtitle}
-          </span>
+          </motion.span>
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 };

@@ -2,11 +2,12 @@
 import * as React from "react"
 
 export const BREAKPOINTS = {
-  MOBILE: 640,  // Mobile phones
-  SMALL_LANDSCAPE: 767, // Landscape phones, foldable devices
-  TABLET: 1024, // Tablets and small laptops
-  LAPTOP: 1440, // Standard laptops
-  MONITOR: 1441 // Large monitors and above
+  MOBILE: 480,  // Mobile phones - Portrait / Landscape
+  SMALL_TABLET: 600, // Large Phones - Landscape / Small Tablets - Portrait
+  TABLET: 770, // Tablets - Landscape / Portrait, Small Laptops
+  DESKTOP: 1280, // Standard Desktops / Laptops
+  LARGE_DESKTOP: 1440, // Large Desktops / Laptops
+  WIDE: 1920 // Full HD Desktops
 }
 
 // Optimize performance by creating a single shared media query list for each breakpoint
@@ -48,14 +49,16 @@ export function useBreakpoint() {
       const width = window.innerWidth;
       if (width < BREAKPOINTS.MOBILE) {
         setBreakpoint('mobile')
-      } else if (width < BREAKPOINTS.SMALL_LANDSCAPE) {
-        setBreakpoint('small_landscape')
+      } else if (width < BREAKPOINTS.SMALL_TABLET) {
+        setBreakpoint('small_tablet')
       } else if (width < BREAKPOINTS.TABLET) {
         setBreakpoint('tablet')
-      } else if (width < BREAKPOINTS.LAPTOP) {
-        setBreakpoint('laptop')
+      } else if (width < BREAKPOINTS.DESKTOP) {
+        setBreakpoint('desktop')
+      } else if (width < BREAKPOINTS.LARGE_DESKTOP) {
+        setBreakpoint('large_desktop')
       } else {
-        setBreakpoint('monitor')
+        setBreakpoint('wide')
       }
     }
 

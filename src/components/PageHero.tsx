@@ -11,7 +11,42 @@ interface PageHeroProps {
 
 const PageHero: React.FC<PageHeroProps> = ({ title, subtitle }) => {
   const breakpoint = useBreakpoint();
-  const isMobileView = breakpoint === 'mobile';
+  
+  // Get responsive padding based on breakpoint
+  const getContentPadding = () => {
+    switch (breakpoint) {
+      case 'mobile':
+        return 'px-4';
+      case 'small_tablet':
+        return 'px-6';
+      case 'tablet':
+        return 'px-8';
+      case 'desktop':
+      case 'large_desktop':
+      case 'wide':
+        return 'px-10';
+      default:
+        return 'px-4';
+    }
+  };
+  
+  // Get responsive title size based on breakpoint
+  const getTitleClass = () => {
+    switch (breakpoint) {
+      case 'mobile':
+        return 'text-3xl';
+      case 'small_tablet':
+        return 'text-4xl';
+      case 'tablet':
+        return 'text-5xl';
+      case 'desktop':
+      case 'large_desktop':
+      case 'wide':
+        return 'text-6xl';
+      default:
+        return 'text-4xl';
+    }
+  };
   
   return (
     <div className={styles.pageHero}>
@@ -24,7 +59,7 @@ const PageHero: React.FC<PageHeroProps> = ({ title, subtitle }) => {
         ></motion.div>
       </div>
       <motion.div 
-        className={styles.heroContent}
+        className={`${styles.heroContent} ${getContentPadding()}`}
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ 
@@ -34,7 +69,7 @@ const PageHero: React.FC<PageHeroProps> = ({ title, subtitle }) => {
         }}
       >
         <motion.h1 
-          className="text-[#1D1D1F] font-bold"
+          className={`text-[#1D1D1F] font-bold ${getTitleClass()}`}
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ 
@@ -46,7 +81,7 @@ const PageHero: React.FC<PageHeroProps> = ({ title, subtitle }) => {
           {title}
         </motion.h1>
         <motion.p 
-          className="mt-6 max-w-2xl mx-auto text-[#6E6E73] font-normal"
+          className="mt-4 sm:mt-6 max-w-2xl mx-auto text-[#6E6E73] text-base sm:text-lg md:text-xl font-normal"
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ 
