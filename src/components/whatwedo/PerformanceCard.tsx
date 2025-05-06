@@ -39,7 +39,7 @@ const PerformanceCard: React.FC<PerformanceCardProps> = ({ shouldReduceMotion, i
       viewport={{ once: true, margin: "-100px" }}
       transition={{ duration: 0.6 }}
     >
-      <div className={`h-full w-full absolute top-0 left-0 bg-gradient-to-br from-purple-300 to-pink-100`} />
+      <div className={`h-full w-full absolute top-0 left-0 bg-gradient-to-br from-purple-300/10 to-pink-100/10`} />
       
       <div className="flex flex-col items-center text-center px-5 md:px-8 pt-10 pb-8 relative z-10 h-full">
         <h3 className="text-3xl md:text-4xl mb-3 font-bold">Engineered for Performance</h3>
