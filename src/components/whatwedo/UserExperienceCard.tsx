@@ -214,7 +214,9 @@ const UserExperienceCard: React.FC<UserExperienceCardProps> = ({ shouldReduceMot
                       }}
                       onHoverStart={() => handleFeatureHover(feature)}
                       onHoverEnd={() => handleFeatureHover(null)}
-                      style={{ transition: 'background 0.4s ease, border-color 0.4s ease, transform 0.4s ease' }}
+                      style={{ 
+                        transition: 'background 0.4s ease, border-color 0.4s ease, transform 0.3s ease-out'
+                      }}
                     >
                       <div className="flex flex-col items-center text-center">
                         <div className={`h-7 w-7 rounded-lg mb-2 ${isLoading 
@@ -222,7 +224,7 @@ const UserExperienceCard: React.FC<UserExperienceCardProps> = ({ shouldReduceMot
                           : activeFeature === feature
                             ? 'bg-gradient-to-r from-blue-400 to-blue-500'
                             : 'bg-gray-100'
-                        }`} style={{ transition: 'background 0.4s ease' }}></div>
+                        }`} style={{ transition: 'background 0.3s ease-out' }}></div>
                         <div className={`h-2.5 w-2/3 rounded-full mb-1 ${isLoading ? 'bg-gray-200' : 'bg-gray-200'}`}></div>
                         <div className={`h-1.5 w-3/4 rounded-full ${isLoading ? 'bg-gray-200' : 'bg-gray-100'}`}></div>
                       </div>
@@ -255,7 +257,7 @@ const UserExperienceCard: React.FC<UserExperienceCardProps> = ({ shouldReduceMot
                   }`}
                   whileHover={{ scale: isLoading ? 1 : 1.05 }}
                   whileTap={{ scale: isLoading ? 1 : 0.95 }}
-                  style={{ transition: 'background 0.4s ease, transform 0.4s ease' }}
+                  style={{ transition: 'background 0.4s ease, transform 0.3s ease-out' }}
                 ></motion.div>
               </div>
               

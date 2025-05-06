@@ -175,4 +175,18 @@
   .circle-progress {
     animation: circleProgress 1s ease-out forwards;
   }
+  
+  /* Enhanced smooth transitions for UI elements */
+  .smooth-hover-transition {
+    transition: all 0.3s ease-out;
+  }
+  
+  .feature-card {
+    transition: transform 0.3s ease-out, background-color 0.3s ease-out, 
+                border-color 0.3s ease-out, box-shadow 0.3s ease-out;
+  }
+  
+  .feature-card:hover {
+    transform: scale(1.03);
+  }
 }
