@@ -29,7 +29,7 @@ const WhatWeDoTitle: React.FC = () => {
   }, []);
 
   return (
-    <div className="bg-[#F9F9F9] text-center my-2.5">
+    <div className="bg-[#F9F9F9] py-10 text-center my-2.5">
       <h2 ref={sectionTitleRef} className="section-title text-4xl sm:text-5xl font-bold mx-auto">
         What We <span className="gradient-word">Do</span>
       </h2>
