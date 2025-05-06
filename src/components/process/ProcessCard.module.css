@@ -17,29 +17,6 @@
   justify-content: center;
 }
 
-.iconBackground {
-  width: 90px;
-  height: 90px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.processCard:hover .iconBackground {
-  transform: scale(1.08);
-  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
-}
-
-.customIcon {
-  transition: transform 0.3s ease;
-}
-
-.processCard:hover .customIcon {
-  transform: rotate(5deg);
-}
-
 .cardTitle {
   font-family: 'Baloo Da 2', sans-serif;
   font-size: 1.75rem;
