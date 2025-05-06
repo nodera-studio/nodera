@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+
+import React from 'react';
 import styles from './Hero.module.css';
 import { useBreakpoint } from '../hooks/use-mobile';
 import { motion } from 'framer-motion';
@@ -47,13 +48,20 @@ const Hero: React.FC = () => {
 					alt="Blurred logo background"
 					className={styles.heroBackground}
 					loading="eager"
-					initial={{ opacity: 0 }}
 					animate={{
-						opacity: 0.4,
+						opacity: [0.35, 0.45, 0.35],
 						filter: `blur(${getBlurAmount()})`,
 						transform: `translate(-50%, -50%) scale(${getScale()})`,
 					}}
-					transition={{ duration: 1.2, ease: 'easeInOut' }}
+					transition={{ 
+						opacity: { 
+							repeat: Infinity, 
+							duration: 3, 
+							ease: "easeInOut" 
+						},
+						filter: { duration: 0.8 },
+						transform: { duration: 0.8 }
+					}}
 				/>
 			</div>
 
@@ -61,14 +69,14 @@ const Hero: React.FC = () => {
 				className="relative z-10 flex flex-col items-center justify-center h-full"
 				initial={{ opacity: 0, y: 20 }}
 				animate={{ opacity: 1, y: 0 }}
-				transition={{ duration: 0.8, delay: 0.3 }}
+				transition={{ duration: 0.8 }}
 			>
 				<div className={styles.heroContent}>
 					<motion.h1
 						className="text-[#f5f7f8] drop-shadow-md m-0 text-6xl sm:text-8xl md:!text-9xl lg:!text-10xl font-comfortaa font-bold"
 						initial={{ opacity: 0, y: -20 }}
 						animate={{ opacity: 1, y: 0 }}
-						transition={{ duration: 0.6, delay: 0.5 }}
+						transition={{ duration: 0.6, delay: 0.2 }}
 					>
 						{title}
 					</motion.h1>
@@ -76,7 +84,7 @@ const Hero: React.FC = () => {
 						className="hero-subtitle text-[#f5f7f8] drop-shadow-md m-0 text-3xl sm:text-4xl md:!text-5xl font-comfortaa font-bold mt-2"
 						initial={{ opacity: 0, y: 20 }}
 						animate={{ opacity: 1, y: 0 }}
-						transition={{ duration: 0.6, delay: 0.7 }}
+						transition={{ duration: 0.6, delay: 0.4 }}
 					>
 						{subtitle}
 					</motion.span>
