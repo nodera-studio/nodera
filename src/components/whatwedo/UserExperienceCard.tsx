@@ -46,7 +46,7 @@ const UserExperienceCard: React.FC<UserExperienceCardProps> = ({ shouldReduceMot
         </div>
         
         <div className="flex-1 w-full flex items-center justify-center mb-4">
-          <BrowserWindow className="max-h-[450px]">
+          <BrowserWindow className="max-h-[450px] mx-4 md:mx-8">
             <div className="p-4 md:p-6 bg-white space-y-6">
               {/* Header lines with improved styling */}
               <div className="space-y-3">

@@ -65,7 +65,7 @@ const PerformanceCard: React.FC<PerformanceCardProps> = ({ shouldReduceMotion, i
         </div>
         
         <div className="flex-1 w-full flex items-center justify-center mb-4">
-          <BrowserWindow className="max-h-[450px]">
+          <BrowserWindow className="max-h-[450px] mx-4 md:mx-8">
             <div className="p-4 md:p-6 bg-white">
               <div className="pb-4 md:pb-6">
                 <h4 className="text-sm md:text-base font-medium mb-4 text-gray-800">Report from May 5, 2025</h4>
