@@ -18,6 +18,33 @@
     50% { background-position: 100% 50%; }
     100% { background-position: 0% 50%; }
   }
+  
+  @keyframes scrollHint {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(8px);
+    }
+  }
+  
+  @keyframes circleProgress {
+    from {
+      stroke-dasharray: 0 100;
+    }
+    to {
+      stroke-dasharray: var(--target-value) 100;
+    }
+  }
+  
+  @keyframes countUp {
+    from {
+      content: "0";
+    }
+    to {
+      content: attr(data-target);
+    }
+  }
 }
 
 @layer utilities {
@@ -29,5 +56,13 @@
   .smooth-scroll {
     scroll-behavior: smooth;
     -webkit-overflow-scrolling: touch;
+  }
+  
+  .circle-progress {
+    animation: circleProgress 1.5s ease-out forwards;
+  }
+  
+  .scroll-hint {
+    animation: scrollHint 2s ease-in-out infinite;
   }
 }
