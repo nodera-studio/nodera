@@ -31,9 +31,26 @@
 }
 
 .browserContent {
-  padding: 14px;
+  padding: 0;
   height: calc(100% - 32px);
-  overflow: auto;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+.shimmer {
+  background: linear-gradient(90deg, #f0f0f0 25%, #f8f8f8 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: shimmerEffect 2s infinite linear;
+}
+
+@keyframes shimmerEffect {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
 }
 
 @media (max-width: 640px) {
@@ -48,7 +65,6 @@
   }
   
   .browserContent {
-    padding: 10px;
     height: calc(100% - 24px);
   }
 }
