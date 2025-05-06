@@ -48,6 +48,7 @@ const Hero: React.FC = () => {
 					alt="Blurred logo background"
 					className={styles.heroBackground}
 					loading="eager"
+					initial={{ opacity: 0.6 }}
 					animate={{
 						opacity: 0.6,
 						filter: `blur(${getBlurAmount()})`,
@@ -68,24 +69,24 @@ const Hero: React.FC = () => {
 
 			<motion.div
 				className="relative z-10 flex flex-col items-center justify-center h-full"
-				initial={{ opacity: 0, y: 20 }}
+				initial={{ opacity: 1 }}
 				animate={{ opacity: 1, y: 0 }}
 				transition={{ duration: 0.8 }}
 			>
 				<div className={styles.heroContent}>
 					<motion.h1
 						className="text-[#f5f7f8] drop-shadow-md m-0 text-6xl sm:text-8xl md:!text-9xl lg:!text-10xl font-comfortaa font-bold"
-						initial={{ opacity: 0, y: -20 }}
+						initial={{ opacity: 1 }}
 						animate={{ opacity: 1, y: 0 }}
-						transition={{ duration: 0.6, delay: 0.2 }}
+						transition={{ duration: 0.6 }}
 					>
 						{title}
 					</motion.h1>
 					<motion.span
 						className="hero-subtitle text-[#f5f7f8] drop-shadow-md m-0 text-3xl sm:text-4xl md:!text-5xl font-comfortaa font-bold mt-2"
-						initial={{ opacity: 0, y: 20 }}
+						initial={{ opacity: 1 }}
 						animate={{ opacity: 1, y: 0 }}
-						transition={{ duration: 0.6, delay: 0.4 }}
+						transition={{ duration: 0.6 }}
 					>
 						{subtitle}
 					</motion.span>
