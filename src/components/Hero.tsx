@@ -49,14 +49,15 @@ const Hero: React.FC = () => {
 					className={styles.heroBackground}
 					loading="eager"
 					animate={{
-						opacity: [0.35, 0.45, 0.35],
+						opacity: 0.6,
 						filter: `blur(${getBlurAmount()})`,
-						transform: `translate(-50%, -50%) scale(${getScale()})`,
+						transform: `translate(-50%, -50%) scale(${getScale() * 1})`,
+						scale: [getScale() * 0.95, getScale() * 1.05, getScale() * 0.95],
 					}}
 					transition={{ 
-						opacity: { 
+						scale: { 
 							repeat: Infinity, 
-							duration: 3, 
+							duration: 4, 
 							ease: "easeInOut" 
 						},
 						filter: { duration: 0.8 },
