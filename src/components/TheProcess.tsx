@@ -1,3 +1,4 @@
+
 import React, { useRef, useState, useEffect } from 'react';
 import { motion, useInView, useReducedMotion, AnimatePresence } from 'framer-motion';
 import styles from './styles/TheProcess.module.css';
@@ -226,7 +227,7 @@ function ModernApp() {
 
   return (
     <section ref={ref} className={styles.processSection} aria-label="Our Process">
-      <div className="bg-[#F9F9F9] py-10 text-center my-2.5">
+      <div className={styles.titleContainer}>
         <h2 ref={sectionTitleRef} className="section-title mx-auto">
           The <span className="gradient-word">Process</span>
         </h2>

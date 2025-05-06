@@ -27,6 +27,14 @@
   color: transparent;
 }
 
+.titleContainer {
+  width: 100%;
+  background-color: #F9F9F9;
+  padding: 2.5rem 0;
+  margin-bottom: 2.5rem;
+  margin-top: 0.625rem;
+}
+
 .processCards {
   display: grid;
   grid-template-columns: repeat(1, minmax(0, 1fr));
