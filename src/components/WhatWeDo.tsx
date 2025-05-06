@@ -16,7 +16,7 @@ const WhatWeDo = () => {
   const isColumnLayout = breakpoint === 'mobile' || breakpoint === 'small_tablet' || breakpoint === 'tablet';
 
   return (
-    <div className="bg-white w-full py-8 md:py-12 lg:py-16">
+    <div className="bg-white w-full">
       <SectionTitle title="What We Do" />
       
       <motion.div 
