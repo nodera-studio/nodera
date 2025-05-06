@@ -1,7 +1,7 @@
 
 import React, { useRef } from 'react';
 import { motion, useInView, useReducedMotion } from 'framer-motion';
-import { Tornado, Yoga, DollarSign } from 'lucide-react';
+import { Tornado, Brain, DollarSign } from 'lucide-react';
 import styles from './styles/TheProcess.module.css';
 import ProcessCard from './process/ProcessCard';
 import ProcessTitle from './process/ProcessTitle';
@@ -55,7 +55,7 @@ const TheProcess = () => {
             <ProcessCard 
               title="Design & Develop"
               description="Vision becomes reality. Our collaborative approach eliminates handoffs, creating experiences where beauty and functionality are inseparable."
-              icon={Yoga}
+              icon={Brain}
               iconColor="#D000FF"
             />
           </motion.div>
