@@ -8,6 +8,7 @@
   justify-content: center;
   padding: 1.5rem;
   text-align: center;
+  width: 100%;
 }
 
 .iconContainer {
@@ -30,15 +31,6 @@
   font-size: 1rem;
   line-height: 1.6;
   color: #555;
-}
-
-/* Apply margins to the first and last cards when they are in a grid */
-@media (min-width: 768px) {
-  .processCard:first-child {
-    margin-left: 10px;
-  }
-  
-  .processCard:last-child {
-    margin-right: 10px;
-  }
+  max-width: 90%;
+  margin: 0 auto;
 }
