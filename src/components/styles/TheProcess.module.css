@@ -8,7 +8,6 @@
   max-width: 80rem;
   margin-left: auto;
   margin-right: auto;
-  padding: 0 10px;
 }
 
 .sectionTitle {
@@ -33,23 +32,29 @@
   grid-template-columns: repeat(1, minmax(0, 1fr));
   gap: 10px;
   position: relative;
+  padding: 0 1rem;
 }
 
 @media (min-width: 768px) {
   .processCards {
     grid-template-columns: repeat(3, 1fr);
+    padding: 0;
   }
 }
 
 @media (max-width: 480px) {
   .container {
-    padding-left: 10px;
-    padding-right: 10px;
+    padding-left: 1rem;
+    padding-right: 1rem;
   }
   
   .sectionTitle {
     margin-bottom: 2.5rem;
     font-size: 32px;
+  }
+  
+  .processCards {
+    gap: 10px;
   }
 }
 

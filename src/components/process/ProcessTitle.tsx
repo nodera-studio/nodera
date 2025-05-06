@@ -28,7 +28,7 @@ const ProcessTitle = () => {
   }, []);
 
   return (
-    <div className="bg-[#F9F9F9] py-10 text-center w-full">
+    <div className="bg-[#F9F9F9] py-10 text-center mb-2.5 w-full">
       <h2 ref={sectionTitleRef} className="section-title text-4xl sm:text-5xl font-bold mx-auto">
         The <span className="gradient-word">Process</span>
       </h2>
