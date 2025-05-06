@@ -7,11 +7,9 @@ interface LayoutProps {
 
 const Layout: React.FC<LayoutProps> = ({ children }) => {
   return (
-    <>
-      <div className="app-content">
-        {children}
-      </div>
-    </>
+    <div className="app-content">
+      {children}
+    </div>
   );
 };
 
