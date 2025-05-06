@@ -32,17 +32,16 @@ const Index = () => {
         <section id="home" className="min-h-screen">
           <Hero />
         </section>
-        {/* Removed relative z-index positioning and added negative margin to remove gaps */}
-        <section id="services" className="mt-[-1px]">
+        <section id="services" className="relative z-[55]">
           <Showcases />
         </section>
-        <section id="work" className="mt-[-1px]">
+        <section id="work" className="relative z-30">
           <WhatWeDo />
         </section>
-        <section id="about" className="mt-[-1px]">
+        <section id="about" className="relative z-40">
           <TheProcess />
         </section>
-        <section id="contact" className="mt-[-1px]">
+        <section id="contact" className="relative z-50">
           <CallToAction />
         </section>
       </main>
