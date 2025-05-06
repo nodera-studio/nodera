@@ -64,38 +64,38 @@ const UserExperienceCard: React.FC<UserExperienceCardProps> = ({ shouldReduceMot
           <BrowserWindow className="max-h-[450px] h-[400px] mx-8 md:mx-12">
             <div className="website-layout">
               {/* Website Header/Navigation */}
-              <div className="sticky top-0 z-10 bg-white border-b border-gray-200">
+              <div className="sticky top-0 z-10 bg-white border-b border-gray-100">
                 <div className="flex justify-between items-center px-4 py-3">
-                  <div className={`h-8 w-8 rounded-md bg-blue-500 ${isLoading ? 'animate-pulse' : ''}`}></div>
-                  <div className="hidden md:flex space-x-4 flex-grow justify-center">
+                  <div className={`h-7 w-7 rounded-lg bg-gradient-to-r from-blue-400 to-blue-500 ${isLoading ? 'animate-pulse' : ''}`}></div>
+                  <div className="hidden md:flex space-x-5 flex-grow justify-center">
                     {[1, 2, 3, 4].map((item) => (
                       <div
                         key={item}
-                        className={`h-4 w-16 rounded ${isLoading ? 'bg-gray-200 animate-pulse' : 'bg-gray-200 hover:bg-gray-300 transition-colors'}`}
+                        className={`h-3 w-14 rounded-full ${isLoading ? 'bg-gray-100 animate-pulse' : 'bg-gray-100 hover:bg-gray-200 transition-colors'}`}
                       ></div>
                     ))}
                   </div>
-                  <div className={`h-8 w-8 rounded-full ${isLoading ? 'bg-gray-200 animate-pulse' : 'bg-gray-200 hover:bg-gray-300 transition-colors'}`}></div>
+                  <div className={`h-7 w-7 rounded-full ${isLoading ? 'bg-gray-100 animate-pulse' : 'bg-gray-100 hover:bg-gray-200 transition-colors'}`}></div>
                 </div>
               </div>
               
               {/* Hero Section */}
-              <div className="px-4 py-6 md:py-10">
-                <div className="text-center space-y-4 mb-8">
-                  <div className={`h-8 w-3/4 mx-auto rounded ${isLoading ? 'bg-gray-200 animate-pulse' : 'bg-gradient-to-r from-blue-400 to-indigo-500 text-white'}`}></div>
-                  <div className={`h-4 w-full md:w-2/3 mx-auto rounded ${isLoading ? 'bg-gray-100 animate-pulse' : 'bg-gray-100'}`}></div>
-                  <div className={`h-4 w-5/6 md:w-1/2 mx-auto rounded ${isLoading ? 'bg-gray-100 animate-pulse' : 'bg-gray-100'}`}></div>
+              <div className="px-4 py-6 md:py-8">
+                <div className="text-center space-y-4 mb-6">
+                  <div className={`h-7 w-3/4 mx-auto rounded-full ${isLoading ? 'bg-gray-100 animate-pulse' : 'bg-gradient-to-r from-blue-300 to-indigo-400 text-white'}`}></div>
+                  <div className={`h-3 w-full md:w-2/3 mx-auto rounded-full ${isLoading ? 'bg-gray-50 animate-pulse' : 'bg-gray-50'}`}></div>
+                  <div className={`h-3 w-5/6 md:w-1/2 mx-auto rounded-full ${isLoading ? 'bg-gray-50 animate-pulse' : 'bg-gray-50'}`}></div>
                 </div>
                 
                 <motion.div 
-                  className={`h-40 w-full rounded-lg ${isLoading ? 'bg-gray-200 animate-pulse' : 'bg-blue-50 border border-blue-100'}`}
+                  className={`h-36 w-full rounded-xl overflow-hidden ${isLoading ? 'bg-gray-100 animate-pulse' : 'bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-100/50'}`}
                   whileHover={{ scale: 1.02 }}
                   transition={{ duration: 0.3 }}
                 >
                   <div className="flex items-center justify-center h-full">
                     {!isLoading && (
-                      <div className="h-16 w-16 bg-blue-500 rounded-full flex items-center justify-center">
-                        <div className="h-8 w-8 bg-white rounded-md"></div>
+                      <div className="h-14 w-14 bg-gradient-to-r from-blue-400 to-indigo-400 rounded-full flex items-center justify-center">
+                        <div className="h-6 w-6 bg-white rounded-md"></div>
                       </div>
                     )}
                   </div>
@@ -103,35 +103,35 @@ const UserExperienceCard: React.FC<UserExperienceCardProps> = ({ shouldReduceMot
               </div>
               
               {/* Features Section */}
-              <div className="px-4 py-6 bg-gray-50">
-                <div className={`h-6 w-32 mx-auto rounded mb-6 ${isLoading ? 'bg-gray-200 animate-pulse' : 'bg-gray-800'}`}></div>
+              <div className="px-4 py-6 bg-gray-50/70">
+                <div className={`h-5 w-28 mx-auto rounded-full mb-6 ${isLoading ? 'bg-gray-200 animate-pulse' : 'bg-gradient-to-r from-gray-700 to-gray-800'}`}></div>
                 
-                <div className="grid grid-cols-2 gap-4">
+                <div className="grid grid-cols-2 gap-3">
                   {[1, 2, 3, 4].map((feature) => (
                     <motion.div
                       key={feature}
-                      className={`p-3 rounded-lg ${isLoading 
-                        ? 'bg-gray-200 animate-pulse' 
+                      className={`p-3 rounded-xl ${isLoading 
+                        ? 'bg-gray-100 animate-pulse' 
                         : activeFeature === feature
-                          ? 'bg-blue-100 border border-blue-200 shadow-md' 
-                          : 'bg-white border border-gray-200'
+                          ? 'bg-gradient-to-br from-blue-50 to-blue-100/80 border border-blue-100 shadow-sm' 
+                          : 'bg-white border border-gray-100'
                       }`}
                       whileHover={{ 
-                        scale: isLoading ? 1 : 1.05,
+                        scale: isLoading ? 1 : 1.03,
                         zIndex: 10
                       }}
                       onHoverStart={() => handleFeatureHover(feature)}
                       onHoverEnd={() => handleFeatureHover(null)}
                     >
                       <div className="flex flex-col items-center text-center">
-                        <div className={`h-8 w-8 rounded-md mb-2 ${isLoading 
-                          ? 'bg-gray-300' 
+                        <div className={`h-7 w-7 rounded-lg mb-2 ${isLoading 
+                          ? 'bg-gray-200' 
                           : activeFeature === feature
-                            ? 'bg-blue-500'
-                            : 'bg-gray-200'
+                            ? 'bg-gradient-to-r from-blue-400 to-blue-500'
+                            : 'bg-gray-100'
                         }`}></div>
-                        <div className={`h-3 w-2/3 rounded mb-1 ${isLoading ? 'bg-gray-300' : 'bg-gray-300'}`}></div>
-                        <div className={`h-2 w-3/4 rounded ${isLoading ? 'bg-gray-300' : 'bg-gray-200'}`}></div>
+                        <div className={`h-2.5 w-2/3 rounded-full mb-1 ${isLoading ? 'bg-gray-200' : 'bg-gray-200'}`}></div>
+                        <div className={`h-1.5 w-3/4 rounded-full ${isLoading ? 'bg-gray-200' : 'bg-gray-100'}`}></div>
                       </div>
                     </motion.div>
                   ))}
@@ -140,12 +140,12 @@ const UserExperienceCard: React.FC<UserExperienceCardProps> = ({ shouldReduceMot
               
               {/* Call to Action */}
               <div className="px-4 py-8 text-center">
-                <div className={`h-6 w-2/3 mx-auto rounded mb-4 ${isLoading ? 'bg-gray-200 animate-pulse' : 'bg-gray-800'}`}></div>
-                <div className={`h-4 w-5/6 md:w-1/2 mx-auto rounded mb-6 ${isLoading ? 'bg-gray-100 animate-pulse' : 'bg-gray-200'}`}></div>
+                <div className={`h-5 w-2/3 mx-auto rounded-full mb-4 ${isLoading ? 'bg-gray-100 animate-pulse' : 'bg-gradient-to-r from-gray-700 to-gray-800'}`}></div>
+                <div className={`h-3 w-5/6 md:w-1/2 mx-auto rounded-full mb-6 ${isLoading ? 'bg-gray-50 animate-pulse' : 'bg-gray-100'}`}></div>
                 <motion.div 
-                  className={`h-10 w-32 mx-auto rounded-full ${isLoading 
-                    ? 'bg-gray-300 animate-pulse' 
-                    : 'bg-gradient-to-r from-blue-500 to-indigo-500 hover:from-blue-600 hover:to-indigo-600'
+                  className={`h-8 w-28 mx-auto rounded-full ${isLoading 
+                    ? 'bg-gray-200 animate-pulse' 
+                    : 'bg-gradient-to-r from-blue-400 to-indigo-400 hover:from-blue-500 hover:to-indigo-500'
                   }`}
                   whileHover={{ scale: isLoading ? 1 : 1.05 }}
                   whileTap={{ scale: isLoading ? 1 : 0.95 }}
@@ -153,30 +153,30 @@ const UserExperienceCard: React.FC<UserExperienceCardProps> = ({ shouldReduceMot
               </div>
               
               {/* Footer */}
-              <div className="px-4 py-6 bg-gray-800">
+              <div className="px-4 py-6 bg-gradient-to-b from-gray-800 to-gray-900">
                 <div className="flex flex-wrap justify-between">
                   <div className="w-full md:w-1/3 mb-4 md:mb-0">
-                    <div className={`h-5 w-24 rounded mb-3 ${isLoading ? 'bg-gray-600 animate-pulse' : 'bg-gray-600'}`}></div>
-                    <div className={`h-3 w-4/5 rounded mb-2 ${isLoading ? 'bg-gray-600 animate-pulse' : 'bg-gray-600'}`}></div>
-                    <div className={`h-3 w-3/4 rounded ${isLoading ? 'bg-gray-600 animate-pulse' : 'bg-gray-600'}`}></div>
+                    <div className={`h-4 w-20 rounded-full mb-3 ${isLoading ? 'bg-gray-700 animate-pulse' : 'bg-gray-700'}`}></div>
+                    <div className={`h-2.5 w-4/5 rounded-full mb-2 ${isLoading ? 'bg-gray-700 animate-pulse' : 'bg-gray-700'}`}></div>
+                    <div className={`h-2.5 w-3/4 rounded-full ${isLoading ? 'bg-gray-700 animate-pulse' : 'bg-gray-700'}`}></div>
                   </div>
                   
                   <div className="w-1/2 md:w-1/4">
-                    <div className={`h-4 w-16 rounded mb-3 ${isLoading ? 'bg-gray-600 animate-pulse' : 'bg-gray-600'}`}></div>
+                    <div className={`h-3.5 w-14 rounded-full mb-3 ${isLoading ? 'bg-gray-700 animate-pulse' : 'bg-gray-700'}`}></div>
                     {[1, 2, 3].map((item) => (
                       <div 
                         key={item}
-                        className={`h-3 w-20 rounded mb-2 ${isLoading ? 'bg-gray-600 animate-pulse' : 'bg-gray-600 hover:bg-gray-500 transition-colors'}`}
+                        className={`h-2.5 w-16 rounded-full mb-2 ${isLoading ? 'bg-gray-700 animate-pulse' : 'bg-gray-700 hover:bg-gray-600 transition-colors'}`}
                       ></div>
                     ))}
                   </div>
                   
                   <div className="w-1/2 md:w-1/4">
-                    <div className={`h-4 w-16 rounded mb-3 ${isLoading ? 'bg-gray-600 animate-pulse' : 'bg-gray-600'}`}></div>
+                    <div className={`h-3.5 w-14 rounded-full mb-3 ${isLoading ? 'bg-gray-700 animate-pulse' : 'bg-gray-700'}`}></div>
                     {[1, 2, 3].map((item) => (
                       <div 
                         key={item} 
-                        className={`h-3 w-20 rounded mb-2 ${isLoading ? 'bg-gray-600 animate-pulse' : 'bg-gray-600 hover:bg-gray-500 transition-colors'}`}
+                        className={`h-2.5 w-16 rounded-full mb-2 ${isLoading ? 'bg-gray-700 animate-pulse' : 'bg-gray-700 hover:bg-gray-600 transition-colors'}`}
                       ></div>
                     ))}
                   </div>
@@ -185,12 +185,12 @@ const UserExperienceCard: React.FC<UserExperienceCardProps> = ({ shouldReduceMot
                 <div className={`h-0.5 w-full my-4 ${isLoading ? 'bg-gray-700 animate-pulse' : 'bg-gray-700'}`}></div>
                 
                 <div className="flex justify-between items-center">
-                  <div className={`h-3 w-24 rounded ${isLoading ? 'bg-gray-600 animate-pulse' : 'bg-gray-600'}`}></div>
+                  <div className={`h-2.5 w-20 rounded-full ${isLoading ? 'bg-gray-700 animate-pulse' : 'bg-gray-700'}`}></div>
                   <div className="flex space-x-2">
                     {[1, 2, 3].map((item) => (
                       <div 
                         key={item} 
-                        className={`h-6 w-6 rounded-full ${isLoading ? 'bg-gray-600 animate-pulse' : 'bg-gray-600 hover:bg-gray-500 transition-colors'}`}
+                        className={`h-5 w-5 rounded-full ${isLoading ? 'bg-gray-700 animate-pulse' : 'bg-gray-700 hover:bg-gray-600 transition-colors'}`}
                       ></div>
                     ))}
                   </div>
