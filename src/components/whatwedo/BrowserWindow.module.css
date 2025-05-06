@@ -11,7 +11,7 @@
 }
 
 .browserHeader {
-  height: 32px;
+  height: 22px;
   background: #f8f8f8;
   border-bottom: 1px solid #EAEAEA;
   display: flex;
@@ -25,30 +25,30 @@
 }
 
 .dot {
-  width: 10px;
-  height: 10px;
+  width: 8px;
+  height: 8px;
   border-radius: 50%;
 }
 
 .browserContent {
   padding: 14px;
-  height: calc(100% - 32px);
+  height: calc(100% - 22px);
   overflow: auto;
 }
 
 @media (max-width: 640px) {
   .browserHeader {
-    height: 26px;
+    height: 16px;
     padding: 0 10px;
   }
   
   .dot {
-    width: 8px;
-    height: 8px;
+    width: 6px;
+    height: 6px;
   }
   
   .browserContent {
     padding: 10px;
-    height: calc(100% - 26px);
+    height: calc(100% - 16px);
   }
 }
