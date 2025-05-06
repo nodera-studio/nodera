@@ -17,7 +17,7 @@ const Showcases = () => {
       <SectionTitle title="Digital Showcases" />
 
       <motion.div 
-        className={`flex flex-col ${isColumnLayout ? '' : 'md:flex-row'} gap-2.5 px-2.5 md:px-4 lg:px-6 xl:px-8`}
+        className={`flex flex-col ${isColumnLayout ? '' : 'md:flex-row'} gap-2.5 px-2.5`}
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
