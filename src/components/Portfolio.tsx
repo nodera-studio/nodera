@@ -40,7 +40,7 @@ const Portfolio: React.FC = () => {
     {
       title: "Furnihaus Collection",
       description: "E-commerce platform with product visualization and custom checkout experience.",
-      imageSrc: "/lovable-uploads/8379e5c3-25c3-48da-9e3b-916491ac1570.png",
+      imageSrc: "/lovable-uploads/furnihaus.png",
       projectUrl: "#furnihaus"
     },
     {

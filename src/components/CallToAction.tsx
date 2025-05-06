@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Button } from "@/components/ui/button";
 import styles from './CallToAction.module.css';
@@ -14,7 +13,7 @@ const CallToAction = () => {
           Let's build something remarkable.
         </p>
         
-        <div className="flex flex-row gap-4 mt-8 justify-center">
+        <div className="flex flex-row gap-4 mt-4 justify-center">
           <Button
             variant="primary"
             size="default"

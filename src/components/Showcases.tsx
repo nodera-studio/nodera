@@ -1,13 +1,14 @@
-
 import React from 'react';
-import ShowcasesTitle from './showcases/ShowcasesTitle';
+// import ShowcasesTitle from './showcases/ShowcasesTitle'; // Old import
+import SectionTitle from './ui/SectionTitle'; // New import
 import ShowcaseCard from './showcases/ShowcaseCard';
 import styles from './styles/Showcases.module.css';
 
 const Showcases = () => {
   return (
     <div className="bg-white">
-      <ShowcasesTitle />
+      {/* <ShowcasesTitle /> */}
+      <SectionTitle title="Digital Showcases" />
 
       <div className="flex flex-col md:flex-row gap-2.5 px-2.5">
         <ShowcaseCard
@@ -22,7 +23,7 @@ const Showcases = () => {
         <ShowcaseCard
           title="Furnihaus Collection"
           description="Where craftsmanship meets digital presence. Elegantly showcasing custom furniture and connecting artisans with clients."
-          imageSrc="/lovable-uploads/8379e5c3-25c3-48da-9e3b-916491ac1570.png"
+          imageSrc="/lovable-uploads/furnihaus.png"
           imageAlt="Furnihaus Collection"
           gradientDirection="to-bl"
           gradientColor="from-blue-500"

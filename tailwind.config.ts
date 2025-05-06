@@ -62,6 +62,13 @@ export default {
 				md: 'calc(var(--radius) - 2px)',
 				sm: 'calc(var(--radius) - 4px)'
 			},
+			fontFamily: {
+				comfortaa: ['Comfortaa', 'sans-serif'],
+				baloo: ['"Baloo Da 2"', 'sans-serif'],
+			},
+			fontSize: {
+				'10xl': '10rem', // 160px
+			},
 			keyframes: {
 				'accordion-down': {
 					from: {

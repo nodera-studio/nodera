@@ -1,42 +1,18 @@
-
-import React, { lazy, Suspense, useState, useEffect } from 'react';
-import { useIsMobile } from '../hooks/use-mobile';
+import React, { Suspense, lazy } from 'react';
 
 // Lazy load the CustomCursor component
-const CustomCursor = lazy(() => import('./CustomCursor'));
+// const CustomCursor = lazy(() => import('./CustomCursor'));
 
 interface LayoutProps {
   children: React.ReactNode;
 }
 
 const Layout: React.FC<LayoutProps> = ({ children }) => {
-  const isMobile = useIsMobile();
-  const [cursorMounted, setCursorMounted] = useState(false);
-  
-  // Safely mount the cursor component only on desktop and after a delay
-  useEffect(() => {
-    if (!isMobile) {
-      // Small delay to ensure DOM is ready
-      const timer = setTimeout(() => {
-        setCursorMounted(true);
-      }, 100);
-      
-      return () => {
-        clearTimeout(timer);
-        setCursorMounted(false);
-      };
-    }
-  }, [isMobile]);
+  // All states (isMobile, cursorMounted, isTouchDevice) and useEffect related to CustomCursor have been removed.
 
   return (
     <>
-      {!isMobile && cursorMounted && (
-        <Suspense fallback={null}>
-          <div id="cursor-container">
-            <CustomCursor />
-          </div>
-        </Suspense>
-      )}
+      {/* CustomCursor rendering block and its related div have been removed. */}
       <div className="app-content">
         {children}
       </div>

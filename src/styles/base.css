@@ -1,4 +1,3 @@
-
 @tailwind base;
 
 @layer base {
@@ -88,15 +87,6 @@
 
     html {
       scroll-behavior: auto;
-    }
-  }
-
-  @media (min-width: 768px) {
-    html, 
-    body, 
-    a, 
-    button {
-      cursor: none !important;
     }
   }
 }

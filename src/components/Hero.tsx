@@ -27,10 +27,10 @@ const Hero: React.FC = () => {
       
       <div className="relative z-10 flex flex-col items-center justify-center h-full">
         <div className={styles.heroContent}>
-          <h1 className="text-white m-0 !text-9xl">
+          <h1 className="text-white m-0 !text-10xl">
             {title}
           </h1>
-          <span className="hero-subtitle text-white m-0 !text-4xl font-bold">
+          <span className="hero-subtitle text-white m-0 !text-5xl font-comfortaa font-bold">
             {subtitle}
           </span>
         </div>

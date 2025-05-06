@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Button } from "@/components/ui/button";
 import styles from '../styles/Showcases.module.css';
@@ -41,7 +40,7 @@ const ShowcaseCard = React.forwardRef<HTMLDivElement, ShowcaseCardProps>(({
   return (
     <motion.div 
       ref={ref}
-      className={`${styles.showcaseCard} ${className}`}
+      className={`${styles.showcaseCard} ${className} flex flex-col justify-between pt-[60px] pb-[60px]`}
       initial={initial || { opacity: 0, y: 50 }}
       whileInView={whileInView || { opacity: 1, y: 0 }}
       viewport={viewport || { once: true, margin: "-100px" }}
@@ -51,12 +50,14 @@ const ShowcaseCard = React.forwardRef<HTMLDivElement, ShowcaseCardProps>(({
     >
       <div className={`h-full w-full absolute top-0 left-0 bg-gradient-to-br ${gradientDirection} ${gradientColor} opacity-10`} />
       
-      <div className="flex flex-col items-center text-center px-5 md:px-8 pt-10 pb-8 relative z-10 h-full">
-        <h3 className="text-3xl md:text-4xl mb-3">{title}</h3>
-        <p className="text-gray-600 text-lg mb-6 max-w-lg">
+      <div className="flex flex-col justify-between items-center text-center min-h-[160px] px-5 md:px-8 relative z-10">
+        <h3 className="text-3xl md:text-4xl">
+          {title}
+        </h3>
+        <p className="text-gray-600 text-lg max-w-xl my-2">
           {description}
         </p>
-        <div className="flex flex-wrap justify-center gap-3 mb-1">
+        <div className="flex flex-wrap justify-center gap-3">
           <Button
             variant="primary"
             size="default"
@@ -72,13 +73,14 @@ const ShowcaseCard = React.forwardRef<HTMLDivElement, ShowcaseCardProps>(({
             <a href="#">More Creations</a>
           </Button>
         </div>
-        <div className={`${styles.imageContainer} mt-4 flex-grow flex items-center justify-center`}>
-          <img 
-            src={imageSrc} 
-            alt={imageAlt} 
-            className="w-auto h-auto max-w-full max-h-full object-contain"
-          />
-        </div>
+      </div>
+
+      <div className="flex justify-center items-center flex-grow px-5 md:px-8 relative z-10 overflow-hidden">
+        <img 
+          src={imageSrc} 
+          alt={imageAlt} 
+          className="w-auto h-auto max-w-full max-h-[65%] object-contain"
+        />
       </div>
     </motion.div>
   );

@@ -1,10 +1,10 @@
-
 import React, { useRef } from 'react';
 import { motion, useInView, useReducedMotion } from 'framer-motion';
 import { LayoutDashboard, Bolt, CreditCard } from 'lucide-react';
 import styles from './styles/TheProcess.module.css';
 import ProcessCard from './process/ProcessCard';
-import ProcessTitle from './process/ProcessTitle';
+// import ProcessTitle from './process/ProcessTitle'; // Old import
+import SectionTitle from './ui/SectionTitle'; // New import
 
 const TheProcess = () => {
   const ref = useRef(null);
@@ -33,7 +33,8 @@ const TheProcess = () => {
 
   return (
     <section ref={ref} className={styles.processSection} aria-label="Our Process">
-      <ProcessTitle />
+      {/* <ProcessTitle /> */}
+      <SectionTitle title="The Process" />
       
       <div className={styles.container}>
         <motion.div 
