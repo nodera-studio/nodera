@@ -11,44 +11,44 @@
 }
 
 .browserHeader {
-  height: 36px;
+  height: 32px;
   background: #f8f8f8;
   border-bottom: 1px solid #EAEAEA;
   display: flex;
   align-items: center;
-  padding: 0 16px;
+  padding: 0 14px;
 }
 
 .browserDots {
   display: flex;
-  gap: 8px;
+  gap: 7px;
 }
 
 .dot {
-  width: 12px;
-  height: 12px;
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
 }
 
 .browserContent {
-  padding: 16px;
-  height: calc(100% - 36px);
+  padding: 14px;
+  height: calc(100% - 32px);
   overflow: auto;
 }
 
 @media (max-width: 640px) {
   .browserHeader {
-    height: 28px;
-    padding: 0 12px;
+    height: 26px;
+    padding: 0 10px;
   }
   
   .dot {
-    width: 10px;
-    height: 10px;
+    width: 8px;
+    height: 8px;
   }
   
   .browserContent {
-    padding: 12px;
-    height: calc(100% - 28px);
+    padding: 10px;
+    height: calc(100% - 26px);
   }
 }
