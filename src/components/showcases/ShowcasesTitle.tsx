@@ -1,3 +1,4 @@
+
 import React, { useEffect, useRef } from 'react';
 import styles from '../styles/Showcases.module.css';
 import { useIsMobile } from '../../hooks/use-mobile';
@@ -29,7 +30,7 @@ const ShowcasesTitle: React.FC = () => {
   }, []);
 
   return (
-    <div className="bg-[#F9F9F9] py-10 text-center mt-2.5 mb-2.5">
+    <div className="bg-[#F9F9F9] py-10 text-center">
       <h2 ref={sectionTitleRef} className="section-title mx-auto">
         Digital <span className="gradient-word">Showcases</span>
       </h2>
