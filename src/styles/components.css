@@ -162,7 +162,7 @@
     opacity: 0.7;
   }
   
-  /* Animation for circle progress */
+  /* Animation for circle progress - shortened duration */
   @keyframes circleProgress {
     from {
       stroke-dasharray: 0 100;
@@ -173,8 +173,6 @@
   }
   
   .circle-progress {
-    animation: circleProgress 1.5s ease-out forwards;
+    animation: circleProgress 1s ease-out forwards;
   }
-  
-  /* Number count animation will be handled with JS */
 }

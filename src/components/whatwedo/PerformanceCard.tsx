@@ -40,7 +40,7 @@ const MetricCircle: React.FC<MetricProps> = ({ name, value, color, delay }) => {
     
     const countUp = (timestamp: number) => {
       if (!startTime) startTime = timestamp;
-      const progress = Math.min((timestamp - startTime) / 1500, 1); // 1500ms duration
+      const progress = Math.min((timestamp - startTime) / 1000, 1); // 1000ms duration
       
       // Easing function - ease out cubic
       const easedProgress = 1 - Math.pow(1 - progress, 3);
@@ -102,9 +102,10 @@ const MetricCircle: React.FC<MetricProps> = ({ name, value, color, delay }) => {
 
 const PerformanceCard: React.FC<PerformanceCardProps> = ({ shouldReduceMotion, isMobile }) => {
   const [activeTab, setActiveTab] = useState<'desktop' | 'mobile'>('desktop');
-  const [showMetrics, setShowMetrics] = useState(false);
+  const [showMetrics, setShowMetrics] = useState(true);
   const [key, setKey] = useState(0); // Used to force re-render metrics on tab change
   const inViewRef = useRef(null);
+  const [isInView, setIsInView] = useState(false);
   
   const desktopMetrics = [
     { name: 'Performance', value: '97', color: 'from-green-300 to-green-400' },
@@ -119,6 +120,28 @@ const PerformanceCard: React.FC<PerformanceCardProps> = ({ shouldReduceMotion, i
     { name: 'Best Practices', value: '100', color: 'from-green-300 to-green-400' },
     { name: 'SEO', value: '94', color: 'from-green-300 to-green-400' }
   ];
+  
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsInView(true);
+        }
+      },
+      { threshold: 0.3 }
+    );
+
+    const currentRef = inViewRef.current;
+    if (currentRef) {
+      observer.observe(currentRef);
+    }
+
+    return () => {
+      if (currentRef) {
+        observer.unobserve(currentRef);
+      }
+    };
+  }, []);
   
   // Handle tab change animation
   const handleTabChange = (tab: 'desktop' | 'mobile') => {
@@ -169,20 +192,18 @@ const PerformanceCard: React.FC<PerformanceCardProps> = ({ shouldReduceMotion, i
         </div>
         
         <div className="flex-1 w-full flex items-center justify-center mb-4">
-          <BrowserWindow className="max-h-[450px] mx-4 md:mx-8">
+          <BrowserWindow className="max-h-[450px] h-[450px] mx-4 md:mx-8">
             <motion.div 
               className="p-4 md:p-6 bg-white"
               initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
+              animate={isInView ? { opacity: 1 } : { opacity: 0 }}
               transition={{ duration: 0.5 }}
             >
               <div className="pb-4 md:pb-6">
                 <motion.h4 
                   className="text-sm md:text-base font-medium mb-4 text-gray-800"
                   initial={{ opacity: 0, y: -5 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
+                  animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: -5 }}
                   transition={{ delay: 0.2, duration: 0.4 }}
                 >
                   Report from May 5, 2025
@@ -191,8 +212,7 @@ const PerformanceCard: React.FC<PerformanceCardProps> = ({ shouldReduceMotion, i
                 <motion.div 
                   className="flex space-x-2 items-center mb-4"
                   initial={{ opacity: 0, y: 5 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
+                  animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 5 }}
                   transition={{ delay: 0.3, duration: 0.5 }}
                 >
                   <div className="flex-grow relative">
@@ -210,8 +230,7 @@ const PerformanceCard: React.FC<PerformanceCardProps> = ({ shouldReduceMotion, i
                 <motion.div 
                   className="flex justify-center mb-6 overflow-hidden rounded-lg bg-gray-50 p-1 border border-gray-200"
                   initial={{ opacity: 0, y: 5 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
+                  animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 5 }}
                   transition={{ delay: 0.4, duration: 0.5 }}
                 >
                   <button
@@ -251,8 +270,7 @@ const PerformanceCard: React.FC<PerformanceCardProps> = ({ shouldReduceMotion, i
                 <motion.h5 
                   className="text-sm font-medium mb-5 text-gray-700"
                   initial={{ opacity: 0 }}
-                  whileInView={{ opacity: 1 }}
-                  viewport={{ once: true }}
+                  animate={isInView ? { opacity: 1 } : { opacity: 0 }}
                   transition={{ delay: 0.6, duration: 0.4 }}
                 >
                   Performance metrics
@@ -274,7 +292,7 @@ const PerformanceCard: React.FC<PerformanceCardProps> = ({ shouldReduceMotion, i
                           name={metric.name}
                           value={metric.value}
                           color={metric.color}
-                          delay={700 + (index * 150)}
+                          delay={200 + (index * 100)}
                         />
                       ))}
                     </motion.div>
