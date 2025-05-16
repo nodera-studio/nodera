@@ -1,12 +1,15 @@
 
 import React from 'react';
-import { Outlet } from 'react-router-dom';
 import { useBreakpoint } from '@/hooks/use-mobile';
 
-const Layout: React.FC = () => {
+interface LayoutProps {
+  children: React.ReactNode;
+}
+
+const Layout: React.FC<LayoutProps> = ({ children }) => {
   return (
     <div className="app-content w-full mx-auto">
-      <Outlet />
+      {children}
     </div>
   );
 };
