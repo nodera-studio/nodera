@@ -3,6 +3,7 @@ import React, { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from "@/components/ui/button";
 import { ServiceItem } from '@/data/serviceData';
+import { Globe, ShoppingCart, Code } from "lucide-react";
 
 interface ServiceGridProps {
   services: ServiceItem[];
@@ -40,6 +41,20 @@ const ServiceGrid: React.FC<ServiceGridProps> = ({ services }) => {
       .replace(/[^\w ]+/g, '')
       .replace(/ +/g, '-');
   }
+
+  // Function to get the appropriate icon for each service
+  function getServiceIcon(title: string) {
+    switch (title) {
+      case "Websites":
+        return <Globe size={40} strokeWidth={1.5} />;
+      case "E-commerce Solutions":
+        return <ShoppingCart size={40} strokeWidth={1.5} />;
+      case "Web Applications":
+        return <Code size={40} strokeWidth={1.5} />;
+      default:
+        return <Globe size={40} strokeWidth={1.5} />;
+    }
+  }
   
   return (
     <section className="py-20 md:py-24 lg:py-32 px-4 sm:px-6 bg-[#F5F5F7]">
@@ -48,7 +63,7 @@ const ServiceGrid: React.FC<ServiceGridProps> = ({ services }) => {
         
         <div className="flex flex-col gap-2.5">
           {/* Top row - two services side by side */}
-          <div className="flex flex-col md:flex-row gap-2.5 w-full">
+          <div className="flex flex-col md:flex-row gap-[10px] w-full">
             {services.slice(0, 2).map((service, index) => (
               <Link
                 key={service.title}
@@ -57,18 +72,21 @@ const ServiceGrid: React.FC<ServiceGridProps> = ({ services }) => {
               >
                 <div
                   ref={el => gridItemsRef.current[index] = el}
-                  className="relative overflow-hidden flex flex-col items-center justify-end
-                    bg-[#222222] h-[450px] p-8 text-center
+                  className="relative overflow-hidden flex flex-col items-center justify-center
+                    bg-[#F5F5F5] h-[450px] p-8 text-center
                     transform transition-all duration-300 ease-out 
-                    opacity-0 translate-y-8 hover:opacity-95"
+                    opacity-0 translate-y-8"
                 >
                   <div className="z-10 flex flex-col items-center">
-                    <h3 className="text-3xl md:text-4xl font-comfortaa font-bold mb-3 text-white">{service.title}</h3>
-                    <p className="text-base md:text-lg font-comfortaa opacity-90 mb-6 max-w-md text-white">{service.description}</p>
+                    <div className="mb-6 text-black">
+                      {getServiceIcon(service.title)}
+                    </div>
+                    <h3 className="text-3xl md:text-4xl font-comfortaa font-bold mb-3 text-black">{service.title}</h3>
+                    <p className="text-base md:text-lg font-comfortaa mb-6 max-w-md text-black">{service.description}</p>
                     <Button 
-                      variant="secondary" 
+                      variant="primary" 
                       size="lg"
-                      className="font-comfortaa font-medium text-white border border-white/30 bg-white/10 hover:bg-white/20 rounded-full"
+                      className="font-comfortaa font-medium text-white bg-black hover:bg-black/90 rounded-full"
                     >
                       Learn More
                     </Button>
@@ -88,18 +106,21 @@ const ServiceGrid: React.FC<ServiceGridProps> = ({ services }) => {
               >
                 <div
                   ref={el => gridItemsRef.current[index + 2] = el}
-                  className="relative overflow-hidden flex flex-col items-center justify-end
-                    bg-[#222222] h-[450px] p-8 text-center
+                  className="relative overflow-hidden flex flex-col items-center justify-center
+                    bg-[#F5F5F5] h-[450px] p-8 text-center
                     transform transition-all duration-300 ease-out 
-                    opacity-0 translate-y-8 hover:opacity-95"
+                    opacity-0 translate-y-8"
                 >
                   <div className="z-10 flex flex-col items-center">
-                    <h3 className="text-3xl md:text-4xl font-comfortaa font-bold mb-3 text-white">{service.title}</h3>
-                    <p className="text-base md:text-lg font-comfortaa opacity-90 mb-6 max-w-md text-white">{service.description}</p>
+                    <div className="mb-6 text-black">
+                      {getServiceIcon(service.title)}
+                    </div>
+                    <h3 className="text-3xl md:text-4xl font-comfortaa font-bold mb-3 text-black">{service.title}</h3>
+                    <p className="text-base md:text-lg font-comfortaa mb-6 max-w-md text-black">{service.description}</p>
                     <Button 
-                      variant="secondary" 
+                      variant="primary" 
                       size="lg"
-                      className="font-comfortaa font-medium text-white border border-white/30 bg-white/10 hover:bg-white/20 rounded-full"
+                      className="font-comfortaa font-medium text-white bg-black hover:bg-black/90 rounded-full"
                     >
                       Learn More
                     </Button>
