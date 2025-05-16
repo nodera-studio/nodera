@@ -15,14 +15,12 @@ const Services: React.FC = () => {
 		<div className="min-h-screen flex flex-col overflow-x-hidden bg-gray-50">
 			<Header />
 			<main className="relative flex-grow pt-[60px]">
-				{/* Hero Section - Apple Inspired */}
+				{/* Hero Section */}
 				<ServiceHero />
 				
-				{/* New Service Grid Section */}
+				{/* New Tabbed Service Grid Section */}
 				<ServiceGrid
-					services={serviceCategories.mainServices.filter(s => 
-						['Websites', 'E-commerce Solutions', 'Web Applications'].includes(s.title)
-					)}
+					services={serviceCategories.mainServices}
 				/>
 				
 				{/* Pricing Section */}
