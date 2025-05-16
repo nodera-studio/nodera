@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { useBreakpoint } from '@/hooks/use-mobile';
+import { Outlet } from 'react-router-dom';
 
 interface LayoutProps {
   children: React.ReactNode;
