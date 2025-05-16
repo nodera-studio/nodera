@@ -5,10 +5,10 @@ import { Button } from "@/components/ui/button";
 import { ServiceItem } from '@/data/serviceData';
 
 interface ServiceGridProps {
-  services?: ServiceItem[];
+  services: ServiceItem[];
 }
 
-const ServiceGrid: React.FC<ServiceGridProps> = ({ services = [] }) => {
+const ServiceGrid: React.FC<ServiceGridProps> = ({ services }) => {
   const gridItemsRef = useRef<(HTMLDivElement | null)[]>([]);
   
   useEffect(() => {
@@ -41,30 +41,6 @@ const ServiceGrid: React.FC<ServiceGridProps> = ({ services = [] }) => {
       .replace(/ +/g, '-');
   }
   
-  // Sample services if none are provided
-  const defaultServices = [
-    {
-      id: 1,
-      title: 'Website Development',
-      description: 'Custom-built websites designed for performance and usability.',
-      icon: 'globe'
-    },
-    {
-      id: 2, 
-      title: 'E-commerce Solutions',
-      description: 'Powerful online stores with seamless payment processing.',
-      icon: 'shopping-cart'
-    },
-    {
-      id: 3,
-      title: 'Web Applications',
-      description: 'Feature-rich web applications built with modern frameworks.',
-      icon: 'code'
-    }
-  ];
-  
-  const displayServices = services.length > 0 ? services : defaultServices;
-  
   // Gradient backgrounds for each service
   const gradients = [
     'bg-gradient-to-br from-blue-400 to-purple-600', // Websites
@@ -75,13 +51,13 @@ const ServiceGrid: React.FC<ServiceGridProps> = ({ services = [] }) => {
   return (
     <section className="py-20 md:py-24 lg:py-32 px-4 sm:px-6 bg-[#F5F5F7]">
       <div className="container mx-auto max-w-7xl">
-        <h2 className="text-3xl md:text-4xl font-bold text-center mb-16">Core Service Offerings</h2>
+        <h2 className="text-3xl md:text-4xl font-comfortaa font-bold text-center mb-16">Core Service Offerings</h2>
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
           {/* First row - two services side by side */}
-          {displayServices.slice(0, 2).map((service, index) => (
+          {services.slice(0, 2).map((service, index) => (
             <Link
-              key={service.id || index}
+              key={service.title}
               to={`/services/${convertToSlug(service.title)}`}
             >
               <div
@@ -94,12 +70,12 @@ const ServiceGrid: React.FC<ServiceGridProps> = ({ services = [] }) => {
                   {/* Optional background pattern or graphic could go here */}
                 </div>
                 <div className="p-8 md:p-12 text-white z-10">
-                  <h3 className="text-3xl md:text-4xl font-bold mb-3">{service.title}</h3>
-                  <p className="text-base md:text-lg opacity-90 mb-6 max-w-md">{service.description}</p>
+                  <h3 className="text-3xl md:text-4xl font-comfortaa font-bold mb-3">{service.title}</h3>
+                  <p className="text-base md:text-lg font-comfortaa opacity-90 mb-6 max-w-md">{service.description}</p>
                   <Button 
                     variant="secondary" 
                     size="lg"
-                    className="font-medium text-white border-2 border-white/70 bg-white/10 hover:bg-white/20"
+                    className="font-comfortaa font-medium text-white border-2 border-white/70 bg-white/10 hover:bg-white/20"
                   >
                     Learn More
                   </Button>
@@ -111,9 +87,9 @@ const ServiceGrid: React.FC<ServiceGridProps> = ({ services = [] }) => {
         
         {/* Second row - one service spanning full width (or centered) */}
         <div className="mt-6 md:mt-8">
-          {displayServices.slice(2, 3).map((service, index) => (
+          {services.slice(2, 3).map((service, index) => (
             <Link
-              key={service.id || index}
+              key={service.title}
               to={`/services/${convertToSlug(service.title)}`}
             >
               <div
@@ -126,12 +102,12 @@ const ServiceGrid: React.FC<ServiceGridProps> = ({ services = [] }) => {
                   {/* Optional background pattern or graphic could go here */}
                 </div>
                 <div className="p-8 md:p-12 text-white z-10">
-                  <h3 className="text-3xl md:text-4xl font-bold mb-3">{service.title}</h3>
-                  <p className="text-base md:text-lg opacity-90 mb-6 max-w-md">{service.description}</p>
+                  <h3 className="text-3xl md:text-4xl font-comfortaa font-bold mb-3">{service.title}</h3>
+                  <p className="text-base md:text-lg font-comfortaa opacity-90 mb-6 max-w-md">{service.description}</p>
                   <Button 
                     variant="secondary" 
                     size="lg"
-                    className="font-medium text-white border-2 border-white/70 bg-white/10 hover:bg-white/20"
+                    className="font-comfortaa font-medium text-white border-2 border-white/70 bg-white/10 hover:bg-white/20"
                   >
                     Learn More
                   </Button>

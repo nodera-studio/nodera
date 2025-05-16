@@ -11,11 +11,6 @@
   padding: 0;
 }
 
-.servicePage {
-  height: 100vh; /* Full viewport height for service hero */
-  min-height: 600px;
-}
-
 .heroBackgroundContainer {
   position: absolute;
   top: 0;
@@ -33,160 +28,16 @@
   background: linear-gradient(135deg, #F5F5F7 0%, #FFFFFF 100%);
 }
 
-.serviceBackground {
-  background: linear-gradient(135deg, rgba(90, 141, 255, 0.8) 0%, rgba(161, 110, 255, 0.8) 100%);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-}
-
 .heroContent {
   position: relative;
   width: 100%;
   max-width: 100%;
   z-index: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-/* Visual Element Styling for Service Page */
-.visualElement {
-  max-width: 600px;
-  width: 100%;
-  margin: 32px auto;
-  padding: 0 16px;
-}
-
-.mockupContainer {
-  position: relative;
-  width: 100%;
-  aspect-ratio: 16/9;
-}
-
-.browserWindow {
-  width: 100%;
-  height: 100%;
-  background-color: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 8px;
-  overflow: hidden;
-  box-shadow: 0 8px 32px rgba(31, 38, 135, 0.15);
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
-  display: flex;
-  flex-direction: column;
-}
-
-.browserControls {
-  height: 28px;
-  background-color: rgba(255, 255, 255, 0.15);
-  display: flex;
-  align-items: center;
-  padding: 0 12px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.browserDot {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  margin-right: 6px;
-  background-color: rgba(255, 255, 255, 0.5);
-}
-
-.browserDot:first-child {
-  background-color: rgba(255, 131, 131, 0.6);
-}
-
-.browserDot:nth-child(2) {
-  background-color: rgba(255, 211, 131, 0.6);
-}
-
-.browserDot:nth-child(3) {
-  background-color: rgba(131, 255, 131, 0.6);
-}
-
-.browserContent {
-  flex: 1;
-  display: flex;
-  padding: 16px;
-  gap: 16px;
-}
-
-.codeBlock {
-  flex: 1;
-  background-color: rgba(0, 0, 0, 0.3);
-  border-radius: 4px;
-  padding: 12px;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  gap: 8px;
-}
-
-.codeLine {
-  height: 10px;
-  background-color: rgba(255, 255, 255, 0.2);
-  border-radius: 2px;
-}
-
-.codeLine:first-child {
-  width: 70%;
-}
-
-.codeLine:nth-child(2) {
-  width: 85%;
-}
-
-.codeLine:nth-child(3) {
-  width: 60%;
-}
-
-.uiElements {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.uiCard {
-  flex: 1;
-  background-color: rgba(255, 255, 255, 0.15);
-  border-radius: 6px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.uiButton {
-  height: 36px;
-  width: 60%;
-  margin: 0 auto;
-  background-color: rgba(255, 255, 255, 0.25);
-  border-radius: 18px;
-  border: 1px solid rgba(255, 255, 255, 0.15);
-}
-
-/* CTA Button styling */
-.ctaButton {
-  background-color: white !important;
-  color: rgba(90, 141, 255, 0.9) !important;
-  border: none !important;
-  padding: 12px 24px !important;
-  border-radius: 20px !important;
-  font-size: 16px !important;
-  font-weight: 600 !important;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15) !important;
-  transition: transform 0.2s, box-shadow 0.2s !important;
-}
-
-.ctaButton:hover {
-  transform: translateY(-2px) !important;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2) !important;
 }
 
 /* Full HD Desktops (1920px) */
 @media (min-width: 1920px) {
-  .pageHero:not(.servicePage) {
+  .pageHero {
     height: 70vh;
     min-height: 600px;
   }
@@ -199,7 +50,7 @@
 
 /* Large Desktops / Laptops (1440px) */
 @media (min-width: 1440px) and (max-width: 1919px) {
-  .pageHero:not(.servicePage) {
+  .pageHero {
     height: 70vh;
     min-height: 550px;
   }
@@ -212,7 +63,7 @@
 
 /* Standard Desktops / Laptops (1280px) */
 @media (min-width: 1280px) and (max-width: 1439px) {
-  .pageHero:not(.servicePage) {
+  .pageHero {
     height: 70vh;
     min-height: 500px;
   }
@@ -225,7 +76,7 @@
 
 /* Tablets - Landscape / Portrait, Small Laptops (770px) */
 @media (min-width: 770px) and (max-width: 1279px) {
-  .pageHero:not(.servicePage) {
+  .pageHero {
     height: 60vh;
     min-height: 450px;
   }
@@ -234,15 +85,11 @@
     max-width: 720px;
     margin: 0 auto;
   }
-  
-  .visualElement {
-    max-width: 500px;
-  }
 }
 
 /* Large Phones - Landscape / Small Tablets - Portrait (600px) */
 @media (min-width: 600px) and (max-width: 769px) {
-  .pageHero:not(.servicePage) {
+  .pageHero {
     height: 55vh;
     min-height: 400px;
   }
@@ -251,30 +98,18 @@
     max-width: 540px;
     margin: 0 auto;
   }
-  
-  .visualElement {
-    max-width: 400px;
-  }
 }
 
 /* Mobile Phones - Portrait / Landscape (480px) */
 @media (max-width: 599px) {
-  .pageHero:not(.servicePage) {
+  .pageHero {
     height: 50vh;
     min-height: 350px;
-  }
-  
-  .servicePage {
-    min-height: 500px;
   }
 
   .heroContent {
     max-width: 100%;
     padding: 0 20px;
-  }
-  
-  .visualElement {
-    max-width: 90%;
   }
 }
 

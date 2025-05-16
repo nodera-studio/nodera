@@ -1,37 +1,48 @@
 
+// src/pages/Services.tsx
+
 import React from 'react';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
 import PageHero from '../components/PageHero';
-import ServiceGrid from '../components/service/ServiceGrid';
-import CallToActionSection from '../components/service/CallToActionSection';
+import Portfolio from '../components/Portfolio'; 
+import ServiceGrid from '../components/service/ServiceGrid'; 
 import PricingSection from '../components/service/PricingSection';
-import BreadcrumbNav from '../components/BreadcrumbNav';
+import CallToActionSection from '../components/service/CallToActionSection';
+
+// Import the updated data structure
+import serviceCategories from '../data/serviceData';
 
 const Services: React.FC = () => {
-  return (
-    <div className="services-page">
-      <BreadcrumbNav 
-        items={[
-          { label: 'Home', href: '/' },
-          { label: 'Services', href: '/services', isCurrent: true }
-        ]}
-      />
-      
-      <PageHero 
-        preHeadline="Building with Nodera"
-        title="Digital experiences, elevated."
-        isServicePage={true}
-        showVisualElement={true}
-        showCTA={true}
-        ctaText="Start Your Project"
-      />
-      
-      <div className="container mx-auto px-4 py-16">
-        <ServiceGrid />
-        <PricingSection />
-        <CallToActionSection />
-      </div>
-    </div>
-  );
+	return (
+		<div className="min-h-screen flex flex-col overflow-x-hidden bg-gray-50">
+			<Header />
+			<main className="relative flex-grow pt-[60px]">
+				{/* Hero Section */}
+				<PageHero
+					title="Our Services"
+					subtitle="Tailored digital solutions for your business"
+				/>
+				
+				{/* New Service Grid Section */}
+				<ServiceGrid
+					services={serviceCategories.mainServices.filter(s => 
+						['Websites', 'E-commerce Solutions', 'Web Applications'].includes(s.title)
+					)}
+				/>
+				
+				{/* Portfolio Section */}
+				<Portfolio />
+				
+				{/* Pricing Section */}
+				<PricingSection />
+				
+				{/* Final Call to Action Section */}
+				<CallToActionSection />
+			</main>
+			<Footer />
+		</div>
+	);
 };
 
 export default Services;
