@@ -121,7 +121,7 @@ const ServiceGrid: React.FC<ServiceGridProps> = ({ services }) => {
                     <div className="font-baloo font-medium text-base md:text-lg space-y-4">
                       {activeService.technologyOptions.map((tech, index) => (
                         <div key={index}>
-                          <p className="font-bold mb-1">{tech.name}</p>
+                          <p className="font-medium mb-1">{tech.name}</p>
                           <p>{tech.description}</p>
                         </div>
                       ))}
