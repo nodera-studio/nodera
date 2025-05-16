@@ -82,11 +82,11 @@ const ServiceGrid: React.FC<ServiceGridProps> = ({ services }) => {
                       {getServiceIcon(service.title)}
                     </div>
                     <h3 className="text-3xl md:text-4xl font-comfortaa font-bold mb-3 text-black">{service.title}</h3>
-                    <p className="text-base md:text-lg font-comfortaa mb-6 max-w-md text-black">{service.description}</p>
+                    <p className="text-base md:text-lg font-baloo font-medium mb-6 max-w-md text-black">{service.description}</p>
                     <Button 
                       variant="primary" 
                       size="lg"
-                      className="font-comfortaa font-medium text-white bg-black hover:bg-black/90 rounded-full"
+                      className="font-baloo font-medium text-white bg-black hover:bg-black/90 rounded-full"
                     >
                       Learn More
                     </Button>
@@ -116,11 +116,11 @@ const ServiceGrid: React.FC<ServiceGridProps> = ({ services }) => {
                       {getServiceIcon(service.title)}
                     </div>
                     <h3 className="text-3xl md:text-4xl font-comfortaa font-bold mb-3 text-black">{service.title}</h3>
-                    <p className="text-base md:text-lg font-comfortaa mb-6 max-w-md text-black">{service.description}</p>
+                    <p className="text-base md:text-lg font-baloo font-medium mb-6 max-w-md text-black">{service.description}</p>
                     <Button 
                       variant="primary" 
                       size="lg"
-                      className="font-comfortaa font-medium text-white bg-black hover:bg-black/90 rounded-full"
+                      className="font-baloo font-medium text-white bg-black hover:bg-black/90 rounded-full"
                     >
                       Learn More
                     </Button>
