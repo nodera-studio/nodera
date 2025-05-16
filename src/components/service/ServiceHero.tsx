@@ -10,8 +10,8 @@ const ServiceHero: React.FC = () => {
       {/* Gradient Background - More blue on left, more white on bottom */}
       <div className="absolute inset-0 bg-gradient-to-br from-blue-500/50 via-indigo-500/30 to-white/40 backdrop-blur-[30px] z-0"></div>
       
-      {/* Content Container - Repositioned to allow space for browser window at bottom */}
-      <div className="container max-w-5xl mx-auto px-6 z-10 text-center" style={{ marginTop: "-15vh" }}>
+      {/* Content Container - Moved up to allow space for browser window */}
+      <div className="container max-w-5xl mx-auto px-6 z-10 text-center relative" style={{ marginTop: "-25vh" }}>
         {/* Stagger animations for text elements */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -35,7 +35,7 @@ const ServiceHero: React.FC = () => {
           </h1>
         </motion.div>
         
-        {/* CTA Button - Moved above the browser window */}
+        {/* CTA Button - Directly under the heading text */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -46,20 +46,20 @@ const ServiceHero: React.FC = () => {
         >
           <Button 
             size="lg"
-            className="bg-black hover:bg-zinc-800 text-white rounded-full font-baloo font-semibold text-lg px-8 py-4"
+            className="bg-black hover:bg-zinc-800 text-white rounded-full font-baloo font-semibold text-lg px-8 py-3"
           >
             Start Your Project
           </Button>
         </motion.div>
       </div>
       
-      {/* Browser Window UI Element - Positioned at bottom of viewport */}
+      {/* Browser Window UI Element - Positioned higher and centered */}
       <motion.div
         initial={{ opacity: 0, y: 100 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.8, duration: 0.8, type: "spring" }}
         className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-full max-w-4xl z-10"
-        style={{ maxHeight: "60vh", marginBottom: "-40%" }}
+        style={{ maxHeight: "60vh", marginBottom: "-20%" }}
       >
         {/* Browser Window Container */}
         <div className="relative w-full rounded-t-2xl overflow-hidden shadow-2xl border border-white/20">
