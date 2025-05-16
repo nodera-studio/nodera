@@ -1,9 +1,9 @@
 
 import React from 'react';
 import PageHero from '../components/PageHero';
-import { ServiceGrid } from '../components/service/ServiceGrid';
-import { CallToActionSection } from '../components/service/CallToActionSection';
-import { PricingSection } from '../components/service/PricingSection';
+import ServiceGrid from '../components/service/ServiceGrid';
+import CallToActionSection from '../components/service/CallToActionSection';
+import PricingSection from '../components/service/PricingSection';
 import BreadcrumbNav from '../components/BreadcrumbNav';
 
 const Services: React.FC = () => {
@@ -11,8 +11,8 @@ const Services: React.FC = () => {
     <div className="services-page">
       <BreadcrumbNav 
         items={[
-          { label: 'Home', url: '/' },
-          { label: 'Services', url: '/services' }
+          { label: 'Home', href: '/' },
+          { label: 'Services', href: '/services', isCurrent: true }
         ]}
       />
       
