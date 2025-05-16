@@ -7,8 +7,8 @@ import { Code, Layers, MonitorSmartphone } from 'lucide-react';
 const ServiceHero: React.FC = () => {
   return (
     <section className="h-screen w-full overflow-hidden relative flex flex-col justify-center items-center">
-      {/* Gradient Background - More transparent now */}
-      <div className="absolute inset-0 bg-gradient-to-br from-blue-500/40 via-indigo-500/30 to-purple-500/35 backdrop-blur-[30px] z-0"></div>
+      {/* Gradient Background - More blue on left, more white on bottom */}
+      <div className="absolute inset-0 bg-gradient-to-br from-blue-500/40 via-indigo-500/30 to-white/25 backdrop-blur-[30px] z-0"></div>
       
       {/* Content Container */}
       <div className="container max-w-5xl mx-auto px-6 z-10 text-center">
@@ -114,7 +114,7 @@ const ServiceHero: React.FC = () => {
           </div>
         </motion.div>
         
-        {/* CTA Button - Matched to homepage style */}
+        {/* CTA Button - Now pill shaped */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -124,7 +124,7 @@ const ServiceHero: React.FC = () => {
         >
           <Button 
             size="lg"
-            className="bg-black hover:bg-zinc-800 text-white rounded-xl font-baloo font-semibold text-lg px-8 py-6"
+            className="bg-black hover:bg-zinc-800 text-white rounded-full font-baloo font-semibold text-lg px-8 py-6"
           >
             Start Your Project
           </Button>
