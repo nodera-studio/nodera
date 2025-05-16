@@ -53,12 +53,12 @@ const ServiceHero: React.FC = () => {
         </motion.div>
       </div>
       
-      {/* Browser Window UI Element - Positioned higher and centered */}
+      {/* Browser Window UI Element - Improved horizontal centering */}
       <motion.div
         initial={{ opacity: 0, y: 100 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.8, duration: 0.8, type: "spring" }}
-        className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-full max-w-4xl z-10"
+        className="absolute bottom-0 left-0 right-0 mx-auto w-full max-w-4xl z-10"
         style={{ maxHeight: "60vh", marginBottom: "-20%" }}
       >
         {/* Browser Window Container */}
