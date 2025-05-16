@@ -18,7 +18,7 @@ const Services: React.FC = () => {
 				{/* Hero Section */}
 				<ServiceHero />
 				
-				{/* New Tabbed Service Grid Section */}
+				{/* Tabbed Service Grid Section */}
 				<ServiceGrid
 					services={serviceCategories.mainServices}
 				/>
