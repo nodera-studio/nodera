@@ -57,7 +57,7 @@ const ServiceGrid: React.FC<ServiceGridProps> = ({ services }) => {
   }
   
   return (
-    <section className="py-20 md:py-24 lg:py-32 px-4 sm:px-6 bg-[#F5F5F7]">
+    <section className="py-20 md:py-24 lg:py-32 px-4 sm:px-6 bg-white">
       <div className="container mx-auto max-w-7xl">
         <h2 className="text-3xl md:text-4xl font-comfortaa font-bold text-center mb-16">Core Service Offerings</h2>
         
