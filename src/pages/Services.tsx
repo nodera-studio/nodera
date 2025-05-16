@@ -1,14 +1,12 @@
 
-// src/pages/Services.tsx
-
 import React from 'react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import PageHero from '../components/PageHero';
-import Portfolio from '../components/Portfolio'; 
 import ServiceGrid from '../components/service/ServiceGrid'; 
 import PricingSection from '../components/service/PricingSection';
 import CallToActionSection from '../components/service/CallToActionSection';
+import ServiceHero from '../components/service/ServiceHero';
+import Portfolio from '../components/Portfolio'; 
 
 // Import the updated data structure
 import serviceCategories from '../data/serviceData';
@@ -18,11 +16,8 @@ const Services: React.FC = () => {
 		<div className="min-h-screen flex flex-col overflow-x-hidden bg-gray-50">
 			<Header />
 			<main className="relative flex-grow pt-[60px]">
-				{/* Hero Section */}
-				<PageHero
-					title="Our Services"
-					subtitle="Tailored digital solutions for your business"
-				/>
+				{/* Hero Section - Apple Inspired */}
+				<ServiceHero />
 				
 				{/* New Service Grid Section */}
 				<ServiceGrid
