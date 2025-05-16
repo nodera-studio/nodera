@@ -6,7 +6,6 @@ import ServiceGrid from '../components/service/ServiceGrid';
 import PricingSection from '../components/service/PricingSection';
 import CallToActionSection from '../components/service/CallToActionSection';
 import ServiceHero from '../components/service/ServiceHero';
-import Portfolio from '../components/Portfolio'; 
 
 // Import the updated data structure
 import serviceCategories from '../data/serviceData';
@@ -25,9 +24,6 @@ const Services: React.FC = () => {
 						['Websites', 'E-commerce Solutions', 'Web Applications'].includes(s.title)
 					)}
 				/>
-				
-				{/* Portfolio Section */}
-				<Portfolio />
 				
 				{/* Pricing Section */}
 				<PricingSection />
