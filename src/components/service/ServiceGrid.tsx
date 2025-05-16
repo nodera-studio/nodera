@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect, useRef } from 'react';
 import { ServiceItem } from '@/data/serviceData';
 import { cn } from '@/lib/utils';
@@ -70,80 +69,82 @@ const ServiceGrid: React.FC<ServiceGridProps> = ({ services }) => {
         
         {/* Content for active tab - Apple-style card arrangement */}
         {activeService && (
-          <div className="container max-w-6xl mx-auto">
-            {/* Card Grid - Use the new content arrangement */}
-            <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
-              {/* Card 1: What's Included (Tall, Left) */}
-              <Card 
-                ref={el => cardsRef.current[0] = el}
-                className="md:col-span-5 bg-[#F8F8F8] rounded-xl opacity-0 translate-y-8 transition-all duration-500 shadow-sm"
-              >
-                <CardHeader>
-                  <h3 className="text-2xl font-comfortaa font-bold">What's Included</h3>
-                </CardHeader>
-                <CardContent className="pt-2">
-                  <ul className="list-disc pl-5 font-baloo font-medium text-base md:text-lg space-y-2">
-                    {activeService.standardInclusions.map((item, index) => (
-                      <li key={index}>{item}</li>
-                    ))}
-                  </ul>
-                </CardContent>
-              </Card>
-              
-              {/* Right column for Cards 2 & 3 */}
-              <div className="md:col-span-7 flex flex-col gap-6">
-                {/* Card 2: Our Design Approach (Top Right) */}
+          <div className="flex justify-center w-full">
+            <div className="w-[80vw]">
+              {/* Card Grid - Use the new content arrangement */}
+              <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
+                {/* Card 1: What's Included (Tall, Left) */}
                 <Card 
-                  ref={el => cardsRef.current[1] = el}
-                  className="bg-[#F8F8F8] rounded-xl opacity-0 translate-y-8 transition-all duration-500 shadow-sm"
+                  ref={el => cardsRef.current[0] = el}
+                  className="md:col-span-5 bg-[#F8F8F8] rounded-xl opacity-0 translate-y-8 transition-all duration-500 shadow-sm border-0"
                 >
                   <CardHeader>
-                    <h3 className="text-2xl font-comfortaa font-bold">Our Design Approach</h3>
+                    <h3 className="text-2xl font-comfortaa font-bold">What's Included</h3>
                   </CardHeader>
                   <CardContent className="pt-2">
-                    <p className="font-baloo font-medium text-base md:text-lg">
-                      {activeService.designApproach}
-                    </p>
+                    <ul className="list-disc pl-5 font-baloo font-medium text-base md:text-lg space-y-2">
+                      {activeService.standardInclusions.map((item, index) => (
+                        <li key={index}>{item}</li>
+                      ))}
+                    </ul>
                   </CardContent>
                 </Card>
                 
-                {/* Card 3: Technologies/Core Platform (Bottom Right) */}
+                {/* Right column for Cards 2 & 3 */}
+                <div className="md:col-span-7 flex flex-col gap-6">
+                  {/* Card 2: Our Design Approach (Top Right) */}
+                  <Card 
+                    ref={el => cardsRef.current[1] = el}
+                    className="bg-[#F8F8F8] rounded-xl opacity-0 translate-y-8 transition-all duration-500 shadow-sm border-0"
+                  >
+                    <CardHeader>
+                      <h3 className="text-2xl font-comfortaa font-bold">Our Design Approach</h3>
+                    </CardHeader>
+                    <CardContent className="pt-2">
+                      <p className="font-baloo font-medium text-base md:text-lg">
+                        {activeService.designApproach}
+                      </p>
+                    </CardContent>
+                  </Card>
+                  
+                  {/* Card 3: Technologies/Core Platform (Bottom Right) */}
+                  <Card 
+                    ref={el => cardsRef.current[2] = el}
+                    className="bg-[#F8F8F8] rounded-xl opacity-0 translate-y-8 transition-all duration-500 shadow-sm border-0"
+                  >
+                    <CardHeader>
+                      <h3 className="text-2xl font-comfortaa font-bold">
+                        {activeTab === "E-commerce Solutions" ? "Core Platform" : "Technologies We Use"}
+                      </h3>
+                    </CardHeader>
+                    <CardContent className="pt-2">
+                      <div className="font-baloo font-medium text-base md:text-lg space-y-4">
+                        {activeService.technologyOptions.map((tech, index) => (
+                          <div key={index}>
+                            <p className="font-bold text-base md:text-lg mb-1">{tech.name}</p>
+                            <p className="font-normal text-base md:text-lg">{tech.description}</p>
+                          </div>
+                        ))}
+                      </div>
+                    </CardContent>
+                  </Card>
+                </div>
+                
+                {/* Card 4: Available Add-ons (Bottom, Full Width) */}
                 <Card 
-                  ref={el => cardsRef.current[2] = el}
-                  className="bg-[#F8F8F8] rounded-xl opacity-0 translate-y-8 transition-all duration-500 shadow-sm"
+                  ref={el => cardsRef.current[3] = el}
+                  className="md:col-span-12 bg-[#F8F8F8] rounded-xl opacity-0 translate-y-8 transition-all duration-500 shadow-sm border-0"
                 >
                   <CardHeader>
-                    <h3 className="text-2xl font-comfortaa font-bold">
-                      {activeTab === "E-commerce Solutions" ? "Core Platform" : "Technologies We Use"}
-                    </h3>
+                    <h3 className="text-2xl font-comfortaa font-bold">Available Add-ons</h3>
                   </CardHeader>
                   <CardContent className="pt-2">
-                    <div className="font-baloo font-medium text-base md:text-lg space-y-4">
-                      {activeService.technologyOptions.map((tech, index) => (
-                        <div key={index}>
-                          <p className="font-medium mb-1">{tech.name}</p>
-                          <p>{tech.description}</p>
-                        </div>
-                      ))}
-                    </div>
+                    <p className="font-baloo font-medium text-base md:text-lg">
+                      {activeService.optionalAddOns}
+                    </p>
                   </CardContent>
                 </Card>
               </div>
-              
-              {/* Card 4: Available Add-ons (Bottom, Full Width) */}
-              <Card 
-                ref={el => cardsRef.current[3] = el}
-                className="md:col-span-12 bg-[#F8F8F8] rounded-xl opacity-0 translate-y-8 transition-all duration-500 shadow-sm"
-              >
-                <CardHeader>
-                  <h3 className="text-2xl font-comfortaa font-bold">Available Add-ons</h3>
-                </CardHeader>
-                <CardContent className="pt-2">
-                  <p className="font-baloo font-medium text-base md:text-lg">
-                    {activeService.optionalAddOns}
-                  </p>
-                </CardContent>
-              </Card>
             </div>
           </div>
         )}
