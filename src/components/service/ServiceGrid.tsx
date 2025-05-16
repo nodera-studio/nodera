@@ -41,80 +41,73 @@ const ServiceGrid: React.FC<ServiceGridProps> = ({ services }) => {
       .replace(/ +/g, '-');
   }
   
-  // Gradient backgrounds for each service
-  const gradients = [
-    'bg-gradient-to-br from-blue-400 to-purple-600', // Websites
-    'bg-gradient-to-br from-green-400 to-teal-600',  // E-commerce Solutions
-    'bg-gradient-to-br from-zinc-700 to-neutral-900' // Web Applications
-  ];
-
   return (
     <section className="py-20 md:py-24 lg:py-32 px-4 sm:px-6 bg-[#F5F5F7]">
       <div className="container mx-auto max-w-7xl">
         <h2 className="text-3xl md:text-4xl font-comfortaa font-bold text-center mb-16">Core Service Offerings</h2>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
-          {/* First row - two services side by side */}
-          {services.slice(0, 2).map((service, index) => (
-            <Link
-              key={service.title}
-              to={`/services/${convertToSlug(service.title)}`}
-            >
-              <div
-                ref={el => gridItemsRef.current[index] = el}
-                className={`relative overflow-hidden rounded-3xl min-h-[450px] flex items-end 
-                  ${gradients[index]} transform transition-all duration-300 ease-out 
-                  opacity-0 translate-y-8 hover:scale-[1.03]`}
+        <div className="flex flex-col gap-2.5">
+          {/* Top row - two services side by side */}
+          <div className="flex flex-col md:flex-row gap-2.5 w-full">
+            {services.slice(0, 2).map((service, index) => (
+              <Link
+                key={service.title}
+                to={`/services/${convertToSlug(service.title)}`}
+                className="w-full md:w-1/2"
               >
-                <div className="absolute inset-0 opacity-20">
-                  {/* Optional background pattern or graphic could go here */}
+                <div
+                  ref={el => gridItemsRef.current[index] = el}
+                  className="relative overflow-hidden flex flex-col items-center justify-end
+                    bg-[#222222] h-[450px] p-8 text-center
+                    transform transition-all duration-300 ease-out 
+                    opacity-0 translate-y-8 hover:opacity-95"
+                >
+                  <div className="z-10 flex flex-col items-center">
+                    <h3 className="text-3xl md:text-4xl font-comfortaa font-bold mb-3 text-white">{service.title}</h3>
+                    <p className="text-base md:text-lg font-comfortaa opacity-90 mb-6 max-w-md text-white">{service.description}</p>
+                    <Button 
+                      variant="secondary" 
+                      size="lg"
+                      className="font-comfortaa font-medium text-white border border-white/30 bg-white/10 hover:bg-white/20 rounded-full"
+                    >
+                      Learn More
+                    </Button>
+                  </div>
                 </div>
-                <div className="p-8 md:p-12 text-white z-10">
-                  <h3 className="text-3xl md:text-4xl font-comfortaa font-bold mb-3">{service.title}</h3>
-                  <p className="text-base md:text-lg font-comfortaa opacity-90 mb-6 max-w-md">{service.description}</p>
-                  <Button 
-                    variant="secondary" 
-                    size="lg"
-                    className="font-comfortaa font-medium text-white border-2 border-white/70 bg-white/10 hover:bg-white/20"
-                  >
-                    Learn More
-                  </Button>
-                </div>
-              </div>
-            </Link>
-          ))}
-        </div>
-        
-        {/* Second row - one service spanning full width (or centered) */}
-        <div className="mt-6 md:mt-8">
-          {services.slice(2, 3).map((service, index) => (
-            <Link
-              key={service.title}
-              to={`/services/${convertToSlug(service.title)}`}
-            >
-              <div
-                ref={el => gridItemsRef.current[index + 2] = el}
-                className={`relative overflow-hidden rounded-3xl min-h-[450px] flex items-end 
-                  ${gradients[index + 2]} transform transition-all duration-300 ease-out 
-                  opacity-0 translate-y-8 hover:scale-[1.03] md:max-w-full mx-auto`}
+              </Link>
+            ))}
+          </div>
+          
+          {/* Bottom row - one service spanning full width */}
+          <div className="w-full">
+            {services.slice(2, 3).map((service, index) => (
+              <Link
+                key={service.title}
+                to={`/services/${convertToSlug(service.title)}`}
+                className="w-full"
               >
-                <div className="absolute inset-0 opacity-20">
-                  {/* Optional background pattern or graphic could go here */}
+                <div
+                  ref={el => gridItemsRef.current[index + 2] = el}
+                  className="relative overflow-hidden flex flex-col items-center justify-end
+                    bg-[#222222] h-[450px] p-8 text-center
+                    transform transition-all duration-300 ease-out 
+                    opacity-0 translate-y-8 hover:opacity-95"
+                >
+                  <div className="z-10 flex flex-col items-center">
+                    <h3 className="text-3xl md:text-4xl font-comfortaa font-bold mb-3 text-white">{service.title}</h3>
+                    <p className="text-base md:text-lg font-comfortaa opacity-90 mb-6 max-w-md text-white">{service.description}</p>
+                    <Button 
+                      variant="secondary" 
+                      size="lg"
+                      className="font-comfortaa font-medium text-white border border-white/30 bg-white/10 hover:bg-white/20 rounded-full"
+                    >
+                      Learn More
+                    </Button>
+                  </div>
                 </div>
-                <div className="p-8 md:p-12 text-white z-10">
-                  <h3 className="text-3xl md:text-4xl font-comfortaa font-bold mb-3">{service.title}</h3>
-                  <p className="text-base md:text-lg font-comfortaa opacity-90 mb-6 max-w-md">{service.description}</p>
-                  <Button 
-                    variant="secondary" 
-                    size="lg"
-                    className="font-comfortaa font-medium text-white border-2 border-white/70 bg-white/10 hover:bg-white/20"
-                  >
-                    Learn More
-                  </Button>
-                </div>
-              </div>
-            </Link>
-          ))}
+              </Link>
+            ))}
+          </div>
         </div>
       </div>
     </section>
