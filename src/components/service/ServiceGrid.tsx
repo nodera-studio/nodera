@@ -1,4 +1,3 @@
-
 import React, { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from "@/components/ui/button";
@@ -58,7 +57,7 @@ const ServiceGrid: React.FC<ServiceGridProps> = ({ services }) => {
   
   return (
     <section className="py-20 md:py-24 lg:py-32 bg-white">
-      <div className="container mx-auto max-w-7xl px-0">
+      <div>
         <h2 className="text-3xl md:text-4xl font-comfortaa font-bold text-center mb-16">Core Service Offerings</h2>
         
         <div className="flex flex-col gap-2.5">
