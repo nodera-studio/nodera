@@ -9,7 +9,7 @@ import ServiceHero from '../components/service/ServiceHero';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import BrowserWindow from '../components/whatwedo/BrowserWindow';
-import { Check } from 'lucide-react';
+import { Check, ArrowRight } from 'lucide-react';
 
 // Import the service data
 import serviceCategories from '../data/serviceData';
@@ -69,13 +69,20 @@ const Services: React.FC = () => {
 										{service.description}
 									</p>
 									
-									{/* Learn more button */}
+									{/* Learn more link with highlight instead of button */}
 									<div className="mt-auto">
-										<Button asChild className="w-full">
-											<Link to={`/services/${convertToSlug(service.title)}`}>
-												Learn more
-											</Link>
-										</Button>
+										<Link 
+											to={`/services/${convertToSlug(service.title)}`}
+											className="font-baloo font-medium inline-flex items-center transition-colors duration-200"
+											style={{ 
+												color: 'rgba(0, 122, 255, 0.9)'
+											}}
+											onMouseEnter={(e) => e.currentTarget.style.color = 'rgba(0, 122, 255, 1)'}
+											onMouseLeave={(e) => e.currentTarget.style.color = 'rgba(0, 122, 255, 0.9)'}
+										>
+											Learn more about our {service.title.toLowerCase()} solutions
+											<ArrowRight className="ml-2 h-4 w-4" />
+										</Link>
 									</div>
 								</div>
 							))}
