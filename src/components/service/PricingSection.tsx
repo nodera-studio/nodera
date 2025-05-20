@@ -2,21 +2,121 @@
 import React from 'react';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, Layout, ShoppingCart, Layers } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const PricingSection = () => {
   return (
     <section className="py-16 md:py-24 px-6" style={{ backgroundColor: '#f9f9f9' }}>
       <div className="container mx-auto">
-        <div className="flex flex-col md:flex-row md:items-center md:justify-between max-w-6xl mx-auto">
-          {/* Left column - Text content */}
-          <div className="md:w-1/2 mb-8 md:mb-0 md:pr-12">
-            <h2 className="text-3xl md:text-4xl font-comfortaa font-bold mb-6">Pricing that scales with your business</h2>
-            <p className="text-gray-700 font-baloo text-lg mb-8">
-              We provide transparent pricing options to meet your specific needs. Whether you're 
-              starting with a basic website or need a complete digital solution, our pricing 
-              structure is designed to deliver maximum value.
+        <h2 className="text-3xl md:text-4xl font-comfortaa font-bold text-center mb-12">Service Pricing Overview</h2>
+        
+        <div className="max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+            {/* Websites Card */}
+            <Card className="text-center shadow-sm border border-gray-100 flex flex-col transition-all duration-200 hover:shadow-md">
+              <CardHeader className="pb-4">
+                <div className="flex justify-center mb-4">
+                  <Layout className="h-12 w-12 text-blue-500" />
+                </div>
+                <CardTitle className="text-2xl font-comfortaa mb-2">Websites</CardTitle>
+                <div className="text-3xl font-comfortaa font-bold mt-2 mb-1">€2,500</div>
+                <p className="text-gray-600 font-baloo">For a professional and effective online presence</p>
+              </CardHeader>
+              <CardContent className="flex-grow flex flex-col">
+                <ul className="space-y-3 text-left font-baloo mb-8">
+                  <li className="flex items-start">
+                    <span className="mr-2 text-blue-500 mt-1">✓</span> 
+                    <span><strong>Tailored Visual Design:</strong> Crafted to reflect your unique brand and goals.</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="mr-2 text-blue-500 mt-1">✓</span> 
+                    <span><strong>Responsive & SEO-Ready:</strong> Ensuring optimal viewing on all devices and foundational search visibility.</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="mr-2 text-blue-500 mt-1">✓</span> 
+                    <span><strong>Comprehensive Launch Support:</strong> Guiding you from initial setup to a successful go-live.</span>
+                  </li>
+                </ul>
+                <div className="mt-auto">
+                  <Link to="/contact" className="w-full">
+                    <Button variant="accent" className="w-full">Get a Website Quote</Button>
+                  </Link>
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* E-commerce Card */}
+            <Card className="text-center shadow-sm border border-gray-100 flex flex-col transition-all duration-200 hover:shadow-md">
+              <CardHeader className="pb-4">
+                <div className="flex justify-center mb-4">
+                  <ShoppingCart className="h-12 w-12 text-blue-500" />
+                </div>
+                <CardTitle className="text-2xl font-comfortaa mb-2">E-commerce Solutions</CardTitle>
+                <div className="text-3xl font-comfortaa font-bold mt-2 mb-1">€3,500</div>
+                <p className="text-gray-600 font-baloo">To build, launch, and scale your online store</p>
+              </CardHeader>
+              <CardContent className="flex-grow flex flex-col">
+                <ul className="space-y-3 text-left font-baloo mb-8">
+                  <li className="flex items-start">
+                    <span className="mr-2 text-blue-500 mt-1">✓</span> 
+                    <span><strong>Optimized for Sales & Conversion:</strong> User-friendly stores designed to turn visitors into customers.</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="mr-2 text-blue-500 mt-1">✓</span> 
+                    <span><strong>Scalable Shopify Expertise:</strong> Leveraging a leading platform for robust growth and easy management.</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="mr-2 text-blue-500 mt-1">✓</span> 
+                    <span><strong>Brand-Aligned Storefront:</strong> Beautifully designed to perfectly match your brand identity.</span>
+                  </li>
+                </ul>
+                <div className="mt-auto">
+                  <Link to="/contact" className="w-full">
+                    <Button variant="accent" className="w-full">Get an E-commerce Quote</Button>
+                  </Link>
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* Web Applications Card */}
+            <Card className="text-center shadow-sm border border-gray-100 flex flex-col transition-all duration-200 hover:shadow-md">
+              <CardHeader className="pb-4">
+                <div className="flex justify-center mb-4">
+                  <Layers className="h-12 w-12 text-blue-500" />
+                </div>
+                <CardTitle className="text-2xl font-comfortaa mb-2">Web Applications</CardTitle>
+                <div className="text-3xl font-comfortaa font-bold mt-2 mb-1">Custom</div>
+                <p className="text-gray-600 font-baloo">For unique challenges requiring custom-built digital solutions</p>
+              </CardHeader>
+              <CardContent className="flex-grow flex flex-col">
+                <ul className="space-y-3 text-left font-baloo mb-8">
+                  <li className="flex items-start">
+                    <span className="mr-2 text-blue-500 mt-1">✓</span> 
+                    <span><strong>Custom-Built Functionality:</strong> Engineered to solve your specific business challenges.</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="mr-2 text-blue-500 mt-1">✓</span> 
+                    <span><strong>Intuitive User Experience (UX):</strong> Ensuring ease of use, even for complex systems.</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="mr-2 text-blue-500 mt-1">✓</span> 
+                    <span><strong>Scalable & Secure Architecture:</strong> Built for reliable performance, security, and future growth.</span>
+                  </li>
+                </ul>
+                <div className="mt-auto">
+                  <Link to="/contact" className="w-full">
+                    <Button variant="accent" className="w-full">Discuss Your Application</Button>
+                  </Link>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+          
+          {/* Contact Note */}
+          <div className="mt-12 text-center">
+            <p className="text-gray-700 font-baloo text-lg mb-4">
+              Need a more detailed pricing estimate for your specific project?
             </p>
             <Link 
               to="/contact"
@@ -30,64 +130,6 @@ const PricingSection = () => {
               Contact us for a custom quote
               <ArrowRight className="ml-2 h-4 w-4" />
             </Link>
-          </div>
-          
-          {/* Right column - Pricing cards */}
-          <div className="md:w-1/2">
-            <div className="grid md:grid-cols-2 gap-6">
-              <Card className="text-center shadow-sm border border-gray-100">
-                <CardHeader>
-                  <CardTitle className="text-xl font-comfortaa">Starting from</CardTitle>
-                  <div className="text-4xl font-comfortaa font-bold mt-2">€2,500</div>
-                  <p className="text-gray-600 font-baloo mt-2">For Websites</p>
-                </CardHeader>
-                <CardContent>
-                  <ul className="space-y-2 text-left mb-8 font-baloo">
-                    <li className="flex items-center">
-                      <span className="mr-2 text-blue-500">✓</span> Custom design
-                    </li>
-                    <li className="flex items-center">
-                      <span className="mr-2 text-blue-500">✓</span> Responsive layout
-                    </li>
-                    <li className="flex items-center">
-                      <span className="mr-2 text-blue-500">✓</span> CMS integration
-                    </li>
-                  </ul>
-                </CardContent>
-              </Card>
-
-              <Card className="text-center shadow-sm border border-gray-100">
-                <CardHeader>
-                  <CardTitle className="text-xl font-comfortaa">Custom</CardTitle>
-                  <p className="text-gray-600 font-baloo mt-2">For Web Applications</p>
-                </CardHeader>
-                <CardContent>
-                  <ul className="space-y-2 text-left mb-8 font-baloo">
-                    <li className="flex items-center">
-                      <span className="mr-2 text-blue-500">✓</span> Complex functionalities
-                    </li>
-                    <li className="flex items-center">
-                      <span className="mr-2 text-blue-500">✓</span> E-commerce capabilities
-                    </li>
-                    <li className="flex items-center">
-                      <span className="mr-2 text-blue-500">✓</span> Custom integrations
-                    </li>
-                  </ul>
-                  <Link 
-                    to="/contact"
-                    className="font-baloo font-medium inline-flex items-center transition-colors duration-200 justify-center w-full"
-                    style={{ 
-                      color: 'rgba(0, 122, 255, 0.9)'
-                    }}
-                    onMouseEnter={(e) => e.currentTarget.style.color = 'rgba(0, 122, 255, 1)'}
-                    onMouseLeave={(e) => e.currentTarget.style.color = 'rgba(0, 122, 255, 0.9)'}
-                  >
-                    Contact us
-                    <ArrowRight className="ml-2 h-4 w-4" />
-                  </Link>
-                </CardContent>
-              </Card>
-            </div>
           </div>
         </div>
       </div>
