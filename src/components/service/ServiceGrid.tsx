@@ -1,19 +1,17 @@
+
 import React, { useState, useEffect, useRef } from 'react';
 import { ServiceItem } from '@/data/serviceData';
 import { cn } from '@/lib/utils';
 import { Card, CardHeader, CardContent } from "@/components/ui/card";
+import { Link } from 'react-router-dom';
+import { Button } from '@/components/ui/button';
 
 interface ServiceGridProps {
   services: ServiceItem[];
 }
 
 const ServiceGrid: React.FC<ServiceGridProps> = ({ services }) => {
-  const [activeTab, setActiveTab] = useState<string>("Websites");
-  const tabsRef = useRef<(HTMLButtonElement | null)[]>([]);
   const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
-  
-  // Filter service by active tab
-  const activeService = services.find(service => service.title === activeTab);
   
   useEffect(() => {
     // Observer for scroll animations
@@ -35,119 +33,48 @@ const ServiceGrid: React.FC<ServiceGridProps> = ({ services }) => {
     });
     
     return () => observer.disconnect();
-  }, [activeTab]);
+  }, []);
   
+  // Function to create slugs from titles
+  const convertToSlug = (title: string): string => {
+    return title
+      .toLowerCase()
+      .replace(/[^\w ]+/g, '')
+      .replace(/ +/g, '-');
+  };
+
   return (
     <section className="py-20 md:py-24 lg:py-32" style={{ backgroundColor: '#f1f3fb' }}>
       <div className="container max-w-7xl mx-auto">
         <h2 className="text-3xl md:text-4xl font-comfortaa font-bold text-center mb-16">Core Service Offerings</h2>
         
-        {/* Tabs Navigation - Apple-style with proper spacing and centered underline */}
-        <div className="flex justify-center mb-12">
-          <div className="flex space-x-16">
-            {services.map((service, index) => (
-              <button
-                key={service.title}
-                ref={el => tabsRef.current[index] = el}
-                className={cn(
-                  "pb-2 text-lg font-baloo font-medium relative transition-all duration-300",
-                  activeTab === service.title 
-                    ? "text-black" 
-                    : "text-gray-500 hover:text-gray-800"
-                )}
-                onClick={() => setActiveTab(service.title)}
-              >
-                {service.title === "E-commerce Solutions" ? "E-commerce" : service.title}
-                {/* Custom underline that's centered and just wider than the text */}
-                {activeTab === service.title && (
-                  <span className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-[calc(100%+16px)] h-0.5 bg-black"></span>
-                )}
-              </button>
-            ))}
-          </div>
-        </div>
-        
-        {/* Content for active tab - Apple-style card arrangement */}
-        {activeService && (
-          <div className="flex justify-center w-full">
-            <div className="w-[80vw]">
-              {/* Card Grid - Use the new content arrangement */}
-              <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
-                {/* Card 1: What's Included (Tall, Left) */}
-                <Card 
-                  ref={el => cardsRef.current[0] = el}
-                  className="md:col-span-5 bg-white rounded-xl opacity-0 translate-y-8 transition-all duration-500 shadow-sm border-0"
-                >
-                  <CardHeader>
-                    <h3 className="text-2xl font-comfortaa font-bold">What's Included</h3>
-                  </CardHeader>
-                  <CardContent className="pt-2">
-                    <ul className="font-baloo font-medium text-base md:text-lg space-y-2">
-                      {activeService.standardInclusions.map((item, index) => (
-                        <li key={index} style={{ color: '#6e6e73', listStyle: 'none' }}>{item}</li>
-                      ))}
-                    </ul>
-                  </CardContent>
-                </Card>
-                
-                {/* Right column for Cards 2 & 3 */}
-                <div className="md:col-span-7 flex flex-col gap-6">
-                  {/* Card 2: Our Design Approach (Top Right) */}
-                  <Card 
-                    ref={el => cardsRef.current[1] = el}
-                    className="bg-white rounded-xl opacity-0 translate-y-8 transition-all duration-500 shadow-sm border-0"
-                  >
-                    <CardHeader>
-                      <h3 className="text-2xl font-comfortaa font-bold">Our Design Approach</h3>
-                    </CardHeader>
-                    <CardContent className="pt-2">
-                      <p className="font-baloo font-medium text-base md:text-lg" style={{ color: '#6e6e73' }}>
-                        {activeService.designApproach}
-                      </p>
-                    </CardContent>
-                  </Card>
-                  
-                  {/* Card 3: Technologies/Core Platform (Bottom Right) */}
-                  <Card 
-                    ref={el => cardsRef.current[2] = el}
-                    className="bg-white rounded-xl opacity-0 translate-y-8 transition-all duration-500 shadow-sm border-0"
-                  >
-                    <CardHeader>
-                      <h3 className="text-2xl font-comfortaa font-bold">
-                        {activeTab === "E-commerce Solutions" ? "Core Platform" : "Technologies We Use"}
-                      </h3>
-                    </CardHeader>
-                    <CardContent className="pt-2">
-                      <div className="font-baloo font-medium text-base md:text-lg space-y-4">
-                        {activeService.technologyOptions.map((tech, index) => (
-                          <div key={index}>
-                            <p className="font-bold text-base md:text-lg mb-1" style={{ color: '#6e6e73' }}>{tech.name}</p>
-                            <p className="font-normal text-base md:text-lg" style={{ color: '#6e6e73' }}>{tech.description}</p>
-                          </div>
-                        ))}
-                      </div>
-                    </CardContent>
-                  </Card>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-[85%] mx-auto">
+          {services.map((service, index) => (
+            <div 
+              key={service.title}
+              ref={el => cardsRef.current[index] = el}
+              className="flex flex-col opacity-0 translate-y-8 transition-all duration-500"
+            >
+              <Card className="flex flex-col h-full bg-white rounded-xl shadow-sm border-0">
+                <CardHeader>
+                  <h3 className="text-xl font-comfortaa font-bold">{service.title}</h3>
+                </CardHeader>
+                <CardContent className="flex-grow">
+                  <p className="font-baloo font-medium text-base text-gray-600">
+                    {service.description}
+                  </p>
+                </CardContent>
+                <div className="p-6 pt-0 mt-auto">
+                  <Button asChild className="w-full">
+                    <Link to={`/services/${convertToSlug(service.title)}`}>
+                      Learn more
+                    </Link>
+                  </Button>
                 </div>
-                
-                {/* Card 4: Available Add-ons (Bottom, Full Width) */}
-                <Card 
-                  ref={el => cardsRef.current[3] = el}
-                  className="md:col-span-12 bg-white rounded-xl opacity-0 translate-y-8 transition-all duration-500 shadow-sm border-0"
-                >
-                  <CardHeader>
-                    <h3 className="text-2xl font-comfortaa font-bold">Available Add-ons</h3>
-                  </CardHeader>
-                  <CardContent className="pt-2">
-                    <p className="font-baloo font-medium text-base md:text-lg" style={{ color: '#6e6e73' }}>
-                      {activeService.optionalAddOns}
-                    </p>
-                  </CardContent>
-                </Card>
-              </div>
+              </Card>
             </div>
-          </div>
-        )}
+          ))}
+        </div>
       </div>
     </section>
   );
