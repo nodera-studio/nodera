@@ -67,12 +67,12 @@ const WorkHero: React.FC = () => {
         </motion.div>
       </div>
 
-      {/* Emerging Browser Window - With refined positioning and styling */}
+      {/* Emerging Browser Window - With refined positioning to properly float over the next section */}
       <motion.div
         initial={{ opacity: 0, y: 100 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.8, duration: 0.8, type: "spring", stiffness: 100 }}
-        className="absolute bottom-[-150px] md:bottom-[-200px] w-full max-w-4xl mx-auto z-20"
+        className="absolute bottom-[-180px] md:bottom-[-240px] w-full max-w-4xl mx-auto px-4"
       >
         <div className={styles.emergingShowcase}>
           <BrowserWindow title="Nodera Showcase" className="h-[300px] md:h-[400px]">
