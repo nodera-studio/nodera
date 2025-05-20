@@ -1,4 +1,3 @@
-
 import React from 'react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
@@ -15,7 +14,7 @@ const Work: React.FC = () => {
         <WorkHero />
         
         {/* Project Grid Section - Added significant top padding to accommodate the overlapping showcase */}
-        <section className="pt-[240px] md:pt-[320px] pb-16 md:pb-24 bg-white">
+        <section className="pt-[200px] md:pt-[240px] pb-16 md:pb-24 bg-white">
           <div className="container mx-auto px-4">
             <h2 className="text-3xl md:text-4xl font-comfortaa font-bold text-center mb-16">Featured Projects</h2>
             

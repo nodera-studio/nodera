@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
@@ -8,7 +7,7 @@ import styles from './EmergingShowcase.module.css';
 
 const WorkHero: React.FC = () => {
   return (
-    <section className="h-screen w-full overflow-hidden relative flex flex-col justify-center items-center">
+    <section className="h-screen w-full overflow-visible relative flex flex-col justify-center items-center">
       {/* Animated Gradient Background */}
       <div 
         className="absolute inset-0 w-full h-full z-0 animate-gradient"
@@ -72,7 +71,7 @@ const WorkHero: React.FC = () => {
         initial={{ opacity: 0, y: 100 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.8, duration: 0.8, type: "spring", stiffness: 100 }}
-        className="absolute bottom-[-180px] md:bottom-[-240px] w-full max-w-4xl mx-auto px-4"
+        className="absolute bottom-[-100px] md:bottom-[-133px] w-full max-w-4xl mx-auto px-4"
       >
         <div className={styles.emergingShowcase}>
           <BrowserWindow title="Nodera Showcase" className="h-[300px] md:h-[400px]">
