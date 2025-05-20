@@ -39,6 +39,7 @@ const PricingSection = () => {
                 <CardHeader>
                   <CardTitle className="text-xl font-comfortaa">Starting from</CardTitle>
                   <div className="text-4xl font-comfortaa font-bold mt-2">€2,500</div>
+                  <p className="text-gray-600 font-baloo mt-2">For Websites</p>
                 </CardHeader>
                 <CardContent>
                   <ul className="space-y-2 text-left mb-8 font-baloo">
@@ -58,6 +59,7 @@ const PricingSection = () => {
               <Card className="text-center shadow-sm border border-gray-100">
                 <CardHeader>
                   <CardTitle className="text-xl font-comfortaa">Custom</CardTitle>
+                  <p className="text-gray-600 font-baloo mt-2">For Web Applications</p>
                 </CardHeader>
                 <CardContent>
                   <ul className="space-y-2 text-left mb-8 font-baloo">
