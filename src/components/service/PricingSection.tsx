@@ -9,10 +9,10 @@ const PricingSection = () => {
   return (
     <section className="py-16 md:py-24 px-6" style={{ backgroundColor: '#f9f9f9' }}>
       <div className="container mx-auto">
-        <Card className="max-w-7xl mx-auto rounded-xl overflow-hidden bg-white">
+        <Card className="max-w-7xl mx-auto rounded-xl overflow-hidden bg-white border-0">
           <CardContent className="p-8 md:p-12">
-            <h2 className="text-2xl md:text-3xl font-comfortaa font-bold mb-6 text-left">Service Pricing Overview</h2>
-            <p className="text-gray-600 font-baloo text-sm md:text-base mb-8">
+            <h2 className="text-2xl md:text-3xl font-comfortaa font-bold mb-2 text-left">Service Pricing Overview</h2>
+            <p className="text-gray-600 font-baloo text-sm mb-8">
               We offer competitive pricing for our range of digital solutions with transparent costs and no hidden fees.
             </p>
             
