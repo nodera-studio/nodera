@@ -1,0 +1,26 @@
+
+.emergingShowcase {
+  box-shadow: 0 -4px 24px rgba(0, 0, 0, 0.08);
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+  background: white;
+  overflow: hidden;
+  position: relative;
+}
+
+.browserContent {
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.codeSnippet {
+  opacity: 0.9;
+  line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+  .codeSnippet {
+    font-size: 0.7rem;
+  }
+}
