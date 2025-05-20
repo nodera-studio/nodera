@@ -19,6 +19,18 @@
     100% { background-position: 0% 50%; }
   }
   
+  @keyframes gradientAnimation {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+  
   @keyframes scrollHint {
     0%, 100% {
       transform: translateY(0);
@@ -64,5 +76,9 @@
   
   .scroll-hint {
     animation: scrollHint 2s ease-in-out infinite;
+  }
+
+  .animate-gradient {
+    animation: gradientAnimation 15s ease infinite;
   }
 }
