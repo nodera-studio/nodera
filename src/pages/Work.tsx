@@ -73,17 +73,19 @@ const Work: React.FC = () => {
         {/* Hero Section */}
         <WorkHero />
         
-        {/* Filter Bar */}
-        <FilterBar 
-          categories={categories}
-          selectedCategories={selectedCategories}
-          searchQuery={searchQuery}
-          onSearchChange={setSearchQuery}
-          onCategoryToggle={handleCategoryToggle}
-        />
+        {/* Filter Bar - Now closer to the project cards */}
+        <div className="pt-3 pb-3 relative z-20">
+          <FilterBar 
+            categories={categories}
+            selectedCategories={selectedCategories}
+            searchQuery={searchQuery}
+            onSearchChange={setSearchQuery}
+            onCategoryToggle={handleCategoryToggle}
+          />
+        </div>
         
-        {/* Project Grid Section - Added significant top padding to accommodate the overlapping showcase */}
-        <section className="pt-[280px] md:pt-[320px] pb-16 md:pb-24 bg-white">
+        {/* Project Grid Section - Reduced top padding to move cards closer to filter */}
+        <section className="pt-10 pb-16 md:pb-24 bg-white">
           <div className="container mx-auto px-4 md:px-8">
             {/* Projects Grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-[10px]">
