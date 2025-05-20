@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
 import { BrowserWindow } from '../whatwedo/BrowserWindow';
+import styles from './EmergingShowcase.module.css';
 
 const WorkHero: React.FC = () => {
   return (
@@ -64,23 +65,20 @@ const WorkHero: React.FC = () => {
             <Link to="/contact">Get in Touch</Link>
           </Button>
         </motion.div>
+      </div>
 
-        {/* Emerging Browser Window - The Nodera Digital Showcase */}
-        <motion.div
-          initial={{ opacity: 0, y: 60 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.8, duration: 0.8, type: "spring", stiffness: 100 }}
-          className="relative w-full max-w-4xl mx-auto"
-        >
-          <div 
-            className="w-full h-[300px] md:h-[400px] relative overflow-hidden shadow-xl rounded-t-xl"
-            style={{ 
-              marginBottom: "-100px",
-            }}
-          >
-            <BrowserWindow className="emerging-showcase">
-              <div className="p-6 h-full bg-gradient-to-b from-white to-gray-50">
-                <div className="code-snippet font-mono text-xs md:text-sm text-left overflow-hidden">
+      {/* Emerging Browser Window - With refined positioning and styling */}
+      <motion.div
+        initial={{ opacity: 0, y: 100 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.8, duration: 0.8, type: "spring", stiffness: 100 }}
+        className="absolute bottom-[-150px] md:bottom-[-200px] w-full max-w-4xl mx-auto z-20"
+      >
+        <div className={styles.emergingShowcase}>
+          <BrowserWindow title="Nodera Showcase" className="h-[300px] md:h-[400px]">
+            <div className={styles.browserContent}>
+              <div className={`${styles.codeSnippet} p-6 h-full bg-gradient-to-b from-white to-gray-50`}>
+                <div className="font-mono text-xs md:text-sm text-left overflow-hidden">
                   <div className="flex items-center">
                     <span className="text-purple-500">import</span>
                     <span className="text-gray-700 ml-2">React</span>
@@ -114,6 +112,14 @@ const WorkHero: React.FC = () => {
                   <div className="mt-2 ml-12 text-gray-800">
                     Transforming visions into digital reality
                   </div>
+
+                  <div className="mt-2 ml-12">
+                    <span className="text-blue-500">&lt;Feature</span>
+                    <span className="text-green-600 ml-2">elegance</span>
+                    <span className="text-gray-700">=</span>
+                    <span className="text-orange-500">&#123;true&#125;</span>
+                    <span className="text-blue-500"> /&gt;</span>
+                  </div>
                   
                   <div className="mt-2 ml-8">
                     <span className="text-blue-500">&lt;/div&gt;</span>
@@ -134,10 +140,10 @@ const WorkHero: React.FC = () => {
                   </div>
                 </div>
               </div>
-            </BrowserWindow>
-          </div>
-        </motion.div>
-      </div>
+            </div>
+          </BrowserWindow>
+        </div>
+      </motion.div>
     </section>
   );
 };
