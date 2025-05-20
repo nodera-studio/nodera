@@ -20,27 +20,27 @@ const PricingSection = () => {
                   <Layout className="h-12 w-12 text-blue-500" />
                 </div>
                 <CardTitle className="text-2xl font-comfortaa mb-2">Websites</CardTitle>
-                <div className="text-3xl font-comfortaa font-bold mt-2 mb-1">€2,500</div>
+                <div className="mb-1">
+                  <span className="text-sm font-baloo text-gray-600 mr-1">From</span>
+                  <span className="text-3xl font-baloo font-bold">€2,500</span>
+                </div>
                 <p className="text-gray-600 font-baloo">For a professional and effective online presence</p>
               </CardHeader>
               <CardContent className="flex-grow flex flex-col">
                 <ul className="space-y-3 text-left font-baloo mb-8">
                   <li className="flex items-start">
-                    <span className="mr-2 text-blue-500 mt-1">✓</span> 
                     <span><strong>Tailored Visual Design:</strong> Crafted to reflect your unique brand and goals.</span>
                   </li>
                   <li className="flex items-start">
-                    <span className="mr-2 text-blue-500 mt-1">✓</span> 
                     <span><strong>Responsive & SEO-Ready:</strong> Ensuring optimal viewing on all devices and foundational search visibility.</span>
                   </li>
                   <li className="flex items-start">
-                    <span className="mr-2 text-blue-500 mt-1">✓</span> 
                     <span><strong>Comprehensive Launch Support:</strong> Guiding you from initial setup to a successful go-live.</span>
                   </li>
                 </ul>
                 <div className="mt-auto">
-                  <Link to="/contact" className="w-full">
-                    <Button variant="accent" className="w-full">Get a Website Quote</Button>
+                  <Link to="/contact" className="inline-block">
+                    <Button variant="primary" className="px-8">Get a Website Quote</Button>
                   </Link>
                 </div>
               </CardContent>
@@ -53,27 +53,27 @@ const PricingSection = () => {
                   <ShoppingCart className="h-12 w-12 text-blue-500" />
                 </div>
                 <CardTitle className="text-2xl font-comfortaa mb-2">E-commerce Solutions</CardTitle>
-                <div className="text-3xl font-comfortaa font-bold mt-2 mb-1">€3,500</div>
+                <div className="mb-1">
+                  <span className="text-sm font-baloo text-gray-600 mr-1">From</span>
+                  <span className="text-3xl font-baloo font-bold">€3,500</span>
+                </div>
                 <p className="text-gray-600 font-baloo">To build, launch, and scale your online store</p>
               </CardHeader>
               <CardContent className="flex-grow flex flex-col">
                 <ul className="space-y-3 text-left font-baloo mb-8">
                   <li className="flex items-start">
-                    <span className="mr-2 text-blue-500 mt-1">✓</span> 
                     <span><strong>Optimized for Sales & Conversion:</strong> User-friendly stores designed to turn visitors into customers.</span>
                   </li>
                   <li className="flex items-start">
-                    <span className="mr-2 text-blue-500 mt-1">✓</span> 
                     <span><strong>Scalable Shopify Expertise:</strong> Leveraging a leading platform for robust growth and easy management.</span>
                   </li>
                   <li className="flex items-start">
-                    <span className="mr-2 text-blue-500 mt-1">✓</span> 
                     <span><strong>Brand-Aligned Storefront:</strong> Beautifully designed to perfectly match your brand identity.</span>
                   </li>
                 </ul>
                 <div className="mt-auto">
-                  <Link to="/contact" className="w-full">
-                    <Button variant="accent" className="w-full">Get an E-commerce Quote</Button>
+                  <Link to="/contact" className="inline-block">
+                    <Button variant="primary" className="px-8">Get an E-commerce Quote</Button>
                   </Link>
                 </div>
               </CardContent>
@@ -86,27 +86,26 @@ const PricingSection = () => {
                   <Layers className="h-12 w-12 text-blue-500" />
                 </div>
                 <CardTitle className="text-2xl font-comfortaa mb-2">Web Applications</CardTitle>
-                <div className="text-3xl font-comfortaa font-bold mt-2 mb-1">Custom</div>
+                <div className="mb-1">
+                  <span className="text-3xl font-baloo font-bold">Custom</span>
+                </div>
                 <p className="text-gray-600 font-baloo">For unique challenges requiring custom-built digital solutions</p>
               </CardHeader>
               <CardContent className="flex-grow flex flex-col">
                 <ul className="space-y-3 text-left font-baloo mb-8">
                   <li className="flex items-start">
-                    <span className="mr-2 text-blue-500 mt-1">✓</span> 
                     <span><strong>Custom-Built Functionality:</strong> Engineered to solve your specific business challenges.</span>
                   </li>
                   <li className="flex items-start">
-                    <span className="mr-2 text-blue-500 mt-1">✓</span> 
                     <span><strong>Intuitive User Experience (UX):</strong> Ensuring ease of use, even for complex systems.</span>
                   </li>
                   <li className="flex items-start">
-                    <span className="mr-2 text-blue-500 mt-1">✓</span> 
                     <span><strong>Scalable & Secure Architecture:</strong> Built for reliable performance, security, and future growth.</span>
                   </li>
                 </ul>
                 <div className="mt-auto">
-                  <Link to="/contact" className="w-full">
-                    <Button variant="accent" className="w-full">Discuss Your Application</Button>
+                  <Link to="/contact" className="inline-block">
+                    <Button variant="primary" className="px-8">Discuss Your Application</Button>
                   </Link>
                 </div>
               </CardContent>
