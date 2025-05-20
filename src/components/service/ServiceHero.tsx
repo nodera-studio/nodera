@@ -43,14 +43,12 @@ const ServiceHero: React.FC = () => {
         >
           <Button 
             size="lg"
-            className="bg-black hover:bg-zinc-800 text-white rounded-full font-baloo font-semibold text-lg px-8 py-3"
+            className="bg-black hover:bg-zinc-800 text-white rounded-full font-baloo font-semibold text-lg px-8 py-2"
           >
             Start Your Project
           </Button>
         </motion.div>
       </div>
-      
-      {/* Browser Window component has been removed */}
     </section>
   );
 };
