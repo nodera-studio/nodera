@@ -38,7 +38,7 @@ const ServiceGrid: React.FC<ServiceGridProps> = ({ services }) => {
   }, [activeTab]);
   
   return (
-    <section className="py-20 md:py-24 lg:py-32 bg-white">
+    <section className="py-20 md:py-24 lg:py-32" style={{ backgroundColor: '#f1f3fb' }}>
       <div className="container max-w-7xl mx-auto">
         <h2 className="text-3xl md:text-4xl font-comfortaa font-bold text-center mb-16">Core Service Offerings</h2>
         
@@ -76,15 +76,15 @@ const ServiceGrid: React.FC<ServiceGridProps> = ({ services }) => {
                 {/* Card 1: What's Included (Tall, Left) */}
                 <Card 
                   ref={el => cardsRef.current[0] = el}
-                  className="md:col-span-5 bg-[#F8F8F8] rounded-xl opacity-0 translate-y-8 transition-all duration-500 shadow-sm border-0"
+                  className="md:col-span-5 bg-white rounded-xl opacity-0 translate-y-8 transition-all duration-500 shadow-sm border-0"
                 >
                   <CardHeader>
                     <h3 className="text-2xl font-comfortaa font-bold">What's Included</h3>
                   </CardHeader>
                   <CardContent className="pt-2">
-                    <ul className="list-disc pl-5 font-baloo font-medium text-base md:text-lg space-y-2">
+                    <ul className="font-baloo font-medium text-base md:text-lg space-y-2">
                       {activeService.standardInclusions.map((item, index) => (
-                        <li key={index}>{item}</li>
+                        <li key={index} style={{ color: '#6e6e73', listStyle: 'none' }}>{item}</li>
                       ))}
                     </ul>
                   </CardContent>
@@ -95,13 +95,13 @@ const ServiceGrid: React.FC<ServiceGridProps> = ({ services }) => {
                   {/* Card 2: Our Design Approach (Top Right) */}
                   <Card 
                     ref={el => cardsRef.current[1] = el}
-                    className="bg-[#F8F8F8] rounded-xl opacity-0 translate-y-8 transition-all duration-500 shadow-sm border-0"
+                    className="bg-white rounded-xl opacity-0 translate-y-8 transition-all duration-500 shadow-sm border-0"
                   >
                     <CardHeader>
                       <h3 className="text-2xl font-comfortaa font-bold">Our Design Approach</h3>
                     </CardHeader>
                     <CardContent className="pt-2">
-                      <p className="font-baloo font-medium text-base md:text-lg">
+                      <p className="font-baloo font-medium text-base md:text-lg" style={{ color: '#6e6e73' }}>
                         {activeService.designApproach}
                       </p>
                     </CardContent>
@@ -110,7 +110,7 @@ const ServiceGrid: React.FC<ServiceGridProps> = ({ services }) => {
                   {/* Card 3: Technologies/Core Platform (Bottom Right) */}
                   <Card 
                     ref={el => cardsRef.current[2] = el}
-                    className="bg-[#F8F8F8] rounded-xl opacity-0 translate-y-8 transition-all duration-500 shadow-sm border-0"
+                    className="bg-white rounded-xl opacity-0 translate-y-8 transition-all duration-500 shadow-sm border-0"
                   >
                     <CardHeader>
                       <h3 className="text-2xl font-comfortaa font-bold">
@@ -121,8 +121,8 @@ const ServiceGrid: React.FC<ServiceGridProps> = ({ services }) => {
                       <div className="font-baloo font-medium text-base md:text-lg space-y-4">
                         {activeService.technologyOptions.map((tech, index) => (
                           <div key={index}>
-                            <p className="font-bold text-base md:text-lg mb-1">{tech.name}</p>
-                            <p className="font-normal text-base md:text-lg">{tech.description}</p>
+                            <p className="font-bold text-base md:text-lg mb-1" style={{ color: '#6e6e73' }}>{tech.name}</p>
+                            <p className="font-normal text-base md:text-lg" style={{ color: '#6e6e73' }}>{tech.description}</p>
                           </div>
                         ))}
                       </div>
@@ -133,13 +133,13 @@ const ServiceGrid: React.FC<ServiceGridProps> = ({ services }) => {
                 {/* Card 4: Available Add-ons (Bottom, Full Width) */}
                 <Card 
                   ref={el => cardsRef.current[3] = el}
-                  className="md:col-span-12 bg-[#F8F8F8] rounded-xl opacity-0 translate-y-8 transition-all duration-500 shadow-sm border-0"
+                  className="md:col-span-12 bg-white rounded-xl opacity-0 translate-y-8 transition-all duration-500 shadow-sm border-0"
                 >
                   <CardHeader>
                     <h3 className="text-2xl font-comfortaa font-bold">Available Add-ons</h3>
                   </CardHeader>
                   <CardContent className="pt-2">
-                    <p className="font-baloo font-medium text-base md:text-lg">
+                    <p className="font-baloo font-medium text-base md:text-lg" style={{ color: '#6e6e73' }}>
                       {activeService.optionalAddOns}
                     </p>
                   </CardContent>
