@@ -31,10 +31,10 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
           <ArrowRight className="ml-1 h-4 w-4" />
         </Link>
         
-        {/* Image - in a wider browser window UI */}
-        <div className="mt-2 max-w-[320px]">
+        {/* Image - in a much wider browser window UI */}
+        <div className="mt-2 w-full max-w-[450px]">
           <BrowserWindow title={project.title}>
-            <div className="bg-gray-200 w-full h-[160px] flex items-center justify-center">
+            <div className="bg-gray-200 w-full h-[200px] flex items-center justify-center">
               <div className="text-gray-400 text-xs">Project Preview</div>
             </div>
           </BrowserWindow>
