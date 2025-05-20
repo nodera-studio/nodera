@@ -5,6 +5,7 @@ import { cn } from '@/lib/utils';
 import { Card, CardHeader, CardContent } from "@/components/ui/card";
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
+import { ArrowRight } from 'lucide-react';
 
 interface ServiceGridProps {
   services: ServiceItem[];
@@ -65,11 +66,19 @@ const ServiceGrid: React.FC<ServiceGridProps> = ({ services }) => {
                   </p>
                 </CardContent>
                 <div className="p-6 pt-0 mt-auto">
-                  <Button asChild className="w-full">
-                    <Link to={`/services/${convertToSlug(service.title)}`}>
-                      Learn more
-                    </Link>
-                  </Button>
+                  {/* Replace button with highlighted text link */}
+                  <Link 
+                    to={`/services/${convertToSlug(service.title)}`}
+                    className="font-baloo font-medium inline-flex items-center transition-colors duration-200"
+                    style={{ 
+                      color: 'rgba(0, 122, 255, 0.9)'
+                    }}
+                    onMouseEnter={(e) => e.currentTarget.style.color = 'rgba(0, 122, 255, 1)'}
+                    onMouseLeave={(e) => e.currentTarget.style.color = 'rgba(0, 122, 255, 0.9)'}
+                  >
+                    Learn more about our {service.title.toLowerCase()} solutions
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </Link>
                 </div>
               </Card>
             </div>

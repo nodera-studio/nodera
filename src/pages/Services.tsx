@@ -30,21 +30,8 @@ const Services: React.FC = () => {
 				{/* Hero Section */}
 				<ServiceHero />
 				
-				{/* Why Choose Nodera Section */}
+				{/* Service Overview Section - Now with flat background */}
 				<section className="py-16 md:py-24" style={{ backgroundColor: '#f1f3fb' }}>
-					<div className="container mx-auto px-4">
-						<h2 className="text-3xl md:text-4xl font-comfortaa font-bold text-center mb-6">Why Choose Nodera?</h2>
-						<p className="text-gray-700 font-baloo text-lg text-center max-w-3xl mx-auto">
-							At Nodera, we combine industry expertise with a client-centered approach and innovative solutions. 
-							Our team brings years of experience to deliver professional results while prioritizing your vision 
-							and goals. We maintain close communication throughout the process and leverage cutting-edge 
-							technologies to create modern, future-proof digital experiences tailored to your needs.
-						</p>
-					</div>
-				</section>
-				
-				{/* Service Overview Section - Apple-inspired layout with vertical gradient */}
-				<section className="py-16 md:py-24" style={{ background: 'linear-gradient(to bottom, #f1f3fb 0%, #f9f9f9 100%)' }}>
 					<div className="container mx-auto">
 						<h2 className="text-3xl md:text-4xl font-comfortaa font-bold text-center mb-16">Core Service Offerings</h2>
 						
@@ -87,6 +74,19 @@ const Services: React.FC = () => {
 								</div>
 							))}
 						</div>
+					</div>
+				</section>
+				
+				{/* Why Choose Nodera Section - Moved below Core Service Offerings with gradient background */}
+				<section className="py-16 md:py-24" style={{ background: 'linear-gradient(to bottom, #f1f3fb 0%, #f9f9f9 100%)' }}>
+					<div className="container mx-auto px-4">
+						<h2 className="text-3xl md:text-4xl font-comfortaa font-bold text-center mb-6">Why Choose Nodera?</h2>
+						<p className="text-gray-700 font-baloo text-lg text-center max-w-3xl mx-auto">
+							At Nodera, we combine industry expertise with a client-centered approach and innovative solutions. 
+							Our team brings years of experience to deliver professional results while prioritizing your vision 
+							and goals. We maintain close communication throughout the process and leverage cutting-edge 
+							technologies to create modern, future-proof digital experiences tailored to your needs.
+						</p>
 					</div>
 				</section>
 				
