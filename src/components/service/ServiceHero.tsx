@@ -1,7 +1,7 @@
+
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
-import { Code, Layers, MonitorSmartphone } from 'lucide-react';
 
 const ServiceHero: React.FC = () => {
   return (
@@ -9,8 +9,8 @@ const ServiceHero: React.FC = () => {
       {/* Gradient Background - More blue on left, more white on bottom */}
       <div className="absolute inset-0 bg-gradient-to-br from-blue-500/50 via-indigo-500/30 to-white/40 backdrop-blur-[30px] z-0"></div>
       
-      {/* Content Container - Moved up to allow space for browser window */}
-      <div className="container max-w-5xl mx-auto px-6 z-10 text-center relative" style={{ marginTop: "-25vh" }}>
+      {/* Content Container - Centered vertically */}
+      <div className="container max-w-5xl mx-auto px-6 z-10 text-center relative">
         {/* Stagger animations for text elements */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -50,119 +50,7 @@ const ServiceHero: React.FC = () => {
         </motion.div>
       </div>
       
-      {/* Browser Window UI Element - Improved horizontal centering */}
-      <motion.div
-        initial={{ opacity: 0, y: 100 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.8, duration: 0.8, type: "spring" }}
-        className="absolute bottom-0 left-0 right-0 mx-auto w-full max-w-4xl z-10"
-        style={{ maxHeight: "60vh", marginBottom: "-20%" }}
-      >
-        {/* Browser Window Container */}
-        <div className="relative w-full rounded-t-2xl overflow-hidden shadow-2xl border border-white/20">
-          {/* Browser Top Bar */}
-          <div className="h-10 bg-gray-100 flex items-center px-4">
-            {/* Traffic Light Dots */}
-            <div className="flex space-x-2">
-              <div className="w-3 h-3 rounded-full bg-red-400"></div>
-              <div className="w-3 h-3 rounded-full bg-yellow-400"></div>
-              <div className="w-3 h-3 rounded-full bg-green-400"></div>
-            </div>
-            
-            {/* URL Bar */}
-            <div className="mx-auto bg-white rounded-full h-6 w-64 border border-gray-200"></div>
-            
-            {/* Placeholder for browser buttons */}
-            <div className="w-16"></div>
-          </div>
-          
-          {/* Browser Content Area */}
-          <div className="bg-white/95 h-[70vh] pt-8 px-4">
-            {/* Animated web development content */}
-            <motion.div 
-              className="flex justify-around items-start"
-              animate={{ y: [5, -5, 5] }}
-              transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-            >
-              {/* Web Services Icon Elements */}
-              <motion.div
-                whileHover={{ scale: 1.05, y: -5 }}
-                className="flex flex-col items-center"
-              >
-                <div className="w-20 h-20 rounded-lg bg-blue-500/10 border border-blue-500/20 flex items-center justify-center shadow-lg">
-                  <Code className="w-10 h-10 text-blue-600" />
-                </div>
-                <p className="text-gray-700 font-medium mt-3">Development</p>
-              </motion.div>
-              
-              <motion.div
-                whileHover={{ scale: 1.05, y: -5 }}
-                className="flex flex-col items-center"
-                animate={{ y: [0, -8, 0] }}
-                transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
-              >
-                <div className="w-20 h-20 rounded-lg bg-purple-500/10 border border-purple-500/20 flex items-center justify-center shadow-lg">
-                  <Layers className="w-10 h-10 text-purple-600" />
-                </div>
-                <p className="text-gray-700 font-medium mt-3">Design</p>
-              </motion.div>
-              
-              <motion.div
-                whileHover={{ scale: 1.05, y: -5 }}
-                className="flex flex-col items-center"
-                animate={{ y: [0, -5, 0] }}
-                transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-              >
-                <div className="w-20 h-20 rounded-lg bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center shadow-lg">
-                  <MonitorSmartphone className="w-10 h-10 text-indigo-600" />
-                </div>
-                <p className="text-gray-700 font-medium mt-3">Responsive</p>
-              </motion.div>
-            </motion.div>
-            
-            {/* Progress bar visualization */}
-            <motion.div 
-              className="mt-16 mx-auto max-w-lg"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 1.2, duration: 0.6 }}
-            >
-              <div className="h-2 w-full bg-gray-200 rounded-full overflow-hidden">
-                <motion.div 
-                  className="h-full bg-blue-500 rounded-full"
-                  initial={{ width: "0%" }}
-                  animate={{ width: ["0%", "100%"] }}
-                  transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-                />
-              </div>
-              
-              {/* Code placeholder elements */}
-              <div className="mt-8 grid grid-cols-3 gap-6">
-                <motion.div 
-                  className="h-4 bg-gray-100 rounded"
-                  animate={{ opacity: [0.5, 0.8, 0.5] }}
-                  transition={{ duration: 3, repeat: Infinity }}
-                ></motion.div>
-                <motion.div 
-                  className="h-4 bg-gray-100 rounded col-span-2"
-                  animate={{ opacity: [0.6, 0.9, 0.6] }}
-                  transition={{ duration: 4, repeat: Infinity, delay: 0.5 }}
-                ></motion.div>
-                <motion.div 
-                  className="h-4 bg-gray-100 rounded col-span-2"
-                  animate={{ opacity: [0.7, 1, 0.7] }}
-                  transition={{ duration: 3.5, repeat: Infinity, delay: 1 }}
-                ></motion.div>
-                <motion.div 
-                  className="h-4 bg-gray-100 rounded"
-                  animate={{ opacity: [0.5, 0.8, 0.5] }}
-                  transition={{ duration: 4, repeat: Infinity, delay: 1.5 }}
-                ></motion.div>
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </motion.div>
+      {/* Browser Window component has been removed */}
     </section>
   );
 };
