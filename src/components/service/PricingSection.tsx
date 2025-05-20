@@ -14,7 +14,7 @@ const PricingSection = () => {
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
             {/* Websites Card */}
-            <Card className="text-center shadow-sm border border-gray-100 flex flex-col transition-all duration-200 hover:shadow-md">
+            <Card className="text-center shadow-sm border border-gray-100 flex flex-col">
               <CardHeader className="pb-4">
                 <div className="flex justify-center mb-4">
                   <Layout className="h-12 w-12 text-blue-500" />
@@ -40,14 +40,14 @@ const PricingSection = () => {
                 </ul>
                 <div className="mt-auto">
                   <Link to="/contact" className="inline-block">
-                    <Button variant="primary" className="px-8">Get a Website Quote</Button>
+                    <Button variant="primary" className="px-8 bg-black hover:bg-black">Get a Website Quote</Button>
                   </Link>
                 </div>
               </CardContent>
             </Card>
 
             {/* E-commerce Card */}
-            <Card className="text-center shadow-sm border border-gray-100 flex flex-col transition-all duration-200 hover:shadow-md">
+            <Card className="text-center shadow-sm border border-gray-100 flex flex-col">
               <CardHeader className="pb-4">
                 <div className="flex justify-center mb-4">
                   <ShoppingCart className="h-12 w-12 text-blue-500" />
@@ -73,14 +73,14 @@ const PricingSection = () => {
                 </ul>
                 <div className="mt-auto">
                   <Link to="/contact" className="inline-block">
-                    <Button variant="primary" className="px-8">Get an E-commerce Quote</Button>
+                    <Button variant="primary" className="px-8 bg-black hover:bg-black">Get an E-commerce Quote</Button>
                   </Link>
                 </div>
               </CardContent>
             </Card>
 
             {/* Web Applications Card */}
-            <Card className="text-center shadow-sm border border-gray-100 flex flex-col transition-all duration-200 hover:shadow-md">
+            <Card className="text-center shadow-sm border border-gray-100 flex flex-col">
               <CardHeader className="pb-4">
                 <div className="flex justify-center mb-4">
                   <Layers className="h-12 w-12 text-blue-500" />
@@ -105,7 +105,7 @@ const PricingSection = () => {
                 </ul>
                 <div className="mt-auto">
                   <Link to="/contact" className="inline-block">
-                    <Button variant="primary" className="px-8">Discuss Your Application</Button>
+                    <Button variant="primary" className="px-8 bg-black hover:bg-black">Discuss Your Application</Button>
                   </Link>
                 </div>
               </CardContent>
