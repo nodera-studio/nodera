@@ -12,11 +12,11 @@ const WorkHero: React.FC = () => {
         className="absolute inset-0 w-full h-full z-0"
         style={{
           backgroundImage: `
-            radial-gradient(circle at 35% 60%, #D1A2FF 0%, transparent 25%), 
-            radial-gradient(ellipse at 73% 102%, #59F4F5 5%, transparent 15%), 
-            radial-gradient(circle at 10% 76%, #007AFF 0%, transparent 65%), 
-            radial-gradient(circle at 71% 96%, #FFFFFF 30%, transparent 66%), 
-            radial-gradient(circle at 50% 39%, #fb95fb 35%, transparent 88%)
+            radial-gradient(circle at 50% 15%, #FFFFFF 20%, transparent 40%), 
+            radial-gradient(circle at 10% 50%, #59F4F5 15%, transparent 40%), 
+            radial-gradient(circle at 35% 75%, #D1A2FF 0%, transparent 55%), 
+            radial-gradient(circle at 71% 96%, #007AFF 10%, transparent 60%), 
+            radial-gradient(circle at 65% 45%, #fb95fb 20%, transparent 75%)
           `,
           opacity: 1
         }}
