@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
@@ -73,7 +74,7 @@ const Work: React.FC = () => {
         <WorkHero />
         
         {/* Filter Bar - With significantly increased top padding to avoid code tab overlap */}
-        <div className="sticky top-0 z-20 bg-white shadow-sm pt-20">
+        <div className="sticky top-0 z-20 bg-white shadow-sm pt-32">
           <div className="container mx-auto py-3">
             <FilterBar 
               categories={categories}
