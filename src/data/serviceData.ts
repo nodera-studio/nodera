@@ -1,3 +1,4 @@
+
 // src/data/serviceData.ts
 
 interface ServiceFeature {
@@ -64,9 +65,9 @@ export const serviceCategories: { mainServices: ServiceItemData[] } = {
 			idealFor:
 				'Ideal for businesses, professionals, artists, and organizations requiring a high-quality informational site, portfolio, blog, or online brochure.',
 		},
-		// Service 2: E-commerce Solutions
+		// Service 2: Online Stores (formerly E-commerce Solutions)
 		{
-			title: 'E-commerce Solutions',
+			title: 'Online Stores',
 			description:
 				'Powerful online stores built to sell your products effectively and scale your business.',
 			fullDescription:
