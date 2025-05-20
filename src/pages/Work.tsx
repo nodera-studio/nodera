@@ -7,10 +7,6 @@ import ProjectCard from '../components/work/ProjectCard';
 import { projectsData } from '../data/projectsData';
 
 const Work: React.FC = () => {
-  // Group projects by category for rendering in sections
-  const webApplications = projectsData.filter(project => project.category === 'Web Applications');
-  const websites = projectsData.filter(project => project.category === 'Websites');
-
   return (
     <div className="min-h-screen flex flex-col overflow-x-hidden bg-gray-50">
       <Header />
@@ -21,30 +17,14 @@ const Work: React.FC = () => {
         {/* Project Grid Section - Added significant top padding to accommodate the overlapping showcase */}
         <section className="pt-[280px] md:pt-[320px] pb-16 md:pb-24 bg-white">
           <div className="container mx-auto px-4 md:px-8">
-            {/* Web Applications Section */}
-            <div className="mb-16">
-              <h2 className="text-2xl md:text-3xl font-comfortaa font-bold mb-8 border-b pb-4">Web Applications</h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
-                {webApplications.map((project) => (
-                  <ProjectCard 
-                    key={project.id}
-                    project={project}
-                  />
-                ))}
-              </div>
-            </div>
-
-            {/* Websites Section */}
-            <div>
-              <h2 className="text-2xl md:text-3xl font-comfortaa font-bold mb-8 border-b pb-4">Websites</h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
-                {websites.map((project) => (
-                  <ProjectCard 
-                    key={project.id}
-                    project={project}
-                  />
-                ))}
-              </div>
+            {/* Combined Projects Section - No title */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[10px]">
+              {projectsData.map((project) => (
+                <ProjectCard 
+                  key={project.id}
+                  project={project}
+                />
+              ))}
             </div>
           </div>
         </section>
