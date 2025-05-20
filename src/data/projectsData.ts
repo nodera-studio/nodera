@@ -1,0 +1,119 @@
+
+// Define the Project interface
+export interface Project {
+  id: number;
+  title: string;
+  slug: string;
+  category: string;
+  subcategory: string;
+  description: string;
+  imageSrc: string;
+  imageAlt?: string;
+}
+
+// Projects data array
+export const projectsData: Project[] = [
+  // Web Applications
+  {
+    id: 1,
+    title: "Nous CMS",
+    slug: "nous-cms",
+    category: "Web Applications",
+    subcategory: "Web Application",
+    description: "Museums telling better stories, simplified. An intuitive CMS that turns complex content into engaging mobile guides—no technical headaches for staff, just rich experiences for visitors.",
+    imageSrc: "/lovable-uploads/nous-cms.png",
+    imageAlt: "Nous CMS application interface"
+  },
+  {
+    id: 2,
+    title: "Release Creator",
+    slug: "release-creator",
+    category: "Web Applications",
+    subcategory: "Web Application",
+    description: "Development chaos, beautifully organized. Visual release tracking that improves team communication and automates deployments, letting everyone focus on building great products.",
+    imageSrc: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6",
+    imageAlt: "Release Creator tracking interface"
+  },
+  {
+    id: 3,
+    title: "Reno",
+    slug: "reno-app",
+    category: "Web Applications",
+    subcategory: "Web Application",
+    description: "Evolution that users actually notice. Performance enhancements and an interface redesign that delivered higher engagement and a platform ready for whatever comes next.",
+    imageSrc: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b",
+    imageAlt: "Reno application interface"
+  },
+  {
+    id: 4,
+    title: "Location Matcher",
+    slug: "location-matcher",
+    category: "Web Applications",
+    subcategory: "Web Application",
+    description: "Turning reinsurance data complexity into visual clarity. Specialized workflows and visualization tools that reveal the patterns hidden in sprawling property datasets.",
+    imageSrc: "https://images.unsplash.com/photo-1605810230434-7631ac76ec81",
+    imageAlt: "Location Matcher visualization"
+  },
+  
+  // Websites
+  {
+    id: 5,
+    title: "Furnihaus",
+    slug: "furnihaus",
+    category: "Websites",
+    subcategory: "Website",
+    description: "Craftsmanship deserves a beautiful showcase. A platform connecting talented artisans with design enthusiasts, where every scroll reveals another reason to appreciate handcrafted quality.",
+    imageSrc: "/lovable-uploads/furnihaus.png",
+    imageAlt: "Furnihaus website showcase"
+  },
+  {
+    id: 6,
+    title: "Tulsa Flowers",
+    slug: "tulsa-flowers",
+    category: "Websites",
+    subcategory: "E-commerce Website",
+    description: "Bringing floral artistry from shop to doorstep. A seamless online shopping experience that feels as personal as walking into the store—without leaving the couch.",
+    imageSrc: "https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7",
+    imageAlt: "Tulsa Flowers e-commerce website"
+  },
+  {
+    id: 7,
+    title: "Casa Nera",
+    slug: "casa-nera",
+    category: "Websites",
+    subcategory: "Web Application & Website",
+    description: "Rustic charm meets modern convenience. A showcase for a unique restaurant and cabin retreat with a booking system that turns interest into confirmed reservations in moments.",
+    imageSrc: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d",
+    imageAlt: "Casa Nera website"
+  },
+  {
+    id: 8,
+    title: "Restaurant Discret",
+    slug: "restaurant-discret",
+    category: "Websites",
+    subcategory: "Website & Booking Interface",
+    description: "Where taste begins with the eyes. An elegant restaurant presence with integrated booking that transforms interest into reservations without interrupting the culinary journey.",
+    imageSrc: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158",
+    imageAlt: "Restaurant Discret booking interface"
+  },
+  {
+    id: 9,
+    title: "Panorama Deluxe Residence",
+    slug: "panorama-deluxe",
+    category: "Websites",
+    subcategory: "Website & Reservation Interface",
+    description: "Luxury in the details. Beyond showcasing accommodations, this hotel platform gives guests control over their experience with specialized amenity booking.",
+    imageSrc: "https://images.unsplash.com/photo-1531297484001-80022131f5a1",
+    imageAlt: "Panorama Deluxe Residence website"
+  },
+  {
+    id: 10,
+    title: "Geosistem",
+    slug: "geosistem",
+    category: "Websites",
+    subcategory: "Website",
+    description: "Precision meets presentation. Complex topography services translated into visually compelling content that helps technical clients understand specialized offerings with clarity.",
+    imageSrc: "https://images.unsplash.com/photo-1518770660439-4636190af475",
+    imageAlt: "Geosistem website services page"
+  }
+];

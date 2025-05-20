@@ -1,11 +1,16 @@
+
 import React from 'react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import Layout from '../components/Layout';
 import WorkHero from '../components/work/WorkHero';
-import { Link } from 'react-router-dom';
+import ProjectCard from '../components/work/ProjectCard';
+import { projectsData } from '../data/projectsData';
 
 const Work: React.FC = () => {
+  // Group projects by category for rendering in sections
+  const webApplications = projectsData.filter(project => project.category === 'Web Applications');
+  const websites = projectsData.filter(project => project.category === 'Websites');
+
   return (
     <div className="min-h-screen flex flex-col overflow-x-hidden bg-gray-50">
       <Header />
@@ -14,33 +19,32 @@ const Work: React.FC = () => {
         <WorkHero />
         
         {/* Project Grid Section - Added significant top padding to accommodate the overlapping showcase */}
-        <section className="pt-[200px] md:pt-[240px] pb-16 md:pb-24 bg-white">
-          <div className="container mx-auto px-4">
-            <h2 className="text-3xl md:text-4xl font-comfortaa font-bold text-center mb-16">Featured Projects</h2>
-            
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
-              {/* Project cards would go here */}
-              <div className="bg-gray-100 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300">
-                <div className="aspect-w-16 aspect-h-9 bg-gray-200">
-                  {/* Project image would go here */}
-                  <div className="w-full h-0 pt-[56.25%] relative">
-                    <div className="absolute inset-0 flex items-center justify-center text-gray-500">Project Image</div>
-                  </div>
-                </div>
-                <div className="p-6">
-                  <h3 className="text-xl font-comfortaa font-bold mb-2">Project Name</h3>
-                  <p className="text-gray-600 font-baloo mb-4">Brief description of the project and what was accomplished.</p>
-                  <Link 
-                    to="/work/project-name"
-                    className="font-baloo font-medium inline-flex items-center transition-colors duration-200 text-blue-500 hover:text-blue-600"
-                  >
-                    View Case Study
-                  </Link>
-                </div>
+        <section className="pt-[280px] md:pt-[320px] pb-16 md:pb-24 bg-white">
+          <div className="container mx-auto px-4 md:px-8">
+            {/* Web Applications Section */}
+            <div className="mb-16">
+              <h2 className="text-2xl md:text-3xl font-comfortaa font-bold mb-8 border-b pb-4">Web Applications</h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
+                {webApplications.map((project) => (
+                  <ProjectCard 
+                    key={project.id}
+                    project={project}
+                  />
+                ))}
               </div>
-              
-              {/* Repeat for other projects */}
-              {/* More project cards would be added dynamically in a real implementation */}
+            </div>
+
+            {/* Websites Section */}
+            <div>
+              <h2 className="text-2xl md:text-3xl font-comfortaa font-bold mb-8 border-b pb-4">Websites</h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
+                {websites.map((project) => (
+                  <ProjectCard 
+                    key={project.id}
+                    project={project}
+                  />
+                ))}
+              </div>
             </div>
           </div>
         </section>
