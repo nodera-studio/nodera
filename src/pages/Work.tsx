@@ -1,177 +1,123 @@
-import React, { useState, useEffect } from 'react';
+
+import React from 'react';
+import { Link } from 'react-router-dom';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import PageHero from '../components/PageHero';
+import WorkHero from '../components/work/WorkHero';
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardFooter } from "@/components/ui/card";
-import { Link } from 'react-router-dom';
-import { motion, AnimatePresence } from 'framer-motion';
+import { Card, CardContent } from "@/components/ui/card";
+import { ArrowRight } from 'lucide-react';
+import CallToActionSection from '../components/service/CallToActionSection';
 
-const projects = [
-  { id: 1, title: "Project 1", category: "websites", image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f" },
-  { id: 2, title: "Project 2", category: "ecommerce", image: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b" },
-  { id: 3, title: "Project 3", category: "applications", image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6" },
-  { id: 4, title: "Project 4", category: "portfolio", image: "https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7" },
-  { id: 5, title: "Project 5", category: "websites", image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158" },
-  { id: 6, title: "Project 6", category: "applications", image: "https://images.unsplash.com/photo-1518770660439-4636190af475" },
-  { id: 7, title: "Project 7", category: "ecommerce", image: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5" },
-  { id: 8, title: "Project 8", category: "portfolio", image: "https://images.unsplash.com/photo-1501854140801-50d01698950b" },
-];
-
-const categories = [
-  { id: "all", label: "All" },
-  { id: "websites", label: "Websites" },
-  { id: "applications", label: "Web Applications" },
-  { id: "ecommerce", label: "E-commerce" },
-  { id: "portfolio", label: "Portfolio" },
-];
-
-const ProjectCard = ({ title, image }: { title: string; image: string }) => {
-  const [isLoaded, setIsLoaded] = useState(false);
+const Work: React.FC = () => {
+  // Sample projects data - in a real application, this would come from a data file or API
+  const projects = [
+    {
+      id: 1,
+      title: "Furnihaus",
+      category: "E-commerce",
+      description: "A modern furniture e-commerce platform with a focus on user experience and seamless shopping.",
+      image: "/lovable-uploads/furnihaus.png",
+      link: "/work/furnihaus"
+    },
+    {
+      id: 2,
+      title: "Nous CMS",
+      category: "Content Management",
+      description: "A powerful content management system built for enterprise needs with advanced publishing workflows.",
+      image: "/lovable-uploads/nous-cms.png",
+      link: "/work/nous-cms"
+    },
+    // Additional projects would be added here
+  ];
   
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.3 }}
-      className="h-full"
-    >
-      <Card className="overflow-hidden h-full">
-        <div className="aspect-video relative overflow-hidden bg-gray-100">
-          <motion.img 
-            src={image} 
-            alt={title}
-            className={`w-full h-full object-cover transition-all duration-300 hover:scale-105 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}
-            loading="lazy"
-            onLoad={() => setIsLoaded(true)}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: isLoaded ? 1 : 0 }}
-            transition={{ duration: 0.3 }}
-          />
-        </div>
-        <CardFooter className="p-4">
-          <h3 className="text-xl font-medium">{title}</h3>
-        </CardFooter>
-      </Card>
-    </motion.div>
-  );
-};
-
-const Work = () => {
-  const [activeCategory, setActiveCategory] = useState("all");
-  const [currentPage, setCurrentPage] = useState(1);
-  const projectsPerPage = 4;
-  
-  const filteredProjects = activeCategory === "all" 
-    ? projects 
-    : projects.filter(project => project.category === activeCategory);
-  
-  const indexOfLastProject = currentPage * projectsPerPage;
-  const indexOfFirstProject = indexOfLastProject - projectsPerPage;
-  const currentProjects = filteredProjects.slice(indexOfFirstProject, indexOfLastProject);
-  
-  const totalPages = Math.ceil(filteredProjects.length / projectsPerPage);
-
-  useEffect(() => {
-    setCurrentPage(1);
-  }, [activeCategory]);
-
-  return (
-    <div className="min-h-screen flex flex-col overflow-x-hidden">
+    <div className="min-h-screen flex flex-col overflow-x-hidden bg-gray-50">
       <Header />
-
       <main className="relative flex-grow pt-[60px]">
-        <PageHero 
-          title="Our Work" 
-          subtitle="Explore our latest projects" 
-        />
-
-        <section className="py-6 sm:py-10 md:py-16 px-4 sm:px-6">
-          <div className="container mx-auto">
-            <div className="mb-6 sm:mb-10">
-              <div className="w-full">
-                <div className="flex justify-start sm:justify-center gap-2 pb-2 overflow-x-auto scrollbar-hide scroll-smooth">
-                  {categories.map((category) => (
-                    <motion.div
-                      key={category.id}
-                      whileTap={{ scale: 0.97 }}
+        {/* Hero Section */}
+        <WorkHero />
+        
+        {/* Projects Grid Section */}
+        <section className="py-16 md:py-24" style={{ backgroundColor: '#f1f3fb' }}>
+          <div className="container mx-auto px-4">
+            <h2 className="text-3xl md:text-4xl font-comfortaa font-bold text-center mb-16">Featured Projects</h2>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-6xl mx-auto">
+              {projects.map((project) => (
+                <Card key={project.id} className="overflow-hidden border-0 bg-white shadow-md rounded-xl">
+                  <div className="aspect-video overflow-hidden">
+                    <img 
+                      src={project.image} 
+                      alt={project.title} 
+                      className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+                    />
+                  </div>
+                  <CardContent className="p-6">
+                    <div className="text-sm font-baloo font-medium text-blue-600 mb-2">
+                      {project.category}
+                    </div>
+                    <h3 className="text-2xl font-comfortaa font-bold mb-3">{project.title}</h3>
+                    <p className="text-gray-600 mb-5 font-baloo">
+                      {project.description}
+                    </p>
+                    <Link 
+                      to={project.link}
+                      className="font-baloo font-medium inline-flex items-center transition-colors duration-200"
+                      style={{ 
+                        color: 'rgba(0, 122, 255, 0.9)'
+                      }}
+                      onMouseEnter={(e) => e.currentTarget.style.color = 'rgba(0, 122, 255, 1)'}
+                      onMouseLeave={(e) => e.currentTarget.style.color = 'rgba(0, 122, 255, 0.9)'}
                     >
-                      <Button
-                        variant={activeCategory === category.id ? "primary" : "outline"}
-                        onClick={() => setActiveCategory(category.id)}
-                        className="min-w-[90px] sm:min-w-[120px] whitespace-nowrap text-sm h-9 sm:h-10 transition-all duration-200"
-                      >
-                        {category.label}
-                      </Button>
-                    </motion.div>
-                  ))}
-                </div>
-              </div>
+                      View case study
+                      <ArrowRight className="ml-2 h-4 w-4" />
+                    </Link>
+                  </CardContent>
+                </Card>
+              ))}
             </div>
-
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={activeCategory + currentPage}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.2 }}
-                className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5 md:gap-6"
+            
+            {/* View All Projects link */}
+            <div className="text-center mt-16">
+              <Link 
+                to="/work/all"
+                className="font-baloo font-medium inline-flex items-center transition-colors duration-200"
+                style={{ 
+                  color: 'rgba(0, 122, 255, 0.9)'
+                }}
+                onMouseEnter={(e) => e.currentTarget.style.color = 'rgba(0, 122, 255, 1)'}
+                onMouseLeave={(e) => e.currentTarget.style.color = 'rgba(0, 122, 255, 0.9)'}
               >
-                {currentProjects.map((project) => (
-                  <ProjectCard
-                    key={project.id}
-                    title={project.title}
-                    image={project.image}
-                  />
-                ))}
-              </motion.div>
-            </AnimatePresence>
-
-            {totalPages > 1 && (
-              <div className="flex justify-center mt-8 sm:mt-10 gap-2">
-                {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
-                  <Button
-                    key={page}
-                    variant={currentPage === page ? "primary" : "outline"}
-                    size="sm"
-                    onClick={() => {
-                      setCurrentPage(page);
-                      window.scrollTo({ top: 0, behavior: 'smooth' });
-                    }}
-                    className="w-8 h-8 sm:w-10 sm:h-10 rounded-full p-0 transition-all duration-200"
-                  >
-                    {page}
-                  </Button>
-                ))}
-              </div>
-            )}
+                View all our projects
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </Link>
+            </div>
           </div>
         </section>
-
-        <section className="py-10 sm:py-14 px-4 sm:px-6 bg-gray-900 text-white">
-          <div className="container mx-auto text-center">
-            <h2 className="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6">Have a project in mind?</h2>
-            <Button size="lg" variant="outline" className="text-white border-white hover:bg-white hover:text-gray-900 transition-all duration-300">
-              <Link to="/contact">Let's Talk</Link>
-            </Button>
+        
+        {/* Client Logos Section */}
+        <section className="py-16 md:py-20 bg-white">
+          <div className="container mx-auto px-4">
+            <h2 className="text-xl md:text-2xl font-comfortaa font-bold text-center mb-12 text-gray-700">
+              Trusted by innovative companies
+            </h2>
+            
+            <div className="flex flex-wrap justify-center items-center gap-8 md:gap-16 max-w-4xl mx-auto">
+              {/* Client logos would go here - using gray placeholders */}
+              {[1, 2, 3, 4, 5].map((i) => (
+                <div key={i} className="w-24 h-12 md:w-32 md:h-16 bg-gray-200 rounded-md flex items-center justify-center">
+                  <span className="text-gray-400 font-medium">Client {i}</span>
+                </div>
+              ))}
+            </div>
           </div>
         </section>
+        
+        {/* Final Call to Action Section */}
+        <CallToActionSection />
       </main>
-
       <Footer />
-      
-      <style>
-        {`
-        .scrollbar-hide {
-          -ms-overflow-style: none;
-          scrollbar-width: none;
-        }
-        .scrollbar-hide::-webkit-scrollbar {
-          display: none;
-        }
-        `}
-      </style>
     </div>
   );
 };
