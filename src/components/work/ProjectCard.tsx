@@ -3,6 +3,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 import { Project } from '../../data/projectsData';
+import BrowserWindow from '../whatwedo/BrowserWindow';
 
 interface ProjectCardProps {
   project: Project;
@@ -30,13 +31,13 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
           <ArrowRight className="ml-1 h-4 w-4" />
         </Link>
         
-        {/* Image - smaller and below content */}
+        {/* Image - in a browser window UI */}
         <div className="mt-2 max-w-[280px]">
-          <img 
-            src={project.imageSrc} 
-            alt={project.title} 
-            className="w-full h-auto object-contain" 
-          />
+          <BrowserWindow title={project.title}>
+            <div className="bg-gray-200 w-full h-[160px] flex items-center justify-center">
+              <div className="text-gray-400 text-xs">Project Preview</div>
+            </div>
+          </BrowserWindow>
         </div>
       </div>
     </div>

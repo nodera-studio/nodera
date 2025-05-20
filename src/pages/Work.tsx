@@ -17,8 +17,8 @@ const Work: React.FC = () => {
         {/* Project Grid Section - Added significant top padding to accommodate the overlapping showcase */}
         <section className="pt-[280px] md:pt-[320px] pb-16 md:pb-24 bg-white">
           <div className="container mx-auto px-4 md:px-8">
-            {/* Combined Projects Section - No title */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[10px]">
+            {/* Combined Projects Section - No title, reduced to 2 columns */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-[10px]">
               {projectsData.map((project) => (
                 <ProjectCard 
                   key={project.id}

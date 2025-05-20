@@ -21,7 +21,7 @@ export const projectsData: Project[] = [
     category: "Web Applications",
     subcategory: "Web Application",
     description: "Museums telling better stories, simplified. An intuitive CMS that turns complex content into engaging mobile guides—no technical headaches for staff, just rich experiences for visitors.",
-    imageSrc: "/lovable-uploads/nous-cms.png",
+    imageSrc: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b",
     imageAlt: "Nous CMS application interface"
   },
   {
@@ -31,7 +31,7 @@ export const projectsData: Project[] = [
     category: "Web Applications",
     subcategory: "Web Application",
     description: "Development chaos, beautifully organized. Visual release tracking that improves team communication and automates deployments, letting everyone focus on building great products.",
-    imageSrc: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6",
+    imageSrc: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b",
     imageAlt: "Release Creator tracking interface"
   },
   {
@@ -51,7 +51,7 @@ export const projectsData: Project[] = [
     category: "Web Applications",
     subcategory: "Web Application",
     description: "Turning reinsurance data complexity into visual clarity. Specialized workflows and visualization tools that reveal the patterns hidden in sprawling property datasets.",
-    imageSrc: "https://images.unsplash.com/photo-1605810230434-7631ac76ec81",
+    imageSrc: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b",
     imageAlt: "Location Matcher visualization"
   },
   
@@ -63,7 +63,7 @@ export const projectsData: Project[] = [
     category: "Websites",
     subcategory: "Website",
     description: "Craftsmanship deserves a beautiful showcase. A platform connecting talented artisans with design enthusiasts, where every scroll reveals another reason to appreciate handcrafted quality.",
-    imageSrc: "/lovable-uploads/furnihaus.png",
+    imageSrc: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b",
     imageAlt: "Furnihaus website showcase"
   },
   {
@@ -73,7 +73,7 @@ export const projectsData: Project[] = [
     category: "Websites",
     subcategory: "E-commerce Website",
     description: "Bringing floral artistry from shop to doorstep. A seamless online shopping experience that feels as personal as walking into the store—without leaving the couch.",
-    imageSrc: "https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7",
+    imageSrc: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b",
     imageAlt: "Tulsa Flowers e-commerce website"
   },
   {
@@ -83,7 +83,7 @@ export const projectsData: Project[] = [
     category: "Websites",
     subcategory: "Web Application & Website",
     description: "Rustic charm meets modern convenience. A showcase for a unique restaurant and cabin retreat with a booking system that turns interest into confirmed reservations in moments.",
-    imageSrc: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d",
+    imageSrc: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b",
     imageAlt: "Casa Nera website"
   },
   {
@@ -93,7 +93,7 @@ export const projectsData: Project[] = [
     category: "Websites",
     subcategory: "Website & Booking Interface",
     description: "Where taste begins with the eyes. An elegant restaurant presence with integrated booking that transforms interest into reservations without interrupting the culinary journey.",
-    imageSrc: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158",
+    imageSrc: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b",
     imageAlt: "Restaurant Discret booking interface"
   },
   {
@@ -103,7 +103,7 @@ export const projectsData: Project[] = [
     category: "Websites",
     subcategory: "Website & Reservation Interface",
     description: "Luxury in the details. Beyond showcasing accommodations, this hotel platform gives guests control over their experience with specialized amenity booking.",
-    imageSrc: "https://images.unsplash.com/photo-1531297484001-80022131f5a1",
+    imageSrc: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b",
     imageAlt: "Panorama Deluxe Residence website"
   },
   {
@@ -113,7 +113,7 @@ export const projectsData: Project[] = [
     category: "Websites",
     subcategory: "Website",
     description: "Precision meets presentation. Complex topography services translated into visually compelling content that helps technical clients understand specialized offerings with clarity.",
-    imageSrc: "https://images.unsplash.com/photo-1518770660439-4636190af475",
+    imageSrc: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b",
     imageAlt: "Geosistem website services page"
   }
 ];
