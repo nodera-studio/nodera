@@ -30,10 +30,10 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
           <ArrowRight className="ml-1 h-4 w-4" />
         </Link>
         
-        {/* Image - replaced browser window with direct image */}
+        {/* Image - updated to use the nous-cms.png image */}
         <div className="mt-2 w-full max-w-[450px]">
           <img 
-            src="/lovable-uploads/nous.svg" 
+            src="/lovable-uploads/nous-cms.png" 
             alt={project.title}
             className="w-full h-auto"
           />
