@@ -14,7 +14,7 @@ const PricingSection = () => {
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
             {/* Websites Card */}
-            <Card className="text-center shadow-sm border border-gray-100 flex flex-col">
+            <Card className="text-center border border-gray-100 flex flex-col">
               <CardHeader className="pb-4">
                 <div className="flex justify-center mb-4">
                   <Layout className="h-12 w-12 text-blue-500" />
@@ -47,7 +47,7 @@ const PricingSection = () => {
             </Card>
 
             {/* E-commerce Card */}
-            <Card className="text-center shadow-sm border border-gray-100 flex flex-col">
+            <Card className="text-center border border-gray-100 flex flex-col">
               <CardHeader className="pb-4">
                 <div className="flex justify-center mb-4">
                   <ShoppingCart className="h-12 w-12 text-blue-500" />
@@ -80,7 +80,7 @@ const PricingSection = () => {
             </Card>
 
             {/* Web Applications Card */}
-            <Card className="text-center shadow-sm border border-gray-100 flex flex-col">
+            <Card className="text-center border border-gray-100 flex flex-col">
               <CardHeader className="pb-4">
                 <div className="flex justify-center mb-4">
                   <Layers className="h-12 w-12 text-blue-500" />
