@@ -9,7 +9,7 @@ import ServiceHero from '../components/service/ServiceHero';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import BrowserWindow from '../components/whatwedo/BrowserWindow';
-import { Check, ArrowRight, Trophy } from 'lucide-react';
+import { Check, ArrowRight, Star } from 'lucide-react';
 
 // Import the service data
 import serviceCategories from '../data/serviceData';
@@ -80,9 +80,9 @@ const Services: React.FC = () => {
 				{/* Why Choose Nodera Section - Moved below Core Service Offerings with gradient background */}
 				<section className="py-16 md:py-24" style={{ background: 'linear-gradient(to bottom, #f1f3fb 0%, #f9f9f9 100%)' }}>
 					<div className="container mx-auto px-4">
-						{/* Changed from Award to Trophy icon and made it filled */}
+						{/* Changed to Star icon and made it filled */}
 						<div className="flex justify-center mb-4">
-							<Trophy className="h-12 w-12 text-black fill-current" strokeWidth={1.5} />
+							<Star className="h-12 w-12 text-black fill-current" strokeWidth={1.5} />
 						</div>
 						<h2 className="text-3xl md:text-4xl font-comfortaa font-bold text-center mb-6">Why Choose Nodera?</h2>
 						<p className="text-gray-700 font-baloo text-lg text-center max-w-3xl mx-auto mb-8">
