@@ -91,7 +91,7 @@ const ServiceDetail: React.FC = () => {
             {service.technologyOptions && service.technologyOptions.length > 0 && (
               <div className="mb-16">
                 <h2 className="text-2xl font-comfortaa font-bold text-[#1D1D1F] mb-4">
-                  {service.title === 'E-commerce Solutions' ? 'Core Platform' : 'Technologies We Use'}
+                  {service.title === 'Online Stores' ? 'Core Platform' : 'Technologies We Use'}
                 </h2>
                 <div className="space-y-6">
                   {service.technologyOptions.map((tech, index) => (

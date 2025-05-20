@@ -65,13 +65,13 @@ export const serviceCategories: { mainServices: ServiceItemData[] } = {
 			idealFor:
 				'Ideal for businesses, professionals, artists, and organizations requiring a high-quality informational site, portfolio, blog, or online brochure.',
 		},
-		// Service 2: Online Stores (formerly E-commerce Solutions)
+		// Service 2: Online Stores (formerly Online Stores)
 		{
 			title: 'Online Stores',
 			description:
 				'Powerful online stores built to sell your products effectively and scale your business.',
 			fullDescription:
-				'Launch and grow your online store with our comprehensive e-commerce solutions. We build secure, scalable, and user-friendly online shops designed to convert visitors into customers and streamline your entire sales process from Browse to checkout.',
+				'Launch and grow your online store with our comprehensive Online Stores. We build secure, scalable, and user-friendly online shops designed to convert visitors into customers and streamline your entire sales process from Browse to checkout.',
 			designApproach:
 				"Your store's design is crucial for trust and sales. We can expertly customize premium Shopify themes to align with your brand or develop a completely custom theme for a truly unique and optimized shopping experience, based on your specific goals and budget.",
 			technologyOptions: [

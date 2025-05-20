@@ -52,7 +52,7 @@ const PricingSection = () => {
                 <div className="flex justify-center mb-4">
                   <ShoppingCart className="h-12 w-12 text-blue-500" />
                 </div>
-                <CardTitle className="text-2xl font-comfortaa mb-2">E-commerce Solutions</CardTitle>
+                <CardTitle className="text-2xl font-comfortaa mb-2">Online Stores</CardTitle>
                 <div className="mb-1">
                   <span className="text-sm font-baloo text-gray-600 mr-1">From</span>
                   <span className="text-3xl font-baloo font-bold">€3,500</span>
