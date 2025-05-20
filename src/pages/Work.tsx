@@ -72,8 +72,8 @@ const Work: React.FC = () => {
         {/* Hero Section */}
         <WorkHero />
         
-        {/* Filter Bar - With increased top padding to avoid code tab overlap */}
-        <div className="sticky top-0 z-20 bg-white shadow-sm pt-12">
+        {/* Filter Bar - With significantly increased top padding to avoid code tab overlap */}
+        <div className="sticky top-0 z-20 bg-white shadow-sm pt-20">
           <div className="container mx-auto py-3">
             <FilterBar 
               categories={categories}
