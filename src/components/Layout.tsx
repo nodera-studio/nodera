@@ -4,11 +4,12 @@ import { useBreakpoint } from '@/hooks/use-mobile';
 
 interface LayoutProps {
   children: React.ReactNode;
+  className?: string;
 }
 
-const Layout: React.FC<LayoutProps> = ({ children }) => {
+const Layout: React.FC<LayoutProps> = ({ children, className = '' }) => {
   return (
-    <div className="app-content w-full mx-auto">
+    <div className={`app-content w-full mx-auto ${className}`}>
       {children}
     </div>
   );

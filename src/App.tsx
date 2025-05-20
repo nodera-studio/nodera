@@ -1,3 +1,4 @@
+
 // src/App.tsx
 
 // Import components for showing notifications (Toasts/Sonner)
@@ -15,6 +16,7 @@ import Index from "./pages/Index"; // The homepage
 import NotFound from "./pages/NotFound"; // The "404 Not Found" page
 import Services from "./pages/Services"; // Services landing page
 import ServiceDetail from "./pages/ServiceDetail"; // Service detail page
+import Work from "./pages/Work"; // Work portfolio page
 
 // Create a client for managing data fetching (details not important now)
 const queryClient = new QueryClient();
@@ -39,6 +41,9 @@ const App = () => (
           {/* Services routes */}
           <Route path="/services" element={<Services />} />
           <Route path="/services/:serviceSlug" element={<ServiceDetail />} />
+          
+          {/* Work route */}
+          <Route path="/work" element={<Work />} />
 
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           {/* Example: <Route path="/about" element={<AboutPage />} /> */}
