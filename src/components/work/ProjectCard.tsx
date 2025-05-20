@@ -11,16 +11,16 @@ interface ProjectCardProps {
 
 const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
   return (
-    <div className="bg-[#f9f9f9] rounded-lg overflow-hidden">
-      <div className="p-6 flex flex-col items-center text-center">
+    <div className="bg-[#f9f9f9] overflow-hidden">
+      <div className="p-8 flex flex-col items-center text-center">
         {/* Top section with category and title */}
         <div className="mb-4">
           <span className="text-sm font-semibold text-gray-600 mb-3 block font-baloo">{project.subcategory}</span>
           <h3 className="text-3xl font-baloo font-bold mb-4">{project.title}</h3>
         </div>
         
-        {/* Description - reduced font size */}
-        <p className="text-gray-600 font-baloo text-sm mb-4">{project.description}</p>
+        {/* Description - slightly increased font size */}
+        <p className="text-gray-600 font-baloo text-base mb-4">{project.description}</p>
         
         {/* CTA */}
         <Link 
@@ -31,8 +31,8 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
           <ArrowRight className="ml-1 h-4 w-4" />
         </Link>
         
-        {/* Image - in a browser window UI */}
-        <div className="mt-2 max-w-[280px]">
+        {/* Image - in a wider browser window UI */}
+        <div className="mt-2 max-w-[320px]">
           <BrowserWindow title={project.title}>
             <div className="bg-gray-200 w-full h-[160px] flex items-center justify-center">
               <div className="text-gray-400 text-xs">Project Preview</div>
