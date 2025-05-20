@@ -23,8 +23,8 @@ const FilterBar: React.FC<FilterBarProps> = ({
   const [showFilters, setShowFilters] = useState(false);
 
   return (
-    <div className="w-full bg-white rounded-lg">
-      <div className="container mx-auto px-4 md:px-8 py-4">
+    <div className="w-full bg-white rounded-lg" style={{ boxShadow: 'none' }}>
+      <div className="container mx-auto px-[10px] py-4">
         {/* Search and filter toggle */}
         <div className="flex items-center gap-3">
           <div className="relative flex-grow">

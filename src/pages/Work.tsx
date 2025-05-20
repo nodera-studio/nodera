@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
@@ -73,8 +72,8 @@ const Work: React.FC = () => {
         {/* Hero Section */}
         <WorkHero />
         
-        {/* Filter Bar - With increased top padding to 50px */}
-        <div className="sticky top-0 z-20 bg-white pt-50">
+        {/* Filter Bar - With 50px top padding and no shadow */}
+        <div className="sticky top-0 z-20 bg-white pt-50" style={{ boxShadow: 'none' }}>
           <div className="container mx-auto py-3">
             <FilterBar 
               categories={categories}
@@ -86,9 +85,9 @@ const Work: React.FC = () => {
           </div>
         </div>
         
-        {/* Project Grid Section - With 10px left and right padding */}
+        {/* Project Grid Section - With exactly 10px left and right padding */}
         <section className="bg-white">
-          <div className="container mx-auto px-10 pt-3 pb-16 md:pb-24">
+          <div className="container mx-auto px-[10px] pt-3 pb-16 md:pb-24">
             {/* Projects Grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-[10px]">
               <AnimatePresence>
@@ -140,9 +139,9 @@ const Work: React.FC = () => {
           </div>
         </section>
         
-        {/* Client Logos Section */}
+        {/* Client Logos Section - With exactly 10px left and right padding */}
         <section className="py-16 md:py-20 bg-gray-50">
-          <div className="container mx-auto px-10">
+          <div className="container mx-auto px-[10px]">
             <h2 className="text-2xl md:text-3xl font-comfortaa font-bold text-center mb-12">Trusted by Leading Brands</h2>
             
             <div className="flex flex-wrap justify-center items-center gap-8 md:gap-16 max-w-4xl mx-auto">
