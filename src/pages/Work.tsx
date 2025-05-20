@@ -73,9 +73,9 @@ const Work: React.FC = () => {
         {/* Hero Section */}
         <WorkHero />
         
-        {/* Filter Bar - With proper padding and spacing */}
-        <div className="sticky top-0 z-20 bg-white shadow-sm">
-          <div className="container mx-auto pt-3 pb-3">
+        {/* Filter Bar - With proper padding to avoid code tab overlap */}
+        <div className="sticky top-0 z-20 bg-white shadow-sm pt-6">
+          <div className="container mx-auto py-3">
             <FilterBar 
               categories={categories}
               selectedCategories={selectedCategories}
@@ -86,9 +86,9 @@ const Work: React.FC = () => {
           </div>
         </div>
         
-        {/* Project Grid Section - With proper spacing from filter bar */}
+        {/* Project Grid Section - With 10px gap from filter bar */}
         <section className="bg-white">
-          <div className="container mx-auto px-4 md:px-8 pt-10 pb-16 md:pb-24">
+          <div className="container mx-auto px-4 md:px-8 pt-3 pb-16 md:pb-24">
             {/* Projects Grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-[10px]">
               <AnimatePresence>
