@@ -33,33 +33,13 @@ const Services: React.FC = () => {
 				{/* Why Choose Nodera Section */}
 				<section className="py-16 md:py-24" style={{ backgroundColor: '#f1f3fb' }}>
 					<div className="container mx-auto px-4">
-						<h2 className="text-3xl md:text-4xl font-comfortaa font-bold text-center mb-10">Why Choose Nodera?</h2>
-						
-						<div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
-							<div className="bg-white rounded-lg p-6 shadow-sm flex flex-col items-start">
-								<div className="bg-blue-100 p-3 rounded-full mb-4">
-									<Check className="h-6 w-6 text-blue-600" />
-								</div>
-								<h3 className="font-comfortaa font-bold text-xl mb-2">Expertise & Experience</h3>
-								<p className="text-gray-600 font-baloo">Our team brings years of industry expertise to every project, ensuring professional results.</p>
-							</div>
-							
-							<div className="bg-white rounded-lg p-6 shadow-sm flex flex-col items-start">
-								<div className="bg-blue-100 p-3 rounded-full mb-4">
-									<Check className="h-6 w-6 text-blue-600" />
-								</div>
-								<h3 className="font-comfortaa font-bold text-xl mb-2">Client-Centered Approach</h3>
-								<p className="text-gray-600 font-baloo">We prioritize your vision and goals, maintaining close communication throughout the process.</p>
-							</div>
-							
-							<div className="bg-white rounded-lg p-6 shadow-sm flex flex-col items-start">
-								<div className="bg-blue-100 p-3 rounded-full mb-4">
-									<Check className="h-6 w-6 text-blue-600" />
-								</div>
-								<h3 className="font-comfortaa font-bold text-xl mb-2">Innovative Solutions</h3>
-								<p className="text-gray-600 font-baloo">We leverage cutting-edge technologies to deliver modern, future-proof digital experiences.</p>
-							</div>
-						</div>
+						<h2 className="text-3xl md:text-4xl font-comfortaa font-bold text-center mb-6">Why Choose Nodera?</h2>
+						<p className="text-gray-700 font-baloo text-lg text-center max-w-3xl mx-auto">
+							At Nodera, we combine industry expertise with a client-centered approach and innovative solutions. 
+							Our team brings years of experience to deliver professional results while prioritizing your vision 
+							and goals. We maintain close communication throughout the process and leverage cutting-edge 
+							technologies to create modern, future-proof digital experiences tailored to your needs.
+						</p>
 					</div>
 				</section>
 				
