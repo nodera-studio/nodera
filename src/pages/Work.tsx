@@ -73,20 +73,22 @@ const Work: React.FC = () => {
         {/* Hero Section */}
         <WorkHero />
         
-        {/* Filter Bar - Now closer to the project cards */}
-        <div className="pt-3 pb-3 relative z-20">
-          <FilterBar 
-            categories={categories}
-            selectedCategories={selectedCategories}
-            searchQuery={searchQuery}
-            onSearchChange={setSearchQuery}
-            onCategoryToggle={handleCategoryToggle}
-          />
+        {/* Filter Bar - With proper padding and spacing */}
+        <div className="sticky top-0 z-20 bg-white shadow-sm">
+          <div className="container mx-auto pt-3 pb-3">
+            <FilterBar 
+              categories={categories}
+              selectedCategories={selectedCategories}
+              searchQuery={searchQuery}
+              onSearchChange={setSearchQuery}
+              onCategoryToggle={handleCategoryToggle}
+            />
+          </div>
         </div>
         
-        {/* Project Grid Section - Reduced top padding to move cards closer to filter */}
-        <section className="pt-10 pb-16 md:pb-24 bg-white">
-          <div className="container mx-auto px-4 md:px-8">
+        {/* Project Grid Section - With proper spacing from filter bar */}
+        <section className="bg-white">
+          <div className="container mx-auto px-4 md:px-8 pt-10 pb-16 md:pb-24">
             {/* Projects Grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-[10px]">
               <AnimatePresence>
