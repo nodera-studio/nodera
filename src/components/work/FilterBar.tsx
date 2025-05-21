@@ -35,7 +35,7 @@ const FilterBar: React.FC<FilterBarProps> = ({
               placeholder="Search projects..."
               value={searchQuery}
               onChange={(e) => onSearchChange(e.target.value)}
-              className="pl-10 w-full rounded-full bg-[#f9f9f9] border-gray-200 hover:bg-white focus:bg-white focus-visible:bg-white focus-visible:ring-0 focus-visible:border-gray-200"
+              className="pl-10 w-full rounded-full bg-[#f9f9f9] border-transparent hover:bg-white focus:bg-white focus-visible:bg-white focus:ring-0 focus:border-transparent focus-visible:border-transparent shadow-none focus:shadow-none focus-visible:shadow-none"
             />
           </div>
           <Button
