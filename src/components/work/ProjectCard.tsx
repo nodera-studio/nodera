@@ -18,7 +18,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
         </div>
         
         {/* Description - slightly increased font size */}
-        <p className="text-gray-600 font-baloo text-base mb-4">{project.description}</p>
+        <p className="text-gray-600 font-baloo text-base mb-4 max-w-prose mx-auto">{project.description}</p>
         
         {/* CTA */}
         <Link 
