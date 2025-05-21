@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Input } from '../../components/ui/input';
 import { Button } from '../../components/ui/button';
@@ -36,7 +35,7 @@ const FilterBar: React.FC<FilterBarProps> = ({
               placeholder="Search projects..."
               value={searchQuery}
               onChange={(e) => onSearchChange(e.target.value)}
-              className="pl-10 w-full rounded-full bg-gray-50 border-gray-200 focus-visible:ring-gray-300"
+              className="pl-10 w-full rounded-full bg-[#f9f9f9] border-gray-200 hover:bg-white focus:bg-white focus-visible:bg-white focus-visible:ring-0 focus-visible:border-gray-200"
             />
           </div>
           <Button

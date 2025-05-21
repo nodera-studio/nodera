@@ -66,7 +66,7 @@ const Work: React.FC = () => {
   const projectsToDisplay = getInitialProjects();
 
   return (
-    <div className="min-h-screen flex flex-col overflow-x-hidden bg-gray-50">
+    <div className="min-h-screen flex flex-col overflow-x-hidden">
       <Header />
       <main className="relative flex-grow pt-[60px]">
         {/* Hero Section */}

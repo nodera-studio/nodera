@@ -1,11 +1,9 @@
-
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import styles from '../styles/Showcases.module.css';
 import { Button } from '../ui/button';
 import { Link } from 'react-router-dom';
 import { Input } from '../ui/input';
-import BrowserWindow from './BrowserWindow';
 
 interface PerformanceCardProps {
   shouldReduceMotion: boolean;
@@ -196,115 +194,39 @@ const PerformanceCard: React.FC<PerformanceCardProps> = ({ shouldReduceMotion, i
         </div>
         
         <div className="flex-1 w-full flex items-center justify-center mb-4">
-          <BrowserWindow className="max-h-[450px] h-[450px] mx-4 md:mx-8">
-            <motion.div 
-              className="p-4 md:p-6 bg-white h-full"
+          <div className="flex-1">
+            <motion.h5 
+              className="text-sm font-medium mb-5 text-gray-700"
               initial={{ opacity: 0 }}
               animate={isInView ? { opacity: 1 } : { opacity: 0 }}
-              transition={{ duration: 0.5 }}
+              transition={{ delay: 0.6, duration: 0.4 }}
             >
-              <div className="pb-4 md:pb-6">
-                <motion.h4 
-                  className="text-sm md:text-base font-medium mb-4 text-gray-800"
-                  initial={{ opacity: 0, y: -5 }}
-                  animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: -5 }}
-                  transition={{ delay: 0.2, duration: 0.4 }}
-                >
-                  Report from May 5, 2025
-                </motion.h4>
-                
+              Performance metrics
+            </motion.h5>
+            
+            <AnimatePresence mode="wait">
+              {showMetrics && (
                 <motion.div 
-                  className="flex space-x-2 items-center mb-4"
-                  initial={{ opacity: 0, y: 5 }}
-                  animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 5 }}
-                  transition={{ delay: 0.3, duration: 0.5 }}
+                  key={key}
+                  className="grid grid-cols-2 md:grid-cols-4 gap-3 text-center"
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  transition={{ duration: 0.3 }}
                 >
-                  <div className="flex-grow relative">
-                    <Input 
-                      type="text" 
-                      placeholder="https://nodera.studio/" 
-                      className="border-gray-200 bg-gray-50 pr-16 text-xs md:text-sm h-10 rounded-lg"
+                  {metrics.map((metric, index) => (
+                    <MetricCircle 
+                      key={`${metric.name}-${key}-${index}`}
+                      name={metric.name}
+                      value={metric.value}
+                      color={metric.color}
+                      delay={200 + (index * 100)}
                     />
-                    <button className="absolute right-1 top-1 bottom-1 px-3 bg-blue-500 rounded-md text-white text-xs hover:bg-blue-600 transition-colors">
-                      Analyze
-                    </button>
-                  </div>
+                  ))}
                 </motion.div>
-                
-                <motion.div 
-                  className="flex justify-center mb-6 overflow-hidden rounded-lg bg-gray-50 p-1 border border-gray-200"
-                  initial={{ opacity: 0, y: 5 }}
-                  animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 5 }}
-                  transition={{ delay: 0.4, duration: 0.5 }}
-                >
-                  <button
-                    onClick={() => handleTabChange('mobile')}
-                    className={`flex items-center px-4 py-2 text-sm transition-colors rounded-md ${
-                      activeTab === 'mobile'
-                        ? 'bg-white text-gray-800 border border-gray-200 shadow-sm'
-                        : 'text-gray-600 hover:bg-gray-100'
-                    }`}
-                  >
-                    <span className="flex items-center">
-                      <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1.5" viewBox="0 0 20 20" fill="currentColor">
-                        <path fillRule="evenodd" d="M7 2a2 2 0 00-2 2v12a2 2 0 002 2h6a2 2 0 002-2V4a2 2 0 00-2-2H7zm3 14a1 1 0 100-2 1 1 0 000 2z" clipRule="evenodd" />
-                      </svg>
-                      Mobile
-                    </span>
-                  </button>
-                  <button
-                    onClick={() => handleTabChange('desktop')}
-                    className={`flex items-center px-4 py-2 text-sm transition-colors rounded-md ${
-                      activeTab === 'desktop'
-                        ? 'bg-white text-gray-800 border border-gray-200 shadow-sm'
-                        : 'text-gray-600 hover:bg-gray-100'
-                    }`}
-                  >
-                    <span className="flex items-center">
-                      <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1.5" viewBox="0 0 20 20" fill="currentColor">
-                        <path fillRule="evenodd" d="M3 5a2 2 0 012-2h10a2 2 0 012 2v8a2 2 0 01-2 2h-2.22l.123.489.804.804A1 1 0 0113 18H7a1 1 0 01-.707-1.707l.804-.804L7.22 15H5a2 2 0 01-2-2V5zm5.771 7H5V5h10v7H8.771z" clipRule="evenodd" />
-                      </svg>
-                      Desktop
-                    </span>
-                  </button>
-                </motion.div>
-              </div>
-              
-              <div className="flex-1">
-                <motion.h5 
-                  className="text-sm font-medium mb-5 text-gray-700"
-                  initial={{ opacity: 0 }}
-                  animate={isInView ? { opacity: 1 } : { opacity: 0 }}
-                  transition={{ delay: 0.6, duration: 0.4 }}
-                >
-                  Performance metrics
-                </motion.h5>
-                
-                <AnimatePresence mode="wait">
-                  {showMetrics && (
-                    <motion.div 
-                      key={key}
-                      className="grid grid-cols-2 md:grid-cols-4 gap-3 text-center"
-                      initial={{ opacity: 0, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: -10 }}
-                      transition={{ duration: 0.3 }}
-                    >
-                      {metrics.map((metric, index) => (
-                        <MetricCircle 
-                          key={`${metric.name}-${key}-${index}`}
-                          name={metric.name}
-                          value={metric.value}
-                          color={metric.color}
-                          delay={200 + (index * 100)}
-                        />
-                      ))}
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </div>
-            </motion.div>
-          </BrowserWindow>
+              )}
+            </AnimatePresence>
+          </div>
         </div>
       </div>
     </motion.div>

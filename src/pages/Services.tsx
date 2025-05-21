@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Header from '../components/Header';
@@ -8,7 +7,6 @@ import PricingSection from '../components/service/PricingSection';
 import ServiceHero from '../components/service/ServiceHero';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import BrowserWindow from '../components/whatwedo/BrowserWindow';
 import { Check, ArrowRight, Star } from 'lucide-react';
 
 // Import the service data
@@ -40,14 +38,12 @@ const Services: React.FC = () => {
 								<div key={service.title} className="flex flex-col">
 									{/* Service showcase with image */}
 									<div className="mb-6 aspect-[4/3]">
-										<BrowserWindow className="h-full">
-											<div className="bg-gradient-to-b from-gray-50 to-gray-100 h-full flex items-center justify-center p-4">
-												<div className="text-center">
-													<h3 className="text-xl font-comfortaa font-bold mb-2">{service.title}</h3>
-													<p className="text-sm text-gray-600">Professional digital solutions</p>
-												</div>
+										<div className="bg-gradient-to-b from-gray-50 to-gray-100 h-full flex items-center justify-center p-4">
+											<div className="text-center">
+												<h3 className="text-xl font-comfortaa font-bold mb-2">{service.title}</h3>
+												<p className="text-sm text-gray-600">Professional digital solutions</p>
 											</div>
-										</BrowserWindow>
+										</div>
 									</div>
 									
 									{/* Service description */}
