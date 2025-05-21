@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Globe, Search, Star, MoreHorizontal } from 'lucide-react';
@@ -31,7 +30,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
         </Link>
         
         {/* Enhanced Browser UI Mockup */}
-        <div className="mt-2 w-full max-w-[450px] border border-gray-200 overflow-hidden shadow-sm">
+        <div className="mt-2 w-full max-w-[450px] border border-gray-200 overflow-hidden shadow-sm rounded-t-xl">
           {/* Browser Top Bar with window dots, address bar and icons */}
           <div className="bg-[#f3f3f3] border-b border-gray-200 p-2 flex items-center">
             {/* Window management dots */}
@@ -58,7 +57,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
           {/* Browser Content Area with scrollable image */}
           <div className="bg-white h-[240px] overflow-auto">
             <img 
-              src="/lovable-uploads/nous-cms.png" 
+              src="/lovable-uploads/nodera.webp" 
               alt={project.title}
               className="w-full h-auto"
             />
