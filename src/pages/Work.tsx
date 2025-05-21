@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
@@ -72,9 +73,9 @@ const Work: React.FC = () => {
         {/* Hero Section */}
         <WorkHero />
         
-        {/* Filter Bar - With 50px top padding and no shadow */}
-        <div className="sticky top-0 z-20 bg-white pt-50" style={{ boxShadow: 'none' }}>
-          <div className="container mx-auto py-3">
+        {/* Filter Bar - With 10px gap top and bottom */}
+        <div className="bg-white py-[10px]" style={{ boxShadow: 'none' }}>
+          <div className="container mx-auto px-[10px]">
             <FilterBar 
               categories={categories}
               selectedCategories={selectedCategories}

@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { Input } from '../../components/ui/input';
 import { Button } from '../../components/ui/button';
@@ -22,31 +23,34 @@ const FilterBar: React.FC<FilterBarProps> = ({
   const [showFilters, setShowFilters] = useState(false);
 
   return (
-    <div className="w-full bg-white rounded-lg" style={{ boxShadow: 'none' }}>
-      <div className="container mx-auto px-[10px] py-4">
+    <div className="w-full bg-[#f9f9f9] rounded-lg py-4" style={{ boxShadow: 'none' }}>
+      <div className="container mx-auto px-[10px]">
         {/* Search and filter toggle */}
-        <div className="flex items-center gap-3">
-          <div className="relative flex-grow">
-            <div className="absolute inset-y-0 left-3 flex items-center pointer-events-none">
-              <Search className="h-4 w-4 text-gray-400" />
+        <div className="flex items-center gap-3 justify-between">
+          <h3 className="text-base font-medium text-gray-800">Our Projects</h3>
+          <div className="flex items-center gap-3 flex-grow justify-end">
+            <div className="relative w-full max-w-[300px]">
+              <div className="absolute inset-y-0 left-3 flex items-center pointer-events-none">
+                <Search className="h-4 w-4 text-gray-400" />
+              </div>
+              <Input
+                type="text"
+                placeholder="Search projects..."
+                value={searchQuery}
+                onChange={(e) => onSearchChange(e.target.value)}
+                className="pl-10 w-full h-9 rounded-full bg-white border-transparent hover:bg-white focus:bg-white focus-visible:bg-white focus:ring-0 focus:border-transparent focus-visible:border-transparent shadow-none focus:shadow-none focus-visible:shadow-none"
+              />
             </div>
-            <Input
-              type="text"
-              placeholder="Search projects..."
-              value={searchQuery}
-              onChange={(e) => onSearchChange(e.target.value)}
-              className="pl-10 w-full rounded-full bg-[#f9f9f9] border-transparent hover:bg-white focus:bg-white focus-visible:bg-white focus:ring-0 focus:border-transparent focus-visible:border-transparent shadow-none focus:shadow-none focus-visible:shadow-none"
-            />
+            <Button
+              variant="ghost"
+              size="sm"
+              className="flex items-center gap-2 text-gray-700"
+              onClick={() => setShowFilters(!showFilters)}
+            >
+              <Filter className="h-4 w-4" />
+              <span className="hidden sm:inline">Filter</span>
+            </Button>
           </div>
-          <Button
-            variant="ghost"
-            size="sm"
-            className="flex items-center gap-2 text-gray-700"
-            onClick={() => setShowFilters(!showFilters)}
-          >
-            <Filter className="h-4 w-4" />
-            <span className="hidden sm:inline">Filter</span>
-          </Button>
         </div>
 
         {/* Category filters */}
