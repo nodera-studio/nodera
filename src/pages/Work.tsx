@@ -42,6 +42,35 @@ const Work: React.FC = () => {
     'Geosistem'
   ];
 
+  // Helper function to extract date for sorting
+  const getDateValue = (dateStr: string): number => {
+    if (dateStr === 'Ongoing') return Date.now(); // Ongoing projects are most recent
+    
+    const months: {[key: string]: number} = {
+      'Jan': 0, 'January': 0,
+      'Feb': 1, 'February': 1,
+      'Mar': 2, 'March': 2,
+      'Apr': 3, 'April': 3,
+      'May': 4,
+      'Jun': 5, 'June': 5,
+      'Jul': 6, 'July': 6,
+      'Aug': 7, 'August': 7,
+      'Sep': 8, 'Sept': 8, 'September': 8,
+      'Oct': 9, 'October': 9,
+      'Nov': 10, 'November': 10,
+      'Dec': 11, 'December': 11
+    };
+    
+    const parts = dateStr.split(' ');
+    if (parts.length === 2) {
+      const month = months[parts[0]] || 0;
+      const year = parseInt(parts[1], 10);
+      return new Date(year, month, 1).getTime();
+    }
+    
+    return 0; // Default value for unparseable dates
+  };
+
   // Sort and filter projects
   const filteredAndSortedProjects = projectsData
     // First filter projects
@@ -62,11 +91,9 @@ const Work: React.FC = () => {
         case 'recommended':
           return recommendedOrder.indexOf(a.title) - recommendedOrder.indexOf(b.title);
         case 'newest':
-          // Here we're using id as a placeholder for "newest" since we don't have actual dates
-          return b.id - a.id;
+          return getDateValue(b.date) - getDateValue(a.date);
         case 'oldest':
-          // Here we're using id as a placeholder for "oldest"
-          return a.id - b.id;
+          return getDateValue(a.date) - getDateValue(b.date);
         case 'a-z':
           return a.title.localeCompare(b.title);
         case 'z-a':
