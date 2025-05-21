@@ -23,11 +23,11 @@ const FilterBar: React.FC<FilterBarProps> = ({
   const [showFilters, setShowFilters] = useState(false);
 
   return (
-    <div className="w-full bg-[#f9f9f9] rounded-lg py-4" style={{ boxShadow: 'none' }}>
+    <div className="w-full bg-[#f9f9f9] py-4" style={{ boxShadow: 'none' }}>
       <div className="container mx-auto px-[10px]">
         {/* Search and filter toggle */}
         <div className="flex items-center gap-3 justify-between">
-          <h3 className="text-base font-medium text-gray-800">Our Projects</h3>
+          <h3 className="text-lg font-medium text-gray-800">Our Projects</h3>
           <div className="flex items-center gap-3 flex-grow justify-end">
             <div className="relative w-full max-w-[300px]">
               <div className="absolute inset-y-0 left-3 flex items-center pointer-events-none">

@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
@@ -74,7 +73,7 @@ const Work: React.FC = () => {
         <WorkHero />
         
         {/* Filter Bar - With 10px gap top and bottom */}
-        <div className="bg-white py-[10px]" style={{ boxShadow: 'none' }}>
+        <div className="bg-white pt-[10px]" style={{ boxShadow: 'none' }}>
           <div className="container mx-auto px-[10px]">
             <FilterBar 
               categories={categories}
@@ -88,7 +87,7 @@ const Work: React.FC = () => {
         
         {/* Project Grid Section - With exactly 10px left and right padding */}
         <section className="bg-white">
-          <div className="container mx-auto px-[10px] pt-3 pb-16 md:pb-24">
+          <div className="container mx-auto px-[10px] pt-[10px] pb-16 md:pb-24">
             {/* Projects Grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-[10px]">
               <AnimatePresence>
