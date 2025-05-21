@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Browser } from 'lucide-react';
+import { ArrowRight, Globe } from 'lucide-react';
 import { Project } from '../../data/projectsData';
 
 interface ProjectCardProps {
@@ -34,7 +34,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
         <div className="mt-2 w-full max-w-[450px] border border-gray-200 rounded-lg overflow-hidden shadow-sm">
           {/* Browser Tab UI */}
           <div className="bg-gray-100 border-b border-gray-200 p-2 flex items-center">
-            <Browser className="h-4 w-4 text-gray-600 mr-2" />
+            <Globe className="h-4 w-4 text-gray-600 mr-2" />
             <div className="bg-white px-3 py-1 rounded-t-md border-t border-l border-r border-gray-300 text-xs text-gray-700 font-medium flex-shrink-0">
               {project.title}
             </div>
