@@ -72,9 +72,9 @@ const Work: React.FC = () => {
         {/* Hero Section */}
         <WorkHero />
         
-        {/* Filter Bar - With 50px top padding and no shadow */}
-        <div className="sticky top-0 z-20 bg-white pt-50" style={{ boxShadow: 'none' }}>
-          <div className="container mx-auto py-3">
+        {/* Filter Bar - With 10px gap top and bottom */}
+        <div className="bg-white pt-[10px]" style={{ boxShadow: 'none' }}>
+          <div className="container mx-auto px-[10px]">
             <FilterBar 
               categories={categories}
               selectedCategories={selectedCategories}
@@ -87,7 +87,7 @@ const Work: React.FC = () => {
         
         {/* Project Grid Section - With exactly 10px left and right padding */}
         <section className="bg-white">
-          <div className="container mx-auto px-[10px] pt-3 pb-16 md:pb-24">
+          <div className="container mx-auto px-[10px] pt-[10px] pb-16 md:pb-24">
             {/* Projects Grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-[10px]">
               <AnimatePresence>

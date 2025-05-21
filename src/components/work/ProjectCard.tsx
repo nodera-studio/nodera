@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, Globe, Search, Star, MoreHorizontal } from 'lucide-react';
 import { Project } from '../../data/projectsData';
 
 interface ProjectCardProps {
@@ -30,13 +30,39 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
           <ArrowRight className="ml-1 h-4 w-4" />
         </Link>
         
-        {/* Image - updated to use the nous-cms.png image */}
-        <div className="mt-2 w-full max-w-[450px]">
-          <img 
-            src="/lovable-uploads/nous-cms.png" 
-            alt={project.title}
-            className="w-full h-auto"
-          />
+        {/* Enhanced Browser UI Mockup */}
+        <div className="mt-2 w-full max-w-[450px] border border-gray-200 overflow-hidden shadow-sm">
+          {/* Browser Top Bar with window dots, address bar and icons */}
+          <div className="bg-[#f3f3f3] border-b border-gray-200 p-2 flex items-center">
+            {/* Window management dots */}
+            <div className="flex items-center gap-1.5 mr-4 ml-1">
+              <div className="w-3 h-3 rounded-full bg-[#ea384c]"></div>
+              <div className="w-3 h-3 rounded-full bg-[#ffbd44]"></div>
+              <div className="w-3 h-3 rounded-full bg-[#00ca4e]"></div>
+            </div>
+            
+            {/* Address bar with project title */}
+            <div className="flex-grow flex items-center bg-[#e1e1e1] rounded-md px-2 py-1 mx-1">
+              <Globe className="h-3.5 w-3.5 text-gray-500 mr-1.5" />
+              <span className="text-xs text-gray-700 font-medium truncate">{project.title}</span>
+            </div>
+            
+            {/* Browser action icons */}
+            <div className="flex items-center ml-2 gap-3">
+              <Search className="h-3.5 w-3.5 text-gray-500" />
+              <Star className="h-3.5 w-3.5 text-gray-500" />
+              <MoreHorizontal className="h-3.5 w-3.5 text-gray-500" />
+            </div>
+          </div>
+          
+          {/* Browser Content Area with scrollable image */}
+          <div className="bg-white h-[240px] overflow-auto">
+            <img 
+              src="/lovable-uploads/nous-cms.png" 
+              alt={project.title}
+              className="w-full h-auto"
+            />
+          </div>
         </div>
       </div>
     </div>
