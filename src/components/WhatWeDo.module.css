@@ -1,4 +1,3 @@
-
 .devContainer {
   position: relative;
   width: 100%;
@@ -15,7 +14,7 @@
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
   border-radius: 16px;
   overflow: hidden;
-  background-color: #FFF;
+  background-color: #F9F9F9;
   border: 1px solid #EAEAEA;
 }
 
@@ -28,7 +27,7 @@
 
 .contentLine {
   height: 12px;
-  background: #F0F0F0;
+  background: #E0E0E0;
   border-radius: 6px;
 }
 
