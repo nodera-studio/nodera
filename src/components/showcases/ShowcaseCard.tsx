@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Button } from "@/components/ui/button";
 import styles from '../styles/Showcases.module.css';
@@ -27,8 +28,6 @@ const ShowcaseCard = React.forwardRef<HTMLDivElement, ShowcaseCardProps>(({
   description,
   imageSrc,
   imageAlt,
-  gradientDirection = "to-br",
-  gradientColor = "from-purple-300",
   style,
   className = '',
   initial,
@@ -48,7 +47,7 @@ const ShowcaseCard = React.forwardRef<HTMLDivElement, ShowcaseCardProps>(({
       style={style}
       {...props}
     >
-      <div className={`h-full w-full absolute top-0 left-0 bg-gradient-to-br ${gradientDirection} ${gradientColor} opacity-10`} />
+      {/* Removed the gradient div that was here */}
       
       <div className="flex flex-col justify-between items-center text-center min-h-[160px] px-5 md:px-8 relative z-10">
         <h3 className="text-3xl md:text-4xl">
